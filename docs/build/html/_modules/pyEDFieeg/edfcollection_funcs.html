@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyEDFieeg.edfcollection_funcs &mdash; torchtime</title>
+  <title>pyEDFieeg.edfcollection_funcs &mdash; pyEDFieeg</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -66,7 +67,6 @@
 <span></span><span class="sd">&quot;&quot;&quot;This is a good place to write what the module does. This is going to be in the</span>
 <span class="sd">documentation page where this module will be displayed&quot;&quot;&quot;</span>
 
-
 <span class="c1">###############################################################################</span>
 <span class="c1"># M. Panagiotopoulou, April 2022</span>
 <span class="c1"># m.panagiotopoulou2@newcastle.ac.uk</span>
@@ -88,19 +88,27 @@
 
 <span class="c1"># internal modules</span>
 
-<span class="c1"># Python program to check if two</span>
-<span class="c1"># to get unique values from list</span>
-<span class="c1"># using set</span>
 
-<span class="c1"># function to get unique values</span>
-<span class="k">def</span> <span class="nf">unique</span><span class="p">(</span><span class="n">list1</span><span class="p">):</span>
+<div class="viewcode-block" id="unique"><a class="viewcode-back" href="../../api/edfcollection_funcs.html#pyEDFieeg.edfcollection_funcs.unique">[docs]</a><span class="k">def</span> <span class="nf">unique</span><span class="p">(</span><span class="n">list1</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 
+<span class="sd">    Find unique elements of a list.</span>
+<span class="sd">    Python program to check if two</span>
+<span class="sd">    to get unique values from list using set</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        list1: a list</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: a list of the unique elements found in the `list1`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># insert the list to the set</span>
     <span class="n">list_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
     <span class="c1"># convert the set to the list</span>
     <span class="n">unique_list</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">list_set</span><span class="p">))</span>
 
-    <span class="k">return</span> <span class="n">unique_list</span>
+    <span class="k">return</span> <span class="n">unique_list</span></div>
 
 <span class="c1"># # Single patient processing</span>
 <span class="c1"># subject = &quot;909&quot;</span>

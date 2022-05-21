@@ -1,7 +1,6 @@
 """This is a good place to write what the module does. This is going to be in the
 documentation page where this module will be displayed"""
 
-
 ###############################################################################
 # M. Panagiotopoulou, April 2022
 # m.panagiotopoulou2@newcastle.ac.uk
@@ -23,13 +22,21 @@ import scipy.signal
 
 # internal modules
 
-# Python program to check if two
-# to get unique values from list
-# using set
 
-# function to get unique values
-def unique(list1):
+def unique(list1: list) -> list:
+    r"""
 
+    Find unique elements of a list.
+    Python program to check if two
+    to get unique values from list using set
+
+    Args:
+        list1: a list
+
+    Returns:
+        list: a list of the unique elements found in the `list1`
+
+    """
     # insert the list to the set
     list_set = set(list1)
     # convert the set to the list

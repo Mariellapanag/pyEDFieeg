@@ -45,7 +45,9 @@ html_context = {
     "conf_py_path": "/docs",
     "source_suffix": ".md",
 }
-html_title = "torchtime"
+html_title = "pyEDFieeg"
 html_static_path = ["_static"]
+#html_extra_path = ["README.md"]
+html_css_files = ["custom.css"]
 pygments_style = "friendly"
 html_show_sphinx = False
