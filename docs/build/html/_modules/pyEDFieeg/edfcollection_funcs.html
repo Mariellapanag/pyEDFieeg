@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyEDFieeg.edfcollection_funcs &mdash; torchtime</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> pyEDFieeg
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyEDFieeg</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>pyEDFieeg.edfcollection_funcs</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pyEDFieeg.edfcollection_funcs</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;This is a good place to write what the module does. This is going to be in the</span>
+<span class="sd">documentation page where this module will be displayed&quot;&quot;&quot;</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># M. Panagiotopoulou, April 2022</span>
+<span class="c1"># m.panagiotopoulou2@newcastle.ac.uk</span>
+<span class="c1">#</span>
+<span class="c1"># Long-term Interictal iEEG data</span>
+<span class="c1"># reference: https://github.com/holgern/pyedflib/blob/master/pyedflib/edfreader.py</span>
+<span class="c1"># # https://pyedflib.readthedocs.io/en/latest/_modules/pyedflib/highlevel.html</span>
+<span class="c1">###############################################################################</span>
+
+<span class="c1"># Python module</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pyedflib</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+<span class="kn">import</span> <span class="nn">scipy.signal</span>
+<span class="c1"># import matplotlib.pyplot as plt</span>
+
+<span class="c1"># internal modules</span>
+
+<span class="c1"># Python program to check if two</span>
+<span class="c1"># to get unique values from list</span>
+<span class="c1"># using set</span>
+
+<span class="c1"># function to get unique values</span>
+<span class="k">def</span> <span class="nf">unique</span><span class="p">(</span><span class="n">list1</span><span class="p">):</span>
+
+    <span class="c1"># insert the list to the set</span>
+    <span class="n">list_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
+    <span class="c1"># convert the set to the list</span>
+    <span class="n">unique_list</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">list_set</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">unique_list</span>
+
+<span class="c1"># # Single patient processing</span>
+<span class="c1"># subject = &quot;909&quot;</span>
+<span class="c1"># # Set the root directory for patient</span>
+<span class="c1"># root = os.path.join(paths.INPUT_DATA_DIR, subject)</span>
+<span class="c1">#</span>
+<span class="c1"># # TODO: CHECK WHAT ARE THE HEART RATE CHANNELS; CHECK THE MATLAB FILES WITH ALL THE CHANNELS</span>
+<span class="c1"># HeartRateChannels = paths.HeartRateChannels # channel labels corresponding to Heart Rate channels</span>
+<span class="c1"># error_edfs = paths.error_edfs  # channels labels appear in error edfs</span>
+
+<div class="viewcode-block" id="get_search_files"><a class="viewcode-back" href="../../api/edfcollection_funcs.html#pyEDFieeg.edfcollection_funcs.get_search_files">[docs]</a><span class="k">def</span> <span class="nf">get_search_files</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Search all folders and find the edf files included in the root directory</span>
+
+<span class="sd">    :param root: the path where the edf files are located</span>
+<span class="sd">    :return: a list with the full path corresponding to each edf file</span>
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        print(1 + 2)</span>
+
+<span class="sd">    .. testoutput::</span>
+
+<span class="sd">        5</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">f_path_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="c1"># Extract patient name</span>
+            <span class="c1"># if not hidden file and is edf file</span>
+            <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="s2">&quot;.edf_&quot;</span> <span class="ow">in</span> <span class="n">f</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;.edf&quot;</span> <span class="ow">in</span> <span class="n">f</span><span class="p">):</span>
+                <span class="n">f_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+                <span class="n">f_path_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">f_path_list</span></div>
+
+
+<div class="viewcode-block" id="clean_edf_paths"><a class="viewcode-back" href="../../api/edfcollection_funcs.html#pyEDFieeg.edfcollection_funcs.clean_edf_paths">[docs]</a><span class="k">def</span> <span class="nf">clean_edf_paths</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">error_edfs</span><span class="p">,</span> <span class="n">corrupted_edf_paths</span><span class="p">,</span> <span class="n">EEG_channel_list</span><span class="p">,</span> <span class="n">min_n_Chan</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a new path list linked to the edf files after excluding edf files that have</span>
+<span class="sd">    been saved by error. There might be for example edf files with one array and label name &quot;1&quot;</span>
+<span class="sd">    and sample rate equal to 1.</span>
+<span class="sd">    :param root: The path where the edf files are located</span>
+<span class="sd">    :param error_edfs: the list with the labels of the error channels, that exclude the whole edf from the analysis</span>
+<span class="sd">    :param corrupted_edf_paths: dictionary of paths for the corrupted edf files correspond to each subject</span>
+<span class="sd">    :param EEG_channel_list: the list of EEG channels identified (read from json files)</span>
+<span class="sd">    :param min_n_Chan: minimum number of channels needs to be in the edf file</span>
+<span class="sd">    :return:</span>
+<span class="sd">    f_path_list_clean: list of final paths where edf files are located after excluding the paths that contain the error/fault edfs</span>
+<span class="sd">    f_path_list_excluded: list of paths where edf files located that have been excluded</span>
+<span class="sd">    f_path_list_checkChanNotInList: information regarding edf files that have been excluded</span>
+<span class="sd">    f_path_list: all the edf files including the error/fault edf files</span>
+<span class="sd">    f_ch_df_: all the channels included in the f_path_list (including heart rate recording channels)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Get the list of paths where edf files exist</span>
+    <span class="n">f_paths</span> <span class="o">=</span> <span class="n">get_search_files</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">)</span>
+    <span class="c1"># Exclude paths where corrupted edf files are located</span>
+    <span class="n">f_path_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_path</span> <span class="k">for</span> <span class="n">f_path</span> <span class="ow">in</span> <span class="n">f_paths</span> <span class="k">if</span> <span class="n">f_path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">corrupted_edf_paths</span><span class="p">]</span>
+
+    <span class="c1"># New list object to store the final paths linked to &quot;correct&quot; edf files</span>
+    <span class="n">f_path_list_clean</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="c1"># New list to store all the edf files that do not include any channels shown in the channel_list provided by the user</span>
+    <span class="n">f_path_list_excluded</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="c1"># Store info about the edf that excluded</span>
+    <span class="n">f_path_list_checkChanNotInList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">f_ch_df_</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">edf_path</span> <span class="ow">in</span> <span class="n">f_path_list</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">edf_path</span><span class="p">)</span>
+            <span class="c1"># f_header = pyedflib.highlevel.read_edf_header(edf_path) # pyedflib latest version 0.1.23</span>
+            <span class="c1"># f_header = pyedflib.EdfReader(edf_path) # pyedflib latest version 0.1.23</span>
+
+            <span class="c1"># f_header = pyedflib.EdfReader(edf_path, 0) # DO_NOT_READ_ANNOTATIONS = 0  based on pyedflib version 0.1.14 &amp; version 0.1.23, edfheader.py</span>
+            <span class="n">f_header</span> <span class="o">=</span> <span class="n">pyedflib</span><span class="o">.</span><span class="n">EdfReader</span><span class="p">(</span><span class="n">edf_path</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># DO_NOT_READ_ANNOTATIONS = 0  based on pyedflib version 0.1.14 &amp; version 0.1.23, edfheader.py</span>
+
+            <span class="n">f_label</span> <span class="o">=</span> <span class="n">f_header</span><span class="o">.</span><span class="n">getSignalLabels</span><span class="p">()</span>
+            <span class="c1"># f_sample_rate = [s_header[&quot;sample_rate&quot;] for s_header in f_header[&quot;SignalHeaders&quot;]]</span>
+            <span class="n">f_sample_rate</span> <span class="o">=</span> <span class="n">f_header</span><span class="o">.</span><span class="n">getSampleFrequencies</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">f_sample_rate</span><span class="p">)</span>
+            <span class="n">f_header</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># pyedflib latest version 0.1.23</span>
+            <span class="c1">#f_header._close() # pyedflib version 0.1.14</span>
+            <span class="c1">#del f_header # pyedflib version 0.1.14</span>
+
+            <span class="n">f_ch_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;cha_labels&quot;</span><span class="p">:</span> <span class="n">f_label</span><span class="p">})</span>
+            <span class="n">f_ch_df_</span><span class="p">[</span><span class="n">edf_path</span><span class="p">]</span> <span class="o">=</span> <span class="n">f_ch_df</span>
+
+            <span class="n">EEGchan_in_file</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">chan</span> <span class="ow">in</span> <span class="n">f_label</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">chan</span> <span class="ow">in</span> <span class="n">EEG_channel_list</span><span class="p">):</span>
+                    <span class="n">EEGchan_in_file</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chan</span><span class="p">)</span>
+
+            <span class="c1"># In case that all channels are not included in the `EEG_channel_list`</span>
+            <span class="c1"># the edf path is stored into the `f_path_list_excluded`</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">EEGchan_in_file</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">f_sample_rate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">f_path_list_excluded</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edf_path</span><span class="p">)</span>
+                <span class="n">f_path_list_checkChanNotInList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;chan_notInList&quot;</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">EEGchan_in_file</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">f_sample_rate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">f_path_list_excluded</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edf_path</span><span class="p">)</span>
+                <span class="n">f_path_list_checkChanNotInList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sample_rate_1&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">label_accepted_check</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">EEGchan_in_file</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">label</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">error_edfs</span><span class="p">:</span>
+                        <span class="n">is_label_accepted</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">is_label_accepted</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="n">label_accepted_check</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">is_label_accepted</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">label_accepted_check</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">EEGchan_in_file</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">min_n_Chan</span><span class="p">):</span>
+                    <span class="n">f_path_list_clean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edf_path</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">f_path_list_excluded</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edf_path</span><span class="p">)</span>
+                    <span class="n">f_path_list_checkChanNotInList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;chan_accepted_have_label_1_or_less_channels_than_threshold&quot;</span><span class="p">)</span>
+
+            <span class="c1"># EDF is valid to be included in the analysis if it meets the following conditions:</span>
+            <span class="c1"># 1. label of channels is not included in the error_edfs and</span>
+            <span class="c1"># 2. the frequency sampling is not equal to 1</span>
+            <span class="c1"># 3. the number of channels included in the edf is greater than the min_n_Chan</span>
+
+            <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotADirectoryError</span>
+
+    <span class="k">return</span> <span class="n">f_path_list_clean</span><span class="p">,</span> <span class="n">f_path_list_excluded</span><span class="p">,</span> <span class="n">f_path_list_checkChanNotInList</span><span class="p">,</span> <span class="n">f_path_list</span><span class="p">,</span> <span class="n">f_ch_df_</span></div>
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Check whether all edf files have the same number of channels</span>
+<span class="c1"># Return the common channels across edf files</span>
+<span class="c1"># This function needed for checking each subject</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="check_number_of_channels_consistency"><a class="viewcode-back" href="../../api/edfcollection_funcs.html#pyEDFieeg.edfcollection_funcs.check_number_of_channels_consistency">[docs]</a><span class="k">def</span> <span class="nf">check_number_of_channels_consistency</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">error_edfs</span><span class="p">,</span> <span class="n">corrupted_edf_paths</span><span class="p">,</span> <span class="n">EEG_channel_list</span><span class="p">,</span> <span class="n">min_n_Chan</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find intersection of all channels across all edf files</span>
+<span class="sd">    This intersection would be the final channel list to be used for the analysis</span>
+<span class="sd">    :param root: path where edf files ae located</span>
+<span class="sd">    :param error_edfs: The channels with labels, such as &quot;1&quot; that appear to be error files</span>
+<span class="sd">    :param corrupted_edf_paths: dictionary of paths for the corrupted edf files correspond to each subject</span>
+<span class="sd">    :param EEG_channel_list: the list of EEG channels identified (read from json files)</span>
+<span class="sd">    :param min_n_Chan: minimum number of channels needs to be in the edf file</span>
+<span class="sd">    :return: Return the common channels across edf files. This will be the final list of channels to be used</span>
+<span class="sd">    later for concatenating all edf files</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Get the list of paths where edf files exist</span>
+    <span class="c1">#</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clean edf path output STARTS............&quot;</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">f_path_list_clean</span><span class="p">,</span> <span class="n">f_path_list_excluded</span><span class="p">,</span> <span class="n">f_path_list_checkChanNotInList</span><span class="p">,</span> <span class="n">f_path_list</span><span class="p">,</span> <span class="n">f_ch_df_</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_edf_paths</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="n">error_edfs</span> <span class="o">=</span> <span class="n">error_edfs</span><span class="p">,</span>
+                                                                                                                       <span class="n">corrupted_edf_paths</span> <span class="o">=</span> <span class="n">corrupted_edf_paths</span><span class="p">,</span>
+                                                                                                                       <span class="n">EEG_channel_list</span> <span class="o">=</span> <span class="n">EEG_channel_list</span><span class="p">,</span>
+                                                                                                                       <span class="n">min_n_Chan</span> <span class="o">=</span> <span class="n">min_n_Chan</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clean edf path output ENDS............&quot;</span><span class="p">)</span>
+
+    <span class="n">merged_channel_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">edf_path</span> <span class="ow">in</span> <span class="n">f_path_list_clean</span><span class="p">:</span>
+            <span class="c1"># read header of edf file</span>
+            <span class="c1">#f_header = pyedflib.highlevel.read_edf_header(edf_path) #working for edf files with no issues in annotations and file size</span>
+
+            <span class="n">f_header</span> <span class="o">=</span> <span class="n">pyedflib</span><span class="o">.</span><span class="n">EdfReader</span><span class="p">(</span><span class="n">edf_path</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">#working for edf files with no issues in annotations and file size</span>
+
+            <span class="c1"># Get all iEEG channels except the Heart rate channels</span>
+            <span class="n">f_channels</span> <span class="o">=</span> <span class="p">[</span><span class="n">ch</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">f_header</span><span class="o">.</span><span class="n">getSignalLabels</span><span class="p">()</span> <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">EEG_channel_list</span><span class="p">]</span>
+            <span class="c1"># f_channels = [ch for ch in f_header[&quot;channels&quot;] if ch not in HeartRateChannels]</span>
+            <span class="n">f_header</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># pyedflib latest version 0.1.23</span>
+
+            <span class="c1"># nested list: each element is a list of the channels included in the edf file that match the channel list provided</span>
+            <span class="n">merged_channel_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_channels</span><span class="p">)</span>
+
+        <span class="n">flatten_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">merged_channel_list</span><span class="p">))</span>
+        <span class="c1"># check if all unique channels found across all edf files are equal to the</span>
+        <span class="c1"># channels provided by the list &#39;EEG_channel_list&#39;</span>
+        <span class="n">unique_channels_across_all</span> <span class="o">=</span> <span class="n">unique</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotADirectoryError</span>
+
+    <span class="k">return</span> <span class="n">unique_channels_across_all</span></div>
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Check whether all edf files have the same sample rate or not</span>
+<span class="c1"># This function needed for checking each subject</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="Check_sample_rate_consistency"><a class="viewcode-back" href="../../api/edfcollection_funcs.html#pyEDFieeg.edfcollection_funcs.Check_sample_rate_consistency">[docs]</a><span class="k">def</span> <span class="nf">Check_sample_rate_consistency</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">error_edfs</span><span class="p">,</span> <span class="n">corrupted_edf_paths</span><span class="p">,</span> <span class="n">EEG_channel_list</span><span class="p">,</span> <span class="n">min_n_Chan</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read through all edf files and checking whether the sampling rates are the same</span>
+<span class="sd">    for one patient. If the sampling rates are not the same returns the smallest sampling rate found.</span>
+<span class="sd">    Otherwise it returns np.Inf (if all sampling rates are the same).</span>
+<span class="sd">    The check is done after we have excluded all the Heart Rate Channels.</span>
+<span class="sd">    :param root: path where edf files ae located</span>
+<span class="sd">    :param error_edfs: The channels with labels, such as &quot;1&quot; that appear to be error files</span>
+<span class="sd">    :param corrupted_edf_paths: dictionary of paths for the corrupted edf files correspond to each subject</span>
+<span class="sd">    :param EEG_channel_list: the list of EEG channels identified (read from json files)</span>
+<span class="sd">    :param min_n_Chan: minimum number of channels needs to be in the edf file</span>
+<span class="sd">    :return: lowest_sample_rate</span>
+<span class="sd">    if lowest_sample_rate is np.Inf then all sample rates are the same,</span>
+<span class="sd">    otherwise this function returns the minimum sample rate.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">lowest_sample_rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">Inf</span>
+
+    <span class="c1"># Get the list of paths where edf files exist</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clean edf path output STARTS............&quot;</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">f_path_list_clean</span><span class="p">,</span> <span class="n">f_path_list_excluded</span><span class="p">,</span> <span class="n">f_path_list_checkChanNotInList</span><span class="p">,</span> <span class="n">f_path_list</span><span class="p">,</span> <span class="n">f_ch_df_</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_edf_paths</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">error_edfs</span><span class="p">,</span> <span class="n">corrupted_edf_paths</span><span class="p">,</span> <span class="n">EEG_channel_list</span><span class="p">,</span> <span class="n">min_n_Chan</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clean edf path output ENDS............&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Function for minimum sample rate starts...........&quot;</span><span class="p">)</span>
+    <span class="n">sample_rates_all_edfs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">edf_path</span> <span class="ow">in</span> <span class="n">f_path_list_clean</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">edf_path</span><span class="p">)</span>
+            <span class="c1"># f_header = pyedflib.highlevel.read_edf_header(edf_path)</span>
+            <span class="n">f_header</span> <span class="o">=</span> <span class="n">pyedflib</span><span class="o">.</span><span class="n">EdfReader</span><span class="p">(</span><span class="n">edf_path</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">#working for edf files with no issues in annotations and file size</span>
+
+            <span class="c1"># Get all sampling rates in a list except from the sampling rates corresponding to heart rate channels</span>
+            <span class="c1"># we re looking at sampling rates only for the channels found in the edf and included in the</span>
+            <span class="c1"># EEG_channel_list</span>
+            <span class="c1"># sample_rates = [s_header[&quot;sample_rate&quot;] for s_header in f_header[&quot;SignalHeaders&quot;] if s_header[&quot;label&quot;] in EEG_channel_list]</span>
+            <span class="n">sample_rates</span> <span class="o">=</span> <span class="n">f_header</span><span class="o">.</span><span class="n">getSampleFrequencies</span><span class="p">()</span>
+
+            <span class="n">f_channels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f_header</span><span class="o">.</span><span class="n">getSignalLabels</span><span class="p">())</span>
+            <span class="c1"># Get all iEEG channels that exist in EEG_channel_list except the Heart rate channels</span>
+            <span class="n">f_channels_in_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">ch</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">f_channels</span> <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">EEG_channel_list</span><span class="p">]</span>
+            <span class="c1"># get the indices of channels</span>
+            <span class="n">f_channels_indx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">f_channels</span><span class="p">,</span> <span class="n">f_channels_in_list</span><span class="p">))</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+            <span class="n">sample_rates_interested</span> <span class="o">=</span> <span class="n">sample_rates</span><span class="p">[</span><span class="n">f_channels_indx</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">sample_rates_interested</span><span class="p">)</span>
+
+            <span class="n">f_header</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># pyedflib latest version 0.1.23</span>
+
+            <span class="c1"># Gather all sample rates from all channels across all edfs</span>
+            <span class="n">sample_rates_all_edfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample_rates_interested</span><span class="p">)</span>
+
+        <span class="n">flatten_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">sample_rates_all_edfs</span><span class="p">))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">sample_rate</span> <span class="o">==</span> <span class="n">flatten_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">sample_rate</span> <span class="ow">in</span> <span class="n">flatten_list</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All sample rates in all EDF files are the same (for the EEG channels we are interested in&quot;</span><span class="p">)</span>
+            <span class="n">lowest_sample_rate</span> <span class="o">=</span> <span class="n">flatten_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample rates are not the same (differences appear in edf files and certain channels!&quot;</span><span class="p">)</span>
+            <span class="c1"># find the lowest sample rate, so data with higher sampling rate can be downsampled later.</span>
+            <span class="k">for</span> <span class="n">sample_rate</span> <span class="ow">in</span> <span class="n">flatten_list</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">sample_rate</span> <span class="o">&lt;=</span> <span class="n">lowest_sample_rate</span><span class="p">:</span>
+                    <span class="n">lowest_sample_rate</span> <span class="o">=</span> <span class="n">sample_rate</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotADirectoryError</span>
+
+    <span class="k">return</span> <span class="n">lowest_sample_rate</span></div>
+
+<span class="c1">##################################################</span>
+<span class="c1">##</span>
+<span class="c1">##      Sort edf files by start time</span>
+<span class="c1">##</span>
+<span class="c1">###################################################</span>
+
+<div class="viewcode-block" id="sortEDF_by_start_time"><a class="viewcode-back" href="../../api/edfcollection_funcs.html#pyEDFieeg.edfcollection_funcs.sortEDF_by_start_time">[docs]</a><span class="k">def</span> <span class="nf">sortEDF_by_start_time</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">error_edfs</span><span class="p">,</span> <span class="n">corrupted_edf_paths</span><span class="p">,</span> <span class="n">EEG_channel_list</span><span class="p">,</span> <span class="n">min_n_Chan</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param root: The path where the edf files are located</span>
+<span class="sd">    :param error_edfs: the list with the labels of the error channels, that exclude the whole edf from the analysis</span>
+<span class="sd">    :param corrupted_edf_paths: dictionary of paths for the corrupted edf files correspond to each subject</span>
+<span class="sd">    :param EEG_channel_list: the list of EEG channels identified (read from json files)</span>
+<span class="sd">    :param min_n_Chan: minimum number of channels needs to be in the edf file</span>
+<span class="sd">    :param HeartRateChannels: HeartRateChannels: The list with the channel labels corresponding to Heart Rate Channels</span>
+<span class="sd">    :return: a pandas dataframe with sorted edf files based on start time</span>
+<span class="sd">    The start and end time are included in the time range (inclusive)</span>
+<span class="sd">    duration: actual duration in seconds</span>
+<span class="sd">    n_chan: the number of channels depicts the total number of channels included in the edf files that at the same time these are in the EEG_channels_list</span>
+<span class="sd">    prop_chan: the channels found in the edf file that are included in the EEF_channels_list divided by the total channels</span>
+<span class="sd">    in the EEG_channel_list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Get the list of paths where edf files exist</span>
+    <span class="p">[</span><span class="n">f_path_list_clean</span><span class="p">,</span> <span class="n">f_path_list_excluded</span><span class="p">,</span> <span class="n">f_path_list_checkChanNotInList</span><span class="p">,</span> <span class="n">f_path_list</span><span class="p">,</span> <span class="n">f_ch_df_</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_edf_paths</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">error_edfs</span><span class="p">,</span>
+                                                                                                                       <span class="n">corrupted_edf_paths</span><span class="p">,</span>
+                                                                                                                       <span class="n">EEG_channel_list</span><span class="p">,</span>
+                                                                                                                       <span class="n">min_n_Chan</span><span class="p">)</span>
+
+    <span class="c1"># list of start times of all edf files</span>
+    <span class="n">StartTime_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="c1"># list of end times of all edf files</span>
+    <span class="n">EndTime_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="c1"># list with duration for each edf file</span>
+    <span class="n">Duration_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="c1"># list of number of channels included in edf files</span>
+    <span class="n">nChan_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">prop_chan_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+    <span class="c1"># Gather channels list for each edf file</span>
+    <span class="n">channels_in_edfs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="c1"># check_channel = list()</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">edf_path</span> <span class="ow">in</span> <span class="n">f_path_list_clean</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">edf_path</span><span class="p">)</span>
+            <span class="c1"># read header of edf file</span>
+            <span class="n">f_header</span> <span class="o">=</span> <span class="n">pyedflib</span><span class="o">.</span><span class="n">EdfReader</span><span class="p">(</span><span class="n">edf_path</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="c1"># Get start date</span>
+            <span class="n">f_start_time</span> <span class="o">=</span> <span class="n">f_header</span><span class="o">.</span><span class="n">getStartdatetime</span><span class="p">()</span> <span class="c1"># where this file starts</span>
+
+            <span class="c1"># Remember - take off 1 second from the duration as the end</span>
+            <span class="c1"># time is inclusive in the interval sorting</span>
+            <span class="c1">#f_end_time = f_start_time + datetime.timedelta(seconds=f_header.file_duration-1)</span>
+
+            <span class="c1"># Get End time</span>
+            <span class="c1"># Compute times as inclusive (the end time is included in the range shown)</span>
+            <span class="n">f_end_time</span> <span class="o">=</span> <span class="n">f_start_time</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">f_header</span><span class="o">.</span><span class="n">file_duration</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># where this file ends</span>
+
+            <span class="c1"># Duration</span>
+            <span class="n">f_duration</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">f_header</span><span class="o">.</span><span class="n">file_duration</span><span class="p">)</span>
+
+            <span class="c1"># channel labels</span>
+            <span class="n">f_label</span> <span class="o">=</span> <span class="n">f_header</span><span class="o">.</span><span class="n">getSignalLabels</span><span class="p">()</span>
+
+            <span class="c1"># if (&quot;GA  04&quot; in f_label):</span>
+            <span class="c1">#     a = True</span>
+            <span class="c1">#     check_channel.append(a)</span>
+
+            <span class="n">f_header</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># pyedflib latest version 0.1.23</span>
+            <span class="c1"># f_header._close() # pyedflib version 0.1.14</span>
+
+            <span class="c1"># Get all iEEG channels except the Heart rate channels</span>
+            <span class="n">EEGchan_in_file</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">chan</span> <span class="ow">in</span> <span class="n">f_label</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">chan</span> <span class="ow">in</span> <span class="n">EEG_channel_list</span><span class="p">):</span>
+                    <span class="n">EEGchan_in_file</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chan</span><span class="p">)</span>
+            <span class="n">n_EEG_chan</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">EEGchan_in_file</span><span class="p">)</span>
+            <span class="c1"># proportion of channels ound in this edf file with regards the EEG_channel_list</span>
+            <span class="n">prop_chan</span> <span class="o">=</span> <span class="n">n_EEG_chan</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">EEG_channel_list</span><span class="p">)</span>
+
+            <span class="n">channels_in_edfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EEGchan_in_file</span><span class="p">)</span>
+
+            <span class="n">StartTime_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_start_time</span><span class="p">)</span>
+            <span class="n">EndTime_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_end_time</span><span class="p">)</span>
+            <span class="n">Duration_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_duration</span><span class="p">)</span>
+            <span class="n">nChan_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n_EEG_chan</span><span class="p">)</span>
+            <span class="n">prop_chan_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prop_chan</span><span class="p">)</span>
+
+        <span class="n">flatten_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">channels_in_edfs</span><span class="p">))</span>
+        <span class="c1"># check if all unique channels found across all edf files are equal to the</span>
+        <span class="c1"># channels provided by the list &#39;EEG_channel_list&#39;</span>
+        <span class="n">unique_channels_across_all</span> <span class="o">=</span> <span class="n">unique</span><span class="p">(</span><span class="n">flatten_list</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">EEG_channel_list</span><span class="p">)</span> <span class="o">==</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">unique_channels_across_all</span><span class="p">)):</span>
+            <span class="n">check_ch</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">identifier</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">check_ch</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">EEG_channel_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_channels_across_all</span><span class="p">)):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EEG list contains more </span><span class="se">\n</span><span class="s2">&quot;</span>
+                      <span class="s2">&quot;channels than the unique channels found across all edf files&quot;</span><span class="p">)</span>
+                <span class="c1">#identifier = [a for a in EEG_channel_list if a not in unique_channels_across_all]</span>
+                <span class="n">identifier</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">identifier</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># Make a dataframe with &quot;clean&quot; edf paths, start time and end time and duration</span>
+        <span class="c1"># Dataframe with info from edf files</span>
+        <span class="n">edf_df_time_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;edf_path&quot;</span><span class="p">:</span> <span class="n">f_path_list_clean</span><span class="p">,</span> <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="n">StartTime_list</span><span class="p">,</span> <span class="s2">&quot;end_time&quot;</span><span class="p">:</span> <span class="n">EndTime_list</span><span class="p">,</span>
+                                         <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="n">Duration_list</span><span class="p">,</span> <span class="s2">&quot;n_chan&quot;</span><span class="p">:</span> <span class="n">nChan_list</span><span class="p">,</span> <span class="s2">&quot;prop_chan&quot;</span><span class="p">:</span> <span class="n">prop_chan_list</span><span class="p">,</span><span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">StartTime_list</span><span class="p">)),</span>
+                                         <span class="s2">&quot;check_ch_with_list_provided&quot;</span><span class="p">:</span> <span class="n">check_ch</span><span class="p">,</span> <span class="s2">&quot;is_list_greater&quot;</span><span class="p">:</span> <span class="n">identifier</span><span class="p">})</span>
+
+        <span class="c1"># Sort start times</span>
+        <span class="c1">#StartTime_list.sort()</span>
+        <span class="n">edf_df_time_info</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;start_time&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotADirectoryError</span>
+
+    <span class="k">return</span> <span class="n">edf_df_time_info</span><span class="p">,</span> <span class="n">unique_channels_across_all</span></div>
+
+
+<div class="viewcode-block" id="downsample_decimate"><a class="viewcode-back" href="../../api/edfcollection_funcs.html#pyEDFieeg.edfcollection_funcs.downsample_decimate">[docs]</a><span class="k">def</span> <span class="nf">downsample_decimate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">target_fs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Resamples the recording extractor traces. If the resampling rate is multiple of the sampling rate, the faster</span>
+<span class="sd">    scipy decimate function is used.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        signal: the signal recording</span>
+<span class="sd">        fs: the frequency sampling</span>
+<span class="sd">        target_fs: int or float</span>
+<span class="sd">            The resampling frequency</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    resampled_recording: returns the signal as array</span>
+<span class="sd">        The resample recording extractor</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">target_fs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">trace_resampled</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">decimate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">fs</span> <span class="o">/</span> <span class="n">target_fs</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">trace_resampled</span></div>
+
+
+
+<div class="viewcode-block" id="check_resampling"><a class="viewcode-back" href="../../api/edfcollection_funcs.html#pyEDFieeg.edfcollection_funcs.check_resampling">[docs]</a><span class="k">def</span> <span class="nf">check_resampling</span><span class="p">(</span><span class="n">initial_signal</span><span class="p">,</span> <span class="n">resampled_signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">resampled_fs</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check filtering and downsampling by ploting both datasets.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    :param initial_signal: the initial signal</span>
+<span class="sd">    :param resampled_signal: the resampled signal</span>
+<span class="sd">    :param fs: the initial frequency sampling</span>
+<span class="sd">    :param resampled_fs: the resampled frequency sampling</span>
+<span class="sd">    :param start: starting point in seconds</span>
+<span class="sd">    :param stop: stop time in seconds</span>
+<span class="sd">    :return: matplotlib figure</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">stop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">data1</span> <span class="o">=</span> <span class="n">initial_signal</span>
+        <span class="n">data2</span> <span class="o">=</span> <span class="n">resampled_signal</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">stop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">end1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">fs</span><span class="o">*</span><span class="n">stop</span><span class="p">))</span>
+        <span class="n">end2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">resampled_fs</span><span class="o">*</span><span class="n">stop</span><span class="p">))</span>
+        <span class="n">data1</span> <span class="o">=</span> <span class="n">initial_signal</span><span class="p">[:</span><span class="n">end1</span><span class="p">]</span>
+        <span class="n">data2</span> <span class="o">=</span> <span class="n">resampled_signal</span><span class="p">[:</span><span class="n">end2</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">stop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">start1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">fs</span><span class="o">*</span><span class="n">start</span><span class="p">))</span>
+        <span class="n">start2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">resampled_fs</span><span class="o">*</span><span class="n">start</span><span class="p">))</span>
+        <span class="n">data1</span> <span class="o">=</span> <span class="n">initial_signal</span><span class="p">[</span><span class="n">start1</span><span class="p">:]</span>
+        <span class="n">data2</span> <span class="o">=</span> <span class="n">resampled_signal</span><span class="p">[</span><span class="n">start2</span><span class="p">:]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">start1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">fs</span><span class="o">*</span><span class="n">start</span><span class="p">))</span>
+        <span class="n">start2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">resampled_fs</span><span class="o">*</span><span class="n">start</span><span class="p">))</span>
+        <span class="n">end1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">fs</span><span class="o">*</span><span class="n">stop</span><span class="p">))</span>
+        <span class="n">end2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">resampled_fs</span><span class="o">*</span><span class="n">stop</span><span class="p">))</span>
+        <span class="n">data1</span> <span class="o">=</span> <span class="n">initial_signal</span><span class="p">[</span><span class="n">start1</span><span class="p">:</span><span class="n">end1</span><span class="p">]</span>
+        <span class="n">data2</span> <span class="o">=</span> <span class="n">resampled_signal</span><span class="p">[</span><span class="n">start2</span><span class="p">:</span><span class="n">end2</span><span class="p">]</span>
+
+    <span class="c1"># x-axis in seconds</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">fs</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">resampled_fs</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">data1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="c1"># plt.show()</span>
+
+    <span class="k">return</span> <span class="n">fig</span></div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Mariella Panagiotopoulou.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
