@@ -15,7 +15,7 @@ ALL_FILES_DIR = os.path.abspath(os.path.join(ROOT_DIR, loc_output))
 loc_input = "IN_FILES"
 IN_FILES_DIR = os.path.abspath(os.path.join(ROOT_DIR, loc_input))
 # location where iEEG channels are located for each subject
-iEEG_channels = os.path.abspath(os.path.join(IN_FILES_DIR, "icEEG_channels"))
+IN_CHANNELS_DIR = os.path.abspath(os.path.join(IN_FILES_DIR, "icEEG_channels"))
 
 # location where Plots for Detecting Bad channels are located for each subject
 PLOTS_BAD_CHANNELS_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "PLOTS_BAD_CHANNELS"))
