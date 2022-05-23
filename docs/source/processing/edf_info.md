@@ -4,9 +4,5 @@
 
 import processingUCLH.edf_info
 
-```
 
-```{eval-rst}
-.. automodule:: processingUCLH.edf_info
-   :members:
 ```
