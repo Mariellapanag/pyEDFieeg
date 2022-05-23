@@ -1,3 +1,7 @@
+"""This is a good place to write what the module does. This is going to be in the
+documentation page where this module will be displayed"""
+
+
 ###############################################################################
 # M. Panagiotopoulou, April 2022
 # m.panagiotopoulou2@newcastle.ac.uk
@@ -11,8 +15,8 @@ import json
 import pandas as pd
 
 # internal modules
-import pyEDFieeg
-import processingUCLH.paths as paths
+from pyEDFieeg.edfCollectionInfo import *
+import processingUCLH.paths
 
 
 subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
@@ -33,20 +37,20 @@ subject = "1167"
 
 def process_func(subject):
     # Set the root directory for patient
-    root = os.path.join(paths.INPUT_DATA_DIR, subject)
+    root = os.path.join(processingUCLH.paths.INPUT_DATA_DIR, subject)
 
-    EDF_info_path = os.path.join(paths.EDF_INFO_DIR, subject)
+    EDF_info_path = os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject)
     os.makedirs(EDF_info_path, exist_ok=True)
 
     # iEEG channels for each subject. This mat files include the iEEG channels
     # having excluded the Heart Rate Channels
     # EEG_channels = sio.loadmat(os.path.join(paths.iEEG_channels, subject, "channels.mat"))
-    corrupted_edf_paths = paths.corrupted_edfs[subject]
+    corrupted_edf_paths = processingUCLH.paths.corrupted_edfs[subject]
 
-    error_edfs = paths.error_edfs # channels labels appear in error edfs
-    min_n_Chan = paths.min_n_Chan # the minimum threshold of the number of channels needed to be included in the edf file
+    error_edfs = processingUCLH.paths.error_edfs # channels labels appear in error edfs
+    min_n_Chan = processingUCLH.paths.min_n_Chan # the minimum threshold of the number of channels needed to be included in the edf file
 
-    EEG_channel_path = os.path.join(paths.iEEG_channels, "{}.json".format(subject))
+    EEG_channel_path = os.path.join(processingUCLH.paths.IN_CHANNELS_DIR, "{}.json".format(subject))
     with open(EEG_channel_path) as json_file:
         Channels_json = json.load(json_file)
         print(Channels_json)
@@ -54,18 +58,20 @@ def process_func(subject):
 
     # Store as a csv file the EEG_channel_list provided by the user
     EEG_channel_list_df = pd.DataFrame({"channel_list": EEG_channel_list})
-    EEG_channel_list_df.to_csv(os.path.join(paths.EDF_INFO_DIR, subject, "CHANNEL_LIST_{}.csv".format(subject)))
+    EEG_channel_list_df.to_csv(os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject, "CHANNEL_LIST_{}.csv".format(subject)))
 
-    [f_paths_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_paths, edf_chan] = edfcollfunc.clean_edf_paths(root = root,
+
+    # Get info about edf files and a list with the final paths pointed to the edf files to be used for the analysis
+    [f_paths_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_paths, edf_chan] = clean_edf_paths(root = root,
                     error_edfs = error_edfs,
                     corrupted_edf_paths = corrupted_edf_paths,
-                    EEG_channel_list = EEG_channel_list,
+                    channel_list = EEG_channel_list,
                     min_n_Chan = min_n_Chan)
 
     # Store asa csv file the edf files (paths) that have been excluded as none of the channels labels existed on those didn;t match the channel list
     # provided by the user
     f_path_chNotInList_df = pd.DataFrame({"edf_path": f_path_list_excluded, "why_edf_excluded": f_path_list_checkChanNotInList})
-    f_path_chNotInList_df.to_csv(os.path.join(paths.EDF_INFO_DIR, subject, "EDF_PATH_EXCLUDED_{}.csv".format(subject)))
+    f_path_chNotInList_df.to_csv(os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject, "EDF_PATH_EXCLUDED_{}.csv".format(subject)))
 
     df_list = list()
     for ii in range(len(list(edf_chan))):
@@ -79,21 +85,18 @@ def process_func(subject):
 
     dfs = [df.set_index('cha_labels') for df in df_list]
     dfs_combined = pd.concat(dfs, axis=1)
-    dfs_combined.to_csv(os.path.join(paths.EDF_INFO_DIR, subject, "EDF_CHAN_{}.csv".format(subject)))
+    dfs_combined.to_csv(os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject, "EDF_CHAN_{}.csv".format(subject)))
 
-    [EDF_info_df, unique_channels_across_all] = edfcollfunc.sortEDF_by_start_time(root = root,
-                                                    error_edfs = error_edfs,
-                                                    corrupted_edf_paths = corrupted_edf_paths,
-                                                    EEG_channel_list = EEG_channel_list,
-                                                    min_n_Chan = min_n_Chan)
+    [EDF_info_df, unique_channels_across_all] = sortEDF_starttime(root = root,
+                                                                  edf_path_list = f_paths_clean,
+                                                                  channel_list = EEG_channel_list)
 
-    EDF_info_df.to_csv(os.path.join(paths.EDF_INFO_DIR, subject, "EDF_INFO_{}.csv".format(subject)))
+    EDF_info_df.to_csv(os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject, "EDF_INFO_{}.csv".format(subject)))
 
-    unique_channels_across_allEDFs = edfcollfunc.check_number_of_channels_consistency(root = root,
-                                                                                        error_edfs = error_edfs,
-                                                                                        corrupted_edf_paths = corrupted_edf_paths,
-                                                                                        EEG_channel_list = EEG_channel_list,
-                                                                                        min_n_Chan = min_n_Chan)
+    unique_channels_across_allEDFs = nChannelsConsistency(root = root,
+                                                          edf_path_list = f_paths_clean,
+                                                          channel_list = EEG_channel_list)
+
     unique_channels_across_allEDFs.sort()
     # The channels to keep; these are the ones that are included in the list and in at least one edf file.
     # If a channel is not included in en edf file will be filled with NaN values.
@@ -101,10 +104,12 @@ def process_func(subject):
 
     # Save the final list of channels that will be extracted
     channelsKeep_df = pd.DataFrame({"channelsKeep": channelsKeep})
-    channelsKeep_df.to_csv(os.path.join(paths.EDF_INFO_DIR, subject, "ChannelsKeep_{}.csv".format(subject)))
+    channelsKeep_df.to_csv(os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject, "ChannelsKeep_{}.csv".format(subject)))
 
 
-process_func(subject)
+if __name__ == '__main__':
+    process_func(subject)
+
 
 # if __name__ == '__main__':
 #     for subject in subject_list:

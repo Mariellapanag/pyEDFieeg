@@ -1,0 +1,2060 @@
+[
+  {
+    "name": "F 01",
+    "location_orig": [
+      -47.149051230615306,
+      85.230001657407556,
+      -18.310892310239407
+    ],
+    "mask_dist": 3.8711865153028859,
+    "mask_proj_pial_dist": 0.23880562150478132,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      156
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "F 02",
+    "location_orig": [
+      -44.587505903142649,
+      87.6126958759023,
+      -9.14111972160958
+    ],
+    "mask_dist": 2.6627988669513427,
+    "mask_proj_pial_dist": 0.62936139489528908,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      129,
+      211
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "F 03",
+    "location_orig": [
+      -40.058598376912876,
+      87.849176786661971,
+      -0.4955309149719902
+    ],
+    "mask_dist": 1.178528342033895,
+    "mask_proj_pial_dist": 0.35824893960465359,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      129,
+      211
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "F 04",
+    "location_orig": [
+      -33.562328651925959,
+      86.654848825598307,
+      6.5775065456888946
+    ],
+    "mask_dist": 0.69941851476881578,
+    "mask_proj_pial_dist": 0.56010986591847378,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      129,
+      210
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "F 05",
+    "location_orig": [
+      -25.814101164093564,
+      83.850860883733318,
+      12.86426833336137
+    ],
+    "mask_dist": 0.27426982465269267,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      128,
+      209
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "F 06",
+    "location_orig": [
+      -18.64542200142666,
+      79.530326688142267,
+      19.903025988592734
+    ],
+    "mask_dist": 0.59642478744914373,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      128,
+      209
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "FP 01",
+    "location_orig": [
+      -18.921390558952851,
+      71.736720783621593,
+      -35.05057687720219
+    ],
+    "mask_dist": 5.2875225641302208,
+    "mask_proj_pial_dist": 0.033666948432294369,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "FP 02",
+    "location_orig": [
+      -18.921390558952851,
+      83.163487822473712,
+      -34.053850300214805
+    ],
+    "mask_dist": 4.9805746088307625,
+    "mask_proj_pial_dist": 0.55052574632033546,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "FP 03",
+    "location_orig": [
+      -18.921390558952851,
+      95.678518388835528,
+      -34.053850300214805
+    ],
+    "mask_dist": 11.183835168746695,
+    "mask_proj_pial_dist": 0.21718809828971583,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      130,
+      212
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "FP 04",
+    "location_orig": [
+      -19.557722427121746,
+      100.86439639284364,
+      -27.007156484132793
+    ],
+    "mask_dist": 10.950139866064555,
+    "mask_proj_pial_dist": 0.34319794109714136,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      130,
+      212
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "FP 05",
+    "location_orig": [
+      -19.557722427121746,
+      101.0170555821193,
+      -17.204432141071322
+    ],
+    "mask_dist": 7.2880878754576655,
+    "mask_proj_pial_dist": 0.60671055437422428,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      75,
+      75,
+      75,
+      75
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "FP 06",
+    "location_orig": [
+      -18.153560181209912,
+      97.632858306988339,
+      -8.16428517101457
+    ],
+    "mask_dist": 1.840713514280192,
+    "mask_proj_pial_dist": 0.60071634485089487,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      71,
+      71,
+      71
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "GA 01",
+    "location_orig": [
+      -70.155226078897954,
+      5.4750916666452492,
+      12.844291321476799
+    ],
+    "mask_dist": 50.616275001343304,
+    "mask_proj_pial_dist": 48.789627290178679,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      74,
+      149,
+      255
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 02",
+    "location_orig": [
+      -69.332299594712509,
+      16.568550449016822,
+      10.055409546886631
+    ],
+    "mask_dist": 41.105888247004096,
+    "mask_proj_pial_dist": 39.728131888362796,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      113,
+      172
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 03",
+    "location_orig": [
+      -67.554121938393592,
+      27.112977228299378,
+      6.656293022789824
+    ],
+    "mask_dist": 32.436824173702377,
+    "mask_proj_pial_dist": 31.458750944389365,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      113,
+      172
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 04",
+    "location_orig": [
+      -65.1345472751677,
+      37.288760143276669,
+      2.8474384598795939
+    ],
+    "mask_dist": 23.185600497959364,
+    "mask_proj_pial_dist": 24.349857349444612,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      121,
+      190
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 05",
+    "location_orig": [
+      -62.694090134775024,
+      47.452540824074291,
+      -0.97475627323372183
+    ],
+    "mask_dist": 12.875057791680339,
+    "mask_proj_pial_dist": 10.47992099970164,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      157
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 06",
+    "location_orig": [
+      -60.056467500573646,
+      57.503000350013693,
+      -4.922904513901492
+    ],
+    "mask_dist": 3.2357394145004457,
+    "mask_proj_pial_dist": 2.3650990375995726,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      157
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 07",
+    "location_orig": [
+      -56.154752691463692,
+      66.826921056504034,
+      -9.67858170005677
+    ],
+    "mask_dist": 1.8614238229744833,
+    "mask_proj_pial_dist": 0.58121340988585413,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      63
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 08",
+    "location_orig": [
+      -50.566199734651619,
+      75.181329079695132,
+      -15.511846943206812
+    ],
+    "mask_dist": 1.6505015141224209,
+    "mask_proj_pial_dist": 0.50241711436495751,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      156
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 09",
+    "location_orig": [
+      -69.6385729241275,
+      8.0800408769691465,
+      24.196767387468107
+    ],
+    "mask_dist": 46.271869900454142,
+    "mask_proj_pial_dist": 45.422806173070306,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      74,
+      149,
+      256
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 10",
+    "location_orig": [
+      -68.531194171664808,
+      18.952998908314971,
+      21.162229908788373
+    ],
+    "mask_dist": 36.560903595946016,
+    "mask_proj_pial_dist": 35.965912628141758,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      111,
+      169
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 11",
+    "location_orig": [
+      -66.182775169191942,
+      29.112667247636246,
+      17.334889544139681
+    ],
+    "mask_dist": 27.013127136000524,
+    "mask_proj_pial_dist": 27.639289459802928,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      112,
+      171
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 12",
+    "location_orig": [
+      -63.714471402671315,
+      39.203431644135961,
+      13.430964244457632
+    ],
+    "mask_dist": 19.046449008844931,
+    "mask_proj_pial_dist": 18.349781237221595,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      120,
+      187
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 13",
+    "location_orig": [
+      -61.171069935576575,
+      49.251033527805014,
+      9.4790649376922129
+    ],
+    "mask_dist": 11.045895830009309,
+    "mask_proj_pial_dist": 8.3076557060914382,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      61,
+      61,
+      61,
+      153
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 14",
+    "location_orig": [
+      -58.429685424203669,
+      59.184844368292268,
+      5.4006898547581
+    ],
+    "mask_dist": 1.0048187018502996,
+    "mask_proj_pial_dist": 1.4889537765063121,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      157
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 15",
+    "location_orig": [
+      -54.376432105211947,
+      68.3646567000645,
+      0.48426509802465256
+    ],
+    "mask_dist": 1.4961623321117454,
+    "mask_proj_pial_dist": 0.21152880994661213,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      157
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 16",
+    "location_orig": [
+      -50.065689338066576,
+      77.396476596320184,
+      -4.5966493902876779
+    ],
+    "mask_dist": 2.1417184327872403,
+    "mask_proj_pial_dist": 0.49013758622508985,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      129,
+      207
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 17",
+    "location_orig": [
+      -65.4336978422458,
+      8.5651791605436571,
+      33.193128905294067
+    ],
+    "mask_dist": 42.656217115075918,
+    "mask_proj_pial_dist": 40.739419809439113,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      74,
+      149,
+      256
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 18",
+    "location_orig": [
+      -64.682698316194362,
+      19.58595527619741,
+      30.322312500114883
+    ],
+    "mask_dist": 33.145674773456868,
+    "mask_proj_pial_dist": 30.706185095738647,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      111,
+      169
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 19",
+    "location_orig": [
+      -62.739213166560191,
+      29.9213485421152,
+      26.689710936198807
+    ],
+    "mask_dist": 24.133284112411829,
+    "mask_proj_pial_dist": 24.009268199971803,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      112,
+      170
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 20",
+    "location_orig": [
+      -60.28243723884848,
+      39.961727185412187,
+      22.729208314925597
+    ],
+    "mask_dist": 14.072214906511755,
+    "mask_proj_pial_dist": 13.476705721356922,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      120,
+      188
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 21",
+    "location_orig": [
+      -57.708432585334478,
+      49.934728447739246,
+      18.693817492295675
+    ],
+    "mask_dist": 6.7065558776943606,
+    "mask_proj_pial_dist": 4.7427686591160656,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      80,
+      83
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 22",
+    "location_orig": [
+      -54.716961015622047,
+      59.667789991686377,
+      14.391739931700613
+    ],
+    "mask_dist": 0.881961879733365,
+    "mask_proj_pial_dist": 1.9366960397770483,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      61,
+      61,
+      61,
+      153
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 23",
+    "location_orig": [
+      -51.289795981939363,
+      69.150436082363612,
+      9.8113321270779359
+    ],
+    "mask_dist": 0.87456992156994506,
+    "mask_proj_pial_dist": 0.50714165311991022,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      127,
+      206
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 24",
+    "location_orig": [
+      -46.886408046608253,
+      78.071996637855037,
+      4.6072923864487327
+    ],
+    "mask_dist": 1.0768968306486433,
+    "mask_proj_pial_dist": 0.40498027149683286,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      128,
+      208
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 25",
+    "location_orig": [
+      -59.895273793221769,
+      8.2838582321265974,
+      41.337591002676007
+    ],
+    "mask_dist": 40.618233117102051,
+    "mask_proj_pial_dist": 39.751108300813627,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      86,
+      110,
+      166
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 26",
+    "location_orig": [
+      -59.071419969141679,
+      19.205749838476343,
+      38.356292173626706
+    ],
+    "mask_dist": 30.266543324783587,
+    "mask_proj_pial_dist": 30.00581401712499,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      111,
+      169
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 27",
+    "location_orig": [
+      -57.979735253693782,
+      29.973705249753575,
+      35.203897279299667
+    ],
+    "mask_dist": 20.624190269095788,
+    "mask_proj_pial_dist": 19.6525755358858,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      89,
+      119,
+      186
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 28",
+    "location_orig": [
+      -55.746089964935472,
+      40.085317157559366,
+      31.321993702094851
+    ],
+    "mask_dist": 11.799998893510669,
+    "mask_proj_pial_dist": 9.1631823048822287,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      46,
+      82
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 29",
+    "location_orig": [
+      -53.486374203853934,
+      50.181945023409853,
+      27.423435753127077
+    ],
+    "mask_dist": 1.9290364318459001,
+    "mask_proj_pial_dist": 2.3299710920131593,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      46,
+      82
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 30",
+    "location_orig": [
+      -50.427038999726882,
+      59.818990449237049,
+      23.014063910638811
+    ],
+    "mask_dist": 1.7599802201616535,
+    "mask_proj_pial_dist": 0.4645770627655238,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      70,
+      203
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 31",
+    "location_orig": [
+      -47.189864851057195,
+      69.3538226825576,
+      18.491084770990032
+    ],
+    "mask_dist": 1.3349655848385631,
+    "mask_proj_pial_dist": 0.33333779609848263,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      127,
+      206
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 32",
+    "location_orig": [
+      -42.613001919893328,
+      78.118666836066751,
+      13.112283966368718
+    ],
+    "mask_dist": 0.63439803145597284,
+    "mask_proj_pial_dist": 0.628306546394599,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      128,
+      208
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 33",
+    "location_orig": [
+      -52.985449738183782,
+      7.2143231519734057,
+      48.605973631582394
+    ],
+    "mask_dist": 38.7987102061648,
+    "mask_proj_pial_dist": 38.894844946919925,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      86,
+      110,
+      166
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 34",
+    "location_orig": [
+      -52.496499994274593,
+      18.27168997103783,
+      45.77467709623113
+    ],
+    "mask_dist": 28.900138032301342,
+    "mask_proj_pial_dist": 28.305317058697803,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      88,
+      117,
+      183
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 35",
+    "location_orig": [
+      -51.450211370943748,
+      29.008725457051032,
+      42.587340640285383
+    ],
+    "mask_dist": 18.525054644346149,
+    "mask_proj_pial_dist": 18.573204307456795,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      89,
+      118,
+      185
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 36",
+    "location_orig": [
+      -49.55806268329205,
+      39.259601638585309,
+      38.859650799254851
+    ],
+    "mask_dist": 8.1380957937781275,
+    "mask_proj_pial_dist": 8.9590947350899626,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      46,
+      82
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 37",
+    "location_orig": [
+      -47.24423522036966,
+      49.268117329600713,
+      34.86258359517447
+    ],
+    "mask_dist": 1.5375495612157013,
+    "mask_proj_pial_dist": 1.3770546749908856,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      46,
+      82
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 38",
+    "location_orig": [
+      -44.318967105023887,
+      58.925206614699967,
+      30.4749151081494
+    ],
+    "mask_dist": 0.576956170285761,
+    "mask_proj_pial_dist": 0.501845871741617,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      70,
+      203
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 39",
+    "location_orig": [
+      -40.901337369204747,
+      68.2993103410075,
+      25.772715554425695
+    ],
+    "mask_dist": 0.38856044754594,
+    "mask_proj_pial_dist": 0.13355161127130949,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      70,
+      203
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 40",
+    "location_orig": [
+      -36.171793154555886,
+      76.919389309004941,
+      20.232437151162554
+    ],
+    "mask_dist": 0.30006332530656915,
+    "mask_proj_pial_dist": 0.47176911965074486,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      127,
+      206
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 41",
+    "location_orig": [
+      -44.912384506947404,
+      5.4762135108307533,
+      55.131253076236348
+    ],
+    "mask_dist": 38.688465442346818,
+    "mask_proj_pial_dist": 38.424888564712923,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      86,
+      109,
+      164
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 42",
+    "location_orig": [
+      -44.43179118091161,
+      16.48137179788872,
+      52.24135324820206
+    ],
+    "mask_dist": 27.590758907860636,
+    "mask_proj_pial_dist": 26.291556149807096,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      88,
+      117,
+      183
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 43",
+    "location_orig": [
+      -43.565062953699886,
+      27.264598487855121,
+      49.104782239258768
+    ],
+    "mask_dist": 16.852356136146177,
+    "mask_proj_pial_dist": 17.856512405108834,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      89,
+      118,
+      184
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 44",
+    "location_orig": [
+      -42.625772704725463,
+      38.0061200500826,
+      45.921857068744366
+    ],
+    "mask_dist": 7.7367982483480366,
+    "mask_proj_pial_dist": 6.4120094174796627,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      81,
+      85
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 45",
+    "location_orig": [
+      -40.343093114896753,
+      47.975526631189076,
+      41.880746237933735
+    ],
+    "mask_dist": 0.36405121903405374,
+    "mask_proj_pial_dist": 0.54534704905034714,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      81,
+      85
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 46",
+    "location_orig": [
+      -36.724209769705745,
+      57.176948156906256,
+      36.9860400515453
+    ],
+    "mask_dist": 0.32797223604534387,
+    "mask_proj_pial_dist": 0.31282707991582709,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      46,
+      46
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 47",
+    "location_orig": [
+      -32.947701258695879,
+      66.287774388891933,
+      31.990639559423073
+    ],
+    "mask_dist": 0.29263780286945179,
+    "mask_proj_pial_dist": 0.44842876901225609,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      126,
+      204
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 48",
+    "location_orig": [
+      -28.753286680494465,
+      75.1584084998245,
+      26.7282717903485
+    ],
+    "mask_dist": 0.39974609284118473,
+    "mask_proj_pial_dist": 0.33618552821344316,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      126,
+      205
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 01",
+    "location_orig": [
+      -10.255167063980211,
+      86.005783458139845,
+      -28.020223071416137
+    ],
+    "mask_dist": 0.25603252019035322,
+    "mask_proj_pial_dist": 0.22652631565286055,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 02",
+    "location_orig": [
+      -14.394246655130203,
+      87.536419217494625,
+      -25.593370212679908
+    ],
+    "mask_dist": 0.73190529588940467,
+    "mask_proj_pial_dist": 0.21389466561247558,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 03",
+    "location_orig": [
+      -18.38216892668207,
+      89.042077088146712,
+      -22.823782913548975
+    ],
+    "mask_dist": 0.42293738369197253,
+    "mask_proj_pial_dist": 0.53146515959468388,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      130,
+      212
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 04",
+    "location_orig": [
+      -22.137391211582784,
+      90.509282607413212,
+      -19.526571150602603
+    ],
+    "mask_dist": 0.69556796144548538,
+    "mask_proj_pial_dist": 0.39306122632039942,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      130,
+      212
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 05",
+    "location_orig": [
+      -14.043319493219776,
+      81.448912572906778,
+      -30.906446387142431
+    ],
+    "mask_dist": 0.46059889505376678,
+    "mask_proj_pial_dist": 0.65649216000694877,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 06",
+    "location_orig": [
+      -18.240642492211048,
+      83.050610855181873,
+      -28.715377229339722
+    ],
+    "mask_dist": 0.3761387881237484,
+    "mask_proj_pial_dist": 0.43814946983020836,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 07",
+    "location_orig": [
+      -22.376397984718324,
+      84.642135456627415,
+      -26.384709771319955
+    ],
+    "mask_dist": 0.64633125494424826,
+    "mask_proj_pial_dist": 0.56703602887302862,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 08",
+    "location_orig": [
+      -26.393065453230896,
+      86.213981438360236,
+      -23.784021864604384
+    ],
+    "mask_dist": 0.49692560476638226,
+    "mask_proj_pial_dist": 0.55887290648512289,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      130,
+      212
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 09",
+    "location_orig": [
+      -17.323899217292272,
+      76.808168180443474,
+      -32.641798229839154
+    ],
+    "mask_dist": 2.6684842218941296,
+    "mask_proj_pial_dist": 0.44832763781651241,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 10",
+    "location_orig": [
+      -21.482506923967332,
+      78.464907111027074,
+      -30.466668402031249
+    ],
+    "mask_dist": 3.2292774100296393,
+    "mask_proj_pial_dist": 0.33394755515675861,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 11",
+    "location_orig": [
+      -25.611385233130228,
+      80.116733427492932,
+      -28.224130072625861
+    ],
+    "mask_dist": 2.7489895670548661,
+    "mask_proj_pial_dist": 0.27847153159027244,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 12",
+    "location_orig": [
+      -29.740263542293132,
+      81.768559743958775,
+      -25.98159174322047
+    ],
+    "mask_dist": 1.5960672011827364,
+    "mask_proj_pial_dist": 0.58517827582156645,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      130,
+      212
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 13",
+    "location_orig": [
+      -20.602905347360771,
+      72.167163760506924,
+      -34.373582102014929
+    ],
+    "mask_dist": 5.5317208312322919,
+    "mask_proj_pial_dist": 0.033666948432294369,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 14",
+    "location_orig": [
+      -24.724202560608695,
+      73.879175474438043,
+      -32.21757684830628
+    ],
+    "mask_dist": 5.8871883211108642,
+    "mask_proj_pial_dist": 0.51308486808966947,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 15",
+    "location_orig": [
+      -28.8005046727525,
+      75.583752003420557,
+      -29.959549602950631
+    ],
+    "mask_dist": 5.1616556520666146,
+    "mask_proj_pial_dist": 0.5095826318819302,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      97,
+      128
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 16",
+    "location_orig": [
+      -32.8768067848963,
+      77.288328532403114,
+      -27.701522357594971
+    ],
+    "mask_dist": 3.7147782798137641,
+    "mask_proj_pial_dist": 0.24484573100371815,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      130,
+      212
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 17",
+    "location_orig": [
+      -23.881911477429266,
+      67.526159340570359,
+      -36.1053659741907
+    ],
+    "mask_dist": 8.4909894176643128,
+    "mask_proj_pial_dist": 0.59652740885820288,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 18",
+    "location_orig": [
+      -27.965898197250063,
+      69.293443837849011,
+      -33.96848529458132
+    ],
+    "mask_dist": 8.9733494689113424,
+    "mask_proj_pial_dist": 0.46292558241903625,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      97,
+      124
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 19",
+    "location_orig": [
+      -31.989624112374766,
+      71.05077057934821,
+      -31.6949691332754
+    ],
+    "mask_dist": 6.7769342729963808,
+    "mask_proj_pial_dist": 0.309268781450524,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      62
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 20",
+    "location_orig": [
+      -36.013350027499477,
+      72.808097320847423,
+      -29.42145297196948
+    ],
+    "mask_dist": 3.8369679639572158,
+    "mask_proj_pial_dist": 0.43946597927168024,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      62
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 21",
+    "location_orig": [
+      -27.160917607497758,
+      62.8851549206338,
+      -37.837149846366465
+    ],
+    "mask_dist": 9.7609966856819632,
+    "mask_proj_pial_dist": 0.17224135137885363,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      55,
+      55,
+      125
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 22",
+    "location_orig": [
+      -31.207593833891423,
+      64.70771220125998,
+      -35.719393740856361
+    ],
+    "mask_dist": 9.6771995281728174,
+    "mask_proj_pial_dist": 0.45439960804776108,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      55,
+      55,
+      125
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 23",
+    "location_orig": [
+      -35.17874355199703,
+      66.517789155275864,
+      -33.430388663600169
+    ],
+    "mask_dist": 7.1293929723667935,
+    "mask_proj_pial_dist": 0.54574581406974154,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      62
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 24",
+    "location_orig": [
+      -39.149893270102645,
+      68.327866109291733,
+      -31.141383586343981
+    ],
+    "mask_dist": 4.1982484425771318,
+    "mask_proj_pial_dist": 0.509589521386627,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      156
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 25",
+    "location_orig": [
+      -30.439923737566257,
+      58.244150500697245,
+      -39.568933718542233
+    ],
+    "mask_dist": 11.117330827478661,
+    "mask_proj_pial_dist": 9.5639775093638661,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      76,
+      76,
+      76,
+      76
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 26",
+    "location_orig": [
+      -34.44928947053279,
+      60.121980564670949,
+      -37.470302187131395
+    ],
+    "mask_dist": 9.7155177939944917,
+    "mask_proj_pial_dist": 7.8501383493867838,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      76,
+      76,
+      76,
+      76
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 27",
+    "location_orig": [
+      -38.367862991619305,
+      61.984807731203517,
+      -35.165808193924939
+    ],
+    "mask_dist": 8.207485778450808,
+    "mask_proj_pial_dist": 0.43053051447431417,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      156
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 28",
+    "location_orig": [
+      -42.273968650393989,
+      63.84557465428896,
+      -32.833044542168558
+    ],
+    "mask_dist": 5.8800831067948547,
+    "mask_proj_pial_dist": 0.46158768098756425,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      156
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 29",
+    "location_orig": [
+      -33.718929867634742,
+      53.603146080760666,
+      -41.300717590718008
+    ],
+    "mask_dist": 13.082945802571778,
+    "mask_proj_pial_dist": 10.748088456783181,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      76,
+      76,
+      76,
+      76
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 30",
+    "location_orig": [
+      -37.690985107174157,
+      55.536248928081925,
+      -39.221210633406429
+    ],
+    "mask_dist": 11.235039979993845,
+    "mask_proj_pial_dist": 9.5639775093638661,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      76,
+      76,
+      76,
+      76
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 31",
+    "location_orig": [
+      -41.556982431241565,
+      57.451826307131157,
+      -36.901227724249708
+    ],
+    "mask_dist": 8.9236913082655285,
+    "mask_proj_pial_dist": 6.5896888527038788,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      76,
+      76,
+      76,
+      76
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GB 32",
+    "location_orig": [
+      -45.295165424247571,
+      59.346283093778055,
+      -34.291438318475919
+    ],
+    "mask_dist": 6.8309925028017835,
+    "mask_proj_pial_dist": 0.49739774547292154,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      156
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "MF 01",
+    "location_orig": [
+      -2.5029533096892931,
+      86.524691593554479,
+      -5.8221665169610759
+    ],
+    "mask_dist": 0.71035078935154028,
+    "mask_proj_pial_dist": 0.62429744020303912,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      71,
+      71,
+      71
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "MF 02",
+    "location_orig": [
+      -1.8040068274376124,
+      75.820557825714332,
+      1.465744919040602
+    ],
+    "mask_dist": 0.53621930872401113,
+    "mask_proj_pial_dist": 0.40606580932575465,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      69,
+      69,
+      69,
+      202
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "MF 03",
+    "location_orig": [
+      -1.4068526366119583,
+      66.40141589018144,
+      8.7022714774181829
+    ],
+    "mask_dist": 0.64444244221779856,
+    "mask_proj_pial_dist": 0.57535233141233244,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      69,
+      69,
+      69,
+      202
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "MF 04",
+    "location_orig": [
+      -1.5273137267037615,
+      63.902559074424687,
+      20.518015927385541
+    ],
+    "mask_dist": 0.68208188019324534,
+    "mask_proj_pial_dist": 0.61407815056909942,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      94,
+      133,
+      219
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "MF 05",
+    "location_orig": [
+      -2.46871898554377,
+      65.733527451837972,
+      34.24922895915585
+    ],
+    "mask_dist": 0.59398667659907112,
+    "mask_proj_pial_dist": 0.52398617387633672,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      94,
+      132,
+      218
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "MF 06",
+    "location_orig": [
+      -7.1398005089768013,
+      61.971140654992013,
+      42.082649842109731
+    ],
+    "mask_dist": 0.1649485961637065,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "frequent bursts of fairly widespread spikes & slow waves.",
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      95,
+      134,
+      221
+    ],
+    "contact_type": "strip"
+  }
+]

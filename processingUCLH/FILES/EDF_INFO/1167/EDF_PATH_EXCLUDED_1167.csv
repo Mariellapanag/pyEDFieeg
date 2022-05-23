@@ -1,0 +1,4 @@
+,edf_path,why_edf_excluded
+0,F:\UCLH_GLAS\icEEG\1167\X952_14\Pruned_03022013104930\Pruned_2.edf,sample_rate_1
+1,F:\UCLH_GLAS\icEEG\1167\X952_20\Patient43_LTM-NOVEMBER_t1_03022013134335\Pruned_1.edf,chan_notInList
+2,F:\UCLH_GLAS\icEEG\1167\X966+\Patient10_LTM-MARCH_t1_02132013095416\Pruned_1.edf,chan_notInList

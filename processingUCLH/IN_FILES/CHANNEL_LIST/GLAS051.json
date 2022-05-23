@@ -1,0 +1,722 @@
+[
+  {
+    "name": "LOC1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LOC2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LOC3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LOC4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LOC5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LOC6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LOC7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LOC8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LOC9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LOC10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LTP1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LTP2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LTP3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LTP4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LTP5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LTP6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LTP7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LTP8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LTP9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LTP10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAM1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAM2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAM3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAM4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAM5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAM6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAM7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAM8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAM9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAM10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  }
+]
