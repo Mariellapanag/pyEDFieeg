@@ -18,23 +18,23 @@ import pandas as pd
 import datetime
 from itertools import chain
 import scipy.signal
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 # internal modules
 
 
-def unique(list1: list) -> list:
+def unique(list1: list):
     r"""
 
     Find unique elements of a list.
     Python program to check if two
-    to get unique values from list using set
+    to get unique values from list using set.
 
     Args:
-        list1: a list
+        list1: a list.
 
     Returns:
-        list: a list of the unique elements found in the `list1`
+        list: a list of the unique elements found in the ``list1``.
 
     """
     # insert the list to the set
@@ -44,21 +44,17 @@ def unique(list1: list) -> list:
 
     return unique_list
 
-# # Single patient processing
-# subject = "909"
-# # Set the root directory for patient
-# root = os.path.join(paths.INPUT_DATA_DIR, subject)
-#
-# # TODO: CHECK WHAT ARE THE HEART RATE CHANNELS; CHECK THE MATLAB FILES WITH ALL THE CHANNELS
-# HeartRateChannels = paths.HeartRateChannels # channel labels corresponding to Heart Rate channels
-# error_edfs = paths.error_edfs  # channels labels appear in error edfs
 
-def get_search_files(root):
-    """
-    Search all folders and find the edf files included in the root directory
+def get_search_files(root: str):
+    r"""
 
-    :param root: the path where the edf files are located
-    :return: a list with the full path corresponding to each edf file
+    This function finds all full paths for every edf file that exist in the ``root`` path.
+
+    Args:
+        root: full path.
+
+    Returns:
+        list: all the full paths for every edf file included in the ``root`` path.
 
     .. testcode::
 
@@ -80,22 +76,41 @@ def get_search_files(root):
     return f_path_list
 
 
-def clean_edf_paths(root, error_edfs, corrupted_edf_paths, EEG_channel_list, min_n_Chan):
-    """
-    Create a new path list linked to the edf files after excluding edf files that have
-    been saved by error. There might be for example edf files with one array and label name "1"
-    and sample rate equal to 1.
-    :param root: The path where the edf files are located
-    :param error_edfs: the list with the labels of the error channels, that exclude the whole edf from the analysis
-    :param corrupted_edf_paths: dictionary of paths for the corrupted edf files correspond to each subject
-    :param EEG_channel_list: the list of EEG channels identified (read from json files)
-    :param min_n_Chan: minimum number of channels needs to be in the edf file
-    :return:
-    f_path_list_clean: list of final paths where edf files are located after excluding the paths that contain the error/fault edfs
-    f_path_list_excluded: list of paths where edf files located that have been excluded
-    f_path_list_checkChanNotInList: information regarding edf files that have been excluded
-    f_path_list: all the edf files including the error/fault edf files
-    f_ch_df_: all the channels included in the f_path_list (including heart rate recording channels)
+
+
+def clean_edf_paths(root: str, error_edfs: list, corrupted_edf_paths: list, channel_list: list, min_n_Chan: int):
+
+    r"""
+
+    Create a new path list linked to the edf files after excluding edf files that
+    1: have been saved by error - there might be for example edf files with one array and label name "1" or sample rate equal to 1
+    Those exclusions can be specified within the list `error_edfs`. This might be a list like ``["1"]``
+    2: edf files that are known to be corrupted and therefore we cannot use them. Those files need to be specified based on their full path using a list ``corrupted_edf_paths``
+    3: edf files that contain a number of channels that doesn't exceed the ``min_n_Chan`` threshold
+    4: edf files that do not contain any channel included in the ``channel_list``.
+
+    Args:
+        root: the full path.
+        error_edfs: a list of the known error str names we might find at the label information within the edf file.
+        corrupted_edf_paths: a list of the full paths pointing the edf files that we already know that are corrupted.
+        channel_list: a list of the channels eligible for analysis (there are times where this is a superset of the channels exist in the edf files).
+        min_n_Chan: an integer value specifying the minimum threshold for the number of channels found in an edf file. If the number of channels exist in an edf and also exist within the ``channel_list`` should be *>=* ``min_n_Chan``.
+
+    Returns:
+        information regarding the paths where edf files were found, the paths regarding the edf files that were excluded as well as information on why those were exlcluded,
+        and all the channels found in the edf files (without exclusions).
+
+        **f_path_list_clean** (``list``):
+            list of final paths where edf files are located after excluding the paths that contain the error/fault edfs.
+        **f_path_list_excluded** (``list``):
+            list of paths where edf files located (or known to be corrupted) and excluded.
+        **f_path_list_checkChanNotInList** (``list``):
+            information regarding why edf files that have been excluded.
+        **f_path_list** (``list``):
+            all the edf files including the error/fault edf files. This is based everything that was found within the ``root`` path without using the ``corupted_edf_paths`` as those could not be read.
+        **f_ch_df_** (``dict``):
+            a dictionary of all the channels found in every edf file pointed to all paths in the list, ``f_path_list``. Every element within this dictionary is a ``pandas.DataFrame``
+            and its **key** is the full path of the corresponding edf file.
     """
 
     # Get the list of paths where edf files exist
@@ -134,7 +149,7 @@ def clean_edf_paths(root, error_edfs, corrupted_edf_paths, EEG_channel_list, min
 
             EEGchan_in_file = list()
             for chan in f_label:
-                if (chan in EEG_channel_list):
+                if (chan in channel_list):
                     EEGchan_in_file.append(chan)
 
             # In case that all channels are not included in the `EEG_channel_list`
@@ -164,7 +179,6 @@ def clean_edf_paths(root, error_edfs, corrupted_edf_paths, EEG_channel_list, min
             # 1. label of channels is not included in the error_edfs and
             # 2. the frequency sampling is not equal to 1
             # 3. the number of channels included in the edf is greater than the min_n_Chan
-
             i = i + 1
 
     else:
@@ -172,43 +186,34 @@ def clean_edf_paths(root, error_edfs, corrupted_edf_paths, EEG_channel_list, min
 
     return f_path_list_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_path_list, f_ch_df_
 
-###############################################################################
-# Check whether all edf files have the same number of channels
-# Return the common channels across edf files
-# This function needed for checking each subject
-###############################################################################
 
-def check_number_of_channels_consistency(root, error_edfs, corrupted_edf_paths, EEG_channel_list, min_n_Chan):
+def check_number_of_channels_consistency(root: str, edf_path_list: list, channel_list: list):
+    r"""
+
+    Check whether all edf files have the same number of channels
+    Return the common channels across edf files
+    This function needed for checking each subject
+
+    Args:
+        root: the full path.
+        edf_path_list: a list of the full paths with the edf files.
+        channel_list: a list of the channels eligible for analysis (there are times where this is a superset of the channels exist in the edf files).
+
+    Returns:
+        list: a list with common channels found across all edf files in the ``root`` path folder for all paths included in the ``edf_path_list``. The list includes channels only if those are included in the ``channel_list``.
+
     """
-    Find intersection of all channels across all edf files
-    This intersection would be the final channel list to be used for the analysis
-    :param root: path where edf files ae located
-    :param error_edfs: The channels with labels, such as "1" that appear to be error files
-    :param corrupted_edf_paths: dictionary of paths for the corrupted edf files correspond to each subject
-    :param EEG_channel_list: the list of EEG channels identified (read from json files)
-    :param min_n_Chan: minimum number of channels needs to be in the edf file
-    :return: Return the common channels across edf files. This will be the final list of channels to be used
-    later for concatenating all edf files
-    """
-    # Get the list of paths where edf files exist
-    #
-    print("Clean edf path output STARTS............")
-    [f_path_list_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_path_list, f_ch_df_] = clean_edf_paths(root = root, error_edfs = error_edfs,
-                                                                                                                       corrupted_edf_paths = corrupted_edf_paths,
-                                                                                                                       EEG_channel_list = EEG_channel_list,
-                                                                                                                       min_n_Chan = min_n_Chan)
-    print("Clean edf path output ENDS............")
 
     merged_channel_list = list()
     if os.path.exists(root):
-        for edf_path in f_path_list_clean:
+        for edf_path in edf_path_list:
             # read header of edf file
             #f_header = pyedflib.highlevel.read_edf_header(edf_path) #working for edf files with no issues in annotations and file size
 
             f_header = pyedflib.EdfReader(edf_path, 0, 1) #working for edf files with no issues in annotations and file size
 
             # Get all iEEG channels except the Heart rate channels
-            f_channels = [ch for ch in f_header.getSignalLabels() if ch in EEG_channel_list]
+            f_channels = [ch for ch in f_header.getSignalLabels() if ch in channel_list]
             # f_channels = [ch for ch in f_header["channels"] if ch not in HeartRateChannels]
             f_header.close() # pyedflib latest version 0.1.23
 
@@ -225,39 +230,33 @@ def check_number_of_channels_consistency(root, error_edfs, corrupted_edf_paths, 
 
     return unique_channels_across_all
 
-###############################################################################
-# Check whether all edf files have the same sample rate or not
-# This function needed for checking each subject
-###############################################################################
 
-def Check_sample_rate_consistency(root, error_edfs, corrupted_edf_paths, EEG_channel_list, min_n_Chan):
+def Check_sample_rate_consistency(root: str, edf_path_list: list, channel_list: list):
+    r"""
 
-    """
-    Read through all edf files and checking whether the sampling rates are the same
-    for one patient. If the sampling rates are not the same returns the smallest sampling rate found.
-    Otherwise it returns np.Inf (if all sampling rates are the same).
-    The check is done after we have excluded all the Heart Rate Channels.
-    :param root: path where edf files ae located
-    :param error_edfs: The channels with labels, such as "1" that appear to be error files
-    :param corrupted_edf_paths: dictionary of paths for the corrupted edf files correspond to each subject
-    :param EEG_channel_list: the list of EEG channels identified (read from json files)
-    :param min_n_Chan: minimum number of channels needs to be in the edf file
-    :return: lowest_sample_rate
-    if lowest_sample_rate is np.Inf then all sample rates are the same,
-    otherwise this function returns the minimum sample rate.
+    Read through all edf files and checking whether the sampling rates are the same.
+    If the sampling rates are not the same returns the smallest sampling rate found.
+    Otherwise it returns the common sampling rate found (if all sampling rates are the same).
+    The check is done for all channels found in the edf file that are included in the ``channel_list``.
+
+    Args:
+        root: the full path.
+        edf_path_list: a list of the full paths with the edf files.
+        channel_list: a list of the channels eligible for analysis (there are times where this is a superset of the channels exist in the edf files).
+
+    Returns:
+        np.float: the sampling rate across all edf files (and channels) found in the ``edf_path_list``.
+        if all the sampling rates are the same the function returns the common sampling rate.
+        Otherwise it returns the minimum sampling rate found.
+
     """
 
     lowest_sample_rate = np.Inf
 
-    # Get the list of paths where edf files exist
-    print("Clean edf path output STARTS............")
-    [f_path_list_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_path_list, f_ch_df_] = clean_edf_paths(root, error_edfs, corrupted_edf_paths, EEG_channel_list, min_n_Chan)
-    print("Clean edf path output ENDS............")
-
     print("Function for minimum sample rate starts...........")
     sample_rates_all_edfs = list()
     if os.path.exists(root):
-        for edf_path in f_path_list_clean:
+        for edf_path in edf_path_list:
             print(edf_path)
             # f_header = pyedflib.highlevel.read_edf_header(edf_path)
             f_header = pyedflib.EdfReader(edf_path, 0, 1) #working for edf files with no issues in annotations and file size
@@ -270,7 +269,7 @@ def Check_sample_rate_consistency(root, error_edfs, corrupted_edf_paths, EEG_cha
 
             f_channels = np.array(f_header.getSignalLabels())
             # Get all iEEG channels that exist in EEG_channel_list except the Heart rate channels
-            f_channels_in_list = [ch for ch in f_channels if ch in EEG_channel_list]
+            f_channels_in_list = [ch for ch in f_channels if ch in channel_list]
             # get the indices of channels
             f_channels_indx = np.argwhere(np.isin(f_channels, f_channels_in_list)).ravel()
 
@@ -298,33 +297,48 @@ def Check_sample_rate_consistency(root, error_edfs, corrupted_edf_paths, EEG_cha
 
     return lowest_sample_rate
 
-##################################################
-##
-##      Sort edf files by start time
-##
-###################################################
 
-def sortEDF_by_start_time(root, error_edfs, corrupted_edf_paths, EEG_channel_list, min_n_Chan):
-    """
-    :param root: The path where the edf files are located
-    :param error_edfs: the list with the labels of the error channels, that exclude the whole edf from the analysis
-    :param corrupted_edf_paths: dictionary of paths for the corrupted edf files correspond to each subject
-    :param EEG_channel_list: the list of EEG channels identified (read from json files)
-    :param min_n_Chan: minimum number of channels needs to be in the edf file
-    :param HeartRateChannels: HeartRateChannels: The list with the channel labels corresponding to Heart Rate Channels
-    :return: a pandas dataframe with sorted edf files based on start time
-    The start and end time are included in the time range (inclusive)
-    duration: actual duration in seconds
-    n_chan: the number of channels depicts the total number of channels included in the edf files that at the same time these are in the EEG_channels_list
-    prop_chan: the channels found in the edf file that are included in the EEF_channels_list divided by the total channels
-    in the EEG_channel_list
-    """
 
-    # Get the list of paths where edf files exist
-    [f_path_list_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_path_list, f_ch_df_] = clean_edf_paths(root, error_edfs,
-                                                                                                                       corrupted_edf_paths,
-                                                                                                                       EEG_channel_list,
-                                                                                                                       min_n_Chan)
+def sortEDF_by_start_time(root: str, edf_path_list: list, channel_list: list):
+    r"""
+
+    This function sorts all the edf files found in ``edf_path_list`` by the Start time
+    and extracts information regarding the start, end times as well as the channels found in edf files
+    compared to the channels included in the ``channel_list``.
+
+    Args:
+        root: the full path.
+        edf_path_list: a list of the full paths with the edf files.
+        channel_list: a list of the channels eligible for analysis (there are times where this is a superset of the channels exist in the edf files).
+
+    Returns:
+        A DataFrame with information regarding the edf files displayed sorted by start time. Additionally, returns the common channels across edf files (only those that were included in the ``channel_list``).
+    **edf_df_time_info** (``pd.DataFrame``):
+        A pd.DataFrame that contains the following variables:
+
+            **edf_path** (``str``):
+                the full path where the edf files are located.
+            **start_time** (``datetime``):
+                the start time of each edf file. (inclusive)
+            **end_time** (``datetime``):
+                the end time of each edf file. (inclusive)
+            **duration** (``timedelta``):
+                the duration of the recording within each edf file.
+            **n_chan** (``int``):
+                the number of channels found in the edf file that were also included in the ``channel_list``.
+            **prop_chan** (``float``):
+                the proportion of channels found in the edf file that were also included in the ``channel_list`` out of the full ``channel_list``.
+            **index** (``int``):
+                an integer number associated with each edf file.
+            **check_ch_with_list_provided** (``boolean``):
+                This is True, if ``channel_list``, say SetA is equal to the intersection between the unique channels across all edf files and the ``channel_list``, say setB
+                Otherwise, if setA *!=* setB, this value is False.
+            **is_list_greater** (``boolean``):
+                check if ``channel_list``, say SetA with the intersection between the unique channels across all edf files and the ``channel_list``, say setB.
+                If setA *>* setB (setA *<* setB), then this value is True (False).
+    **unique_channels_across_all** (``list``):
+        The intersection between the unique channels across all edf files and the ``channel_list``.
+    """
 
     # list of start times of all edf files
     StartTime_list = list()
@@ -340,7 +354,7 @@ def sortEDF_by_start_time(root, error_edfs, corrupted_edf_paths, EEG_channel_lis
     channels_in_edfs = list()
     # check_channel = list()
     if os.path.exists(root):
-        for edf_path in f_path_list_clean:
+        for edf_path in edf_path_list:
             print(edf_path)
             # read header of edf file
             f_header = pyedflib.EdfReader(edf_path, 0, 1)
@@ -371,11 +385,11 @@ def sortEDF_by_start_time(root, error_edfs, corrupted_edf_paths, EEG_channel_lis
             # Get all iEEG channels except the Heart rate channels
             EEGchan_in_file = list()
             for chan in f_label:
-                if (chan in EEG_channel_list):
+                if (chan in channel_list):
                     EEGchan_in_file.append(chan)
             n_EEG_chan = len(EEGchan_in_file)
-            # proportion of channels ound in this edf file with regards the EEG_channel_list
-            prop_chan = n_EEG_chan/len(EEG_channel_list)
+            # proportion of channels found in this edf file with regards to the channel_list
+            prop_chan = n_EEG_chan/len(channel_list)
 
             channels_in_edfs.append(EEGchan_in_file)
 
@@ -389,12 +403,12 @@ def sortEDF_by_start_time(root, error_edfs, corrupted_edf_paths, EEG_channel_lis
         # check if all unique channels found across all edf files are equal to the
         # channels provided by the list 'EEG_channel_list'
         unique_channels_across_all = unique(flatten_list)
-        if (sorted(EEG_channel_list) == sorted(unique_channels_across_all)):
+        if (sorted(channel_list) == sorted(unique_channels_across_all)):
             check_ch = True
             identifier = None
         else:
             check_ch = False
-            if (len(EEG_channel_list) > len(unique_channels_across_all)):
+            if (len(channel_list) > len(unique_channels_across_all)):
                 print("EEG list contains more \n"
                       "channels than the unique channels found across all edf files")
                 #identifier = [a for a in EEG_channel_list if a not in unique_channels_across_all]
@@ -404,7 +418,7 @@ def sortEDF_by_start_time(root, error_edfs, corrupted_edf_paths, EEG_channel_lis
 
         # Make a dataframe with "clean" edf paths, start time and end time and duration
         # Dataframe with info from edf files
-        edf_df_time_info = pd.DataFrame({"edf_path": f_path_list_clean, "start_time": StartTime_list, "end_time": EndTime_list,
+        edf_df_time_info = pd.DataFrame({"edf_path": edf_path_list, "start_time": StartTime_list, "end_time": EndTime_list,
                                          "duration": Duration_list, "n_chan": nChan_list, "prop_chan": prop_chan_list,"index": np.arange(0, len(StartTime_list)),
                                          "check_ch_with_list_provided": check_ch, "is_list_greater": identifier})
 
@@ -418,23 +432,21 @@ def sortEDF_by_start_time(root, error_edfs, corrupted_edf_paths, EEG_channel_lis
     return edf_df_time_info, unique_channels_across_all
 
 
-def downsample_decimate(signal, fs, target_fs):
-    '''
+def downsample_decimate(signal: np.array, fs: float, target_fs: float):
+    r"""
+
     Resamples the recording extractor traces. If the resampling rate is multiple of the sampling rate, the faster
     scipy decimate function is used.
 
     Args:
-        signal: the signal recording
-        fs: the frequency sampling
-        target_fs: int or float
-            The resampling frequency
+        signal: The `array_like` of data to be downsampled.
+        fs: the frequency sampling (Hz).
+        target_fs: the frequency sampling of the targeted downsampled signal (Hz).
 
-    Returns
-    -------
-    resampled_recording: returns the signal as array
-        The resample recording extractor
+    Returns:
+        numpy.array: the signal downsampled based on the ``target_fs``.
 
-    '''
+    """
 
     if np.mod(fs, target_fs) == 0:
         trace_resampled = scipy.signal.decimate(signal, q=int(fs / target_fs))
@@ -443,18 +455,22 @@ def downsample_decimate(signal, fs, target_fs):
 
 
 
-def check_resampling(initial_signal, resampled_signal, fs, resampled_fs, start = None, stop = None):
+def visualise_resampling(initial_signal: np.array, resampled_signal: np.array, fs: float, resampled_fs: float, start: int = None, stop: int = None):
+    r"""
+    Check filtering and downsampling by plotting both the initial and the downsampled signals.
+
+    Args:
+        initial_signal: `array-like` the initial signal.
+        resampled_signal: `array-like` the resampled signal.
+        fs: the frequency sampling (Hz) of the ``initial_signal``.
+        resampled_fs: the frequency sampling (Hz) of the ``resampled_signal``.
+        start: the start time in seconds to be plotted. If not specified, the start time provided will be plotted.
+        stop: the end time in seconds to be plotted. If not specified, the start time provided will be plotted.
+
+    Returns:
+        matplotlib.figure: a line plot comparing the initial signal and the resampled signal.
     """
-    Check filtering and downsampling by ploting both datasets.
-    Parameters
-    :param initial_signal: the initial signal
-    :param resampled_signal: the resampled signal
-    :param fs: the initial frequency sampling
-    :param resampled_fs: the resampled frequency sampling
-    :param start: starting point in seconds
-    :param stop: stop time in seconds
-    :return: matplotlib figure
-    """
+
     if (start is None) and (stop is None):
         data1 = initial_signal
         data2 = resampled_signal

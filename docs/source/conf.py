@@ -33,8 +33,30 @@ extensions = [
     "sphinx_autodoc_typehints",
     "sphinx.ext.viewcode",
     "sphinx.ext.doctest",
+    "sphinx.ext.intersphinx",
 ]
+
 exclude_patterns = ["_build"]
+
+# Napoleon style - custom additions
+# Digging through the PR, I found where to look: the napoleon_type_aliases configuration item allows you to set up a mapping for things like array-like, dict-like, etc. In this particular case, adding the following to conf.py did the trick:
+# napoleon_use_param has to be True for this to work. It's documented as defaulting to True, but somewhere along the way in my setup, it got unset. It never hurts to be extra safe.
+
+napoleon_use_param = True
+napoleon_type_aliases = {
+    'array-like': ':term:`array-like <array_like>`',
+    'array_like': ':term:`array_like`',
+}
+
+# To link to the array_like term on the numpy site, the intersphinx extension must be enabled, and intersphinx_mapping in conf.py must link to numpy:
+intersphinx_mapping = {
+    'numpy': ('https://numpy.org/doc/stable/', None),
+
+    }
+#    'matplotlib': ('https://matplotlib.org/stable/', None),
+
+# myst_url_schemes = ["http", "https", ]
+
 
 # HTML output
 html_theme = "sphinx_rtd_theme"
