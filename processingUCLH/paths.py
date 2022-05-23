@@ -9,11 +9,13 @@ min_n_Chan = 5
 # ROOT DIRECTORY
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-loc = "FILES" # name for parent folder of all program folders
-ALL_FILES_DIR = os.path.abspath(os.path.join(ROOT_DIR, loc))
+loc_output = "FILES" # name for parent folder of all program folders
+ALL_FILES_DIR = os.path.abspath(os.path.join(ROOT_DIR, loc_output))
 
+loc_input = "IN_FILES"
+IN_FILES_DIR = os.path.abspath(os.path.join(ROOT_DIR, loc_input))
 # location where iEEG channels are located for each subject
-iEEG_channels = os.path.abspath(os.path.join(ALL_FILES_DIR, "icEEG_channels"))
+iEEG_channels = os.path.abspath(os.path.join(IN_FILES_DIR, "icEEG_channels"))
 
 # location where Plots for Detecting Bad channels are located for each subject
 PLOTS_BAD_CHANNELS_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "PLOTS_BAD_CHANNELS"))

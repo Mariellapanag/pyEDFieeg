@@ -12,7 +12,7 @@ import pandas as pd
 
 # internal modules
 import pyEDFieeg
-import processingUCLH.utils.paths as paths
+import processingUCLH.paths as paths
 
 
 subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
