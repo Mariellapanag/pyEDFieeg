@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>file 1: EDF_CHAN_XXXXX.csv &mdash; pyEDFieeg</title>
+  <title>Description of output files from running the scripts in processing &mdash; pyEDFieeg</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -18,7 +18,8 @@
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="The output files as extracted from running processing section" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -36,9 +37,13 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../processing/index.html">Examples of processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The output files as extracted from running <code class="docutils literal notranslate"><span class="pre">processing</span></code> section</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Description of output files from running the scripts in <em>processing</em></a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -55,7 +60,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>file 1: EDF_CHAN_XXXXX.csv</li>
+          <li><a href="index.html">The output files as extracted from running <code class="docutils literal notranslate"><span class="pre">processing</span></code> section</a> &raquo;</li>
+      <li>Description of output files from running the scripts in <em>processing</em></li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/files/edf_info_files.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -65,18 +71,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <p>location: FILES/EDF_INFO</p>
+  <section id="description-of-output-files-from-running-the-scripts-in-processing">
+<h1>Description of output files from running the scripts in <em>processing</em><a class="headerlink" href="#description-of-output-files-from-running-the-scripts-in-processing" title="Permalink to this headline"></a></h1>
+<p>location: FILES/EDF_INFO</p>
 <p>XXXXX: Subject label
 Edf files that are corrupted cannot be read so are not displayed in the following files.</p>
 <section id="file-1-edf-chan-xxxxx-csv">
-<h1>file 1: EDF_CHAN_XXXXX.csv<a class="headerlink" href="#file-1-edf-chan-xxxxx-csv" title="Permalink to this headline"></a></h1>
+<h2>file 1: EDF_CHAN_XXXXX.csv<a class="headerlink" href="#file-1-edf-chan-xxxxx-csv" title="Permalink to this headline"></a></h2>
 <p>Channels found in each edf file. All edf files included in this list.
 This file includes all channel information including heart rate recordings or fault/error edf files.
 Corrupted edf files have been identified and excluded from this list as those were unable to be read
 by pyedflib package or equivalent matlab edf reader functions.</p>
 </section>
 <section id="file-2-edf-info-xxxxx-csv">
-<h1>file 2: EDF_INFO_XXXXX.csv<a class="headerlink" href="#file-2-edf-info-xxxxx-csv" title="Permalink to this headline"></a></h1>
+<h2>file 2: EDF_INFO_XXXXX.csv<a class="headerlink" href="#file-2-edf-info-xxxxx-csv" title="Permalink to this headline"></a></h2>
 <p>The file includes general information regarding edf files suitable for further analysis.
 Edf files that have sampling rate equal to 1 or are corrupted have been excluded.
 Also, the heart rate recording has been removed as well.
@@ -101,7 +109,7 @@ If there is FALSE, then sth is wrong with this subject.</p></li>
 </ul>
 </section>
 <section id="file-3-edf-path-excluded-xxxxx-csv">
-<h1>file 3: EDF_PATH_EXCLUDED_XXXXX.csv<a class="headerlink" href="#file-3-edf-path-excluded-xxxxx-csv" title="Permalink to this headline"></a></h1>
+<h2>file 3: EDF_PATH_EXCLUDED_XXXXX.csv<a class="headerlink" href="#file-3-edf-path-excluded-xxxxx-csv" title="Permalink to this headline"></a></h2>
 <p>This csv file includes all edf files that have been excluded. It contains the following columns:</p>
 <ul class="simple">
 <li><p><strong>edf_path</strong>: The path of the edf file that has been excluded.</p></li>
@@ -110,11 +118,11 @@ edf files that include channels that do nt exist in the channel_list provided by
 </ul>
 </section>
 <section id="file-4-channel-list-xxxxx-csv">
-<h1>file 4: CHANNEL_LIST_XXXXX.csv<a class="headerlink" href="#file-4-channel-list-xxxxx-csv" title="Permalink to this headline"></a></h1>
+<h2>file 4: CHANNEL_LIST_XXXXX.csv<a class="headerlink" href="#file-4-channel-list-xxxxx-csv" title="Permalink to this headline"></a></h2>
 <p>The channel list (json file) converted to csv file.</p>
 </section>
 <section id="file-5-edf-overlap-info-xxxxx-csv">
-<h1>file 5: EDF_OVERLAP_INFO_XXXXX.csv<a class="headerlink" href="#file-5-edf-overlap-info-xxxxx-csv" title="Permalink to this headline"></a></h1>
+<h2>file 5: EDF_OVERLAP_INFO_XXXXX.csv<a class="headerlink" href="#file-5-edf-overlap-info-xxxxx-csv" title="Permalink to this headline"></a></h2>
 <p>This csv file includes information about files that overlap. It contains the following columns:</p>
 <ul class="simple">
 <li><p><strong>start_overlap</strong>: start datetime object of the overlap</p></li>
@@ -124,12 +132,12 @@ edf files that include channels that do nt exist in the channel_list provided by
 </ul>
 </section>
 <section id="file-6-channelskeep-xxxxx-csv">
-<h1>file 6: ChannelsKeep_XXXXX.csv<a class="headerlink" href="#file-6-channelskeep-xxxxx-csv" title="Permalink to this headline"></a></h1>
+<h2>file 6: ChannelsKeep_XXXXX.csv<a class="headerlink" href="#file-6-channelskeep-xxxxx-csv" title="Permalink to this headline"></a></h2>
 <p>This csv includes the final list of the channels found across all edf files for one subject.
 Those were the channels that included in the superset channels_list that provided by the user.</p>
 </section>
 <section id="file-7-edf-overlap-check-equal-xxxxx-xlsx">
-<h1>file 7: EDF_OVERLAP_check_equal_XXXXX.xlsx<a class="headerlink" href="#file-7-edf-overlap-check-equal-xxxxx-xlsx" title="Permalink to this headline"></a></h1>
+<h2>file 7: EDF_OVERLAP_check_equal_XXXXX.xlsx<a class="headerlink" href="#file-7-edf-overlap-check-equal-xxxxx-xlsx" title="Permalink to this headline"></a></h2>
 <p>This excel file contains information regarding the overlap and whether the segments for each pair of edf files that overlap match.
 Includes pairs of edf files only if the overlap is greater than 1 second (as opposed to the file <code class="docutils literal notranslate"><span class="pre">EDF_OVERLAP_INFO_XXXXX.csv</span></code> that includes
 information about all the pairs of edf files that overlap). This is because we cannot capture the exact end time of the edf files in milliseconds.
@@ -139,11 +147,14 @@ So, we do not check if the values match in the case where two edf files overlap 
 <p>Each pair of edf files where the overlap exceeds the 1 second is linked to two sheets within this file:
 SheetA: Includes info about the edf files that overlap</p>
 </section>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="The output files as extracted from running processing section" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 

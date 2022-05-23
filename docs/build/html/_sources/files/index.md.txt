@@ -1,8 +1,8 @@
-# The output files as extracted from running ``processing`` section
+# FILES
 
 ```{eval-rst}
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    edf_info_files
 ```
