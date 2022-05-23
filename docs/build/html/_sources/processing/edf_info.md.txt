@@ -1,6 +1,6 @@
 # Working with edf info for every folder structure at once
 
 ```{eval-rst}
-.. automodule:: pyEDFieeg.processingUCLH.edf_info
+.. automodule:: processingUCLH.edf_info
    :members:
 ```
