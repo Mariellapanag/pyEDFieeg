@@ -1,3 +1,4 @@
+# pyEDFieeg
 
 ```{eval-rst}
 .. toctree::

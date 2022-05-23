@@ -1,5 +1,4 @@
-"""This is a good place to write what the module does. This is going to be in the
-documentation page where this module will be displayed"""
+"""Generic functions for extracting useful information and handling edf files"""
 
 ###############################################################################
 # M. Panagiotopoulou, April 2022
