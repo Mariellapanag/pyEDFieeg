@@ -76,7 +76,6 @@ def process_func(subject_list):
     EDF_info_allP.to_csv(os.path.join(processingUCLH.paths.EDF_INFO_DIR, "EDF_INFO_allP.csv"))
 
 
-
 #process_func(subject)
 if __name__ == '__main__':
     process_func(subject_list)
