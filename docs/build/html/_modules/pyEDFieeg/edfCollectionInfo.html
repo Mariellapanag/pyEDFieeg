@@ -37,6 +37,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../processing/index.html">Examples of processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../files/index.html">FILES</a></li>
 </ul>
 
         </div>
@@ -64,8 +66,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pyEDFieeg.edfCollectionInfo</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;This is a good place to write what the module does. This is going to be in the</span>
-<span class="sd">documentation page where this module will be displayed&quot;&quot;&quot;</span>
+<span></span><span class="sd">&quot;&quot;&quot;Generic functions for extracting useful information and handling edf files&quot;&quot;&quot;</span>
 
 <span class="c1">###############################################################################</span>
 <span class="c1"># M. Panagiotopoulou, April 2022</span>
@@ -141,8 +142,6 @@
                 <span class="n">f_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
                 <span class="n">f_path_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_path</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">f_path_list</span></div>
-
-
 
 
 <div class="viewcode-block" id="clean_edf_paths"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.clean_edf_paths">[docs]</a><span class="k">def</span> <span class="nf">clean_edf_paths</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error_edfs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">corrupted_edf_paths</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">channel_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">min_n_Chan</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>

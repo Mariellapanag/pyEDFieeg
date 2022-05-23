@@ -76,8 +76,6 @@ def get_search_files(root: str):
     return f_path_list
 
 
-
-
 def clean_edf_paths(root: str, error_edfs: list, corrupted_edf_paths: list, channel_list: list, min_n_Chan: int):
 
     r"""

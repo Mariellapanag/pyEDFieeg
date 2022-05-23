@@ -13,7 +13,7 @@ import pyedflib
 import numpy as np
 
 
-def is_overlap_Range(TimeRange1: dict, TimeRange2: dict):
+def is_overlap(TimeRange1: dict, TimeRange2: dict):
     r"""
     Determines if there is an overlap between two time ranges.
 
@@ -26,10 +26,9 @@ def is_overlap_Range(TimeRange1: dict, TimeRange2: dict):
             **end** (``datetime``): the end time.
 
     Returns:
+        boolean: True/False, in case there is an overlap/ isn't overlap.
 
     Examples:
-        Examples should be written in doctest format, and should illustrate how
-        to use the function.
 
         >>> TimeRange1 = {"start": datetime.datetime(2012, 1, 15), "end": datetime.datetime(2012, 5, 10)}
         >>> TimeRange2 = {"start": datetime.datetime(2012, 3, 20), "end": datetime.datetime(2012, 9, 15)}
@@ -46,41 +45,94 @@ def is_overlap_Range(TimeRange1: dict, TimeRange2: dict):
         return False
 
 
-def get_overlapped_range(TimeRange1, TimeRange2):
+def overlappedRange(TimeRange1: dict, TimeRange2: dict):
+    r"""
+    Determines the overlap range between to time ranges that overlap.
 
-    overlap_message = is_overlap_Range(TimeRange1, TimeRange2)
+    Args:
+       TimeRange1:
+           **start** (``datetime``): the start time.
+           **end** (``datetime``): the end time.
+       TimeRange2:
+           **start** (``datetime``): the start time.
+           **end** (``datetime``): the end time.
+
+    Returns:
+       dict: start and end time of the overlapping period, as well it's duration.
+            {
+            **start** (``datetime)``: start of the overlapping period (inclusive).
+            **end** (``datetime)``: end of the overlapping period (inclusive).
+            **duration** (``timedelta)``: duration of the overlapping period.
+            }
+
+    Examples:
+
+        >>> TimeRange1 = {"start": datetime.datetime(2012, 1, 15), "end": datetime.datetime(2012, 5, 10)}
+        >>> TimeRange2 = {"start": datetime.datetime(2012, 3, 20), "end": datetime.datetime(2012, 9, 15)}
+        >>> overlappedRange(TimeRange1, TimeRange2)
+        {'start': datetime.datetime(2012, 3, 20, 0, 0), 'end': datetime.datetime(2012, 5, 10, 0, 0), 'duration': datetime.timedelta(days=51, seconds=1)}
+
+    """
+    overlap_message = is_overlap(TimeRange1, TimeRange2)
 
     if overlap_message == True:
 
-        if TimeRange2["start"] >= TimeRange1["start"]:
-            if TimeRange1["end"] >= TimeRange2["end"]:
-                start = TimeRange2["start"]
-                end = TimeRange2["end"]
-            else:
-                start = TimeRange2["start"]
-                end = TimeRange1["end"]
-        elif TimeRange2["start"] < TimeRange1["start"]:
-            if TimeRange2["end"] >= TimeRange1["end"]:
-                start = TimeRange1["start"]
-                end = TimeRange1["end"]
-            else:
-                start = TimeRange1["start"]
-                end = TimeRange2["end"]
+       if TimeRange2["start"] >= TimeRange1["start"]:
+           if TimeRange1["end"] >= TimeRange2["end"]:
+               start = TimeRange2["start"]
+               end = TimeRange2["end"]
+           else:
+               start = TimeRange2["start"]
+               end = TimeRange1["end"]
+       elif TimeRange2["start"] < TimeRange1["start"]:
+           if TimeRange2["end"] >= TimeRange1["end"]:
+               start = TimeRange1["start"]
+               end = TimeRange1["end"]
+           else:
+               start = TimeRange1["start"]
+               end = TimeRange2["end"]
 
-        duration = end - start
+       duration = (end - start) + datetime.timedelta(seconds=1)
 
     return {"start": start, "end": end , "duration": duration}
 
 
-def intervals_overlap(t1_start, t1_end, t2_start, t2_end):
-    """ Return True and the overlap interval (t3_end - t3_start)+datetime.timedelta(seconds=1) if overlap, otherwise False & None"""
-    # thanks to: https://chandoo.org/wp/date-overlap-formulas/
-    # this method relies on the ease datetime comparison in Python, e.g datetime(3pm) > datetime(2pm) is TRUE
 
+def intervals_overlap(t1_start: datetime.datetime, t1_end: datetime.datetime, t2_start: datetime.datetime, t2_end: datetime.datetime):
+    r"""
+    This method relies on the ease datetime comparison in Python, e.g datetime(3pm) > datetime(2pm) is TRUE
+    thanks to: https://chandoo.org/wp/date-overlap-formulas/
     # t1_start, t1_end should be the start of the file we're interested in (f1)
     # i.e we want to know how f2 overlaps relative to f1
     # This functions assumes that start and end times are included in the specified time range!
     # That's why the duration is specified by adding 1 second as: (t3_end - t3_start)+datetime.timedelta(seconds=1)
+
+    Args:
+        t1_start: start time of the first range.
+        t1_end: end time of the first range.
+        t2_start: start time of the second range.
+        t2_end: end time of the second range.
+
+    Returns:
+        Return True and the overlap interval (t3_end - t3_start)+datetime.timedelta(seconds=1) if overlap, otherwise False & None.
+
+    Examples:
+
+        >>> start1 = datetime.datetime(2012, 1, 15)
+        >>> end1 = datetime.datetime(2012, 5, 10)
+        >>> start2 = datetime.datetime(2012, 3, 20)
+        >>> end2 =  datetime.datetime(2012, 9, 15)
+        >>> intervals_overlap(start1, end1, start2, end2)
+        (True, (datetime.datetime(2012, 3, 20, 0, 0), datetime.datetime(2012, 5, 10, 0, 0), datetime.timedelta(days=51, seconds=1)))
+
+        >>> start1 = datetime.datetime(2012, 1, 15)
+        >>> end1 = datetime.datetime(2012, 5, 10)
+        >>> start2 = datetime.datetime(2012, 6, 20)
+        >>> end2 = datetime.datetime(2012, 9, 15)
+        >>> intervals_overlap(start1, end1, start2, end2)
+        (False, None)
+
+    """
 
     # check first if they do overlap
     overlap = not ((t1_end < t2_start) or (t2_end < t1_start)) # overlap =  "not (true if intervals are not overlapping)"
@@ -102,7 +154,6 @@ def intervals_overlap(t1_start, t1_end, t2_start, t2_end):
                 t3_end = t2_end
             else:
                 t3_end = t1_end
-
 
         # f1 starts before f2 finishes, e.g
         # f1:           t1_start--------------- ...
@@ -133,14 +184,44 @@ def intervals_overlap(t1_start, t1_end, t2_start, t2_end):
         #     #                 .format(t1_start, t1_end, t2_start, t2_end))
         #
 
-        return True, (t3_start, t3_end, (t3_end - t3_start)+datetime.timedelta(seconds=1))
+        return True, (t3_start, t3_end, (t3_end - t3_start) + datetime.timedelta(seconds=1))
 
     else:
         return False, None
 
 
-def check_overlap_sort(start_fileA, start_fileB, end_fileA, end_fileB, pathA, pathB):
 
+def overlapSort(start_fileA: datetime.datetime, start_fileB: datetime.datetime, end_fileA: datetime.datetime, end_fileB: datetime.datetime, pathA: str, pathB: str):
+    r"""
+    Sort the two ranges and perform the ``intervals_overlap`` function.
+
+    Args:
+        start_fileA: start time of time range A.
+        start_fileB: start time of time range B.
+        end_fileA: end time of time range A.
+        end_fileB: end time of time range B.
+        pathA: path to the edf file A.
+        pathB: path to the edf file B.
+
+    Returns:
+        information about overlap after sorting.
+
+        **result_overlap**:
+            Return True and the overlap interval (t3_end - t3_start)+datetime.timedelta(seconds=1) if overlap, otherwise False & None.
+        **t1_start** (``datetime``):
+            the start time of the first of the two time ranges after sorting, *t1_start < t2_start*.
+        **t1_end** (``datetime``):
+            the end time of the first of the two time ranges after sorting, *t1_start < t2_start*.
+        **t2_start** (``datetime``):
+            the start time of the second of the two time ranges after sorting, *t1_start < t2_start*.
+        **t2_end** (``datetime``):
+            the end time of the second of the two time ranges after sorting, *t1_start < t2_start*.
+        **t1_path** (``str``):
+            the path of the first of the two time ranges after sorting, *t1_start < t2_start*.
+        **t2_path** (``str``):
+            the path of the second of the two time ranges after sorting, *t1_start < t2_start*.
+
+    """
 
     if (start_fileA <= start_fileB):
         t1_start = start_fileA
@@ -162,20 +243,12 @@ def check_overlap_sort(start_fileA, start_fileB, end_fileA, end_fileB, pathA, pa
     return result_overlap, t1_start, t1_end, t2_start, t2_end, t1_path, t2_path
 
 
-# start_fileA = startA
-# start_fileB = startB
-# end_fileA = endA
-# end_fileB = endB
-# edf_pathFileA = pathA
-# edf_pathFileB = pathB
-# channel_label = ch
-
 
 # The following function checks if the overlapping parts are equal between two overlapped edf files
 # Returns True if this is the case. Otherwise returns False.
 def is_overlap_segm_equal_FOR2(start_fileA, start_fileB, end_fileA, end_fileB, edf_pathFileA, edf_pathFileB, channel_label):
 
-    [result_overlap, t1_start, t1_end, t2_start, t2_end, t1_path, t2_path] = check_overlap_sort(start_fileA, start_fileB, end_fileA, end_fileB, edf_pathFileA, edf_pathFileB)
+    [result_overlap, t1_start, t1_end, t2_start, t2_end, t1_path, t2_path] = overlapSort(start_fileA, start_fileB, end_fileA, end_fileB, edf_pathFileA, edf_pathFileB)
 
     # Overlap starting and ending point as well as duration already computed
     start_overlap = result_overlap[1][0]
@@ -232,15 +305,3 @@ def is_overlap_segm_equal_FOR2(start_fileA, start_fileB, end_fileA, end_fileB, e
     check = np.all(EEG_segm_A == EEG_segm_B)
 
     return check
-
-
-# def is_overlap_segm_equal_MOREthan2():
-#
-#     # Get all combinations of two between the edf files
-#     idx_combinations = list(itertools.combinations(check_indx_start,2))
-#     for file_pair in idx_combinations:
-#         # Get the path corresponding to the indx_edf as shown in the pairs
-#         indx_edf1 = file_pair[0]
-#         indx_edf2 = file_pair[1]
-#         edf_path1 = edf_fpaths[indx_edf1]
-#         edf_path2 = edf_fpaths[indx_edf2]

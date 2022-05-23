@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Functions for detecting overlapping between edf files &mdash; pyEDFieeg</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples of processing" href="../processing/index.html" />
+    <link rel="prev" title="General functions for getting info about edf files" href="edfCollectionInfo.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> pyEDFieeg
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="edfCollectionInfo.html">General functions for getting info about edf files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Functions for detecting overlapping between edf files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../processing/index.html">Examples of processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">FILES</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pyEDFieeg</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">API</a> &raquo;</li>
+      <li>Functions for detecting overlapping between edf files</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/edfOverlapping.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-pyEDFieeg.edfOverlapping">
+<span id="functions-for-detecting-overlapping-between-edf-files"></span><h1>Functions for detecting overlapping between edf files<a class="headerlink" href="#module-pyEDFieeg.edfOverlapping" title="Permalink to this headline"></a></h1>
+<p>Useful functions for detecting overlap between any pair of edf files</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyEDFieeg.edfOverlapping.intervals_overlap">
+<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfOverlapping.</span></span><span class="sig-name descname"><span class="pre">intervals_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t1_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t1_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t2_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t2_end</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfOverlapping.html#intervals_overlap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfOverlapping.intervals_overlap" title="Permalink to this definition"></a></dt>
+<dd><p>This method relies on the ease datetime comparison in Python, e.g datetime(3pm) &gt; datetime(2pm) is TRUE
+thanks to: <a class="reference external" href="https://chandoo.org/wp/date-overlap-formulas/">https://chandoo.org/wp/date-overlap-formulas/</a>
+# t1_start, t1_end should be the start of the file we’re interested in (f1)
+# i.e we want to know how f2 overlaps relative to f1
+# This functions assumes that start and end times are included in the specified time range!
+# That’s why the duration is specified by adding 1 second as: (t3_end - t3_start)+datetime.timedelta(seconds=1)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t1_start</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>) – start time of the first range.</p></li>
+<li><p><strong>t1_end</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>) – end time of the first range.</p></li>
+<li><p><strong>t2_start</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>) – start time of the second range.</p></li>
+<li><p><strong>t2_end</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>) – end time of the second range.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Return True and the overlap interval (t3_end - t3_start)+datetime.timedelta(seconds=1) if overlap, otherwise False &amp; None.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">start1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">end1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start2</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">end2</span> <span class="o">=</span>  <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">intervals_overlap</span><span class="p">(</span><span class="n">start1</span><span class="p">,</span> <span class="n">end1</span><span class="p">,</span> <span class="n">start2</span><span class="p">,</span> <span class="n">end2</span><span class="p">)</span>
+<span class="go">(True, (datetime.datetime(2012, 3, 20, 0, 0), datetime.datetime(2012, 5, 10, 0, 0), datetime.timedelta(days=51, seconds=1)))</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">start1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">end1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start2</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">end2</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">intervals_overlap</span><span class="p">(</span><span class="n">start1</span><span class="p">,</span> <span class="n">end1</span><span class="p">,</span> <span class="n">start2</span><span class="p">,</span> <span class="n">end2</span><span class="p">)</span>
+<span class="go">(False, None)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyEDFieeg.edfOverlapping.is_overlap">
+<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfOverlapping.</span></span><span class="sig-name descname"><span class="pre">is_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">TimeRange1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TimeRange2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfOverlapping.html#is_overlap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfOverlapping.is_overlap" title="Permalink to this definition"></a></dt>
+<dd><p>Determines if there is an overlap between two time ranges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>TimeRange1</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – <strong>start</strong> (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>): the start time.
+<strong>end</strong> (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>): the end time.</p></li>
+<li><p><strong>TimeRange2</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – <strong>start</strong> (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>): the start time.
+<strong>end</strong> (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>): the end time.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True/False, in case there is an overlap/ isn’t overlap.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TimeRange1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">TimeRange2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">)}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_overlap_Range</span><span class="p">(</span><span class="n">TimeRange1</span><span class="p">,</span> <span class="n">TimeRange2</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyEDFieeg.edfOverlapping.overlapSort">
+<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfOverlapping.</span></span><span class="sig-name descname"><span class="pre">overlapSort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_fileA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_fileB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_fileA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_fileB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathB</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfOverlapping.html#overlapSort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfOverlapping.overlapSort" title="Permalink to this definition"></a></dt>
+<dd><p>Sort the two ranges and perform the <code class="docutils literal notranslate"><span class="pre">intervals_overlap</span></code> function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_fileA</strong> (<em>&lt;module 'datetime' from 'C:\Users\b6071244\AppData\Local\anaconda3\envs\python38\lib\datetime.py'&gt;</em>) – start time of time range A.</p></li>
+<li><p><strong>start_fileB</strong> (<em>&lt;module 'datetime' from 'C:\Users\b6071244\AppData\Local\anaconda3\envs\python38\lib\datetime.py'&gt;</em>) – start time of time range B.</p></li>
+<li><p><strong>end_fileA</strong> (<em>&lt;module 'datetime' from 'C:\Users\b6071244\AppData\Local\anaconda3\envs\python38\lib\datetime.py'&gt;</em>) – end time of time range A.</p></li>
+<li><p><strong>end_fileB</strong> (<em>&lt;module 'datetime' from 'C:\Users\b6071244\AppData\Local\anaconda3\envs\python38\lib\datetime.py'&gt;</em>) – end time of time range B.</p></li>
+<li><p><strong>pathA</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – path to the edf file A.</p></li>
+<li><p><strong>pathB</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – path to the edf file B.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>information about overlap after sorting.</p>
+<dl class="simple">
+<dt><strong>result_overlap</strong>:</dt><dd><p>Return True and the overlap interval (t3_end - t3_start)+datetime.timedelta(seconds=1) if overlap, otherwise False &amp; None.</p>
+</dd>
+<dt><strong>t1_start</strong> (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>):</dt><dd><p>the start time of the first of the two time ranges after sorting, <em>t1_start &lt; t2_start</em>.</p>
+</dd>
+<dt><strong>t1_end</strong> (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>):</dt><dd><p>the end time of the first of the two time ranges after sorting, <em>t1_start &lt; t2_start</em>.</p>
+</dd>
+<dt><strong>t2_start</strong> (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>):</dt><dd><p>the start time of the second of the two time ranges after sorting, <em>t1_start &lt; t2_start</em>.</p>
+</dd>
+<dt><strong>t2_end</strong> (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>):</dt><dd><p>the end time of the second of the two time ranges after sorting, <em>t1_start &lt; t2_start</em>.</p>
+</dd>
+<dt><strong>t1_path</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>):</dt><dd><p>the path of the first of the two time ranges after sorting, <em>t1_start &lt; t2_start</em>.</p>
+</dd>
+<dt><strong>t2_path</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>):</dt><dd><p>the path of the second of the two time ranges after sorting, <em>t1_start &lt; t2_start</em>.</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyEDFieeg.edfOverlapping.overlappedRange">
+<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfOverlapping.</span></span><span class="sig-name descname"><span class="pre">overlappedRange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">TimeRange1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TimeRange2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfOverlapping.html#overlappedRange"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfOverlapping.overlappedRange" title="Permalink to this definition"></a></dt>
+<dd><p>Determines the overlap range between to time ranges that overlap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>TimeRange1</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – <strong>start</strong> (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>): the start time.
+<strong>end</strong> (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>): the end time.</p></li>
+<li><p><strong>TimeRange2</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – <strong>start</strong> (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>): the start time.
+<strong>end</strong> (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>): the end time.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>start and end time of the overlapping period, as well it’s duration.</dt><dd><p>{
+<strong>start</strong> (<code class="docutils literal notranslate"><span class="pre">datetime)</span></code>: start of the overlapping period (inclusive).
+<strong>end</strong> (<code class="docutils literal notranslate"><span class="pre">datetime)</span></code>: end of the overlapping period (inclusive).
+<strong>duration</strong> (<code class="docutils literal notranslate"><span class="pre">timedelta)</span></code>: duration of the overlapping period.
+}</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TimeRange1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">TimeRange2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">)}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">overlappedRange</span><span class="p">(</span><span class="n">TimeRange1</span><span class="p">,</span> <span class="n">TimeRange2</span><span class="p">)</span>
+<span class="go">{&#39;start&#39;: datetime.datetime(2012, 3, 20, 0, 0), &#39;end&#39;: datetime.datetime(2012, 5, 10, 0, 0), &#39;duration&#39;: datetime.timedelta(days=51, seconds=1)}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="edfCollectionInfo.html" class="btn btn-neutral float-left" title="General functions for getting info about edf files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../processing/index.html" class="btn btn-neutral float-right" title="Examples of processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Mariella Panagiotopoulou.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
