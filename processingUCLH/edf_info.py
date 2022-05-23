@@ -33,6 +33,7 @@ subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
 subject = "1167"
 
 def process_func(subject):
+
     # Set the root directory for patient
     root = os.path.join(processingUCLH.paths.INPUT_DATA_DIR, subject)
 
@@ -104,13 +105,15 @@ def process_func(subject):
     channelsKeep_df.to_csv(os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject, "ChannelsKeep_{}.csv".format(subject)))
 
 
-if __name__ == '__main__':
-    process_func(subject)
-
-
+# Run for one subject
 # if __name__ == '__main__':
-#     for subject in subject_list:
-#         process_func(subject)
+#     process_func(subject)
+
+
+# Run for all subjects within the ``subject_list``
+if __name__ == '__main__':
+    for subject in subject_list:
+        process_func(subject)
 
 # if __name__ == '__main__':
 #     for subject in subject_white_list:
