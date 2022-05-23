@@ -63,6 +63,7 @@ def get_search_files(root: str):
     .. testoutput::
 
         5
+
     """
 
     f_path_list = []
@@ -111,6 +112,7 @@ def clean_edf_paths(root: str, error_edfs: list, corrupted_edf_paths: list, chan
         **f_ch_df_** (``dict``):
             a dictionary of all the channels found in every edf file pointed to all paths in the list, ``f_path_list``. Every element within this dictionary is a ``pandas.DataFrame``
             and its **key** is the full path of the corresponding edf file.
+
     """
 
     # Get the list of paths where edf files exist
@@ -187,7 +189,7 @@ def clean_edf_paths(root: str, error_edfs: list, corrupted_edf_paths: list, chan
     return f_path_list_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_path_list, f_ch_df_
 
 
-def check_number_of_channels_consistency(root: str, edf_path_list: list, channel_list: list):
+def nChannelsConsistency(root: str, edf_path_list: list, channel_list: list):
     r"""
 
     Check whether all edf files have the same number of channels
@@ -231,7 +233,7 @@ def check_number_of_channels_consistency(root: str, edf_path_list: list, channel
     return unique_channels_across_all
 
 
-def Check_sample_rate_consistency(root: str, edf_path_list: list, channel_list: list):
+def sampleRateConsistency(root: str, edf_path_list: list, channel_list: list):
     r"""
 
     Read through all edf files and checking whether the sampling rates are the same.
@@ -299,7 +301,7 @@ def Check_sample_rate_consistency(root: str, edf_path_list: list, channel_list: 
 
 
 
-def sortEDF_by_start_time(root: str, edf_path_list: list, channel_list: list):
+def sortEDF_starttime(root: str, edf_path_list: list, channel_list: list):
     r"""
 
     This function sorts all the edf files found in ``edf_path_list`` by the Start time
@@ -338,6 +340,7 @@ def sortEDF_by_start_time(root: str, edf_path_list: list, channel_list: list):
                 If setA *>* setB (setA *<* setB), then this value is True (False).
     **unique_channels_across_all** (``list``):
         The intersection between the unique channels across all edf files and the ``channel_list``.
+
     """
 
     # list of start times of all edf files
@@ -469,6 +472,7 @@ def visualise_resampling(initial_signal: np.array, resampled_signal: np.array, f
 
     Returns:
         matplotlib.figure: a line plot comparing the initial signal and the resampled signal.
+
     """
 
     if (start is None) and (stop is None):
@@ -502,6 +506,3 @@ def visualise_resampling(initial_signal: np.array, resampled_signal: np.array, f
     # plt.show()
 
     return fig
-
-
-

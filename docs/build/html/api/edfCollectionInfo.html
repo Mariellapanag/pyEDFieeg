@@ -74,55 +74,6 @@
 <p>This is a good place to write what the module does. This is going to be in the
 documentation page where this module will be displayed</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="pyEDFieeg.edfCollectionInfo.Check_sample_rate_consistency">
-<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfCollectionInfo.</span></span><span class="sig-name descname"><span class="pre">Check_sample_rate_consistency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edf_path_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfCollectionInfo.html#Check_sample_rate_consistency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfCollectionInfo.Check_sample_rate_consistency" title="Permalink to this definition"></a></dt>
-<dd><p>Read through all edf files and checking whether the sampling rates are the same.
-If the sampling rates are not the same returns the smallest sampling rate found.
-Otherwise it returns the common sampling rate found (if all sampling rates are the same).
-The check is done for all channels found in the edf file that are included in the <code class="docutils literal notranslate"><span class="pre">channel_list</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the full path.</p></li>
-<li><p><strong>edf_path_list</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – a list of the full paths with the edf files.</p></li>
-<li><p><strong>channel_list</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – a list of the channels eligible for analysis (there are times where this is a superset of the channels exist in the edf files).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the sampling rate across all edf files (and channels) found in the <code class="docutils literal notranslate"><span class="pre">edf_path_list</span></code>.
-if all the sampling rates are the same the function returns the common sampling rate.
-Otherwise it returns the minimum sampling rate found.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>np.float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pyEDFieeg.edfCollectionInfo.check_number_of_channels_consistency">
-<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfCollectionInfo.</span></span><span class="sig-name descname"><span class="pre">check_number_of_channels_consistency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edf_path_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfCollectionInfo.html#check_number_of_channels_consistency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfCollectionInfo.check_number_of_channels_consistency" title="Permalink to this definition"></a></dt>
-<dd><p>Check whether all edf files have the same number of channels
-Return the common channels across edf files
-This function needed for checking each subject</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the full path.</p></li>
-<li><p><strong>edf_path_list</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – a list of the full paths with the edf files.</p></li>
-<li><p><strong>channel_list</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – a list of the channels eligible for analysis (there are times where this is a superset of the channels exist in the edf files).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a list with common channels found across all edf files in the <code class="docutils literal notranslate"><span class="pre">root</span></code> path folder for all paths included in the <code class="docutils literal notranslate"><span class="pre">edf_path_list</span></code>. The list includes channels only if those are included in the <code class="docutils literal notranslate"><span class="pre">channel_list</span></code>.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="pyEDFieeg.edfCollectionInfo.clean_edf_paths">
 <span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfCollectionInfo.</span></span><span class="sig-name descname"><span class="pre">clean_edf_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_edfs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corrupted_edf_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_n_Chan</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfCollectionInfo.html#clean_edf_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfCollectionInfo.clean_edf_paths" title="Permalink to this definition"></a></dt>
 <dd><p>Create a new path list linked to the edf files after excluding edf files that
@@ -208,8 +159,57 @@ scipy decimate function is used.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pyEDFieeg.edfCollectionInfo.sortEDF_by_start_time">
-<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfCollectionInfo.</span></span><span class="sig-name descname"><span class="pre">sortEDF_by_start_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edf_path_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfCollectionInfo.html#sortEDF_by_start_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfCollectionInfo.sortEDF_by_start_time" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pyEDFieeg.edfCollectionInfo.nChannelsConsistency">
+<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfCollectionInfo.</span></span><span class="sig-name descname"><span class="pre">nChannelsConsistency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edf_path_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfCollectionInfo.html#nChannelsConsistency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfCollectionInfo.nChannelsConsistency" title="Permalink to this definition"></a></dt>
+<dd><p>Check whether all edf files have the same number of channels
+Return the common channels across edf files
+This function needed for checking each subject</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the full path.</p></li>
+<li><p><strong>edf_path_list</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – a list of the full paths with the edf files.</p></li>
+<li><p><strong>channel_list</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – a list of the channels eligible for analysis (there are times where this is a superset of the channels exist in the edf files).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list with common channels found across all edf files in the <code class="docutils literal notranslate"><span class="pre">root</span></code> path folder for all paths included in the <code class="docutils literal notranslate"><span class="pre">edf_path_list</span></code>. The list includes channels only if those are included in the <code class="docutils literal notranslate"><span class="pre">channel_list</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyEDFieeg.edfCollectionInfo.sampleRateConsistency">
+<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfCollectionInfo.</span></span><span class="sig-name descname"><span class="pre">sampleRateConsistency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edf_path_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfCollectionInfo.html#sampleRateConsistency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfCollectionInfo.sampleRateConsistency" title="Permalink to this definition"></a></dt>
+<dd><p>Read through all edf files and checking whether the sampling rates are the same.
+If the sampling rates are not the same returns the smallest sampling rate found.
+Otherwise it returns the common sampling rate found (if all sampling rates are the same).
+The check is done for all channels found in the edf file that are included in the <code class="docutils literal notranslate"><span class="pre">channel_list</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the full path.</p></li>
+<li><p><strong>edf_path_list</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – a list of the full paths with the edf files.</p></li>
+<li><p><strong>channel_list</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – a list of the channels eligible for analysis (there are times where this is a superset of the channels exist in the edf files).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the sampling rate across all edf files (and channels) found in the <code class="docutils literal notranslate"><span class="pre">edf_path_list</span></code>.
+if all the sampling rates are the same the function returns the common sampling rate.
+Otherwise it returns the minimum sampling rate found.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyEDFieeg.edfCollectionInfo.sortEDF_starttime">
+<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfCollectionInfo.</span></span><span class="sig-name descname"><span class="pre">sortEDF_starttime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edf_path_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfCollectionInfo.html#sortEDF_starttime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfCollectionInfo.sortEDF_starttime" title="Permalink to this definition"></a></dt>
 <dd><p>This function sorts all the edf files found in <code class="docutils literal notranslate"><span class="pre">edf_path_list</span></code> by the Start time
 and extracts information regarding the start, end times as well as the channels found in edf files
 compared to the channels included in the <code class="docutils literal notranslate"><span class="pre">channel_list</span></code>.</p>
