@@ -1,6 +1,5 @@
-"""This is a good place to write what the module does. This is going to be in the
-documentation page where this module will be displayed"""
-
+"""This is an example of how to use the current package functionality for producing
+information regarding the edf files that exist in the folder structure specified in the ``root`` path"""
 
 ###############################################################################
 # M. Panagiotopoulou, April 2022
@@ -10,9 +9,7 @@ documentation page where this module will be displayed"""
 ###############################################################################
 
 # Python module
-import os
 import json
-import pandas as pd
 
 # internal modules
 from pyEDFieeg.edfCollectionInfo import *
@@ -88,13 +85,13 @@ def process_func(subject):
     dfs_combined.to_csv(os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject, "EDF_CHAN_{}.csv".format(subject)))
 
     [EDF_info_df, unique_channels_across_all] = sortEDF_starttime(root = root,
-                                                                  edf_path_list = f_paths_clean,
+                                                                  edf_path_list = f_paths_clean,# we are using the list with the final edf files
                                                                   channel_list = EEG_channel_list)
 
     EDF_info_df.to_csv(os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject, "EDF_INFO_{}.csv".format(subject)))
 
     unique_channels_across_allEDFs = nChannelsConsistency(root = root,
-                                                          edf_path_list = f_paths_clean,
+                                                          edf_path_list = f_paths_clean, # we are using the list with the final edf files
                                                           channel_list = EEG_channel_list)
 
     unique_channels_across_allEDFs.sort()
