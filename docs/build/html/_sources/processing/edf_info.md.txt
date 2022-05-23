@@ -1,8 +1,2 @@
-# Working with edf info for every folder structure at once
-
-```python
-
-import processingUCLH.edf_info
-
-
+```{include} ../../processingUCLH/FILES/EDF_INFO/readme.md
 ```

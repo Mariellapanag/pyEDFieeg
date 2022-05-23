@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>file 1: EDF_CHAN_XXXXX.csv &mdash; pyEDFieeg</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> pyEDFieeg
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../processing/index.html">Examples of processing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pyEDFieeg</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>file 1: EDF_CHAN_XXXXX.csv</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/files/edf_info_files.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>location: FILES/EDF_INFO</p>
+<p>XXXXX: Subject label
+Edf files that are corrupted cannot be read so are not displayed in the following files.</p>
+<section id="file-1-edf-chan-xxxxx-csv">
+<h1>file 1: EDF_CHAN_XXXXX.csv<a class="headerlink" href="#file-1-edf-chan-xxxxx-csv" title="Permalink to this headline"></a></h1>
+<p>Channels found in each edf file. All edf files included in this list.
+This file includes all channel information including heart rate recordings or fault/error edf files.
+Corrupted edf files have been identified and excluded from this list as those were unable to be read
+by pyedflib package or equivalent matlab edf reader functions.</p>
+</section>
+<section id="file-2-edf-info-xxxxx-csv">
+<h1>file 2: EDF_INFO_XXXXX.csv<a class="headerlink" href="#file-2-edf-info-xxxxx-csv" title="Permalink to this headline"></a></h1>
+<p>The file includes general information regarding edf files suitable for further analysis.
+Edf files that have sampling rate equal to 1 or are corrupted have been excluded.
+Also, the heart rate recording has been removed as well.
+All the edf files displayed in the file have been sorted by the start datetime object.</p>
+<ul class="simple">
+<li><p><strong>edf_path</strong>: the path where the edf file is located</p></li>
+<li><p><strong>start_time</strong>: the start time as a date &amp; time object of the recordings included in the corresponding edf file.
+The start time is inclusive in the data included in the edf file.</p></li>
+<li><p><strong>end_time</strong>: the end time as a date &amp; time object of the recordings included in the corresponding edf file.
+The end time is inclusive in the data included in the edf file.</p></li>
+<li><p><strong>duration</strong>: the duration of the recording displayed in the edf file in seconds.</p></li>
+<li><p><strong>n_chan</strong>: number of channels included in the edf file (excluding heart rate recordings).</p></li>
+<li><p><strong>prop_chan</strong>: the proportion of channels that matched the channel_list (provided by the user) in each edf file.</p></li>
+<li><p><strong>index</strong>: this is just a row number.</p></li>
+<li><p><strong>check_ch_with_list_provided</strong>: a boolean variable. This corresponds to all the edf files. If the unique channels across all edf files
+match the channel_list provided by the user, then the entire column will display TRUE. Otherwise the entire column will display FALSE.</p></li>
+<li><p><strong>is_list_greater</strong>: Is the number of channels in the channel_list provided by the user greater of the unique channels found across all edf files?
+If yes/no, then TRUE/FALSE is displayed. Otherwise if channel_list is equal to the unique channels found in all edf files this column is empty.
+The unique channels found across usable edf files should be a subset of the channel_list provided.
+Thus, only TRUE or None are acceptable values for this column.
+If there is FALSE, then sth is wrong with this subject.</p></li>
+</ul>
+</section>
+<section id="file-3-edf-path-excluded-xxxxx-csv">
+<h1>file 3: EDF_PATH_EXCLUDED_XXXXX.csv<a class="headerlink" href="#file-3-edf-path-excluded-xxxxx-csv" title="Permalink to this headline"></a></h1>
+<p>This csv file includes all edf files that have been excluded. It contains the following columns:</p>
+<ul class="simple">
+<li><p><strong>edf_path</strong>: The path of the edf file that has been excluded.</p></li>
+<li><p><strong>why_edf_excluded</strong>: The reason that the edf file has been excluded. Currently detects either edf files that have sample rate equal to 1 or
+edf files that include channels that do nt exist in the channel_list provided by the user.</p></li>
+</ul>
+</section>
+<section id="file-4-channel-list-xxxxx-csv">
+<h1>file 4: CHANNEL_LIST_XXXXX.csv<a class="headerlink" href="#file-4-channel-list-xxxxx-csv" title="Permalink to this headline"></a></h1>
+<p>The channel list (json file) converted to csv file.</p>
+</section>
+<section id="file-5-edf-overlap-info-xxxxx-csv">
+<h1>file 5: EDF_OVERLAP_INFO_XXXXX.csv<a class="headerlink" href="#file-5-edf-overlap-info-xxxxx-csv" title="Permalink to this headline"></a></h1>
+<p>This csv file includes information about files that overlap. It contains the following columns:</p>
+<ul class="simple">
+<li><p><strong>start_overlap</strong>: start datetime object of the overlap</p></li>
+<li><p><strong>end_overlap</strong>: end datetime object of the overlap</p></li>
+<li><p><strong>duration_overlap</strong>: the duration of the overlap as datetime object</p></li>
+<li><p><strong>duration_overlap_sec</strong>: the duration of the overlap in seconds</p></li>
+</ul>
+</section>
+<section id="file-6-channelskeep-xxxxx-csv">
+<h1>file 6: ChannelsKeep_XXXXX.csv<a class="headerlink" href="#file-6-channelskeep-xxxxx-csv" title="Permalink to this headline"></a></h1>
+<p>This csv includes the final list of the channels found across all edf files for one subject.
+Those were the channels that included in the superset channels_list that provided by the user.</p>
+</section>
+<section id="file-7-edf-overlap-check-equal-xxxxx-xlsx">
+<h1>file 7: EDF_OVERLAP_check_equal_XXXXX.xlsx<a class="headerlink" href="#file-7-edf-overlap-check-equal-xxxxx-xlsx" title="Permalink to this headline"></a></h1>
+<p>This excel file contains information regarding the overlap and whether the segments for each pair of edf files that overlap match.
+Includes pairs of edf files only if the overlap is greater than 1 second (as opposed to the file <code class="docutils literal notranslate"><span class="pre">EDF_OVERLAP_INFO_XXXXX.csv</span></code> that includes
+information about all the pairs of edf files that overlap). This is because we cannot capture the exact end time of the edf files in milliseconds.
+Thus, measuring and computing the end time in seconds would affect the results. There might be the case that two edf files that overlap in 1 second,
+might start at some point within this second and accordingly the other edf file will end at some point within this second and it is not an exact overlap in reality.
+So, we do not check if the values match in the case where two edf files overlap for 1 second only.</p>
+<p>Each pair of edf files where the overlap exceeds the 1 second is linked to two sheets within this file:
+SheetA: Includes info about the edf files that overlap</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Mariella Panagiotopoulou.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
