@@ -73,33 +73,6 @@ fs_target = sampleRateConsistency(root = root,
 
 
 
-def create_datetime(year: int, month: int, day: int, hours: int, minutes: int, seconds: int, microseconds: int):
-    r"""
-    Function for creating a datetime object
-
-    Args:
-        year: the calendar year
-        month: the calendar month
-        day: the day
-        hours: the hours
-        minutes: the minutes
-        seconds: the seconds
-        microseconds: the microseconds
-
-    Returns:
-        datetime.datetime: a ``datetime`` object as specified by the user.
-
-    """
-    # (hours, minutes, seconds, microseconds)
-    start_time = datetime.time(hours, minutes, seconds, microseconds)
-    # (year, month, day)
-    start_date = datetime.date(year, month, day)
-    # Create a datetime object
-    start_datetime = datetime.datetime.combine(start_date, start_time)
-
-    return start_datetime
-
-
 ''' Test0.1: Start and end point is not included in any of the edf files but it is within the entire recording time'''
 
 start_seg = create_datetime(year = 2012, month = 6, day = 12, hours = 15, minutes = 00, seconds = 00, microseconds = 0)

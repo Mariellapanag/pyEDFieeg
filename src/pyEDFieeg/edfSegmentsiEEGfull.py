@@ -20,9 +20,6 @@ from pyEDFieeg.edfCollectionInfo import *
 from pyEDFieeg.edfOverlapping import *
 
 
-
-
-
 def gather_EEGsegment_1efd_A(EDF_path, EDF_chan_labels, EDF_start_time, fs_target, T_start, T_stop, channelsKeep):
     """
     This function will gather the eeg signals of the requested channelsKeep list from one specific EDF file.

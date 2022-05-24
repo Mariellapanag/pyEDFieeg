@@ -22,6 +22,34 @@ import matplotlib.pyplot as plt
 
 # internal modules
 
+
+def create_datetime(year: int, month: int, day: int, hours: int, minutes: int, seconds: int, microseconds: int):
+    r"""
+    Function for creating a datetime object
+
+    Args:
+        year: the calendar year
+        month: the calendar month
+        day: the day
+        hours: the hours
+        minutes: the minutes
+        seconds: the seconds
+        microseconds: the microseconds
+
+    Returns:
+        datetime.datetime: a ``datetime`` object as specified by the user.
+
+    """
+    # (hours, minutes, seconds, microseconds)
+    start_time = datetime.time(hours, minutes, seconds, microseconds)
+    # (year, month, day)
+    start_date = datetime.date(year, month, day)
+    # Create a datetime object
+    start_datetime = datetime.datetime.combine(start_date, start_time)
+
+    return start_datetime
+
+
 def removeMultipleKeys(d, key):
     r = dict(d)
     for kk in key:
