@@ -7,7 +7,7 @@ error_edfs = ["1"] # channels labels appear in error edfs
 min_n_Chan = 5
 
 # ROOT DIRECTORY
-ROOT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 loc_output = "FILES" # name for parent folder of all program folders
 ALL_FILES_DIR = os.path.abspath(os.path.join(ROOT_DIR, loc_output))
