@@ -9,8 +9,7 @@
 from plotly.graph_objs.layout import YAxis, Annotation, Font
 from plotly.graph_objs import Layout, Scatter, Annotations, Figure, Marker
 import numpy as np
-import os
-import kaleido
+#import kaleido
 
 # Internal module
 

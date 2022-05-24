@@ -12,6 +12,7 @@ pyEDFlib = "^0.1.28"
 scipy = "^1.8.1"
 matplotlib = "^3.5.2"
 openpyxl = "^3.0.10"
+plotly = "^5.8.0"
 
 [tool.poetry.dev-dependencies]
 Sphinx = "^4.5.0"

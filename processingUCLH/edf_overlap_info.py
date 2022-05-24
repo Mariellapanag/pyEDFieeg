@@ -16,7 +16,6 @@ from pandas import ExcelWriter
 # internal modules
 from pyEDFieeg.edfCollectionInfo import *
 from pyEDFieeg.edfOverlapping import *
-import processingUCLH.paths
 import paths
 
 def save_xls(list_dfs, xls_path, sheetNames):
@@ -42,20 +41,20 @@ subject = "1106"
 
 def process_func(subject):
     # Set the root directory for patient
-    root = os.path.join(processingUCLH.paths.INPUT_DATA_DIR, subject)
+    root = os.path.join(paths.INPUT_DATA, subject)
 
-    EDF_info_path = os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject)
+    EDF_info_path = os.path.join(paths.EDF_INFO_DIR, subject)
     os.makedirs(EDF_info_path, exist_ok=True)
 
-    corrupted_edf_paths = processingUCLH.paths.corrupted_edfs[subject]
+    corrupted_edf_paths = paths.corrupted_edfs[subject]
 
-    error_edfs = processingUCLH.paths.error_edfs # channels labels appear in error edfs
-    min_n_Chan = processingUCLH.paths.min_n_Chan # the minimum threshold of the number of channels needed to be included in the edf file
+    error_edfs = paths.error_edfs # channels labels appear in error edfs
+    min_n_Chan = paths.min_n_Chan # the minimum threshold of the number of channels needed to be included in the edf file
 
     # iEEG channels for each subject. This mat files include the iEEG channels
     # having excluded the Heart Rate Channels
     # EEG_channels = sio.loadmat(os.path.join(paths.iEEG_channels, subject, "channels.mat"))
-    EEG_channel_path = os.path.join(processingUCLH.paths.IN_CHANNELS_DIR, "{}.json".format(subject))
+    EEG_channel_path = os.path.join(paths.IN_CHANNELS, "{}.json".format(subject))
     with open(EEG_channel_path) as json_file:
         Channels_json = json.load(json_file)
         print(Channels_json)
@@ -206,11 +205,11 @@ def process_func(subject):
 
     info_overlap_df.to_csv(os.path.join(paths.EDF_INFO_DIR, subject, "EDF_OVERLAP_INFO_{}.csv".format(subject)))
 
-if __name__ == '__main__':
-    process_func(subject)
-
 # if __name__ == '__main__':
-#     for subject in subject_list:
-#         print(subject)
-#         process_func(subject)
+#     process_func(subject)
+
+if __name__ == '__main__':
+    for subject in subject_list:
+        print(subject)
+        process_func(subject)
 

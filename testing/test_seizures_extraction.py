@@ -10,6 +10,7 @@ import json
 
 # internal modules
 from pyEDFieeg.edfSegmentsiEEGSimple import *
+from pyEDFieeg.rawPlotiEEG import *
 import paths
 
 
@@ -54,7 +55,7 @@ min_n_Chan = paths.min_n_Chan # the minimum threshold of the number of channels 
 # iEEG channels for each subject provided in json files (or mat file). This mat files include the iEEG channels
 # having excluded the Heart Rate Channels
 # EEG_channels = sio.loadmat(os.path.join(paths.iEEG_channels, subject, "channels.mat"))
-EEG_channel_path = os.path.join(paths.IN_CHANNELS_DIR, "{}.json".format(subject))
+EEG_channel_path = os.path.join(paths.IN_CHANNELS, "{}.json".format(subject))
 with open(EEG_channel_path) as json_file:
     Channels_json = json.load(json_file)
     print(Channels_json)
@@ -99,17 +100,15 @@ n_sz = len(t_start)
 
 j = 1
 
-for ii in range(0, n_edfs):
+for ii in range(0, n_sz):
 
-    for m in metrics:
+    # plot of raw seizures
+    fig_name = "Lineplot_raw_sz{}".format(ii)
 
-        # Minimum values
-        fig_name = "Lineplot_{}_EDF{}".format(m,j)
+    fig = plot_funcs.plot_raw_eeg_plotly(raw_data = all_descr_EDFs_dict["{}_list".format(m)][ii], ch_names = common_channels)
 
-        fig = plot_funcs.plot_raw_eeg_plotly(raw_data = all_descr_EDFs_dict["{}_list".format(m)][ii], ch_names = common_channels)
-
-        fig.write_image(os.path.join(fig_path, "{}.pdf".format(fig_name)),
-                        width=(width_inches - marginInches)*ppi,
-                        height=(height_inches - marginInches)*ppi) # to produce a .png file.
+    fig.write_image(os.path.join(fig_path, "{}.pdf".format(fig_name)),
+                    width=(width_inches - marginInches)*ppi,
+                    height=(height_inches - marginInches)*ppi) # to produce a .png file.
 
     j = j + 1
