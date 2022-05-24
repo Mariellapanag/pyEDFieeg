@@ -11,6 +11,7 @@ pandas = "^1.4.2"
 pyEDFlib = "^0.1.28"
 scipy = "^1.8.1"
 matplotlib = "^3.5.2"
+openpyxl = "^3.0.10"
 
 [tool.poetry.dev-dependencies]
 Sphinx = "^4.5.0"
