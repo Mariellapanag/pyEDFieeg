@@ -98,14 +98,22 @@ fig_path = os.path.join(paths.PLOT_SEIZURES_DIR, subject)
 ## Number of edfs
 n_sz = len(t_start)
 
-j = 1
 
+# Constants factors
+marginInches = 1/18
+ppi = 96
+# width & height of figure
+width_inches = 8
+height_inches = 6
+
+
+j = 1
 for ii in range(0, n_sz):
 
     # plot of raw seizures
     fig_name = "Lineplot_raw_sz{}".format(ii)
 
-    fig = plot_funcs.plot_raw_eeg_plotly(raw_data = all_descr_EDFs_dict["{}_list".format(m)][ii], ch_names = common_channels)
+    fig = plot_raw_eeg_plotly(raw_data = seizures_data[ii], ch_names = channelsKeep)
 
     fig.write_image(os.path.join(fig_path, "{}.pdf".format(fig_name)),
                     width=(width_inches - marginInches)*ppi,
