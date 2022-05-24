@@ -9,7 +9,6 @@
 import json
 
 # internal modules
-from pyEDFieeg.edfCollectionInfo import *
 from pyEDFieeg.edfSegmentsiEEGSimple import *
 import paths
 
@@ -28,7 +27,7 @@ subject = "1106"
 
 
 # Load the file with the seizures
-seizuresExcel = pd.read_excel(os.path.join(paths.IN_FILES_DIR, "SeverityTable.xlsx"))
+seizuresExcel = pd.read_excel(os.path.join(paths.IN_FILES, "SeverityTable.xlsx"))
 
 # detect the seizures for the specific subject
 sz_subj = seizuresExcel[seizuresExcel["patient_id"]==subject]
@@ -42,7 +41,7 @@ t_end_sz = [t_start_sz[i] + datetime.timedelta(seconds=int(dur_sz[i])) - datetim
 
 # Load all the information about the EDF files
 # Set the root directory for patient
-root = os.path.join(paths.INPUT_DATA_DIR, subject)
+root = os.path.join(paths.INPUT_DATA, subject)
 
 EDF_info_path = os.path.join(paths.EDF_INFO_DIR, subject)
 os.makedirs(EDF_info_path, exist_ok=True)
