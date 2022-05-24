@@ -288,6 +288,9 @@ def clean_edf_paths(root: str, error_edfs: list, corrupted_edf_paths: list, chan
 
     return f_path_list_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_path_list, f_ch_df_
 
+root = root
+edf_path_list = f_paths_clean
+channel_list = EEG_channel_list
 
 def nChannelsConsistency(root: str, edf_path_list: list, channel_list: list):
     r"""

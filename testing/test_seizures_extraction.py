@@ -86,5 +86,8 @@ fs_target = sampleRateConsistency(root = root,
                                   edf_path_list = f_paths_clean,
                                   channel_list = EEG_channel_list)
 
-t_start = t_start_sz
-t_stop = t_end_sz
+t_start = t_start_sz[0:3]
+t_stop = t_end_sz[0:3]
+
+seizures_data = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = t_start, t_stop = t_stop, fs_target = fs_target)
+
