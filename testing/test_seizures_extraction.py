@@ -7,10 +7,12 @@
 
 # Python module
 import json
+import pandas as pd
+import os
+import datetime
 
 # internal modules
 from pyEDFieeg.edfCollectionInfo import *
-from pyEDFieeg.edfSegmentsiEEGSimple import *
 import processingUCLH.paths
 
 
@@ -63,12 +65,12 @@ EEG_channel_list = [element['name'] for element in Channels_json]
 
 
 # Get info about edf files and a list with the final paths pointed to the edf files to be used for the analysis
-[f_paths_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_paths, edf_chan] = clean_edf_paths(root = root,
+[f_paths_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_paths, edf_chan] = pyEDFieeg.edfCollectionInfo.clean_edf_paths(root = root,
                                                                                                            error_edfs = error_edfs,
                                                                                                            corrupted_edf_paths = corrupted_edf_paths,
                                                                                                            channel_list = EEG_channel_list,
                                                                                                            min_n_Chan = min_n_Chan)
-edfs_info = get_EDFs_info(root = root,
+edfs_info = pyEDFieeg.edfCollectionInfo.get_EDFs_info(root = root,
                           edf_path_list = f_paths_clean,
                           channel_list = EEG_channel_list)
 

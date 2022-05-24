@@ -6,7 +6,6 @@
 ###############################################################################
 
 # Python module
-
 import warnings
 
 # internal modules
@@ -355,5 +354,3 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
     else:
         warnings.warn('Warning Message: Some start or stop times requested \n '
                       'are not within the full recording range as this specified by the edf files provided in the function')
-
-
