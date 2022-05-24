@@ -94,6 +94,7 @@ seizures_data = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channel
 # Plot raw data and save them
 # Plot values for each edf
 fig_path = os.path.join(paths.PLOT_SEIZURES_DIR, subject)
+os.makedirs(fig_path, exist_ok=True)
 
 ## Number of edfs
 n_sz = len(t_start)
@@ -106,8 +107,6 @@ ppi = 96
 width_inches = 8
 height_inches = 6
 
-
-j = 1
 for ii in range(0, n_sz):
 
     # plot of raw seizures
@@ -119,4 +118,3 @@ for ii in range(0, n_sz):
                     width=(width_inches - marginInches)*ppi,
                     height=(height_inches - marginInches)*ppi) # to produce a .png file.
 
-    j = j + 1
