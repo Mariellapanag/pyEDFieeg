@@ -432,6 +432,103 @@ def sortEDF_starttime(root: str, edf_path_list: list, channel_list: list):
     return edf_df_time_info, unique_channels_across_all
 
 
+
+def get_EDFs_info(root: str, edf_path_list: list, channel_list: list):
+    r"""
+    This function searches in root for any *.edf files.
+    Uses the function ``sortEDF_starttime`` so as all results are given in an order based on sorting
+    by start time all the edf files provided.
+    It will then go through all of them.
+    For every EDF it pulls out the info about the start time/date, duration (in hours),
+    filename, number of channels, and sampling freq. All of this is returned.
+
+    Args:
+        root: the full path.
+        edf_path_list: a list of the full paths with the edf files.
+        channel_list: a list of the channels eligible for analysis (there are times where this is a superset of the channels exist in the edf files).
+
+    Returns:
+        dict: Info about the edf files included in the analysis. The start and end times displayed will be inclusive in this calculation,
+        so duration will be end - start + 1sec.
+
+        {
+        **start_time** (``list``):
+            the start time for each edf file (``datetime``).
+        **end_time** (``list``):
+            the end time for each edf file (``datetime``).
+        **record_duration** (``list``):
+            the duration for each edf file (``timedelta``).
+        **nChan** (``list``):
+            the number of channels for each edf file (``int``).
+        **fs** (``list``):
+            the frequency sampling for all channels within each edf file (``float``).
+        **chan_labels** (``list``):
+            the labels for all channels within each edf file (``str``).
+        **fpath** (``str``):
+            the full paths pointing to each edf file.
+        }
+
+    """
+
+    # sort edf files by start time. The edfs that are inluded are the valid ones
+    [sorted_edfs_info, unique_channels_across_all] = sortEDF_starttime(root, edf_path_list, channel_list)
+
+    f_path_sorted = list(sorted_edfs_info.edf_path.values)
+
+    # start time; datetime object
+    start_time = list()
+    # end time; datetime object
+    end_time = list()
+    # recording duration in sec
+    record_duration = list()
+    # number of channels
+    nChan = list()
+    # frequency sampling for all channels
+    fs = {}
+    # channel labels
+    chan_labels = {}
+
+    if os.path.exists(root):
+        for edf_path in f_path_sorted:
+            # read header of edf file
+            f_header = pyedflib.EdfReader(edf_path, 0, 1)
+            # Get start date
+            f_start_time = f_header.getStartdatetime() # where this file starts
+
+            # Get End time
+            # Calculation of inclusive end time
+            f_end_time = f_start_time + datetime.timedelta(seconds=f_header.getFileDuration()-1) # where this file ends
+
+            # Duration in seconds
+            f_duration = (f_end_time - f_start_time) + datetime.timedelta(seconds=1)
+
+            # Signals in file
+            f_nChan = f_header.signals_in_file
+
+            # frequency sampling across channels
+            f_fs = f_header.getSampleFrequencies()
+
+            # Channel labels
+            f_chan_labels = f_header.getSignalLabels()
+
+            f_header.close()
+
+            start_time.append(f_start_time)
+            end_time.append(f_end_time)
+            record_duration.append(f_duration)
+            nChan.append(f_nChan)
+            fs[edf_path] = f_fs
+            chan_labels[edf_path] = f_chan_labels
+
+    else:
+        raise NotADirectoryError
+
+    return {"start_time": start_time, "end_time": end_time, "record_duration": record_duration,
+            "nChan": nChan, "fs": fs, "chan_labels": chan_labels,
+            "fpath": f_path_sorted}
+
+
+
 def downsample_decimate(signal: np.array, fs: float, target_fs: float):
     r"""
 
