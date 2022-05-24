@@ -162,132 +162,25 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
     """
 
     # edf start and stop times for all edf files
-    edf_start_time_temp = edfs_info["start_time"]
-    edf_stop_time_temp = edfs_info["end_time"]
+    edf_start_time = edfs_info["start_time"]
+    edf_stop_time = edfs_info["end_time"]
 
     # Recording duration of EDF files in seconds for all edf files
-    edf_duration_temp = edfs_info["record_duration"]
+    edf_duration = edfs_info["record_duration"]
 
     # EDF paths
-    edf_fpaths_temp = edfs_info["fpath"]
+    edf_fpaths = edfs_info["fpath"]
 
     # EDF nChan & channel labels found in each edf file
-    edf_nChan_temp = edfs_info["nChan"]
-    edf_chan_labels_temp = edfs_info["chan_labels"]
+    edf_nChan = edfs_info["nChan"]
+    edf_chan_labels = edfs_info["chan_labels"]
 
     # sampling frequencies found across all channels in every edf file
-    edfs_fs_temp = edfs_info["fs"]
+    edfs_fs = edfs_info["fs"]
 
-    """
-    Check first if there is an exact overlapping between any two files
-    if there is and the files are similar drop one between the two from the list
-    if there is and the files are not similar then drop both from the list (this will produce NaNs in the time range those files covered)
 
-    First check whether we have exact match in any two edf files
-    
-    """
-    indx_edfs = range(0, len(edf_fpaths_temp))
-    idx_combinations = list(itertools.combinations(indx_edfs,2))
-
-    overlap_pair = list()
-    id_exclude = list()
-    for pair in idx_combinations:
-        print("Check {} pair of edfs".format(pair))
-
-        edf1_indx = pair[0]
-        edf2_indx = pair[1]
-
-        #  start, edn and paths for edf files
-        startA = edf_start_time_temp[edf1_indx]
-        startB = edf_start_time_temp[edf2_indx]
-        endA = edf_stop_time_temp[edf1_indx]
-        endB = edf_stop_time_temp[edf2_indx]
-        pathA = edf_fpaths_temp[edf1_indx]
-        pathB = edf_fpaths_temp[edf2_indx]
-        chA = edf_chan_labels_temp[pathA]
-        chB = edf_chan_labels_temp[pathB]
-
-        print("edf1: {} \n , start: {}, \n end:{}".format(pathA, startA, endA))
-        print("edf2: {} \n , start: {}, \n end:{}".format(pathB, startB, endB))
-
-        if (startA <= startB):
-            t1_start = startA
-            t1_end = endA
-            t1_path = pathA
-            t2_start = startB
-            t2_end = endB
-            t2_path = pathB
-        else:
-            t1_start = startB
-            t1_end = endB
-            t1_path = pathB
-            t2_start = startA
-            t2_end = endA
-            t2_path = pathA
-
-        if (t1_start==t2_start) and (t1_end==t2_end):
-            overlap_pair.append(pair)
-            # Boolean value specified if values within this channel are equal or not
-            common_ch_temp = intersection(chA, chB)
-            common_ch = intersection(common_ch_temp, channelsKeep)
-            # Don't look all channels just the first 4. If the first 4 ones are identical
-            # then we assume that all the channels are identical
-            ch_is = list()
-            for chh in common_ch[0:4]:
-                print(chh)
-                overlapIdent_temp = isOverlapIdentical(start_fileA = t1_start, start_fileB = t2_start, end_fileA = t1_end, end_fileB = t2_end, edf_pathFileA = t1_path, edf_pathFileB = t2_path, channel_label = chh)
-                ch_is.append(overlapIdent_temp)
-
-            if np.all(ch_is):
-                # The two edf files are identical, so choose between the two
-                id_exclude.append(edf1_indx)
-            else:
-                # exclude both edf files, because assuming that these are not the same might be problematic
-                id_exclude.append(edf1_indx, edf2_indx)
-
-    if not id_exclude:
-        # if the list of ids to exclude is empty
-        # edf start and stop times for all edf files
-        edf_start_time = edf_start_time_temp
-        edf_stop_time = edf_stop_time_temp
-
-        # Recording duration of EDF files in seconds for all edf files
-        edf_duration = edf_duration_temp
-
-        # EDF paths
-        edf_fpaths = edf_fpaths_temp
-
-        # EDF nChan & channel labels found in each edf file
-        edf_nChan = edf_nChan_temp
-        edf_chan_labels = edf_chan_labels_temp
-
-        # sampling frequencies found across all channels in every edf file
-        edfs_fs = edfs_fs_temp
-
-    else: # in that case the list is not empty, then exclude the edf files that added in the list
-        # if the list of ids to exclude is empty
-        # edf start and stop times for all edf files
-        edf_start_time = [edf_start_time_temp[i] for i in range(0, len(edf_start_time_temp)) if i not in id_exclude]
-        edf_stop_time = [edf_stop_time_temp[i] for i in range(0, len(edf_stop_time_temp)) if i not in id_exclude]
-
-        # Recording duration of EDF files in seconds for all edf files
-        edf_duration = [edf_duration_temp[i] for i in range(0, len(edf_duration_temp)) if i not in id_exclude]
-
-        # EDF paths
-        edf_fpaths = [edf_fpaths_temp[i] for i in range(0, len(edf_fpaths_temp)) if i not in id_exclude]
-
-        # EDF nChan & channel labels found in each edf file
-        edf_nChan = [edf_nChan_temp[i] for i in range(0, len(edf_nChan_temp)) if i not in id_exclude]
-
-        # the paths to exclude
-        paths_exclude = [edf_fpaths_temp[i] for i in range(0, len(edf_fpaths_temp)) if i in id_exclude]
-        edf_chan_labels = removeMultipleKeys(d = edf_chan_labels_temp, key = paths_exclude)
-
-        # sampling frequencies found across all channels in every edf file
-        edfs_fs = removeMultipleKeys(d = edfs_fs_temp, key = paths_exclude)
-
-    """If there are any exact overlapping matches between any two edf files, we have excluded them by now
-    There might still be overlapping between files but not exact match."""
+    '''If there are any exact overlapping matches between any two edf files, we have excluded them by now
+    There might still be overlapping between files but not exact match.'''
     # number of segments to extract
     n_segments = len(t_start)
 
@@ -327,7 +220,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
             # Get indices corresponding to True values
             check_indx_stop = [stop_tuple[0] for stop_tuple in stop_time_tuple if stop_tuple[1] == True]
 
-            """Conditions starting here"""
+            '''Conditions starting here'''
 
             if (check_point_start == 0) and (check_point_stop == 0):
                 '''
@@ -356,7 +249,9 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                 We have already check in other function - previous step that overlapping segments over 1s are the same.
                 In the case where both start and end time requested exist in more than one edf file we are going to choose the first one
                 '''
-                if (set(check_indx_start) == set(check_indx_stop)): #  check if this two lists contain the same elements even if those are not in order
+                if (set(check_indx_start) == set(check_indx_stop)):
+                    ''' TODO: Check that the overlapping periods are the same. If not fill with NaNs'''
+                    #  check if this two lists contain the same elements even if those are not in order
                     # check3: start and end time belongs to the same edf file (`check_indx_start == check_indx_stop`)
                     # This means that start and end time exist both in all the files
                     # if start time and end time exist in one edf file and not in other edf files
@@ -372,6 +267,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                                            T_start = t_start[ii], T_stop = t_stop[ii],
                                            channelsKeep = channelsKeep)
                 elif (common_elements(check_indx_start, check_indx_stop) == True):
+                    ''' TODO: Check that the overlapping periods are the same. If not fill with NaNs'''
                     # check if the edfs containing the start are subset of the edf files containing the stop times
                     # or the opposite. If this is the case, then there are common elements.
                     common_indx_edf = intersection(check_indx_start, check_indx_stop)
@@ -385,34 +281,10 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                                                                                 T_start = t_start[ii], T_stop = t_stop[ii],
                                                                                 channelsKeep = channelsKeep)
                 elif (common_elements(check_indx_start, check_indx_stop) == False):
-                    # TODO: Need to work on that code. This is where we check that there are multiple edf files invlolved and hence we will first concatenate and then extract the requested segment
-                    '''
-                    SUBCONDITION 3: 
-                    
-                    '''
-                    # combine all edf files (those that contain start and those that contain stop times)
-                    start_or_stop = np.hstack([np.repeat("start", len(check_indx_start)), np.repeat("stop", len(check_indx_stop))])
-                    indx_start_and_stop = check_indx_start + check_indx_stop
-                    duration_overlap_list = list()
-                    for dd_edf in indx_start_and_stop:
-                        # find the overlap; the duration of the requested segment that is covered by each edf
-                        Start_edf = edf_start_time[dd_edf]
-                        End_edf = edf_stop_time[dd_edf]
+                      # Choose the edf file that contains more from the segment requested
+                      # In order to do that we will compare the overlapping of the segment with the two files
 
-                        result_overlap = edfoverlap.intervals_overlap(t1_start = Start_edf, t1_end = End_edf,
-                                                           t2_start = t_start[ii], t2_end = t_stop[ii])
-                        duration_overlap_temp = result_overlap[1][2].total_seconds()
-                        duration_overlap_list.append(duration_overlap_temp)
 
-                    duration_overlap_df = pd.DataFrame({"edf_indx": indx_start_and_stop, "duration_overlap": duration_overlap_list,
-                                                        "start_or_stop": start_or_stop})
-                    duration_overlap_sorted_df = duration_overlap_df.sort_values(by=['duration_overlap'], ascending = False) #sort by duration - descending order
-                    # select the edf that has the highest overlap with the duration of the requested segment. This would be the in the first row of the sorted dataframe.
-                    indx_edf = duration_overlap_sorted_df['edf_indx'].iloc[0]
-                    identification = duration_overlap_sorted_df['start_or_stop'].iloc[0]
-                    # if (identification == "start"):
-                    #
-                    # elif (identification == "stop"):
 
         return EEGsignals
     else:

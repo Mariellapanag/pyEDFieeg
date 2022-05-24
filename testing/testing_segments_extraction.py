@@ -72,7 +72,6 @@ fs_target = sampleRateConsistency(root = root,
                                   channel_list = EEG_channel_list)
 
 
-
 ''' Test0.1: Start and end point is not included in any of the edf files but it is within the entire recording time'''
 
 start_seg = create_datetime(year = 2012, month = 6, day = 12, hours = 15, minutes = 00, seconds = 00, microseconds = 0)
