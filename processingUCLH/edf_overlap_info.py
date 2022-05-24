@@ -12,13 +12,13 @@ import numpy as np
 import pandas as pd
 import json
 from pandas import ExcelWriter
-from itertools import chain
 
 # internal modules
-import paths
-import generic_functions.edf_overlapping as edfoverlap
-import generic_functions.get_info_edfs_func as edfs_info_funcs
-import generic_functions.edfcollection_funcs as process_funcs
+from pyEDFieeg.edfCollectionInfo import *
+from pyEDFieeg.edfOverlapping import *
+import processingUCLH.paths
+from processingUCLH import paths
+
 
 def save_xls(list_dfs, xls_path, sheetNames):
     with ExcelWriter(xls_path) as writer:
@@ -43,42 +43,44 @@ subject = "1106"
 
 def process_func(subject):
     # Set the root directory for patient
-    root = os.path.join(paths.INPUT_DATA_DIR, subject)
+    root = os.path.join(processingUCLH.paths.INPUT_DATA_DIR, subject)
 
-    EDF_info_path = os.path.join(paths.EDF_INFO_DIR, subject)
+    EDF_info_path = os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject)
     os.makedirs(EDF_info_path, exist_ok=True)
 
-    corrupted_edf_paths = paths.corrupted_edfs[subject]
+    corrupted_edf_paths = processingUCLH.paths.corrupted_edfs[subject]
 
-    error_edfs = paths.error_edfs # channels labels appear in error edfs
-    min_n_Chan = paths.min_n_Chan # the minimum threshold of the number of channels needed to be included in the edf file
+    error_edfs = processingUCLH.paths.error_edfs # channels labels appear in error edfs
+    min_n_Chan = processingUCLH.paths.min_n_Chan # the minimum threshold of the number of channels needed to be included in the edf file
 
     # iEEG channels for each subject. This mat files include the iEEG channels
     # having excluded the Heart Rate Channels
     # EEG_channels = sio.loadmat(os.path.join(paths.iEEG_channels, subject, "channels.mat"))
-    EEG_channel_path = os.path.join(paths.iEEG_channels, "{}.json".format(subject))
+    EEG_channel_path = os.path.join(processingUCLH.paths.IN_CHANNELS_DIR, "{}.json".format(subject))
     with open(EEG_channel_path) as json_file:
         Channels_json = json.load(json_file)
         print(Channels_json)
     EEG_channel_list = [element['name'] for element in Channels_json]
 
-    edfs_info = edfs_info_funcs.get_EDFs_info(root = root,
-                                              error_edfs = error_edfs,
-                                              corrupted_edf_paths = corrupted_edf_paths,
-                                              EEG_channel_list = EEG_channel_list,
-                                              min_n_Chan = min_n_Chan)
+    # Get info about edf files and a list with the final paths pointed to the edf files to be used for the analysis
+    [f_paths_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_paths, edf_chan] = clean_edf_paths(root = root,
+                                                                                                               error_edfs = error_edfs,
+                                                                                                               corrupted_edf_paths = corrupted_edf_paths,
+                                                                                                               channel_list = EEG_channel_list,
+                                                                                                               min_n_Chan = min_n_Chan)
+    edfs_info = get_EDFs_info(root = root,
+                              edf_path_list = f_paths_clean,
+                              channel_list = EEG_channel_list)
 
-    unique_channels_across_allEDFs = process_funcs.check_number_of_channels_consistency(root = root,
-                                                                                        error_edfs = error_edfs,
-                                                                                        corrupted_edf_paths = corrupted_edf_paths,
-                                                                                        EEG_channel_list = EEG_channel_list,
-                                                                                        min_n_Chan = min_n_Chan)
+    unique_channels_across_allEDFs = nChannelsConsistency(root = root,
+                                                          edf_path_list = f_paths_clean, # we are using the list with the final edf files
+                                                          channel_list = EEG_channel_list)
+
     unique_channels_across_allEDFs.sort()
     # The channels to keep; these are the ones that are included in the list and in at least one edf file.
     # If a channel is not included in en edf file will be filled with NaN values.
-    channelsKeep = unique_channels_across_allEDFs.copy()
+    channelsKeep = unique_channels_across_allEDFs.copy()# edf start and stop times
 
-    # edf start and stop times
     edf_start_time = edfs_info["start_time"]
     edf_stop_time = edfs_info["end_time"]
 
@@ -134,42 +136,42 @@ def process_func(subject):
             t2_start = startA
             t2_end = endA
 
-        pair_result = edfoverlap.intervals_overlap(t1_start = t1_start, t1_end = t1_end,
+        pair_result = intervals_overlap(t1_start = t1_start, t1_end = t1_end,
                                      t2_start = t2_start, t2_end = t2_end)
         pair_list.append(pair_result)
 
         # Check here for each overlapping pair whether the overlapping segments are equal or not
         # this checks all the pairs that the duration of overlap is more than 1 second. This is because for 1s overlap
         # we are not sure where the two edf files match as the resolution of the edf files is in milliseconds.
-        if (pair_result[0] != False) and (pair_result[1] != None) and (pair_result[1][2].seconds > 1):
-            check_list_ch = [edfoverlap.is_overlap_segm_equal_FOR2(start_fileA = startA, start_fileB = startB, end_fileA = endA,
-                                                                   end_fileB = endB, edf_pathFileA = pathA, edf_pathFileB = pathB,
-                                                                   channel_label = ch)
-                             if ((ch in chA) and (ch in chB)) else "channel_missing" for ch in channelsKeep]
-            # check_list_ch = list()
-            #
-            # for ch in channelsKeep:
-            #     if (ch in chA) and (ch in chB):
-            #         print(ch)
-            #         check = edfoverlap.is_overlap_segm_equal_FOR2(start_fileA = startA, start_fileB = startB, end_fileA = endA,
-            #                                                       end_fileB = endB, edf_pathFileA = pathA, edf_pathFileB = pathB,
-            #                                                       channel_label = ch)
-            #         check_list_ch.append(check)
-            #     else:
-            #         check_list_ch.append("channel_missing")
-
-            overlap_match_df = pd.DataFrame({"overlap_edfs_paths": [pathA, pathB], "overlap_edfs_start": [startA, startB],
-                                             "overlap_edfs_end": [endA, endB], "overlap_range": [pair_result[1][0], pair_result[1][1]]})
-            overlap_ch_chek_df = pd.DataFrame({"channels_list": channelsKeep, "check_status": check_list_ch})
-
-            list_dfs_xls.append(overlap_match_df)
-            list_dfs_xls.append(overlap_ch_chek_df)
-            list_sheet_names.append('detail_info_{}'.format(pair))
-            list_sheet_names.append('check_ch_status_{}'.format(pair))
-
-    xls_path = os.path.join(paths.EDF_INFO_DIR, subject, "EDF_OVERLAP_check_equal_{}.xlsx".format(subject))
-
-    save_xls(list_dfs = list_dfs_xls, xls_path = xls_path, sheetNames = list_sheet_names)
+    #     if (pair_result[0] != False) and (pair_result[1] != None) and (pair_result[1][2].seconds > 1):
+    #         check_list_ch = [isOverlapIdentical(start_fileA = startA, start_fileB = startB, end_fileA = endA,
+    #                                                                end_fileB = endB, edf_pathFileA = pathA, edf_pathFileB = pathB,
+    #                                                                channel_label = ch)
+    #                          if ((ch in chA) and (ch in chB)) else "channel_missing" for ch in channelsKeep]
+    #         # check_list_ch = list()
+    #         #
+    #         # for ch in channelsKeep:
+    #         #     if (ch in chA) and (ch in chB):
+    #         #         print(ch)
+    #         #         check = edfoverlap.is_overlap_segm_equal_FOR2(start_fileA = startA, start_fileB = startB, end_fileA = endA,
+    #         #                                                       end_fileB = endB, edf_pathFileA = pathA, edf_pathFileB = pathB,
+    #         #                                                       channel_label = ch)
+    #         #         check_list_ch.append(check)
+    #         #     else:
+    #         #         check_list_ch.append("channel_missing")
+    #
+    #         overlap_match_df = pd.DataFrame({"overlap_edfs_paths": [pathA, pathB], "overlap_edfs_start": [startA, startB],
+    #                                          "overlap_edfs_end": [endA, endB], "overlap_range": [pair_result[1][0], pair_result[1][1]]})
+    #         overlap_ch_chek_df = pd.DataFrame({"channels_list": channelsKeep, "check_status": check_list_ch})
+    #
+    #         list_dfs_xls.append(overlap_match_df)
+    #         list_dfs_xls.append(overlap_ch_chek_df)
+    #         list_sheet_names.append('detail_info_{}'.format(pair))
+    #         list_sheet_names.append('check_ch_status_{}'.format(pair))
+    #
+    # xls_path = os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject, "EDF_OVERLAP_check_equal_{}.xlsx".format(subject))
+    #
+    # save_xls(list_dfs = list_dfs_xls, xls_path = xls_path, sheetNames = list_sheet_names)
 
     # TODO: CONTINUE WORKING ON THAT. check if all overlapping segments over 1s are equal and produce a csv
     # refer to the commented code below

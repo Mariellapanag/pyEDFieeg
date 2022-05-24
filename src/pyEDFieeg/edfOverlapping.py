@@ -246,7 +246,7 @@ def overlapSort(start_fileA: datetime.datetime, start_fileB: datetime.datetime, 
 
 # The following function checks if the overlapping parts are equal between two overlapped edf files
 # Returns True if this is the case. Otherwise returns False.
-def is_overlap_segm_equal_FOR2(start_fileA, start_fileB, end_fileA, end_fileB, edf_pathFileA, edf_pathFileB, channel_label):
+def isOverlapIdentical(start_fileA, start_fileB, end_fileA, end_fileB, edf_pathFileA, edf_pathFileB, channel_label):
 
     [result_overlap, t1_start, t1_end, t2_start, t2_end, t1_path, t2_path] = overlapSort(start_fileA, start_fileB, end_fileA, end_fileB, edf_pathFileA, edf_pathFileB)
 

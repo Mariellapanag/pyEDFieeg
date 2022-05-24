@@ -16,10 +16,9 @@ import json
 import pandas as pd
 
 # internal modules
-import paths
-import generic_functions.edfcollection_funcs as process_funcs
-import generic_functions.get_info_edfs_func as edfs_info_funcs
-import generic_functions.edf_overlapping as edfoverlap
+from pyEDFieeg.edfCollectionInfo import *
+from pyEDFieeg.edfOverlapping import *
+
 
 def common_elements(list1: list, list2: list):
     r"""
@@ -65,12 +64,10 @@ def isbetween(time: datetime.datetime, time_range: tuple):
         time_range: a tuple depicting a time range. Each time in the time range is a datetime object.
 
     Returns:
-
+        boolean: True if the condition is met. Otherwise, the function returns False
 
     """
-    :param time: datetime object
-    :param time_range: (start_time, stop_time), where start_time and stop_time are both datetime objects
-    :return: boolean value. True if the condition is met. Otherwise, the function returns False.
+
     if time_range[1] < time_range[0]:
         return time >= time_range[0] or time <= time_range[1]
     return time_range[0] <= time <= time_range[1]
@@ -205,7 +202,7 @@ def gather_EEGsegment_1efd_StartOnly(EDF_path, indx_edf, EDF_chan_labels, EDF_st
 ###########################################################
 ## Main function for extracting segments from edf files
 ###########################################################
-def export_segment_ieeg_from_edfs(edfs_info, channelsKeep, t_start, t_stop, fs_target ):
+def edfExportSegieeg(edfs_info, channelsKeep, t_start, t_stop, fs_target ):
     """
     :param edfs_info: a dictionary with the following information;
             {"start_time": start_time, "end_time": end_time, "record_duration": record_duration,
