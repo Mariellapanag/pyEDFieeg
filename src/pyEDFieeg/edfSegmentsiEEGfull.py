@@ -6,8 +6,14 @@
 ###############################################################################
 
 # Python module
+import os
+import pyedflib
+import datetime
+import numpy as np
 import warnings
 import itertools
+import json
+import pandas as pd
 
 # internal modules
 from pyEDFieeg.edfCollectionInfo import *
@@ -15,7 +21,9 @@ from pyEDFieeg.edfOverlapping import *
 
 
 
-def gather_EEGsegment_1efd(EDF_path, EDF_chan_labels, EDF_start_time, fs_target, T_start, T_stop, channelsKeep):
+
+
+def gather_EEGsegment_1efd_A(EDF_path, EDF_chan_labels, EDF_start_time, fs_target, T_start, T_stop, channelsKeep):
     """
     This function will gather the eeg signals of the requested channelsKeep list from one specific EDF file.
     This function works if the start and end times exist in a single EDF file.
@@ -75,7 +83,7 @@ def gather_EEGsegment_1efd(EDF_path, EDF_chan_labels, EDF_start_time, fs_target,
 
 ## TODO: THIS IS WHERE I LEFT CONTINUE THISSSSSS!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-def gather_EEGsegment_1efd_StartOnly(EDF_path, indx_edf, EDF_chan_labels, EDF_start_time_list, EDF_stop_time_list, DOWNSAMPLE, fs_target, T_start, T_stop, channelsKeep):
+def gather_EEGsegment_1efd_StartOnly_A(EDF_path, indx_edf, EDF_chan_labels, EDF_start_time_list, EDF_stop_time_list, DOWNSAMPLE, fs_target, T_start, T_stop, channelsKeep):
     """
     This function will gather the eeg signals from the requested channelsKeep list.
     This function works if the start and end time exists in this one edf.
@@ -143,7 +151,7 @@ def gather_EEGsegment_1efd_StartOnly(EDF_path, indx_edf, EDF_chan_labels, EDF_st
 ###########################################################
 ## Main function for extracting segments from edf files
 ###########################################################
-def edfExportSegieeg(edfs_info: dict, channelsKeep: list, t_start: datetime.datetime, t_stop: datetime.datetime, fs_target: float):
+def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.datetime, t_stop: datetime.datetime, fs_target: float):
     """
     :param edfs_info: a dictionary with the following information;
             {"start_time": start_time, "end_time": end_time, "record_duration": record_duration,
@@ -415,50 +423,3 @@ def edfExportSegieeg(edfs_info: dict, channelsKeep: list, t_start: datetime.date
                       'are not within the full recording range as this specified by the edf files provided in the function')
 
 
-def subcondition3(edf_start_time, edf_stop_time, edf_fpaths, s_start, s_end, edf_chan_labels, channelsKeep):
-    # this condition will be applied to segments or part of segment that exist in the edf files
-
-    indx_edfs = range(0, len(edf_fpaths))
-    # Find overlap if the segment with all the different edf files
-    indx_overlap = list() # this contains the indices of all edf files to be concatenated
-    for dd_edf in indx_edfs:
-        # find the overlap; the duration of the requested segment that is covered by each edf
-        Start_edf = edf_start_time[dd_edf]
-        End_edf = edf_stop_time[dd_edf]
-
-        result_overlap = intervals_overlap(t1_start = Start_edf, t1_end = End_edf,
-                                                      t2_start = s_start, t2_end = s_end)
-        if result_overlap[0] == True:
-            indx_overlap.append(dd_edf) # this means that the parts of the segment requested exist in different edf files
-
-    # pairs of edf files
-    idx_pairwise = list(pairwise(indx_overlap))
-
-    # First check whether there is any overlapping between consecutive edf files
-    # Now we want to check whether these edf files have overlapping parts
-    for kk in idx_pairwise:
-        print(kk)
-        idf1 = kk[0]
-        idf2 = kk[1]
-        s1 = edf_start_time[idf1]
-        e1 = edf_stop_time[idf1]
-        path1 = edf_fpaths[idf1]
-        ch1 = edf_chan_labels[path1]
-        s2 = edf_start_time[idf2]
-        e2 = edf_stop_time[idf2]
-        path2 = edf_fpaths[idf2]
-        ch2 = edf_chan_labels[path2]
-
-        result_edfoverlap = intervals_overlap(t1_start = s1, t1_end = e1,
-                                           t2_start = s2, t2_end = e2)
-        print(result_edfoverlap)
-
-        if result_edfoverlap[0] == True:
-            common_ch_temp = intersection(ch1, ch2)
-            common_ch = intersection(common_ch_temp, channelsKeep)
-            ch_is = list()
-            for chh in common_ch[0:4]:
-                overlapIdent_temp = isOverlapIdentical(start_fileA = s1, start_fileB = s2, end_fileA = e1, end_fileB = e2, edf_pathFileA = path1, edf_pathFileB = path2, channel_label = chh)
-                ch_is.append(overlapIdent_temp)
-
-    """Start concatenating the edf files"""

@@ -15,11 +15,86 @@ import numpy as np
 import pyedflib
 import pandas as pd
 import datetime
+import itertools
 from itertools import chain
 import scipy.signal
 import matplotlib.pyplot as plt
 
 # internal modules
+
+def removeMultipleKeys(d, key):
+    r = dict(d)
+    for kk in key:
+        del r[kk]
+    return r
+
+def pairwise(iterable):
+    # https://docs.python.org/3.10/library/itertools.html#itertools.pairwise
+    # pairwise('ABCDEFG') --> AB BC CD DE EF FG
+    a, b = itertools.tee(iterable)
+    next(b, None)
+    return zip(a, b)
+
+
+def common_elements(list1: list, list2: list):
+    r"""
+    Checks if two lists are identical. The order doesn't count.
+
+    Args:
+        list1: 1st list
+        list2: 2nd list
+
+    Returns:
+        boolean: True/False if the two lists are/aren't identical.
+
+    """
+    set1 = set(list1)
+    set2 = set(list2)
+    if (set1 & set2):
+        return True
+    else:
+        return False
+
+def intersection(lst1: list, lst2: list):
+    r"""
+
+    Args:
+        lst1: 1st list
+        lst2: 2nd list
+
+    Returns:
+        list: the elements included in the intersection of ``list1`` and ``list2``.
+
+    """
+    lst3 = [element for element in lst1 if element in lst2]
+    return lst3
+
+# def intersect(*d):
+#     # https://stackoverflow.com/questions/3852780/python-intersection-of-multiple-lists
+#     sets = iter(map(set, d))
+#     result = sets.next()
+#     for s in sets:
+#         result = result.intersection(s)
+#     return result
+
+
+def isbetween(time: datetime.datetime, time_range: tuple):
+    r"""
+    Function for finding if a certain datetime object exists in a specified datetime range.
+    The boundaries of the time range are also included.
+
+    Args:
+        time: a datetime object
+        time_range: a tuple depicting a time range. Each time in the time range is a datetime object.
+
+    Returns:
+        boolean: True if the condition is met. Otherwise, the function returns False
+
+    """
+
+    if time_range[1] < time_range[0]:
+        return time >= time_range[0] or time <= time_range[1]
+    return time_range[0] <= time <= time_range[1]
 
 
 def unique(list1: list):
