@@ -13,6 +13,7 @@ import datetime
 
 # internal modules
 from pyEDFieeg.edfCollectionInfo import *
+from pyEDFieeg.edfSegmentsiEEGSimple import *
 import processingUCLH.paths
 
 
@@ -65,12 +66,12 @@ EEG_channel_list = [element['name'] for element in Channels_json]
 
 
 # Get info about edf files and a list with the final paths pointed to the edf files to be used for the analysis
-[f_paths_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_paths, edf_chan] = pyEDFieeg.edfCollectionInfo.clean_edf_paths(root = root,
+[f_paths_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_paths, edf_chan] = clean_edf_paths(root = root,
                                                                                                            error_edfs = error_edfs,
                                                                                                            corrupted_edf_paths = corrupted_edf_paths,
                                                                                                            channel_list = EEG_channel_list,
                                                                                                            min_n_Chan = min_n_Chan)
-edfs_info = pyEDFieeg.edfCollectionInfo.get_EDFs_info(root = root,
+edfs_info = get_EDFs_info(root = root,
                           edf_path_list = f_paths_clean,
                           channel_list = EEG_channel_list)
 
@@ -88,8 +89,32 @@ fs_target = sampleRateConsistency(root = root,
                                   edf_path_list = f_paths_clean,
                                   channel_list = EEG_channel_list)
 
-t_start = t_start_sz[0:3]
-t_stop = t_end_sz[0:3]
+t_start = t_start_sz
+t_stop = t_end_sz
 
 seizures_data = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = t_start, t_stop = t_stop, fs_target = fs_target)
 
+# Plot raw data and save them
+# Plot values for each edf
+fig_path = os.path.join(paths.PLOTS_BAD_CHANNELS_DIR, subject)
+os.makedirs(fig_path, exist_ok=True)
+
+## Number of edfs
+n_sz = len(t_start)
+
+j = 1
+
+for ii in range(0, n_edfs):
+
+    for m in metrics:
+
+        # Minimum values
+        fig_name = "Lineplot_{}_EDF{}".format(m,j)
+
+        fig = plot_funcs.plot_raw_eeg_plotly(raw_data = all_descr_EDFs_dict["{}_list".format(m)][ii], ch_names = common_channels)
+
+        fig.write_image(os.path.join(fig_path, "{}.pdf".format(fig_name)),
+                        width=(width_inches - marginInches)*ppi,
+                        height=(height_inches - marginInches)*ppi) # to produce a .png file.
+
+    j = j + 1
