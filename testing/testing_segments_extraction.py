@@ -10,7 +10,7 @@ import json
 
 # internal modules
 from pyEDFieeg.edfCollectionInfo import *
-from pyEDFieeg.edfSegmentsiEEG import *
+from pyEDFieeg.edfSegmentsiEEGSimple import *
 import processingUCLH.paths
 
 
@@ -125,6 +125,15 @@ end_seg = create_datetime(year = 2012, month = 6, day = 17, hours = 20, minutes 
 t_start = [start_seg]
 t_stop = [end_seg]
 
+'''Test5'''
+start_seg = create_datetime(year = 2012, month = 6, day = 12, hours = 11, minutes = 40, seconds = 30, microseconds = 0)
+end_seg = create_datetime(year = 2012, month = 6, day = 12, hours = 11, minutes = 41, seconds = 50, microseconds = 0)
+
+t_start = [start_seg]
+t_stop = [end_seg]
+
+
+segment = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = t_start, t_stop = t_stop, fs_target = fs_target)
 
 
 # EDF_path = edf_path

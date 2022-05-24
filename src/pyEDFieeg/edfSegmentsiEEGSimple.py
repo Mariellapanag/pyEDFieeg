@@ -6,14 +6,8 @@
 ###############################################################################
 
 # Python module
-import os
-import pyedflib
-import datetime
-import numpy as np
+
 import warnings
-import itertools
-import json
-import pandas as pd
 
 # internal modules
 from pyEDFieeg.edfCollectionInfo import *
@@ -78,76 +72,6 @@ def gather_EEGsegment_1efd_A(EDF_path, EDF_chan_labels, EDF_start_time, fs_targe
     return EEGsignals, channelsKeep, fs_target
 
 
-## TODO: THIS IS WHERE I LEFT CONTINUE THISSSSSS!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-def gather_EEGsegment_1efd_StartOnly_A(EDF_path, indx_edf, EDF_chan_labels, EDF_start_time_list, EDF_stop_time_list, DOWNSAMPLE, fs_target, T_start, T_stop, channelsKeep):
-    """
-    This function will gather the eeg signals from the requested channelsKeep list.
-    This function works if the start and end time exists in this one edf.
-    :param EDF_path:
-    :param EDF_fs:
-    :param EDF_chan_labels:
-    :param EDF_start_time:
-    :param EDF_stop_time:
-    :param DOWNSAMPLE:
-    :param fs_target:
-    :param T_start:
-    :param T_stop:
-    :param channelsKeep:
-    :return:
-    """
-
-    # Duration of segment in seconds and sampling points
-    durSeg_sec = (T_stop - T_start) + datetime.timedelta(seconds=1)
-
-    # Load edf file
-    edf_reader = pyedflib.EdfReader(EDF_path)
-    # Go through the list of channels get id and load the arrays
-    ch_list = []
-    for ch in channelsKeep:
-        # Check whether this channel exists in the edf channel list
-        if ch in EDF_chan_labels:  # find the channel id based on the name within the edf file
-            ch_indx = EDF_chan_labels.index(ch)
-            fs_chan = edf_reader.getSampleFrequency(ch_indx)
-
-            if (DOWNSAMPLE == True) and (fs_target !=None):
-                fs_final = fs_target
-            else:
-                fs_final = fs_chan
-
-            # TODO: NEED TO MODIFY THIS CODE TO TAKE INTO ACCOUNT THAT THE END TIME IS OUTSIDE THE EDF
-            durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_final))
-
-            if (T_start == EDF_start_time): # if start segment and start of edf file are the same
-                start_sampl_points = 0
-            elif (T_start > EDF_start_time): # Find the start and end points in sampling points relative to the edf start and end time
-                # compute the starting point considering that we are starting from 0
-                delta = T_start - EDF_start_time
-                delta_sec = delta.seconds
-                start_sampl_points = int(float(delta_sec * fs_final))
-
-            ch_signal_temp = edf_reader.readSignal(ch_indx, start = start_sampl_points, n = durSeg_samplPoints, digital=False) # physical values used for EEG
-            edf_reader.close()
-
-            if (DOWNSAMPLE == True) and (fs_target !=None):
-                ch_signal = process_funcs.downsample_decimate(signal = ch_signal_temp, fs = int(float(fs_chan)), target_fs = int(float(fs_final)))
-            else:
-                ch_signal = ch_signal_temp.copy()
-        else:
-            ch_signal = np.empty(shape = durSeg_samplPoints) * np.nan
-        # Gather all values for all channels in list
-        ch_list.append(ch_signal)
-    # the raw EEG signals for this segment that requested
-    # combine all arrays in the list
-    EEGsignals = np.vstack(ch_list)
-
-    return EEGsignals, channelsKeep, fs_final
-
-
-
-###########################################################
-## Main function for extracting segments from edf files
-###########################################################
 def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.datetime, t_stop: datetime.datetime, fs_target: float):
     """
     :param edfs_info: a dictionary with the following information;
@@ -259,11 +183,65 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                                                                                   EDF_start_time = edf_start_time[indx_edf], fs_target = fs_target,
                                                                                   T_start = t_start[ii], T_stop = t_stop[ii],
                                                                                   channelsKeep = channelsKeep)
-                elif:
+                else:
                     # checks what edf file contains most of the segment requested
                     # Compute the overlap between the segment requested and the edf file start and end point
-                    result_overlap_start = intervals_overlap(t1_start = t_start[ii], t1_end = t_stop[ii], t2_start = edf_start_time[check_indx_start[0]], t2_end = edf_stop_time[check_indx_start[0]])
-                    result_overlap_end = intervals_overlap(t1_start = t_start[ii], t1_end = t_stop[ii], t2_start = edf_start_time[check_indx_stop[0]], t2_end = edf_stop_time[check_indx_stop[0]])
+                    id1 = check_indx_start[0]
+                    id2 = check_indx_stop[0]
+                    result_overlap_start = intervals_overlap(t1_start = t_start[ii], t1_end = t_stop[ii], t2_start = edf_start_time[id1], t2_end = edf_stop_time[id1])
+                    result_overlap_end = intervals_overlap(t1_start = t_start[ii], t1_end = t_stop[ii], t2_start = edf_start_time[id2], t2_end = edf_stop_time[id2])
+
+                    final_ch1 = intersection(edf_chan_labels[edf_fpaths[id1]], channelsKeep)
+                    final_ch2 = intersection(edf_chan_labels[edf_fpaths[id2]], channelsKeep)
+
+                    if (result_overlap_start[1][2].seconds >= result_overlap_end[1][2].seconds):
+                        if (len(final_ch1) >= len(final_ch2)):
+                            start_id = id1
+                            end_id = None
+                        else:
+                            start_id = None
+                            end_id = id2
+                    else:
+                        if (len(final_ch2) >= len(final_ch1)):
+                            start_id = None
+                            end_id = id2
+                        else:
+                            start_id = id1
+                            end_id = None
+                    if (start_id and not end_id):
+                        # if start edf was chosen then we will get data from the first edf file and the rest of the data would be missing data
+                        # Get the path corresponding to the indx_edf
+                        edf_path = edf_fpaths[start_id]
+
+                        [EEGsignals1, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path = edf_path, EDF_chan_labels = edf_chan_labels[edf_path],
+                                                                                      EDF_start_time = edf_start_time[start_id], fs_target = fs_target,
+                                                                                      T_start = t_start[ii], T_stop = edf_stop_time[start_id],
+                                                                                      channelsKeep = channelsKeep)
+                        # Duration of segment in seconds and sampling points
+                        durSeg_sec = (t_stop[ii] - edf_stop_time[start_id]) # here we don't have to add 1 second as edf_stop_time is not included in this segment of data
+                        durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_target))
+
+                        # The final segment of EEG for all channels
+                        EEGsignals2 = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
+                        EEGsignals = np.hstack(EEGsignals1, EEGsignals2)
+
+                    elif (end_id and not start_id):
+                        # if start edf was chosen then we will get data from the first edf file and the rest of the data would be missing data
+                        # Get the path corresponding to the indx_edf
+                        edf_path = edf_fpaths[end_id]
+                        # Duration of segment in seconds and sampling points
+                        durSeg_sec = (edf_start_time[end_id] - t_start[ii]) # here we don't need to add one as edf_start_time is not included in this segment of data
+                        durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_target))
+
+                        # The final segment of EEG for all channels
+                        EEGsignals1 = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
+
+                        [EEGsignals2, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path = edf_path, EDF_chan_labels = edf_chan_labels[edf_path],
+                                                                                       EDF_start_time = edf_start_time[end_id], fs_target = fs_target,
+                                                                                       T_start = edf_start_time[end_id], T_stop = t_stop[ii],
+                                                                                       channelsKeep = channelsKeep)
+                        EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
+            elif (check_point_start > 1) and (check_point_stop > 1):
                 '''
                 CONDITION 2: THE CASE WHERE START AND END TIMES EXIST WITHIN AN EDF FILE BUT THIS HAPPENS FOR MULTIPLE EDF FILES
                 BECAUSE EDF FILES OVERLAP.
@@ -281,7 +259,12 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                     # if start time and end time exist in one edf file and not in other edf files
                     # This checks if the start and end time exists in the same edf file
                     # this means that we can pull the data from one edf file pointed in the index check_indx_start or check_indx_stop
-                    indx_edf = check_indx_start[0]
+
+                    # pick the edf file with the maximum channels
+                    chhn = [len(intersection(edf_chan_labels[edf_fpaths[idd]], channelsKeep)) for idd in check_indx_start]
+                    id_max_ch = np.argmax(chhn)
+                    # choose the edf with maximum number of channels as long as all the edf files cover the same time range
+                    indx_edf = check_indx_start[id_max_ch]
 
                     # Get the path corresponding to the indx_edf
                     edf_path = edf_fpaths[indx_edf]
@@ -294,8 +277,13 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                     ''' TODO: Check that the overlapping periods are the same. If not fill with NaNs'''
                     # check if the edfs containing the start are subset of the edf files containing the stop times
                     # or the opposite. If this is the case, then there are common elements.
+
+                    # if there edf files that both have start and end time then choose the one with more channels
                     common_indx_edf = intersection(check_indx_start, check_indx_stop)
-                    indx_edf = common_indx_edf[0]
+                    chhn = [len(intersection(edf_chan_labels[edf_fpaths[idd]], channelsKeep)) for idd in common_indx_edf]
+                    id_max_ch = np.argmax(chhn)
+
+                    indx_edf = common_indx_edf[id_max_ch]
 
                     # Get the path corresponding to the indx_edf
                     edf_path = edf_fpaths[indx_edf]
@@ -305,10 +293,52 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                                                                                 T_start = t_start[ii], T_stop = t_stop[ii],
                                                                                 channelsKeep = channelsKeep)
                 elif (common_elements(check_indx_start, check_indx_stop) == False):
-                      # Choose the edf file that contains more from the segment requested
-                      # In order to do that we will compare the overlapping of the segment with the two files
+                    # Choose the edf file that contains more from the segment requested
+                    # In order to do that we will compare the overlapping of the segment with the two files
 
+                    # from all edf files from start and end compute the overlapping to see he duration we can get from each edf
+                    all_ii = check_indx_start + check_indx_stop
 
+                    duration_overlapp = list()
+                    final_ch = list()
+                    for ee in all_ii:
+                        duration_overlapp.append(intervals_overlap(t1_start = t_start[ii], t1_end = t_stop[ii], t2_start = edf_start_time[ee], t2_end = edf_stop_time[ee])[1][2].seconds)
+                        final_ch.append(len(intersection(edf_chan_labels[edf_fpaths[ee]], channelsKeep)))
+
+                    id_duration = np.argmax(duration_overlapp)
+                    # TODO: MAYBE THIS COUL BE IMPROVED IF I ADD SOME THRESHODS REGARDING CHANNELS, NUMBER OF CHANNELS
+                    edf_idd = all_ii[id_duration]
+
+                    if (edf_idd in check_indx_start):
+                        edf_path = edf_fpaths[edf_idd]
+
+                        [EEGsignals1, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path = edf_path, EDF_chan_labels = edf_chan_labels[edf_path],
+                                                                                       EDF_start_time = edf_start_time[edf_idd], fs_target = fs_target,
+                                                                                       T_start = t_start[ii], T_stop = edf_stop_time[edf_idd],
+                                                                                       channelsKeep = channelsKeep)
+                        # Duration of segment in seconds and sampling points
+                        durSeg_sec = (t_stop[ii] - edf_stop_time[edf_idd]) # here we don't have to add 1 second as edf_stop_time is not included in this segment of data
+                        durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_target))
+
+                        # The final segment of EEG for all channels
+                        EEGsignals2 = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
+                        EEGsignals = np.hstack(EEGsignals1, EEGsignals2)
+                    elif (edf_idd in check_indx_stop):
+                        # if start edf was chosen then we will get data from the first edf file and the rest of the data would be missing data
+                        # Get the path corresponding to the indx_edf
+                        edf_path = edf_fpaths[edf_idd]
+                        # Duration of segment in seconds and sampling points
+                        durSeg_sec = (edf_start_time[edf_idd] - t_start[ii]) # here we don't need to add one as edf_start_time is not included in this segment of data
+                        durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_target))
+
+                        # The final segment of EEG for all channels
+                        EEGsignals1 = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
+
+                        [EEGsignals2, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path = edf_path, EDF_chan_labels = edf_chan_labels[edf_path],
+                                                                                       EDF_start_time = edf_start_time[edf_idd], fs_target = fs_target,
+                                                                                       T_start = edf_start_time[edf_idd], T_stop = t_stop[ii],
+                                                                                       channelsKeep = channelsKeep)
+                        EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
 
         return EEGsignals
     else:
