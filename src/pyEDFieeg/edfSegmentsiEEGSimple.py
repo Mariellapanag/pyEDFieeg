@@ -63,7 +63,7 @@ def gather_EEGsegment_1efd_A(EDF_path, EDF_chan_labels, EDF_start_time, fs_targe
 
             if (fs_chan > fs_target):
 
-                ch_signal = process_funcs.downsample_decimate(signal = ch_signal_temp, fs = int(float(fs_chan)), target_fs = int(float(fs_target)))
+                ch_signal = downsample_decimate(signal = ch_signal_temp, fs = int(float(fs_chan)), target_fs = int(float(fs_target)))
             else:
                 ch_signal = ch_signal_temp.copy()
         else:
@@ -234,22 +234,15 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                 # The final segment of EEG for all channels
                 EEGsignals = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
 
-            elif (check_point_start >= 1) and (check_point_stop >= 1):
-
+            elif (check_point_start == 1) and (check_point_stop == 1):
                 '''
                 CONDITION 1: START AND END TIME EXIST IN THE SAME EDF FILE NOT IN OTHER EDF FILES
                 NOT OVERLAPPING IN THIS CONDITION
                 # check1: start time requested belongs to one file (`check_point_start == 1`)  
                 # check2: end time requested belongs to one file (`check_point_stop == 1`)
-                
-                CONDITION 2: THE CASE WHERE START AND END TIMES EXIST WITHIN AN EDF FILE BUT THIS HAPPENS FOR MULTIPLE EDF FILES
-                BECAUSE EDF FILES OVERLAP.
-                # check1: start time requested belongs to more than one file (`check_point_start > 1`)  
-                # check2: end time requested belongs to more than one file (`check_point_stop > 1`)
-                We have already check in other function - previous step that overlapping segments over 1s are the same.
-                In the case where both start and end time requested exist in more than one edf file we are going to choose the first one
                 '''
                 if (set(check_indx_start) == set(check_indx_stop)):
+
                     ''' TODO: Check that the overlapping periods are the same. If not fill with NaNs'''
                     #  check if this two lists contain the same elements even if those are not in order
                     # check3: start and end time belongs to the same edf file (`check_indx_start == check_indx_stop`)
@@ -262,7 +255,38 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                     # Get the path corresponding to the indx_edf
                     edf_path = edf_fpaths[indx_edf]
 
-                    [EEGsignals, channels_seg, fs_seg] = gather_EEGsegment_1efd(EDF_path = edf_path, EDF_chan_labels = edf_chan_labels[edf_path],
+                    [EEGsignals, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path = edf_path, EDF_chan_labels = edf_chan_labels[edf_path],
+                                                                                  EDF_start_time = edf_start_time[indx_edf], fs_target = fs_target,
+                                                                                  T_start = t_start[ii], T_stop = t_stop[ii],
+                                                                                  channelsKeep = channelsKeep)
+                elif:
+                    # checks what edf file contains most of the segment requested
+                    # Compute the overlap between the segment requested and the edf file start and end point
+                    result_overlap_start = intervals_overlap(t1_start = t_start[ii], t1_end = t_stop[ii], t2_start = edf_start_time[check_indx_start[0]], t2_end = edf_stop_time[check_indx_start[0]])
+                    result_overlap_end = intervals_overlap(t1_start = t_start[ii], t1_end = t_stop[ii], t2_start = edf_start_time[check_indx_stop[0]], t2_end = edf_stop_time[check_indx_stop[0]])
+                '''
+                CONDITION 2: THE CASE WHERE START AND END TIMES EXIST WITHIN AN EDF FILE BUT THIS HAPPENS FOR MULTIPLE EDF FILES
+                BECAUSE EDF FILES OVERLAP.
+                # check1: start time requested belongs to more than one file (`check_point_start > 1`)  
+                # check2: end time requested belongs to more than one file (`check_point_stop > 1`)
+                We have already check in other function - previous step that overlapping segments over 1s are the same.
+                In the case where both start and end time requested exist in more than one edf file we are going to choose the first one
+                '''
+                if (set(check_indx_start) == set(check_indx_stop)):
+
+                    ''' TODO: Check that the overlapping periods are the same. If not fill with NaNs'''
+                    #  check if this two lists contain the same elements even if those are not in order
+                    # check3: start and end time belongs to the same edf file (`check_indx_start == check_indx_stop`)
+                    # This means that start and end time exist both in all the files
+                    # if start time and end time exist in one edf file and not in other edf files
+                    # This checks if the start and end time exists in the same edf file
+                    # this means that we can pull the data from one edf file pointed in the index check_indx_start or check_indx_stop
+                    indx_edf = check_indx_start[0]
+
+                    # Get the path corresponding to the indx_edf
+                    edf_path = edf_fpaths[indx_edf]
+
+                    [EEGsignals, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path = edf_path, EDF_chan_labels = edf_chan_labels[edf_path],
                                            EDF_start_time = edf_start_time[indx_edf], fs_target = fs_target,
                                            T_start = t_start[ii], T_stop = t_stop[ii],
                                            channelsKeep = channelsKeep)
@@ -276,7 +300,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                     # Get the path corresponding to the indx_edf
                     edf_path = edf_fpaths[indx_edf]
 
-                    [EEGsignals, channels_seg, fs_seg] = gather_EEGsegment_1efd(EDF_path = edf_path, EDF_chan_labels = edf_chan_labels[edf_path],
+                    [EEGsignals, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path = edf_path, EDF_chan_labels = edf_chan_labels[edf_path],
                                                                                 EDF_start_time = edf_start_time[indx_edf], fs_target = fs_target,
                                                                                 T_start = t_start[ii], T_stop = t_stop[ii],
                                                                                 channelsKeep = channelsKeep)
