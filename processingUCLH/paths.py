@@ -19,7 +19,7 @@ IN_FILES_DIR = os.path.abspath(os.path.join(ROOT_DIR, loc_input))
 IN_CHANNELS_DIR = os.path.abspath(os.path.join(IN_FILES_DIR, "CHANNEL_LIST"))
 
 # location where Plots for raw data seizures will be located
-PLOTS_SEIZURES_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "PLOTS_SEIZURES"))
+PLOT_SEIZURES_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "PLOTS_SEIZURES"))
 
 # location where Plots for Detecting Bad channels are located for each subject
 PLOTS_BAD_CHANNELS_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "PLOTS_BAD_CHANNELS"))

@@ -96,8 +96,7 @@ seizures_data = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channel
 
 # Plot raw data and save them
 # Plot values for each edf
-fig_path = os.path.join(paths.PLOTS_BAD_CHANNELS_DIR, subject)
-os.makedirs(fig_path, exist_ok=True)
+fig_path = os.path.join(processingUCLH.paths.PLOTS_SEIZURES_DIR, subject)
 
 ## Number of edfs
 n_sz = len(t_start)
