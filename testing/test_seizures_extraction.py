@@ -30,6 +30,16 @@ subject = "1106"
 # Load the file with the seizures
 seizuresExcel = pd.read_excel(os.path.join(processingUCLH.paths.IN_FILES_DIR, "SeverityTable.xlsx"))
 
+# detect the seizures for the specific subject
+sz_subj = seizuresExcel[seizuresExcel["patient_id"]==subject]
+sz_subj_df = sz_subj.reset_index()  # make sure indexes pair with number of rows
+
+t_start_sz = list(sz_subj_df["start"])
+dur_sz = sz_subj_df["duration"]
+
+t_end_sz = [t_start_sz[i] + datetime.timedelta(seconds=int(dur_sz[i])) - datetime.timedelta(seconds=1) for i in range(0, len(t_start_sz))]
+
+
 # Load all the information about the EDF files
 # Set the root directory for patient
 root = os.path.join(processingUCLH.paths.INPUT_DATA_DIR, subject)
@@ -76,3 +86,5 @@ fs_target = sampleRateConsistency(root = root,
                                   edf_path_list = f_paths_clean,
                                   channel_list = EEG_channel_list)
 
+t_start = t_start_sz
+t_stop = t_end_sz

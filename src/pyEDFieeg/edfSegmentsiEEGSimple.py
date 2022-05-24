@@ -125,7 +125,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
     if (all(start_time_global) == True) and (all(stop_time_global) == True):
         print("The requested (start, end) segments are included within the entire time recording. \n"
               "The segments requested are being extracted ...")
-
+        EEG_segments_all = list()
         for ii in range(n_segments):
             # for each segment......
 
@@ -157,6 +157,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 
                 # The final segment of EEG for all channels
                 EEGsignals = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
+                EEG_segments_all.append(EEGsignals)
 
             elif (check_point_start == 1) and (check_point_stop == 1):
                 '''
@@ -183,6 +184,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                                                                                   EDF_start_time = edf_start_time[indx_edf], fs_target = fs_target,
                                                                                   T_start = t_start[ii], T_stop = t_stop[ii],
                                                                                   channelsKeep = channelsKeep)
+                    EEG_segments_all.append(EEGsignals)
                 else:
                     # checks what edf file contains most of the segment requested
                     # Compute the overlap between the segment requested and the edf file start and end point
@@ -224,6 +226,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                         # The final segment of EEG for all channels
                         EEGsignals2 = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
                         EEGsignals = np.hstack(EEGsignals1, EEGsignals2)
+                        EEG_segments_all.append(EEGsignals)
 
                     elif (end_id and not start_id):
                         # if start edf was chosen then we will get data from the first edf file and the rest of the data would be missing data
@@ -241,6 +244,8 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                                                                                        T_start = edf_start_time[end_id], T_stop = t_stop[ii],
                                                                                        channelsKeep = channelsKeep)
                         EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
+                        EEG_segments_all.append(EEGsignals)
+
             elif (check_point_start > 1) and (check_point_stop > 1):
                 '''
                 CONDITION 2: THE CASE WHERE START AND END TIMES EXIST WITHIN AN EDF FILE BUT THIS HAPPENS FOR MULTIPLE EDF FILES
@@ -273,6 +278,8 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                                            EDF_start_time = edf_start_time[indx_edf], fs_target = fs_target,
                                            T_start = t_start[ii], T_stop = t_stop[ii],
                                            channelsKeep = channelsKeep)
+                    EEG_segments_all.append(EEGsignals)
+
                 elif (common_elements(check_indx_start, check_indx_stop) == True):
                     ''' TODO: Check that the overlapping periods are the same. If not fill with NaNs'''
                     # check if the edfs containing the start are subset of the edf files containing the stop times
@@ -292,6 +299,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                                                                                 EDF_start_time = edf_start_time[indx_edf], fs_target = fs_target,
                                                                                 T_start = t_start[ii], T_stop = t_stop[ii],
                                                                                 channelsKeep = channelsKeep)
+                    EEG_segments_all.append(EEGsignals)
                 elif (common_elements(check_indx_start, check_indx_stop) == False):
                     # Choose the edf file that contains more from the segment requested
                     # In order to do that we will compare the overlapping of the segment with the two files
@@ -323,6 +331,8 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                         # The final segment of EEG for all channels
                         EEGsignals2 = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
                         EEGsignals = np.hstack(EEGsignals1, EEGsignals2)
+                        EEG_segments_all.append(EEGsignals)
+
                     elif (edf_idd in check_indx_stop):
                         # if start edf was chosen then we will get data from the first edf file and the rest of the data would be missing data
                         # Get the path corresponding to the indx_edf
@@ -339,8 +349,9 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                                                                                        T_start = edf_start_time[edf_idd], T_stop = t_stop[ii],
                                                                                        channelsKeep = channelsKeep)
                         EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
+                        EEG_segments_all.append(EEGsignals)
 
-        return EEGsignals
+        return EEG_segments_all
     else:
         warnings.warn('Warning Message: Some start or stop times requested \n '
                       'are not within the full recording range as this specified by the edf files provided in the function')
