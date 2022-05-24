@@ -1,0 +1,2186 @@
+[
+  {
+    "name": "EEG AH_01-REF",
+    "location_orig": [
+      -22.915726988118081,
+      6.8873295982294565,
+      -17.241499023675573
+    ],
+    "mask_dist": 0.27949684636896571,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AH_02-REF",
+    "location_orig": [
+      -27.9265388913162,
+      5.8675831550572752,
+      -15.831197441185054
+    ],
+    "mask_dist": 0.22677123704053284,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AH_03-REF",
+    "location_orig": [
+      -32.803212462780891,
+      5.4375434666263516,
+      -13.831189103953278
+    ],
+    "mask_dist": 0.50859240579762466,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AH_04-REF",
+    "location_orig": [
+      -41.972312649715661,
+      4.221228105207075,
+      -10.848336175486025
+    ],
+    "mask_dist": 1.1730463058941729,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      143
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AH_05-REF",
+    "location_orig": [
+      -50.497548844329856,
+      3.0049127437877985,
+      -8.2586210835129918
+    ],
+    "mask_dist": 4.7674156694499139,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      146,
+      248
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AH_06-REF",
+    "location_orig": [
+      -61.521753529487938,
+      0.93736915645135355,
+      -2.1529104683081925
+    ],
+    "mask_dist": 6.9331165870449567,
+    "mask_proj_pial_dist": 6.4212929053363359,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      73,
+      145,
+      246
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AM_01-REF",
+    "location_orig": [
+      -18.897084033537737,
+      12.880846713867214,
+      -16.440316888936508
+    ],
+    "mask_dist": 0.46761975568821124,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      14,
+      14,
+      14,
+      14
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AM_02-REF",
+    "location_orig": [
+      -23.854611105398192,
+      13.3145690566476,
+      -16.398532833281308
+    ],
+    "mask_dist": 0.52812873540474292,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      14,
+      14,
+      14,
+      14
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AM_03-REF",
+    "location_orig": [
+      -28.975453490753324,
+      13.508965965065045,
+      -16.117423343263141
+    ],
+    "mask_dist": 0.50547534610040212,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      14,
+      14,
+      14,
+      14
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AM_04-REF",
+    "location_orig": [
+      -38.77437230043347,
+      13.508965965065045,
+      -15.638772474537177
+    ],
+    "mask_dist": 0.65000589893962124,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      147,
+      250
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AM_05-REF",
+    "location_orig": [
+      -48.294930915432076,
+      12.975483773449838,
+      -13.584331147593218
+    ],
+    "mask_dist": 1.7443252395717466,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      143
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AM_06-REF",
+    "location_orig": [
+      -59.19738380281666,
+      13.971942866781006,
+      -13.54100873174167
+    ],
+    "mask_dist": 0.50042027516235754,
+    "mask_proj_pial_dist": 0.62051969442976462,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG GA_01-REF",
+    "location_orig": [
+      -41.570542837321987,
+      66.288786689408965,
+      -16.534737707585517
+    ],
+    "mask_dist": 19.498159456380261,
+    "mask_proj_pial_dist": 19.194214682723416,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      156
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_02-REF",
+    "location_orig": [
+      -47.809307931255539,
+      61.25840909544543,
+      -12.269581674961493
+    ],
+    "mask_dist": 15.382659513191065,
+    "mask_proj_pial_dist": 15.027097333934213,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      156
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_03-REF",
+    "location_orig": [
+      -51.716311217169419,
+      54.735095523786079,
+      -7.5777268138129159
+    ],
+    "mask_dist": 11.763468292780741,
+    "mask_proj_pial_dist": 8.548258608449709,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      62
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_04-REF",
+    "location_orig": [
+      -54.632496925109649,
+      47.577400170761393,
+      -2.7045581073357
+    ],
+    "mask_dist": 8.0235955573178988,
+    "mask_proj_pial_dist": 9.9318558939129264,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      157
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_05-REF",
+    "location_orig": [
+      -57.348434486841107,
+      40.291493753933437,
+      2.2052548434668147
+    ],
+    "mask_dist": 8.8286397987429872,
+    "mask_proj_pial_dist": 7.6942772380225675,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      121,
+      191
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_06-REF",
+    "location_orig": [
+      -60.064372048572558,
+      33.005587337105474,
+      7.1150677942693275
+    ],
+    "mask_dist": 14.301543318149781,
+    "mask_proj_pial_dist": 14.33488128022838,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      121,
+      190
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_07-REF",
+    "location_orig": [
+      -62.276935402941007,
+      25.397390083438228,
+      12.116995292901057
+    ],
+    "mask_dist": 22.3605331808311,
+    "mask_proj_pial_dist": 23.567486656685634,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      112,
+      171
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_08-REF",
+    "location_orig": [
+      -63.07411749533938,
+      16.882979510346729,
+      17.377929317980239
+    ],
+    "mask_dist": 29.461767403763265,
+    "mask_proj_pial_dist": 27.954887968284854,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      112,
+      171
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_09-REF",
+    "location_orig": [
+      -38.609172474044357,
+      57.9113239682508,
+      -24.01636818097252
+    ],
+    "mask_dist": 9.9786267789476391,
+    "mask_proj_pial_dist": 10.135194336142719,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      55,
+      96,
+      127
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_10-REF",
+    "location_orig": [
+      -47.564626231473163,
+      54.642980566064381,
+      -20.269681718652318
+    ],
+    "mask_dist": 8.9322086880071421,
+    "mask_proj_pial_dist": 7.9152333502238674,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      62
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_11-REF",
+    "location_orig": [
+      -52.290096341654454,
+      48.666343910972358,
+      -15.748932888233464
+    ],
+    "mask_dist": 5.6488981838742944,
+    "mask_proj_pial_dist": 4.3364304317607649,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      148,
+      252
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_12-REF",
+    "location_orig": [
+      -56.1090501470382,
+      42.109300285860478,
+      -11.062296854428318
+    ],
+    "mask_dist": 3.1267449240071072,
+    "mask_proj_pial_dist": 0.568315825917901,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      148,
+      252
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_13-REF",
+    "location_orig": [
+      -58.929554169909586,
+      34.912988277027566,
+      -6.1929503263208563
+    ],
+    "mask_dist": 4.3260136496011006,
+    "mask_proj_pial_dist": 2.1754484053761645,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      147,
+      249
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_14-REF",
+    "location_orig": [
+      -61.638454495673663,
+      27.645220781582527,
+      -1.3031809717262117
+    ],
+    "mask_dist": 11.958646000289281,
+    "mask_proj_pial_dist": 11.718397196889475,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      147,
+      250
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_15-REF",
+    "location_orig": [
+      -63.739669332224963,
+      19.988376011241975,
+      3.6977912876705208
+    ],
+    "mask_dist": 18.469492618126811,
+    "mask_proj_pial_dist": 20.467949992261278,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      113,
+      172
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_16-REF",
+    "location_orig": [
+      -64.988644546582449,
+      11.785875510022136,
+      8.8547184336948064
+    ],
+    "mask_dist": 19.722496907158934,
+    "mask_proj_pial_dist": 21.737233486657079,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      113,
+      172
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_17-REF",
+    "location_orig": [
+      -35.476832062338424,
+      49.424395805327059,
+      -31.466712131385243
+    ],
+    "mask_dist": 2.8814318253921116,
+    "mask_proj_pial_dist": 0.49181390541421866,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      148,
+      253
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_18-REF",
+    "location_orig": [
+      -46.572538315319946,
+      47.549017039439327,
+      -28.133010778334324
+    ],
+    "mask_dist": 4.5325750382735679,
+    "mask_proj_pial_dist": 0.321024056575247,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      148,
+      253
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_19-REF",
+    "location_orig": [
+      -52.636801316337653,
+      42.452201750850662,
+      -23.878584617965657
+    ],
+    "mask_dist": 3.1543602241972786,
+    "mask_proj_pial_dist": 0.3780285210994962,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      146
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_20-REF",
+    "location_orig": [
+      -56.65845014954855,
+      36.047580420846188,
+      -19.250371962967549
+    ],
+    "mask_dist": 2.6706379432629284,
+    "mask_proj_pial_dist": 0.88896977721455261,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      148,
+      252
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_21-REF",
+    "location_orig": [
+      -60.479597632453221,
+      29.514585910348167,
+      -14.585468728769207
+    ],
+    "mask_dist": 7.7187281233922791,
+    "mask_proj_pial_dist": 7.4662658206541161,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_22-REF",
+    "location_orig": [
+      -63.112946056674652,
+      22.221090072963765,
+      -9.70320518567511
+    ],
+    "mask_dist": 8.4761569300856863,
+    "mask_proj_pial_dist": 6.6565884006864362,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_23-REF",
+    "location_orig": [
+      -65.173225812651751,
+      14.560680758581046,
+      -4.7160734143756731
+    ],
+    "mask_dist": 9.8210821237233947,
+    "mask_proj_pial_dist": 10.054588813776606,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      146,
+      247
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_24-REF",
+    "location_orig": [
+      -66.611924610737518,
+      6.5022974436399172,
+      0.38480405155391884
+    ],
+    "mask_dist": 10.404184618495584,
+    "mask_proj_pial_dist": 9.6280662519531486,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      146,
+      247
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_25-REF",
+    "location_orig": [
+      -32.002746573344744,
+      40.718661622282006,
+      -38.8545187232946
+    ],
+    "mask_dist": 1.1165503090479736,
+    "mask_proj_pial_dist": 0.63139540447725473,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      76,
+      76,
+      76,
+      76
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_26-REF",
+    "location_orig": [
+      -44.396339014284408,
+      39.69691325937567,
+      -35.779654351945709
+    ],
+    "mask_dist": 1.9090471074325872,
+    "mask_proj_pial_dist": 0.6832325252233673,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      146
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_27-REF",
+    "location_orig": [
+      -52.2678965380585,
+      35.7798826266354,
+      -31.877283931280591
+    ],
+    "mask_dist": 0.83369355827024294,
+    "mask_proj_pial_dist": 0.27634104462247672,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      146
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_28-REF",
+    "location_orig": [
+      -57.094453681541694,
+      29.913257226453688,
+      -27.417696177928356
+    ],
+    "mask_dist": 1.4853747030069901,
+    "mask_proj_pial_dist": 0.59015601448555921,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      146
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_29-REF",
+    "location_orig": [
+      -60.978178936678255,
+      23.4429734070497,
+      -22.785575680935963
+    ],
+    "mask_dist": 4.6134850646208676,
+    "mask_proj_pial_dist": 2.2031759579003385,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      145
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_30-REF",
+    "location_orig": [
+      -64.333166128525647,
+      16.634159264888538,
+      -18.056699198222521
+    ],
+    "mask_dist": 2.8576926382754775,
+    "mask_proj_pial_dist": 2.5032007519772157,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_31-REF",
+    "location_orig": [
+      -66.580802423156982,
+      9.1163516103102182,
+      -13.125183951557077
+    ],
+    "mask_dist": 1.056490420105892,
+    "mask_proj_pial_dist": 1.3151421504644609,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      143
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GA_32-REF",
+    "location_orig": [
+      -68.0900863231085,
+      1.1258057667605721,
+      -8.058554517514338
+    ],
+    "mask_dist": 4.2545721206425693,
+    "mask_proj_pial_dist": 3.7709995965523464,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      58,
+      103,
+      142
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GB_01-REF",
+    "location_orig": [
+      -40.127351103697912,
+      16.332669349421391,
+      -43.400071963655904
+    ],
+    "mask_dist": 0.53567134537063821,
+    "mask_proj_pial_dist": 0.50209286464551106,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      52
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_02-REF",
+    "location_orig": [
+      -43.89284953242003,
+      18.675179623773,
+      -41.876154798485231
+    ],
+    "mask_dist": 0.69475492789684257,
+    "mask_proj_pial_dist": 0.57129687155292408,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_03-REF",
+    "location_orig": [
+      -47.56609873374525,
+      21.050757371551036,
+      -40.235566897264015
+    ],
+    "mask_dist": 1.3600256718424537,
+    "mask_proj_pial_dist": 0.57443835117848041,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_04-REF",
+    "location_orig": [
+      -50.799356402152156,
+      23.584053603626256,
+      -38.038506736598158
+    ],
+    "mask_dist": 0.90192328710336678,
+    "mask_proj_pial_dist": 0.31029267499180452,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      146
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_05-REF",
+    "location_orig": [
+      -42.0878413289185,
+      11.872550753116029,
+      -41.815850221874641
+    ],
+    "mask_dist": 1.3944437590465286,
+    "mask_proj_pial_dist": 0.52997820176712218,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_06-REF",
+    "location_orig": [
+      -46.07660169503319,
+      14.187290467908969,
+      -40.508524715577465
+    ],
+    "mask_dist": 1.5220355025973504,
+    "mask_proj_pial_dist": 0.77348810825292769,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_07-REF",
+    "location_orig": [
+      -49.748745918443234,
+      16.615523771544861,
+      -38.80076400285958
+    ],
+    "mask_dist": 0.6940398703074302,
+    "mask_proj_pial_dist": 0.25319907774689,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_08-REF",
+    "location_orig": [
+      -52.905557028186074,
+      19.228482351725603,
+      -36.4412439705316
+    ],
+    "mask_dist": 1.0329248254444379,
+    "mask_proj_pial_dist": 0.65059681820449489,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      145
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_09-REF",
+    "location_orig": [
+      -43.803863246298747,
+      7.5000637771637679,
+      -39.922441094772068
+    ],
+    "mask_dist": 1.0673824899214039,
+    "mask_proj_pial_dist": 0.5842353705755039,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_10-REF",
+    "location_orig": [
+      -47.942554591869168,
+      9.8133190008165645,
+      -38.738963090251325
+    ],
+    "mask_dist": 0.32602243006528558,
+    "mask_proj_pial_dist": 0.50140924135578724,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_11-REF",
+    "location_orig": [
+      -51.835158589254156,
+      12.214786202784243,
+      -37.244250045007831
+    ],
+    "mask_dist": 0.36464128207015911,
+    "mask_proj_pial_dist": 0.65100737376159734,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_12-REF",
+    "location_orig": [
+      -54.826945938271905,
+      14.939158337644201,
+      -34.610243540325563
+    ],
+    "mask_dist": 1.8111946657507174,
+    "mask_proj_pial_dist": 0.48901104973039633,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_13-REF",
+    "location_orig": [
+      -45.519885163679,
+      3.1275768012115086,
+      -38.029031967669489
+    ],
+    "mask_dist": 3.4087804078468791,
+    "mask_proj_pial_dist": 0.22827687800416938,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_14-REF",
+    "location_orig": [
+      -49.700714751082451,
+      5.4779867027175593,
+      -36.833072322728349
+    ],
+    "mask_dist": 1.8712404173604495,
+    "mask_proj_pial_dist": 0.48220307680854507,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_15-REF",
+    "location_orig": [
+      -53.420815110577067,
+      7.9935486811629826,
+      -35.054412750026948
+    ],
+    "mask_dist": 1.09224245181425,
+    "mask_proj_pial_dist": 0.45064965233011822,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_16-REF",
+    "location_orig": [
+      -56.68710401780055,
+      10.671783004537831,
+      -32.701802395745233
+    ],
+    "mask_dist": 1.8564951373709764,
+    "mask_proj_pial_dist": 0.54425193207183509,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_17-REF",
+    "location_orig": [
+      -47.235907081059246,
+      -1.2449101747407483,
+      -36.13562284056691
+    ],
+    "mask_dist": 4.909952134208786,
+    "mask_proj_pial_dist": 0.57862344808475663,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_18-REF",
+    "location_orig": [
+      -51.352159673319441,
+      1.1809073348867423,
+      -34.79221516473077
+    ],
+    "mask_dist": 3.3510575914550955,
+    "mask_proj_pial_dist": 0.56694663041845539,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_19-REF",
+    "location_orig": [
+      -54.97191425250729,
+      3.7846985285961923,
+      -32.820869561744892
+    ],
+    "mask_dist": 1.4668256158045139,
+    "mask_proj_pial_dist": 0.66911673936752336,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_20-REF",
+    "location_orig": [
+      -58.453828184257333,
+      6.4378998049139113,
+      -30.675192202840279
+    ],
+    "mask_dist": 1.6617028283534006,
+    "mask_proj_pial_dist": 0.46374931970684286,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_21-REF",
+    "location_orig": [
+      -48.938203187647865,
+      -5.6124770240273048,
+      -34.224854213627445
+    ],
+    "mask_dist": 7.3571992063128313,
+    "mask_proj_pial_dist": 0.40022083820140186,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_22-REF",
+    "location_orig": [
+      -52.951296593555519,
+      -3.0974218112353036,
+      -32.685202297173454
+    ],
+    "mask_dist": 4.3568613229981263,
+    "mask_proj_pial_dist": 0.57729044759878312,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_23-REF",
+    "location_orig": [
+      -56.523013394437505,
+      -0.4241516239705998,
+      -30.587326373462844
+    ],
+    "mask_dist": 1.7242547773577974,
+    "mask_proj_pial_dist": 0.24555041275667702,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_24-REF",
+    "location_orig": [
+      -60.043277930371382,
+      2.26756203921158,
+      -28.4243770199539
+    ],
+    "mask_dist": 0.50354498617106214,
+    "mask_proj_pial_dist": 0.29842078292280677,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_25-REF",
+    "location_orig": [
+      -50.567285451902556,
+      -9.9537997859199159,
+      -32.221489549678004
+    ],
+    "mask_dist": 6.2366905827017076,
+    "mask_proj_pial_dist": 0.48888638439831122,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      81,
+      90,
+      109
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_26-REF",
+    "location_orig": [
+      -54.516482075743035,
+      -7.3635807928242638,
+      -30.5352498909461
+    ],
+    "mask_dist": 3.6244735789745444,
+    "mask_proj_pial_dist": 0.5184500675981355,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_27-REF",
+    "location_orig": [
+      -58.074112536367714,
+      -4.6330017765373945,
+      -28.353783185180792
+    ],
+    "mask_dist": 1.4963005976419883,
+    "mask_proj_pial_dist": 0.64652227579532628,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_28-REF",
+    "location_orig": [
+      -61.630811867442475,
+      -1.9020889894154838,
+      -26.171138848198325
+    ],
+    "mask_dist": 0.41853862937146868,
+    "mask_proj_pial_dist": 0.53451963217062359,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_29-REF",
+    "location_orig": [
+      -52.12541755917578,
+      -14.269689896539603,
+      -30.128391808590553
+    ],
+    "mask_dist": 5.1370095416099035,
+    "mask_proj_pial_dist": 0.4614426767528586,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      81,
+      90,
+      109
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_30-REF",
+    "location_orig": [
+      -56.0320775520823,
+      -11.611963840165833,
+      -28.32257931735473
+    ],
+    "mask_dist": 2.8273377031561608,
+    "mask_proj_pial_dist": 0.515395666048378,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      81,
+      90,
+      109
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_31-REF",
+    "location_orig": [
+      -59.62521167829793,
+      -8.8418519291041857,
+      -26.120239996898743
+    ],
+    "mask_dist": 1.0554930445078998,
+    "mask_proj_pial_dist": 0.67055117024123434,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GB_32-REF",
+    "location_orig": [
+      -63.152515832531243,
+      -6.0481427380369155,
+      -23.834643271453135
+    ],
+    "mask_dist": 0.23004742452592916,
+    "mask_proj_pial_dist": 0.58154171260618337,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "EEG GC_01-REF",
+    "location_orig": [
+      -24.089510983646427,
+      87.73477084749824,
+      2.877210711304317
+    ],
+    "mask_dist": 48.98093752645503,
+    "mask_proj_pial_dist": 47.09178259575522,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      130,
+      212
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_02-REF",
+    "location_orig": [
+      -32.522610217269275,
+      82.127835845663327,
+      5.4908664761021582
+    ],
+    "mask_dist": 42.459605083066826,
+    "mask_proj_pial_dist": 42.229813767746606,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      129,
+      211
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_03-REF",
+    "location_orig": [
+      -39.070309974346841,
+      75.470212392899214,
+      8.2730286509621251
+    ],
+    "mask_dist": 36.826573341710748,
+    "mask_proj_pial_dist": 34.79944596204237,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      157
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_04-REF",
+    "location_orig": [
+      -44.266303998452379,
+      68.059315365830969,
+      11.175998688217843
+    ],
+    "mask_dist": 32.605396685482823,
+    "mask_proj_pial_dist": 31.607222760350311,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      157
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_05-REF",
+    "location_orig": [
+      -47.790069305393544,
+      59.716524900637786,
+      14.228423130992164
+    ],
+    "mask_dist": 28.26571795552179,
+    "mask_proj_pial_dist": 26.637034406074793,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      157
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_06-REF",
+    "location_orig": [
+      -51.07504351770887,
+      51.240661816920365,
+      17.3021893798987
+    ],
+    "mask_dist": 25.440658987912528,
+    "mask_proj_pial_dist": 23.422267719377928,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      61,
+      61,
+      61,
+      153
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_07-REF",
+    "location_orig": [
+      -54.349058886171022,
+      42.7586916292097,
+      20.376935068684741
+    ],
+    "mask_dist": 25.157813649606318,
+    "mask_proj_pial_dist": 22.191713042373419,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      120,
+      187
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_08-REF",
+    "location_orig": [
+      -57.360724430956452,
+      34.130520101533932,
+      23.475128110415419
+    ],
+    "mask_dist": 28.139899219212708,
+    "mask_proj_pial_dist": 27.348540454654618,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      120,
+      187
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_09-REF",
+    "location_orig": [
+      -25.203313720098652,
+      85.203473992540751,
+      -6.0517489435626111
+    ],
+    "mask_dist": 42.884844158414069,
+    "mask_proj_pial_dist": 43.344262961675277,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      130,
+      212
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_10-REF",
+    "location_orig": [
+      -35.395335299253944,
+      80.421699167508919,
+      -3.6132143667111523
+    ],
+    "mask_dist": 36.948813760623217,
+    "mask_proj_pial_dist": 35.950473567728835,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      156
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_11-REF",
+    "location_orig": [
+      -42.356341899421224,
+      73.839356258400628,
+      -0.88590982798199647
+    ],
+    "mask_dist": 30.475727618341296,
+    "mask_proj_pial_dist": 28.56784252084794,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      63
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_12-REF",
+    "location_orig": [
+      -47.857064663661845,
+      66.443231771131479,
+      1.9719066738217628
+    ],
+    "mask_dist": 25.407331250298327,
+    "mask_proj_pial_dist": 24.613055679756474,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      157
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_13-REF",
+    "location_orig": [
+      -51.250935131847264,
+      57.873008424274772,
+      5.0180217942238077
+    ],
+    "mask_dist": 20.717004986577439,
+    "mask_proj_pial_dist": 19.680874682578725,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      157
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_14-REF",
+    "location_orig": [
+      -54.438624423936233,
+      49.187885193749764,
+      8.082564229493876
+    ],
+    "mask_dist": 16.759875260917603,
+    "mask_proj_pial_dist": 16.162492780623914,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      61,
+      61,
+      61,
+      153
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_15-REF",
+    "location_orig": [
+      -57.595912193073971,
+      40.485819914893192,
+      11.149823782041651
+    ],
+    "mask_dist": 16.522177331721647,
+    "mask_proj_pial_dist": 15.745085684074686,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      120,
+      187
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG GC_16-REF",
+    "location_orig": [
+      -60.692644008030818,
+      31.750008237735255,
+      14.222495485475106
+    ],
+    "mask_dist": 20.861059147420196,
+    "mask_proj_pial_dist": 21.221431736627569,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      120,
+      187
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "EEG PH_01-REF",
+    "location_orig": [
+      -29.5629346974076,
+      -2.5020876181338707,
+      -12.74839877797757
+    ],
+    "mask_dist": 3.6921559939414594,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG PH_02-REF",
+    "location_orig": [
+      -34.426278640552539,
+      -2.2310144349346217,
+      -11.688964959867974
+    ],
+    "mask_dist": 1.3978176990098157,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG PH_03-REF",
+    "location_orig": [
+      -38.980919170032678,
+      -2.2310144349346217,
+      -9.68662733501202
+    ],
+    "mask_dist": 2.5889650397894877,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG PH_04-REF",
+    "location_orig": [
+      -48.3179322554669,
+      -2.658644573535824,
+      -6.95857882952248
+    ],
+    "mask_dist": 4.6824854822278485,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      58,
+      103,
+      142
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG PH_05-REF",
+    "location_orig": [
+      -57.553731106912721,
+      -2.387571390336575,
+      -3.5630844490808897
+    ],
+    "mask_dist": 5.1916968499164406,
+    "mask_proj_pial_dist": 5.024289908235982,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      146,
+      248
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG PH_06-REF",
+    "location_orig": [
+      -66.106333878936539,
+      -1.782775269661343,
+      -1.836204756019356
+    ],
+    "mask_dist": 3.4229019678098558,
+    "mask_proj_pial_dist": 3.1390322276828528,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      73,
+      145,
+      246
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG S_01-REF",
+    "location_orig": [
+      -15.884707522393803,
+      91.7071113207491,
+      -13.741567748416742
+    ],
+    "mask_dist": 49.014879423668461,
+    "mask_proj_pial_dist": 45.805318480297977,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      130,
+      212
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "EEG S_02-REF",
+    "location_orig": [
+      -25.094592330154235,
+      86.680265923804228,
+      -13.833111265175887
+    ],
+    "mask_dist": 41.460578666409155,
+    "mask_proj_pial_dist": 37.0374629982232,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      62
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "EEG S_03-REF",
+    "location_orig": [
+      -33.856949392415324,
+      82.0862000833925,
+      -13.455205088682391
+    ],
+    "mask_dist": 36.006360306334344,
+    "mask_proj_pial_dist": 34.471972076790458,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      62
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "EEG S_04-REF",
+    "location_orig": [
+      -40.979930581051043,
+      75.863792669432,
+      -11.308475686901403
+    ],
+    "mask_dist": 29.939252654549584,
+    "mask_proj_pial_dist": 28.780642344481912,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      156
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "EEG S_05-REF",
+    "location_orig": [
+      -45.26138530410126,
+      67.7189097983833,
+      -8.2102318526091551
+    ],
+    "mask_dist": 22.242331905315623,
+    "mask_proj_pial_dist": 21.51286589466071,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      63
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "EEG S_06-REF",
+    "location_orig": [
+      -48.348478384146411,
+      59.257189324815187,
+      -3.8375044709712824
+    ],
+    "mask_dist": 16.285570110968834,
+    "mask_proj_pial_dist": 16.964298010371159,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      63
+    ],
+    "contact_type": "strip"
+  }
+]

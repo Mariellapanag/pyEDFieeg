@@ -1,4 +1,3 @@
-
 import os
 
 # Include here the labels that are fault edf files
@@ -8,15 +7,15 @@ error_edfs = ["1"] # channels labels appear in error edfs
 min_n_Chan = 5
 
 # ROOT DIRECTORY
-ROOT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+ROOT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)))
 
 loc_output = "FILES" # name for parent folder of all program folders
 ALL_FILES_DIR = os.path.abspath(os.path.join(ROOT_DIR, loc_output))
 
 loc_input = "IN_FILES"
-IN_FILES_DIR = os.path.abspath(os.path.join(ROOT_DIR, loc_input))
+IN_FILES = os.path.abspath(os.path.join(ROOT_DIR, loc_input))
 # location where iEEG channels are located for each subject
-IN_CHANNELS_DIR = os.path.abspath(os.path.join(IN_FILES_DIR, "CHANNEL_LIST"))
+IN_CHANNELS = os.path.abspath(os.path.join(IN_FILES, "CHANNEL_LIST"))
 
 # location where Plots for raw data seizures will be located
 PLOT_SEIZURES_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "PLOTS_SEIZURES"))

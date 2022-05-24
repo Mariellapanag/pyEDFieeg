@@ -1,0 +1,758 @@
+[
+  {
+    "name": "LA 01",
+    "location_orig": [
+      -19.391022078512947,
+      8.1719395553762411,
+      -65.444399085697171
+    ],
+    "mask_dist": 0.61640541157429418,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LA 02",
+    "location_orig": [
+      -23.903223361794915,
+      8.1719395553762411,
+      -65.953035043647276
+    ],
+    "mask_dist": 0.20281624690594283,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LA 03",
+    "location_orig": [
+      -28.93606325468636,
+      7.4989659451773605,
+      -67.180223320216044
+    ],
+    "mask_dist": 0.53435683099515174,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LA 04",
+    "location_orig": [
+      -38.078091581199118,
+      7.52017714779106,
+      -68.871645936428479
+    ],
+    "mask_dist": 0.50279371201821932,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      50,
+      79,
+      84,
+      95
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LA 05",
+    "location_orig": [
+      -48.087850923727672,
+      7.52017714779106,
+      -71.370424107872566
+    ],
+    "mask_dist": 0.612506695176425,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "very rare",
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LA 06",
+    "location_orig": [
+      -57.4593458966979,
+      7.52017714779106,
+      -73.404967939672986
+    ],
+    "mask_dist": 1.6388840279655159,
+    "mask_proj_pial_dist": 0.7107269738488784,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      145
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LAH 01",
+    "location_orig": [
+      -18.256176426009631,
+      -4.0746220635607528,
+      -67.811084937387363
+    ],
+    "mask_dist": 0.32692846114228047,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      59,
+      59,
+      59,
+      59
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LAH 02",
+    "location_orig": [
+      -23.137182337190382,
+      -4.4817195820236577,
+      -67.811084937387363
+    ],
+    "mask_dist": 0.53531331811660854,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LAH 03",
+    "location_orig": [
+      -27.83581316627135,
+      -4.7558493218780313,
+      -68.660753319565345
+    ],
+    "mask_dist": 0.44905706120881927,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      59,
+      59,
+      59,
+      59
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LAH 04",
+    "location_orig": [
+      -37.669255965914346,
+      -4.35332278565491,
+      -68.660753319565345
+    ],
+    "mask_dist": 1.4338619815000659,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      106
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LAH 05",
+    "location_orig": [
+      -47.521223833342219,
+      -3.0126097508910163,
+      -69.510421701743326
+    ],
+    "mask_dist": 0.68488572248829538,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      143
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LAH 06",
+    "location_orig": [
+      -57.203097896563236,
+      -2.8321949866985108,
+      -69.510421701743326
+    ],
+    "mask_dist": 0.55595867008927735,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LPH 01",
+    "location_orig": [
+      -23.509788814227733,
+      -14.654284807421334,
+      -70.943927657997278
+    ],
+    "mask_dist": 3.3292622306166764,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      50,
+      79,
+      83,
+      93
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LPH 02",
+    "location_orig": [
+      -28.093564223042335,
+      -14.212511933916474,
+      -69.926297349008792
+    ],
+    "mask_dist": 4.4809998209420412,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      50,
+      79,
+      83,
+      93
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LPH 03",
+    "location_orig": [
+      -32.917618181512495,
+      -14.212511933916474,
+      -68.951226669794437
+    ],
+    "mask_dist": 5.6408873842780274,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      50,
+      79,
+      84,
+      94
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LPH 04",
+    "location_orig": [
+      -42.658140925243515,
+      -12.551900711393614,
+      -67.689828691002333
+    ],
+    "mask_dist": 9.56304773437644,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      58,
+      103,
+      142
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LPH 05",
+    "location_orig": [
+      -52.398663668974507,
+      -11.135057158674357,
+      -67.403501391424669
+    ],
+    "mask_dist": 7.6165893154547888,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      143
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LPH 06",
+    "location_orig": [
+      -62.379464962361055,
+      -11.135057158674357,
+      -67.15973372162108
+    ],
+    "mask_dist": 7.322268629554995,
+    "mask_proj_pial_dist": 8.5893007607215548,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      58,
+      103,
+      142
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RA 01",
+    "location_orig": [
+      11.996206571346647,
+      11.828020007073121,
+      -58.639187980061735
+    ],
+    "mask_dist": 24.588325914955405,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": "very rare",
+    "is_scalp": false,
+    "ROIids": [
+      30,
+      30,
+      30,
+      30
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RA 02",
+    "location_orig": [
+      16.862118762525313,
+      11.828020007073121,
+      -58.617084117673357
+    ],
+    "mask_dist": 29.360300043798837,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      30,
+      30,
+      30,
+      30
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RA 03",
+    "location_orig": [
+      21.613798649353981,
+      11.828020007073121,
+      -58.996895247845714
+    ],
+    "mask_dist": 33.984526707041887,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      30,
+      30,
+      30,
+      30
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RA 04",
+    "location_orig": [
+      31.769261860253494,
+      11.828020007073121,
+      -59.643920841987182
+    ],
+    "mask_dist": 43.985830139489593,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      30,
+      30,
+      30,
+      30
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RA 05",
+    "location_orig": [
+      41.6764681116218,
+      11.304277775467085,
+      -58.509269802187021
+    ],
+    "mask_dist": 53.961053858970047,
+    "mask_proj_pial_dist": 14.351535730140816,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      109,
+      158,
+      260,
+      476
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RA 06",
+    "location_orig": [
+      51.294178076424146,
+      10.840223648403224,
+      -59.108586364877738
+    ],
+    "mask_dist": 63.493495319820688,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      219,
+      372
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RAH 01",
+    "location_orig": [
+      19.510790851984495,
+      2.8245490585990467,
+      -65.384990319354785
+    ],
+    "mask_dist": 32.82174656381234,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      29,
+      29,
+      29,
+      29
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RAH 02",
+    "location_orig": [
+      24.533020933326384,
+      2.8245490585990467,
+      -64.758635122228469
+    ],
+    "mask_dist": 37.668405335258456,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      29,
+      29,
+      29,
+      29
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RAH 03",
+    "location_orig": [
+      29.354599269101641,
+      2.1687974709468563,
+      -64.445457523665311
+    ],
+    "mask_dist": 42.509455955299771,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      29,
+      29,
+      29,
+      29
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RAH 04",
+    "location_orig": [
+      38.578643122989405,
+      1.6990310731021339,
+      -62.695641743877047
+    ],
+    "mask_dist": 51.633423542980879,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      88,
+      111,
+      203,
+      337
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RAH 05",
+    "location_orig": [
+      48.642975631115178,
+      0.44231994627278937,
+      -61.050196798774493
+    ],
+    "mask_dist": 61.804949328574992,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      218,
+      370
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RAH 06",
+    "location_orig": [
+      56.989735428349917,
+      0.780869770284653,
+      -63.540066663445714
+    ],
+    "mask_dist": 69.8975249683493,
+    "mask_proj_pial_dist": 14.181964000673599,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      219,
+      372
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RPH 01",
+    "location_orig": [
+      18.468781050539519,
+      -14.235524914704996,
+      -66.215184693461
+    ],
+    "mask_dist": 34.5418694933785,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      95,
+      118,
+      172,
+      286
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RPH 02",
+    "location_orig": [
+      23.67062008454144,
+      -14.235524914704996,
+      -65.579945025453441
+    ],
+    "mask_dist": 39.735778784503232,
+    "mask_proj_pial_dist": 14.050593184089093,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      95,
+      118,
+      172,
+      375
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RPH 03",
+    "location_orig": [
+      28.547344178918252,
+      -14.235524914704996,
+      -65.421135108451551
+    ],
+    "mask_dist": 44.605389879251227,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      86,
+      138,
+      196,
+      320
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RPH 04",
+    "location_orig": [
+      37.988922851512967,
+      -13.471288690299787,
+      -64.6270855234421
+    ],
+    "mask_dist": 54.010254077339738,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      86,
+      138,
+      196,
+      321
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RPH 05",
+    "location_orig": [
+      47.885662439582831,
+      -13.471288690299787,
+      -64.28173891468802
+    ],
+    "mask_dist": 63.774656711611861,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      218,
+      371
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RPH 06",
+    "location_orig": [
+      58.072597214503276,
+      -13.471288690299787,
+      -64.44054883168991
+    ],
+    "mask_dist": 73.835521464470915,
+    "mask_proj_pial_dist": 14.370283599431218,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": "",
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      117,
+      217,
+      368
+    ],
+    "contact_type": "depth"
+  }
+]

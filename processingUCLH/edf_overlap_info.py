@@ -17,8 +17,7 @@ from pandas import ExcelWriter
 from pyEDFieeg.edfCollectionInfo import *
 from pyEDFieeg.edfOverlapping import *
 import processingUCLH.paths
-from processingUCLH import paths
-
+import paths
 
 def save_xls(list_dfs, xls_path, sheetNames):
     with ExcelWriter(xls_path) as writer:

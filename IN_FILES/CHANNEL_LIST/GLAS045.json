@@ -1,0 +1,962 @@
+[
+  {
+    "name": "1SFG1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1SFG2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1SFG3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1SFG4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1SFG5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1SFG6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1SFG7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1SFG8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1SFG9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1SFG10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2SFG1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2SFG2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2SFG3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2SFG4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2SFG5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2SFG6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2SFG7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2SFG8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2SFG9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2SFG10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "3SFG1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "3SFG2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "3SFG3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "3SFG4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "3SFG5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "3SFG6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "3SFG7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "3SFG8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "3SFG9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "3SFG10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1MFG1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1MFG2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1MFG3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1MFG4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1MFG5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1MFG6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1MFG7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1MFG8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1MFG9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "1MFG10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2MFG1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2MFG2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2MFG3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2MFG4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2MFG5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2MFG6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2MFG7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2MFG8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2MFG9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "2MFG10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "OPC1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "OPC2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "OPC3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "OPC4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "OPC5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "OPC6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "OPC7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "OPC8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "OPC9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "OPC10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "LSMA1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "LSMA2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "LSMA3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "LSMA4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "LSMA5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "LSMA6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "LSMA7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "LSMA8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "LSMA9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  },
+  {
+    "name": "LSMA10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": null,
+    "is_scalp": 0
+  }
+]

@@ -1,0 +1,1304 @@
+[
+  {
+    "name": "G1",
+    "location_orig": [
+      -54.487159223599519,
+      51.378514976818458,
+      -5.0626487471910169
+    ],
+    "mask_dist": 0.62009465217601056,
+    "mask_proj_pial_dist": 0.38336228956223473,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      146
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G2",
+    "location_orig": [
+      -58.082285303324376,
+      43.552517055566547,
+      -0.0755664574716004
+    ],
+    "mask_dist": 0.46121721885718092,
+    "mask_proj_pial_dist": 0.41613497850548725,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      148,
+      252
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G3",
+    "location_orig": [
+      -60.333690088903346,
+      35.550865350334753,
+      5.2075044982495431
+    ],
+    "mask_dist": 1.8543178586936591,
+    "mask_proj_pial_dist": 1.3772978169018111,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      148,
+      252
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G4",
+    "location_orig": [
+      -61.659387027942579,
+      27.428203368036616,
+      10.694486065343998
+    ],
+    "mask_dist": 10.748920393436983,
+    "mask_proj_pial_dist": 8.8829243555004584,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      147,
+      251
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G5",
+    "location_orig": [
+      -62.634276029625092,
+      19.259683109981928,
+      16.258741970393356
+    ],
+    "mask_dist": 20.148096492410623,
+    "mask_proj_pial_dist": 18.149392499772613,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      146,
+      247
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G6",
+    "location_orig": [
+      -63.043639426577904,
+      11.017236277390499,
+      21.947569220752953
+    ],
+    "mask_dist": 29.3912560069689,
+    "mask_proj_pial_dist": 28.909264818017562,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      113,
+      172
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G7",
+    "location_orig": [
+      -62.696808517438896,
+      2.6759382977139241,
+      27.802967429594297
+    ],
+    "mask_dist": 35.052248532241904,
+    "mask_proj_pial_dist": 32.1514099564233,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      73,
+      145,
+      246
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G8",
+    "location_orig": [
+      -62.122435559444718,
+      -5.6951044080975066,
+      33.70848754079244
+    ],
+    "mask_dist": 38.907869012806835,
+    "mask_proj_pial_dist": 38.072063128828795,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      100,
+      150,
+      257
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G9",
+    "location_orig": [
+      -55.148498030297752,
+      45.433174997477025,
+      -13.70499203412068
+    ],
+    "mask_dist": 0.54472039026134977,
+    "mask_proj_pial_dist": 0.38415354714643229,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      146
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G10",
+    "location_orig": [
+      -59.016316459671195,
+      37.690413988982172,
+      -8.7630722986392815
+    ],
+    "mask_dist": 0.39018231063358916,
+    "mask_proj_pial_dist": 0.57364082651362158,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      145
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G11",
+    "location_orig": [
+      -62.161252749631146,
+      29.853156462710405,
+      -3.6619194535438364
+    ],
+    "mask_dist": 0.40231840818130038,
+    "mask_proj_pial_dist": 0.51876353993171187,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      145
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G12",
+    "location_orig": [
+      -64.34286197389406,
+      21.889971004033992,
+      1.6514305892452459
+    ],
+    "mask_dist": 6.4597581394947969,
+    "mask_proj_pial_dist": 5.99652539052993,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G13",
+    "location_orig": [
+      -65.1238325601331,
+      13.74369141874876,
+      7.2733067853559374
+    ],
+    "mask_dist": 15.970437071735789,
+    "mask_proj_pial_dist": 15.804997396054617,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G14",
+    "location_orig": [
+      -65.391359666165513,
+      5.5302935325546905,
+      13.008281919048205
+    ],
+    "mask_dist": 24.919714358080725,
+    "mask_proj_pial_dist": 23.314608866276636,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      143
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G15",
+    "location_orig": [
+      -64.829812332071981,
+      -2.7914825294140533,
+      18.92588170758378
+    ],
+    "mask_dist": 32.017674733192841,
+    "mask_proj_pial_dist": 30.590475166168396,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      73,
+      145,
+      246
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G16",
+    "location_orig": [
+      -63.731739785983393,
+      -11.183394179840102,
+      24.961664770036773
+    ],
+    "mask_dist": 35.135241143264025,
+    "mask_proj_pial_dist": 34.558349501236734,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      73,
+      73,
+      73
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G17",
+    "location_orig": [
+      -52.703016252311535,
+      39.08170556686926,
+      -21.66297935796949
+    ],
+    "mask_dist": 0.45657497261456914,
+    "mask_proj_pial_dist": 0.34089642206163906,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      52
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G18",
+    "location_orig": [
+      -57.885274701781178,
+      31.558360693015871,
+      -16.995693499856557
+    ],
+    "mask_dist": 0.57004526629642016,
+    "mask_proj_pial_dist": 0.14705061232361047,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      146
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G19",
+    "location_orig": [
+      -62.582911243605267,
+      23.971665128622469,
+      -12.221657385880183
+    ],
+    "mask_dist": 0.47318565366259807,
+    "mask_proj_pial_dist": 0.63450171614434392,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      145
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G20",
+    "location_orig": [
+      -64.81809282564987,
+      16.063072803755233,
+      -6.9052031664456095
+    ],
+    "mask_dist": 2.9277010578742639,
+    "mask_proj_pial_dist": 4.1121854319148072,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G21",
+    "location_orig": [
+      -66.600479827139466,
+      8.0952903166225187,
+      -1.4890094664690692
+    ],
+    "mask_dist": 11.263853385299418,
+    "mask_proj_pial_dist": 11.565863483707091,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G22",
+    "location_orig": [
+      -67.131070196303838,
+      -0.036129389179826665,
+      4.2029241632991665
+    ],
+    "mask_dist": 20.034882515452164,
+    "mask_proj_pial_dist": 19.846997455666777,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      143
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G23",
+    "location_orig": [
+      -65.964551288136377,
+      -8.3893984231794789,
+      10.268689117498335
+    ],
+    "mask_dist": 29.675439349551588,
+    "mask_proj_pial_dist": 26.8841534505204,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      143
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G24",
+    "location_orig": [
+      -64.1758756625985,
+      -16.823996957657187,
+      16.471499854644275
+    ],
+    "mask_dist": 33.415235289508587,
+    "mask_proj_pial_dist": 32.373057138859096,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      44,
+      44,
+      44,
+      44
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G25",
+    "location_orig": [
+      -46.42631813859937,
+      32.229412305049124,
+      -28.777044197806216
+    ],
+    "mask_dist": 0.53299439226225509,
+    "mask_proj_pial_dist": 0.34937637052012327,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      52
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G26",
+    "location_orig": [
+      -54.815103468670543,
+      25.172820731746789,
+      -24.801172295073627
+    ],
+    "mask_dist": 0.32185289984604082,
+    "mask_proj_pial_dist": 0.5588036257325687,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G27",
+    "location_orig": [
+      -59.3451157496219,
+      17.611803061641183,
+      -19.975307843894925
+    ],
+    "mask_dist": 0.52000402581995075,
+    "mask_proj_pial_dist": 0.63006986645379226,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      105
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G28",
+    "location_orig": [
+      -63.66238161413191,
+      10.022974778398092,
+      -15.102580603331649
+    ],
+    "mask_dist": 0.35361300162636011,
+    "mask_proj_pial_dist": 0.50565162554382947,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G29",
+    "location_orig": [
+      -64.759120459195117,
+      2.0131531241042024,
+      -9.5204506760196423
+    ],
+    "mask_dist": 8.8877121730384658,
+    "mask_proj_pial_dist": 8.9029630849827015,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G30",
+    "location_orig": [
+      -65.304510559929824,
+      -6.0687418787745449,
+      -3.81687221615368
+    ],
+    "mask_dist": 18.650602079466953,
+    "mask_proj_pial_dist": 19.461795315013404,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      58,
+      103,
+      142
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G31",
+    "location_orig": [
+      -64.536958721582224,
+      -14.322267130240119,
+      2.1759149767879178
+    ],
+    "mask_dist": 28.709635544393961,
+    "mask_proj_pial_dist": 28.046339102900276,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      58,
+      103,
+      142
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "G32",
+    "location_orig": [
+      -62.921123106704748,
+      -22.686681638194656,
+      8.35555816769565
+    ],
+    "mask_dist": 33.205733359454349,
+    "mask_proj_pial_dist": 32.854154469537633,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      58,
+      58,
+      141
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "IT1",
+    "location_orig": [
+      -14.372633934020996,
+      11.439443588256836,
+      -3.1802694797515869
+    ],
+    "mask_dist": 0.8604131021390089,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "IT2",
+    "location_orig": [
+      -21.596206665039062,
+      8.62917423248291,
+      -10.192013740539551
+    ],
+    "mask_dist": 0.58088832899678466,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      59,
+      59,
+      59,
+      59
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "IT3",
+    "location_orig": [
+      -29.017927169799805,
+      5.0275330543518066,
+      -13.688176155090332
+    ],
+    "mask_dist": 0.3135496061776975,
+    "mask_proj_pial_dist": 0.3135496061776975,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      59,
+      59,
+      59,
+      59
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "IT4",
+    "location_orig": [
+      -39.739357066304876,
+      4.1776527156784482,
+      -16.168374038431239
+    ],
+    "mask_dist": 4.2465405522694226,
+    "mask_proj_pial_dist": 3.8073267574869751,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      106
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "IT5",
+    "location_orig": [
+      -49.013932252818677,
+      1.8441909634561853,
+      -18.176556122443543
+    ],
+    "mask_dist": 5.4687727126305488,
+    "mask_proj_pial_dist": 5.51650487307613,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      106
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "IT6",
+    "location_orig": [
+      -58.022220611572266,
+      1.5449762344360352,
+      -17.750740051269531
+    ],
+    "mask_dist": 5.9005857537974293,
+    "mask_proj_pial_dist": 5.9005857537974293,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "LA1",
+    "location_orig": [
+      -20.429239011100833,
+      23.120732775750497,
+      -5.6560270569389548
+    ],
+    "mask_dist": 0.56314933394744449,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LA2",
+    "location_orig": [
+      -25.2963132292588,
+      23.495886736764589,
+      -6.50012265909014
+    ],
+    "mask_dist": 0.76392439838998694,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LA3",
+    "location_orig": [
+      -30.856233403057615,
+      23.495886736764589,
+      -7.1661452055438009
+    ],
+    "mask_dist": 0.54238300778149151,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      14,
+      14,
+      14,
+      14
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LA4",
+    "location_orig": [
+      -40.860704680782078,
+      24.475638181189993,
+      -8.23224832317952
+    ],
+    "mask_dist": 0.54733663046656411,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      50,
+      79,
+      84,
+      95
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LA5",
+    "location_orig": [
+      -50.636686088350416,
+      25.233382110130833,
+      -8.7433326521038612
+    ],
+    "mask_dist": 0.50234111789095082,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LA6",
+    "location_orig": [
+      -60.505292834843317,
+      26.644402580472871,
+      -7.2580874401203221
+    ],
+    "mask_dist": 0.66166533744215716,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      145
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LH1",
+    "location_orig": [
+      -32.016967837790617,
+      8.6073727982125927,
+      -5.5806334368687533
+    ],
+    "mask_dist": 0.57472688207978273,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LH2",
+    "location_orig": [
+      -36.880210735111206,
+      7.7747636266199418,
+      -6.2900109002433044
+    ],
+    "mask_dist": 0.38624879007945823,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      50,
+      79,
+      84,
+      94
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LH3",
+    "location_orig": [
+      -42.596213025483223,
+      7.7747636266199418,
+      -7.4729740287326525
+    ],
+    "mask_dist": 4.5108163831436929,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      50,
+      79,
+      84,
+      94
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LH4",
+    "location_orig": [
+      -52.5892240226371,
+      8.5362774258540224,
+      -9.1021612181959171
+    ],
+    "mask_dist": 3.1369494394279585,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LH5",
+    "location_orig": [
+      -62.582235019790943,
+      9.8555713013055275,
+      -9.8389002857113468
+    ],
+    "mask_dist": 2.4808457005256361,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "LH6",
+    "location_orig": [
+      -73.2995340649079,
+      9.61670816126053,
+      -9.5212976517881458
+    ],
+    "mask_dist": 10.201558936146849,
+    "mask_proj_pial_dist": 2.2815382179635888,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      89,
+      107
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "T1",
+    "location_orig": [
+      -34.737957000732422,
+      71.149955749511719,
+      46.877700805664062
+    ],
+    "mask_dist": 44.45005898348132,
+    "mask_proj_pial_dist": 44.734701794177823,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      126,
+      205
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "T2",
+    "location_orig": [
+      -40.837326149074457,
+      62.119859830915459,
+      46.4658027164437
+    ],
+    "mask_dist": 38.397844325365242,
+    "mask_proj_pial_dist": 37.793436678528607,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      70,
+      206
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "T3",
+    "location_orig": [
+      -45.905312686734021,
+      51.545124132624878,
+      46.263374306594059
+    ],
+    "mask_dist": 34.248472794637784,
+    "mask_proj_pial_dist": 32.908002851163857,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      70,
+      203
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "T4",
+    "location_orig": [
+      -47.842636393582289,
+      43.158711584400535,
+      49.126482976773516
+    ],
+    "mask_dist": 36.145363141078221,
+    "mask_proj_pial_dist": 35.533728671301539,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      70,
+      203
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "T5",
+    "location_orig": [
+      -47.695180154142363,
+      34.646221810775629,
+      55.334613916466949
+    ],
+    "mask_dist": 42.988370177329458,
+    "mask_proj_pial_dist": 42.665446093042817,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      46,
+      82
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "T6",
+    "location_orig": [
+      -50.0316575352843,
+      23.834564870771711,
+      55.704226730871639
+    ],
+    "mask_dist": 46.407271683916406,
+    "mask_proj_pial_dist": 45.190161029162326,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      120,
+      188
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "TP1",
+    "location_orig": [
+      -27.868122100830078,
+      49.908138275146484,
+      -0.88177531957626343
+    ],
+    "mask_dist": 4.4204554979260582,
+    "mask_proj_pial_dist": 4.4204554979260582,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      55,
+      55,
+      125
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "TP2",
+    "location_orig": [
+      -27.798887252807617,
+      41.608451843261719,
+      -11.259420394897461
+    ],
+    "mask_dist": 0.51093692357391962,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      76,
+      76,
+      76,
+      76
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "tp3",
+    "location_orig": [
+      -24.139307022094727,
+      35.297805786132812,
+      -22.5941162109375
+    ],
+    "mask_dist": 0.522337026347878,
+    "mask_proj_pial_dist": 0.522337026347878,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      49,
+      49,
+      49,
+      49
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "TP4",
+    "location_orig": [
+      -24.731408128128606,
+      29.097434238035135,
+      -19.873144533743897
+    ],
+    "mask_dist": 0.31261643510089643,
+    "mask_proj_pial_dist": 0.60644663313142932,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      49,
+      49,
+      49,
+      49
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "TP5",
+    "location_orig": [
+      -29.720831998520538,
+      22.535336799083382,
+      -25.274155625579027
+    ],
+    "mask_dist": 0.60745960299403323,
+    "mask_proj_pial_dist": 0.58263810280384065,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      50,
+      79,
+      84,
+      95
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "TP6",
+    "location_orig": [
+      -37.611660405869969,
+      17.924917369391409,
+      -27.097090367104585
+    ],
+    "mask_dist": 0.40727709036327525,
+    "mask_proj_pial_dist": 0.58356349225621651,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      52,
+      52,
+      52,
+      52
+    ],
+    "contact_type": "strip"
+  }
+]

@@ -1,0 +1,926 @@
+[
+  {
+    "name": "LFO1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LFO2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LFO3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LFO4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LFO5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LFO6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LFO7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LFO8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LIN10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAH1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAH2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAH3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAH4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAH5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAH6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAH7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAH8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAH9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LAH10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LMH10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPH10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPAR1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPAR2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPAR3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPAR4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPAR5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPAR6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPAR7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPAR8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPAR9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "LPAR10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_scalp": 0
+  },
+  {
+    "name": "RPH1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RPH2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RPH3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RPH4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RPH5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RPH6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RPH7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RPH8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RPH9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RPH10",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH1",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH2",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH3",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH4",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH5",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH6",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH7",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH8",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  },
+  {
+    "name": "RAH9",
+    "location_orig": [
+      null,
+      null,
+      null
+    ],
+    "mask_dist": null,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_scalp": 0
+  }
+]

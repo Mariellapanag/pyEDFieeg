@@ -1,0 +1,2312 @@
+[
+  {
+    "name": "AT 1",
+    "location_orig": [
+      4.8400958055974286,
+      37.778443268921336,
+      -19.94710143262904
+    ],
+    "mask_dist": 13.56519654635636,
+    "mask_proj_pial_dist": 13.621042079537405,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      168,
+      282
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "AT 2",
+    "location_orig": [
+      10.404857758476339,
+      30.405493498715174,
+      -19.94710143262904
+    ],
+    "mask_dist": 5.7645814581383208,
+    "mask_proj_pial_dist": 4.3148288448109451,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      168,
+      282
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "AT 3",
+    "location_orig": [
+      15.340306317731233,
+      23.644991688708444,
+      -26.637991750213843
+    ],
+    "mask_dist": 0.61064790405896585,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      112,
+      135,
+      189,
+      303
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "AT 4",
+    "location_orig": [
+      19.882434005971163,
+      16.884489878701686,
+      -32.56037533657269
+    ],
+    "mask_dist": 0.4695056324609666,
+    "mask_proj_pial_dist": 0.55185383864822657,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      85,
+      108,
+      162,
+      276
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "AT 5",
+    "location_orig": [
+      27.891612335009967,
+      11.432806936560326,
+      -36.912201879837767
+    ],
+    "mask_dist": 0.45472684902004779,
+    "mask_proj_pial_dist": 0.26121839548970111,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      88,
+      111,
+      165,
+      279
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "AT 6",
+    "location_orig": [
+      36.413564540335074,
+      9.8755476361342289,
+      -37.455038347615215
+    ],
+    "mask_dist": 0.62736039781805242,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      88,
+      111,
+      165,
+      335
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "RLF 1",
+    "location_orig": [
+      50.011103199927632,
+      -6.2032795949888975,
+      45.302601111077458
+    ],
+    "mask_dist": 62.38753699090104,
+    "mask_proj_pial_dist": 61.760548866244861,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      101,
+      148,
+      226,
+      397
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 2",
+    "location_orig": [
+      52.795905929512358,
+      3.6684032629692567,
+      41.270828345481853
+    ],
+    "mask_dist": 57.317366581702174,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      101,
+      148,
+      226,
+      396
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 3",
+    "location_orig": [
+      53.766503046251941,
+      12.819052101969314,
+      36.842646998704296
+    ],
+    "mask_dist": 49.637882109220662,
+    "mask_proj_pial_dist": 49.184201876488274,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      103,
+      149,
+      231,
+      412
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 4",
+    "location_orig": [
+      53.727734497253039,
+      21.568540798253036,
+      32.193916664195569
+    ],
+    "mask_dist": 42.160796367308976,
+    "mask_proj_pial_dist": 41.407811511173641,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      103,
+      149,
+      231,
+      410
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 5",
+    "location_orig": [
+      53.076220268984727,
+      30.074501155414293,
+      27.411299826621935
+    ],
+    "mask_dist": 35.6886593807978,
+    "mask_proj_pial_dist": 34.646103188076268,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      103,
+      149,
+      231,
+      410
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 6",
+    "location_orig": [
+      51.354389775708547,
+      38.155077293360975,
+      22.394816138993544
+    ],
+    "mask_dist": 30.5012056277835,
+    "mask_proj_pial_dist": 30.448427050879786,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      97,
+      120,
+      222,
+      383
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 7",
+    "location_orig": [
+      49.510078334333386,
+      46.186974863879392,
+      17.351570049951569
+    ],
+    "mask_dist": 27.326113649556412,
+    "mask_proj_pial_dist": 25.43601270281923,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      97,
+      120,
+      174,
+      288
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 8",
+    "location_orig": [
+      47.65005753577487,
+      54.212628940901283,
+      12.304891426058948
+    ],
+    "mask_dist": 26.78003227832059,
+    "mask_proj_pial_dist": 26.345418723901798,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      99,
+      122,
+      223,
+      388
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 9",
+    "location_orig": [
+      57.292028996650231,
+      -10.1043983033986,
+      38.906988305839228
+    ],
+    "mask_dist": 57.998843452463873,
+    "mask_proj_pial_dist": 57.417182469524157,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      110,
+      159,
+      262,
+      484
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 10",
+    "location_orig": [
+      58.854799775150177,
+      -0.68215932191586415,
+      34.4494757784514
+    ],
+    "mask_dist": 53.132654938486588,
+    "mask_proj_pial_dist": 52.030689330901673,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      110,
+      159,
+      262,
+      485
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 11",
+    "location_orig": [
+      59.220150516636842,
+      8.2641795876259518,
+      29.730323900710726
+    ],
+    "mask_dist": 46.4056121168237,
+    "mask_proj_pial_dist": 45.236116340358386,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      101,
+      124,
+      225,
+      394
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 12",
+    "location_orig": [
+      59.190360808868434,
+      17.053474717696439,
+      24.92483282098117
+    ],
+    "mask_dist": 37.925076449934579,
+    "mask_proj_pial_dist": 36.091808268315965,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      103,
+      126,
+      230,
+      410
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 13",
+    "location_orig": [
+      58.123854197256804,
+      25.430739287169342,
+      19.892816437818468
+    ],
+    "mask_dist": 30.036490175909467,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      103,
+      126,
+      230,
+      408
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 14",
+    "location_orig": [
+      55.747151804018465,
+      33.287282432698056,
+      14.574518914751929
+    ],
+    "mask_dist": 23.079260705715942,
+    "mask_proj_pial_dist": 22.24143398092103,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      97,
+      120,
+      222,
+      383
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 15",
+    "location_orig": [
+      53.25714266384972,
+      41.0987931857924,
+      9.2314635767657389
+    ],
+    "mask_dist": 18.262801481912739,
+    "mask_proj_pial_dist": 18.169526484134114,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      97,
+      120,
+      174,
+      288
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLF 16",
+    "location_orig": [
+      50.563832626369148,
+      48.829504462791725,
+      3.8439864711001812
+    ],
+    "mask_dist": 16.984264985409467,
+    "mask_proj_pial_dist": 16.970669166742184,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      99,
+      122,
+      223,
+      386
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 1",
+    "location_orig": [
+      34.721855064807123,
+      32.873343074229432,
+      -38.853971912818004
+    ],
+    "mask_dist": 0.3387248246227923,
+    "mask_proj_pial_dist": 0.52077714581728785,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      88,
+      111,
+      165,
+      279
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 2",
+    "location_orig": [
+      43.672039262304608,
+      29.251870606929085,
+      -34.100594490237633
+    ],
+    "mask_dist": 0.425578547231326,
+    "mask_proj_pial_dist": 0.49715269708623622,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      219,
+      374
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 3",
+    "location_orig": [
+      50.369837807678984,
+      24.357984372367529,
+      -28.966366518112189
+    ],
+    "mask_dist": 0.5158066137484002,
+    "mask_proj_pial_dist": 0.63767717882226538,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      219,
+      373
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 4",
+    "location_orig": [
+      56.808268343840972,
+      19.317576415205803,
+      -23.78828262426665
+    ],
+    "mask_dist": 0.4271302561938975,
+    "mask_proj_pial_dist": 0.22461207857082655,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      219,
+      372
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 5",
+    "location_orig": [
+      61.936884737447834,
+      13.537230541120483,
+      -18.388725362606056
+    ],
+    "mask_dist": 7.22216409998048,
+    "mask_proj_pial_dist": 7.1783039985838784,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      219,
+      372
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 6",
+    "location_orig": [
+      66.1499305069217,
+      7.2396621097219267,
+      -12.834356434914964
+    ],
+    "mask_dist": 13.32754272224979,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      218,
+      370
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 7",
+    "location_orig": [
+      67.410886320686245,
+      -0.72559582160637692,
+      -6.7808256159737468
+    ],
+    "mask_dist": 21.475583551636724,
+    "mask_proj_pial_dist": 21.569730666642815,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      218,
+      371
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 8",
+    "location_orig": [
+      67.594054754194133,
+      -9.2997155166944889,
+      -0.54505428432256542
+    ],
+    "mask_dist": 26.566787497700812,
+    "mask_proj_pial_dist": 26.03373075587287,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      109,
+      132,
+      186,
+      471
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 9",
+    "location_orig": [
+      39.321514269370482,
+      40.909523169336353,
+      -31.653930279202058
+    ],
+    "mask_dist": 0.48095737361099083,
+    "mask_proj_pial_dist": 0.42579586321169149,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      219,
+      374
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 10",
+    "location_orig": [
+      47.185731059071024,
+      36.800168023581847,
+      -26.831442841966389
+    ],
+    "mask_dist": 0.32068784192996158,
+    "mask_proj_pial_dist": 0.64804299384269426,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      219,
+      373
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 11",
+    "location_orig": [
+      53.291914804531068,
+      31.697667922085326,
+      -21.711693765549935
+    ],
+    "mask_dist": 0.50964595170428761,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      219,
+      373
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 12",
+    "location_orig": [
+      57.403484955775276,
+      25.468374193904893,
+      -16.254680205686284
+    ],
+    "mask_dist": 0.7143439694697381,
+    "mask_proj_pial_dist": 0.30763855868796031,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      219,
+      372
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 13",
+    "location_orig": [
+      61.480063915639839,
+      19.219313303026354,
+      -10.791750068235842
+    ],
+    "mask_dist": 8.6718302380942571,
+    "mask_proj_pial_dist": 7.78506867718097,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      219,
+      372
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 14",
+    "location_orig": [
+      64.178147023940767,
+      12.191514944170889,
+      -5.0957333356373811
+    ],
+    "mask_dist": 17.194047691236868,
+    "mask_proj_pial_dist": 16.477829609774602,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      109,
+      132,
+      258,
+      475
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 15",
+    "location_orig": [
+      66.004724826823178,
+      4.6713873308600364,
+      0.74764416272835454
+    ],
+    "mask_dist": 25.678230894781763,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      109,
+      132,
+      257,
+      473
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 16",
+    "location_orig": [
+      66.556232056396439,
+      -3.5690509229394425,
+      6.8066203211618355
+    ],
+    "mask_dist": 32.887240630592665,
+    "mask_proj_pial_dist": 32.452599713342778,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      109,
+      132,
+      186,
+      471
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 17",
+    "location_orig": [
+      41.168081909924972,
+      47.390431588265812,
+      -23.988374920566429
+    ],
+    "mask_dist": 2.0787185457720456,
+    "mask_proj_pial_dist": 0.57380165242562076,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      109,
+      158,
+      260,
+      480
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 18",
+    "location_orig": [
+      48.322783387755429,
+      43.005858424356333,
+      -19.160430861013523
+    ],
+    "mask_dist": 1.0684858428798787,
+    "mask_proj_pial_dist": 0.20748733473154343,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      109,
+      158,
+      260,
+      480
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 19",
+    "location_orig": [
+      52.863519490718488,
+      37.144608507960008,
+      -13.890497593896731
+    ],
+    "mask_dist": 0.88235823141001313,
+    "mask_proj_pial_dist": 0.6965851442076435,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      109,
+      158,
+      260,
+      477
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 20",
+    "location_orig": [
+      56.898854441115652,
+      30.997848255485792,
+      -8.5351072441911047
+    ],
+    "mask_dist": 3.6999935303309468,
+    "mask_proj_pial_dist": 3.1311605042243746,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      109,
+      158,
+      260,
+      477
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 21",
+    "location_orig": [
+      59.7941110359802,
+      24.20703693033278,
+      -2.986943748457068
+    ],
+    "mask_dist": 12.358996417599831,
+    "mask_proj_pial_dist": 13.740373602167137,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      109,
+      158,
+      260,
+      477
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 22",
+    "location_orig": [
+      62.136445245100049,
+      17.103869657083,
+      2.6547120825119053
+    ],
+    "mask_dist": 20.480712710868243,
+    "mask_proj_pial_dist": 20.837614925417011,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      103,
+      126,
+      180,
+      406
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 23",
+    "location_orig": [
+      64.091833181412426,
+      9.7821093714658538,
+      8.361795741306107
+    ],
+    "mask_dist": 29.46448902325772,
+    "mask_proj_pial_dist": 30.456878618751944,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      101,
+      124,
+      178,
+      392
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 24",
+    "location_orig": [
+      65.382264448976429,
+      2.0847029263422168,
+      14.181315346616769
+    ],
+    "mask_dist": 36.767333700921156,
+    "mask_proj_pial_dist": 37.143267508101765,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      101,
+      124,
+      225,
+      393
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 25",
+    "location_orig": [
+      42.867415807160029,
+      53.788164978163863,
+      -16.297924157361933
+    ],
+    "mask_dist": 8.1053228601461065,
+    "mask_proj_pial_dist": 7.6070953426990986,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      98,
+      121,
+      175,
+      289
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 26",
+    "location_orig": [
+      48.429894360702058,
+      48.62971615394644,
+      -11.315268538194326
+    ],
+    "mask_dist": 6.35658203785757,
+    "mask_proj_pial_dist": 4.5719279987836057,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      98,
+      121,
+      175,
+      289
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 27",
+    "location_orig": [
+      52.435124176905916,
+      42.591549093834679,
+      -6.0693014222435169
+    ],
+    "mask_dist": 5.5144482916164339,
+    "mask_proj_pial_dist": 8.432140601321036,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      99,
+      122,
+      223,
+      386
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 28",
+    "location_orig": [
+      55.395390930582174,
+      35.963063326184432,
+      -0.646643979641591
+    ],
+    "mask_dist": 8.6208314731603,
+    "mask_proj_pial_dist": 11.387018124662692,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      97,
+      120,
+      222,
+      383
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 29",
+    "location_orig": [
+      57.934589966228359,
+      29.096708718948161,
+      4.8472108050568359
+    ],
+    "mask_dist": 15.400701176293609,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      103,
+      126,
+      180,
+      406
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 30",
+    "location_orig": [
+      60.094743466259324,
+      22.016224369995115,
+      10.40515750066119
+    ],
+    "mask_dist": 23.771307787860465,
+    "mask_proj_pial_dist": 22.961602068838271,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      103,
+      126,
+      180,
+      406
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 31",
+    "location_orig": [
+      62.042772959913023,
+      14.815907297979464,
+      15.99897174156105
+    ],
+    "mask_dist": 32.648475562093282,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      101,
+      124,
+      178,
+      392
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "RLT 32",
+    "location_orig": [
+      63.310591822043584,
+      7.2313268244581037,
+      21.707801185376013
+    ],
+    "mask_dist": 41.840962137882258,
+    "mask_proj_pial_dist": 41.738314028394548,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      101,
+      124,
+      225,
+      393
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "ROF 1",
+    "location_orig": [
+      8.005060711699258,
+      45.43865671748523,
+      -19.148493159385026
+    ],
+    "mask_dist": 14.742764421133408,
+    "mask_proj_pial_dist": 15.51884500341766,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      168,
+      353
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 2",
+    "location_orig": [
+      12.340970713551759,
+      45.052182234151957,
+      -17.4512787488264
+    ],
+    "mask_dist": 12.06227286122658,
+    "mask_proj_pial_dist": 12.345386634251794,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      168,
+      353
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 3",
+    "location_orig": [
+      16.676880715404259,
+      44.665707750818683,
+      -15.754064338267776
+    ],
+    "mask_dist": 9.979550164800612,
+    "mask_proj_pial_dist": 10.102076476132758,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      168,
+      282
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 4",
+    "location_orig": [
+      21.012790717256763,
+      44.279233267485409,
+      -14.056849927709152
+    ],
+    "mask_dist": 9.175313176746652,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      210,
+      352
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 5",
+    "location_orig": [
+      7.5531982206309749,
+      50.016802865939418,
+      -17.724769175929424
+    ],
+    "mask_dist": 16.89668104908289,
+    "mask_proj_pial_dist": 17.3820914078332,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      168,
+      353
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 6",
+    "location_orig": [
+      11.87665793342024,
+      49.670370018239872,
+      -15.884641384534557
+    ],
+    "mask_dist": 14.400839078573819,
+    "mask_proj_pial_dist": 14.709612594243747,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      168,
+      353
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 7",
+    "location_orig": [
+      16.200117646209506,
+      49.323937170540326,
+      -14.044513593139692
+    ],
+    "mask_dist": 12.80806481363812,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      168,
+      353
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 8",
+    "location_orig": [
+      20.523577358998775,
+      48.97750432284078,
+      -12.204385801744829
+    ],
+    "mask_dist": 12.345208075600972,
+    "mask_proj_pial_dist": 12.062169626398742,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      210,
+      352
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 9",
+    "location_orig": [
+      7.1013357295626918,
+      54.5949490143936,
+      -16.301045192473822
+    ],
+    "mask_dist": 19.740947604314233,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      168,
+      353
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 10",
+    "location_orig": [
+      11.412345153288722,
+      54.288557802327787,
+      -14.318004020242714
+    ],
+    "mask_dist": 17.677124063298336,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      168,
+      353
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 11",
+    "location_orig": [
+      15.723354577014753,
+      53.982166590261969,
+      -12.33496284801161
+    ],
+    "mask_dist": 16.42260338379867,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      168,
+      353
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 12",
+    "location_orig": [
+      20.034364000740787,
+      53.675775378196157,
+      -10.351921675780504
+    ],
+    "mask_dist": 16.121427464621863,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      114,
+      211,
+      353
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 13",
+    "location_orig": [
+      6.6494732384944086,
+      59.173095162847787,
+      -14.87732120901822
+    ],
+    "mask_dist": 23.216025105517271,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      211,
+      354
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 14",
+    "location_orig": [
+      10.948032373157204,
+      58.906745586415695,
+      -12.751366655950873
+    ],
+    "mask_dist": 21.568011867996873,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      211,
+      354
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 15",
+    "location_orig": [
+      15.24659150782,
+      58.640396009983618,
+      -10.625412102883526
+    ],
+    "mask_dist": 20.616867262872621,
+    "mask_proj_pial_dist": 21.933774296782993,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      211,
+      354
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 16",
+    "location_orig": [
+      19.5451506424828,
+      58.374046433551527,
+      -8.4994575498161815
+    ],
+    "mask_dist": 20.025675243349237,
+    "mask_proj_pial_dist": 19.786851721306714,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      211,
+      355
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 17",
+    "location_orig": [
+      6.1976107474261255,
+      63.751241311301968,
+      -13.453597225562618
+    ],
+    "mask_dist": 27.104313582541625,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      211,
+      354
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 18",
+    "location_orig": [
+      10.483719593025686,
+      63.524933370503618,
+      -11.18472929165903
+    ],
+    "mask_dist": 25.769389313684663,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      211,
+      354
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 19",
+    "location_orig": [
+      14.769828438625247,
+      63.298625429705254,
+      -8.9158613577554426
+    ],
+    "mask_dist": 24.885598933200949,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      211,
+      355
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 20",
+    "location_orig": [
+      19.055937284224807,
+      63.072317488906904,
+      -6.6469934238518578
+    ],
+    "mask_dist": 24.349916595699135,
+    "mask_proj_pial_dist": 24.5911786375115,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      211,
+      355
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 21",
+    "location_orig": [
+      5.7457482563578424,
+      68.329387459756163,
+      -12.029873242107016
+    ],
+    "mask_dist": 31.251959803482841,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      212,
+      356
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 22",
+    "location_orig": [
+      10.019406812894168,
+      68.143121154591526,
+      -9.6180919273671872
+    ],
+    "mask_dist": 30.153772998646826,
+    "mask_proj_pial_dist": 30.460716510563635,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      212,
+      356
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 23",
+    "location_orig": [
+      14.293065369430494,
+      67.9568548494269,
+      -7.2063106126273606
+    ],
+    "mask_dist": 29.296243427451422,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      212,
+      356
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 24",
+    "location_orig": [
+      18.566723925966819,
+      67.770588544262267,
+      -4.794529297887534
+    ],
+    "mask_dist": 28.918828043298422,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      212,
+      356
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 25",
+    "location_orig": [
+      5.2938857652895592,
+      72.907533608210343,
+      -10.606149258651413
+    ],
+    "mask_dist": 35.568347614603596,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      212,
+      356
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 26",
+    "location_orig": [
+      9.55509403276265,
+      72.761308938679434,
+      -8.051454563075346
+    ],
+    "mask_dist": 34.473697634392082,
+    "mask_proj_pial_dist": 34.139270721117533,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      212,
+      356
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 27",
+    "location_orig": [
+      13.816302300235741,
+      72.615084269148554,
+      -5.4967598674992768
+    ],
+    "mask_dist": 33.866571421668908,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      212,
+      356
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 28",
+    "location_orig": [
+      18.077510567708831,
+      72.468859599617645,
+      -2.9420651719232112
+    ],
+    "mask_dist": 33.632844073809288,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      106,
+      152,
+      243,
+      442
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 29",
+    "location_orig": [
+      4.8420232742212761,
+      77.485679756664524,
+      -9.1824252751958113
+    ],
+    "mask_dist": 39.9574385056679,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      212,
+      356
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 30",
+    "location_orig": [
+      9.0907812526311318,
+      77.379496722767357,
+      -6.484817198783503
+    ],
+    "mask_dist": 38.930923774259895,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      91,
+      144,
+      212,
+      356
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 31",
+    "location_orig": [
+      13.339539231040987,
+      77.273313688870189,
+      -3.7872091223711948
+    ],
+    "mask_dist": 38.539815476461015,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      106,
+      152,
+      243,
+      442
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "ROF 32",
+    "location_orig": [
+      17.588297209450843,
+      77.167130654973022,
+      -1.0896010459588865
+    ],
+    "mask_dist": 38.4386159155532,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      106,
+      152,
+      243,
+      442
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "MT 1",
+    "location_orig": [
+      12.602305509364442,
+      -30.21759183664642,
+      -9.1042830285090588
+    ],
+    "mask_dist": 24.323988872114004,
+    "mask_proj_pial_dist": 24.485700076709264,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      92,
+      145,
+      214,
+      361
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "MT 2",
+    "location_orig": [
+      18.548511238662655,
+      -25.766471925152956,
+      -16.288782555490457
+    ],
+    "mask_dist": 15.059884022573357,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      92,
+      145,
+      214,
+      362
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "MT 3",
+    "location_orig": [
+      25.125407110940642,
+      -21.089382521508369,
+      -21.804112115661837
+    ],
+    "mask_dist": 6.4826560391875123,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      86,
+      138,
+      196,
+      320
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "MT 4",
+    "location_orig": [
+      32.841342037429712,
+      -15.57770813445876,
+      -25.928466703491495
+    ],
+    "mask_dist": 0.45675109654932733,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      86,
+      138,
+      196,
+      321
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "MT 5",
+    "location_orig": [
+      40.747116806287323,
+      -10.622423736345837,
+      -28.383651324511106
+    ],
+    "mask_dist": 0.59473050122277282,
+    "mask_proj_pial_dist": 0.65108841930145067,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      86,
+      138,
+      196,
+      321
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "MT 6",
+    "location_orig": [
+      49.032571259881934,
+      -5.1107493492962277,
+      -27.778691006378949
+    ],
+    "mask_dist": 0.91695334130002315,
+    "mask_proj_pial_dist": 0.27906140916431649,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      88,
+      111,
+      203,
+      337
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "PT 1",
+    "location_orig": [
+      14.920789316770708,
+      -49.592229684262151,
+      -16.064219644130503
+    ],
+    "mask_dist": 37.291215632773174,
+    "mask_proj_pial_dist": 36.725130672808881,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      92,
+      115,
+      213,
+      359
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "PT 2",
+    "location_orig": [
+      22.643957440181282,
+      -44.454601063998354,
+      -19.908677912626388
+    ],
+    "mask_dist": 29.626705681894411,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      92,
+      115,
+      213,
+      359
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "PT 3",
+    "location_orig": [
+      30.367125563591856,
+      -38.798341456043062,
+      -23.234505193430778
+    ],
+    "mask_dist": 21.970108902198078,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      86,
+      109,
+      163,
+      317
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "PT 4",
+    "location_orig": [
+      38.267250186775016,
+      -33.142081848087784,
+      -26.301016980389477
+    ],
+    "mask_dist": 14.462331979088017,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      86,
+      109,
+      195,
+      319
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "PT 5",
+    "location_orig": [
+      46.167374809958233,
+      -27.745137733978225,
+      -28.330266791965187
+    ],
+    "mask_dist": 7.8185012922892314,
+    "mask_proj_pial_dist": 7.913650617012582,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      86,
+      138,
+      196,
+      321
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "PT 6",
+    "location_orig": [
+      54.187436616320696,
+      -21.310931644485734,
+      -28.330266791965187
+    ],
+    "mask_dist": 1.7993350743209877,
+    "mask_proj_pial_dist": 3.1053109198291025,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      88,
+      141,
+      204,
+      338
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "RA1",
+    "location_orig": [
+      12.802341736977496,
+      10.320121169800643,
+      -21.434840767442807
+    ],
+    "mask_dist": 0.57500620300372707,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      29,
+      29,
+      29,
+      29
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RA2",
+    "location_orig": [
+      17.737798716717805,
+      11.188022919010251,
+      -21.434840767442807
+    ],
+    "mask_dist": 0.54146917762861535,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      29,
+      29,
+      29,
+      29
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RA3",
+    "location_orig": [
+      22.539449973896239,
+      12.345225251289747,
+      -21.962932669089867
+    ],
+    "mask_dist": 0.57676823906497354,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      29,
+      29,
+      29,
+      29
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RA4",
+    "location_orig": [
+      32.498105390794422,
+      15.18392072927935,
+      -22.780325153806729
+    ],
+    "mask_dist": 0.57461990602735713,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      86,
+      138,
+      197,
+      323
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RA5",
+    "location_orig": [
+      41.011220296737577,
+      19.17981853954845,
+      -22.780325153806729
+    ],
+    "mask_dist": 0.28410611457802704,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      88,
+      111,
+      165,
+      335
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RA6",
+    "location_orig": [
+      49.56381885851863,
+      24.676529617876042,
+      -21.283312973964655
+    ],
+    "mask_dist": 0.61250407777063243,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      219,
+      373
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RH1",
+    "location_orig": [
+      17.637207598645603,
+      1.1415604485085282,
+      -21.048322743603904
+    ],
+    "mask_dist": 0.39242070925346872,
+    "mask_proj_pial_dist": 0.40076837573975993,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      29,
+      29,
+      29,
+      29
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RH2",
+    "location_orig": [
+      22.648827868437962,
+      1.3575641468083006,
+      -21.048322743603904
+    ],
+    "mask_dist": 0.50349795312886547,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      29,
+      29,
+      29,
+      29
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RH3",
+    "location_orig": [
+      27.070845753548838,
+      1.7389840696992565,
+      -19.714588262274276
+    ],
+    "mask_dist": 0.393202899642794,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      29,
+      29,
+      29,
+      29
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RH4",
+    "location_orig": [
+      36.96470132538397,
+      3.3656814503547139,
+      -18.380853780944619
+    ],
+    "mask_dist": 0.52916700714204057,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      86,
+      138,
+      197,
+      323
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RH5",
+    "location_orig": [
+      46.31067884000413,
+      5.8557910289454753,
+      -15.973371327954283
+    ],
+    "mask_dist": 3.3221301685836924,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      218,
+      370
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "RH6",
+    "location_orig": [
+      54.651076960551649,
+      8.1388219228205969,
+      -17.132627077853215
+    ],
+    "mask_dist": 5.0853884357329644,
+    "mask_proj_pial_dist": null,
+    "side": "r",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      94,
+      147,
+      219,
+      372
+    ],
+    "contact_type": "depth"
+  }
+]

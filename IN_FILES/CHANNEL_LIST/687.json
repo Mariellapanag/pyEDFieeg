@@ -1,0 +1,380 @@
+[
+  {
+    "name": "EEG AH1",
+    "location_orig": [
+      -25.701679044780462,
+      1.8103498146126924,
+      -4.15034853993572
+    ],
+    "mask_dist": 0.38414722725795752,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AH2",
+    "location_orig": [
+      -31.292262416005997,
+      2.84963874643924,
+      -4.15034853993572
+    ],
+    "mask_dist": 0.36142540430945819,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AH3",
+    "location_orig": [
+      -36.393278768588573,
+      2.84963874643924,
+      -4.2581265660031136
+    ],
+    "mask_dist": 0.4938648560305216,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      59,
+      59,
+      59,
+      59
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AH4",
+    "location_orig": [
+      -45.533223024975484,
+      4.9592027156018048,
+      -4.2581265660031136
+    ],
+    "mask_dist": 2.0980248083875739,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      145
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AH5",
+    "location_orig": [
+      -55.857647484801362,
+      6.5336291660963468,
+      -4.0091462462918059
+    ],
+    "mask_dist": 1.7754733483103804,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      145
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AH6",
+    "location_orig": [
+      -65.159420839017514,
+      6.5336291660963468,
+      -3.6523879005131334
+    ],
+    "mask_dist": 2.7473741374190741,
+    "mask_proj_pial_dist": 1.946486499943215,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AM1",
+    "location_orig": [
+      -16.585838427727168,
+      14.603659565233869,
+      -3.4994906339980503
+    ],
+    "mask_dist": 0.76033466627207491,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      14,
+      14,
+      14,
+      14
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AM2",
+    "location_orig": [
+      -21.933419222284158,
+      16.07487354844497,
+      -3.4347911310280779
+    ],
+    "mask_dist": 0.44618572415078617,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      14,
+      14,
+      14,
+      14
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AM3",
+    "location_orig": [
+      -26.347572374071859,
+      16.536882273816275,
+      -4.6778373909124014
+    ],
+    "mask_dist": 0.66262651716536314,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      14,
+      14,
+      14,
+      14
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AM4",
+    "location_orig": [
+      -36.63023122652811,
+      17.816232100971519,
+      -4.6778373909124014
+    ],
+    "mask_dist": 0.52373005287368379,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      14,
+      14,
+      14,
+      14
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AM5",
+    "location_orig": [
+      -45.8673015712628,
+      19.259050148483539,
+      -6.2478200915103059
+    ],
+    "mask_dist": 0.3822698055805705,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      145
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG AM6",
+    "location_orig": [
+      -55.777337105711013,
+      21.846145738493078,
+      -6.1831205885403335
+    ],
+    "mask_dist": 0.326781855504198,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      145
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG PH1",
+    "location_orig": [
+      -29.421310564341383,
+      -3.9018208781003807,
+      -0.014212751436360804
+    ],
+    "mask_dist": 1.9479793192319246,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG PH2",
+    "location_orig": [
+      -34.551339699220733,
+      -2.2584685283912904,
+      -2.0134821746639204
+    ],
+    "mask_dist": 1.8709875805614742,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG PH3",
+    "location_orig": [
+      -38.802270162852665,
+      -1.5119823606397205,
+      -3.2440091562136786
+    ],
+    "mask_dist": 3.8201825079992,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      50,
+      79,
+      84,
+      94
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG PH4",
+    "location_orig": [
+      -48.064063052594861,
+      0.003246248789736228,
+      -5.2432785794412666
+    ],
+    "mask_dist": 6.2517697527356271,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG PH5",
+    "location_orig": [
+      -58.085787904815334,
+      0.003246248789736228,
+      -6.9088872030766311
+    ],
+    "mask_dist": 6.4430385635129035,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "EEG PH6",
+    "location_orig": [
+      -67.756951110662555,
+      1.7970200375884815,
+      -8.04783454582946
+    ],
+    "mask_dist": 7.2521643358592547,
+    "mask_proj_pial_dist": 5.0751661454833021,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      104,
+      144
+    ],
+    "contact_type": "depth"
+  }
+]

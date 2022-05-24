@@ -14,7 +14,7 @@ import json
 
 # internal modules
 from pyEDFieeg.edfCollectionInfo import *
-import processingUCLH.paths
+import paths
 
 
 subject_list = ["1106", "1109", "1149", "1163", "1182", "851",

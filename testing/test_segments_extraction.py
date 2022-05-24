@@ -11,7 +11,7 @@ import json
 # internal modules
 from pyEDFieeg.edfCollectionInfo import *
 from pyEDFieeg.edfSegmentsiEEGSimple import *
-import processingUCLH.paths
+import paths
 
 
 # Single patient processing

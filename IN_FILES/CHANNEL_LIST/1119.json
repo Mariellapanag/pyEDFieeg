@@ -1,0 +1,2858 @@
+[
+  {
+    "name": "ASL 01",
+    "location_orig": [
+      -21.394478687751842,
+      61.819458852502805,
+      -9.5686005452152472
+    ],
+    "mask_dist": 9.1256304374128412,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      57,
+      57,
+      57,
+      137
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "ASL 02",
+    "location_orig": [
+      -25.651631890062419,
+      60.582488315035391,
+      -6.3191053204073739
+    ],
+    "mask_dist": 4.7331115700652457,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "ASL 03",
+    "location_orig": [
+      -29.750395762812047,
+      59.554943668876348,
+      -3.1131834687903108
+    ],
+    "mask_dist": 0.5226738090844355,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      127,
+      207
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "ASL 04",
+    "location_orig": [
+      -37.016946226780789,
+      57.577063045351537,
+      2.4138064005466617
+    ],
+    "mask_dist": 0.59194474348777393,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      127,
+      207
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "ASL 05",
+    "location_orig": [
+      -44.441886020310477,
+      53.624792994884245,
+      7.7086894681116291
+    ],
+    "mask_dist": 0.6487722078070628,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      127,
+      206
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "ASL 06",
+    "location_orig": [
+      -49.966153859108715,
+      47.845568461896505,
+      12.539358932132615
+    ],
+    "mask_dist": 0.487016277572166,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      127,
+      206
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "pOF 01",
+    "location_orig": [
+      -15.064280406776845,
+      69.771567714388851,
+      -29.339488498455978
+    ],
+    "mask_dist": 17.087421422921206,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "pOF 02",
+    "location_orig": [
+      -21.196246253288336,
+      65.274223442202185,
+      -23.523602910550352
+    ],
+    "mask_dist": 9.9417613879934148,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      98,
+      129
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "pOF 03",
+    "location_orig": [
+      -30.943126463463727,
+      61.21832631692638,
+      -21.239294497931468
+    ],
+    "mask_dist": 1.1054003390779286,
+    "mask_proj_pial_dist": 0.66495996621819708,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      97,
+      124
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "pOF 04",
+    "location_orig": [
+      -40.690006673639118,
+      58.045323485472238,
+      -20.279327526045108
+    ],
+    "mask_dist": 1.0418862589484712,
+    "mask_proj_pial_dist": 0.19117997394776826,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      62
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "pOF 05",
+    "location_orig": [
+      -48.328186838343896,
+      53.547979213285572,
+      -16.229230525782839
+    ],
+    "mask_dist": 0.60380131370738988,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      62
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "pOF 06",
+    "location_orig": [
+      -52.17405406413215,
+      47.349434359737273,
+      -11.585752601057322
+    ],
+    "mask_dist": 0.569210063629141,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      63
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "GA 17",
+    "location_orig": [
+      -17.368802849687292,
+      86.238327094990609,
+      17.374143963316168
+    ],
+    "mask_dist": 25.764399558783488,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      71,
+      71,
+      214
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 18",
+    "location_orig": [
+      -19.902119785363073,
+      79.074293803488473,
+      23.864323330137925
+    ],
+    "mask_dist": 25.702501891460653,
+    "mask_proj_pial_dist": 25.354933988784914,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      94,
+      132,
+      217
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 19",
+    "location_orig": [
+      -21.472673578330735,
+      71.345852116150411,
+      29.748883327276843
+    ],
+    "mask_dist": 25.588951376884722,
+    "mask_proj_pial_dist": 24.81836475029414,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      94,
+      132,
+      217
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 20",
+    "location_orig": [
+      -22.781766777659662,
+      63.464132277952864,
+      35.468973380675507
+    ],
+    "mask_dist": 27.017303273445389,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      94,
+      132,
+      218
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 21",
+    "location_orig": [
+      -23.137188269608217,
+      55.023333789317377,
+      40.589162967710813
+    ],
+    "mask_dist": 29.364626833140107,
+    "mask_proj_pial_dist": 26.688831126043983,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      94,
+      132,
+      218
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 22",
+    "location_orig": [
+      -23.45192011105544,
+      46.55868147896,
+      45.68375701686552
+    ],
+    "mask_dist": 30.891356385547287,
+    "mask_proj_pial_dist": 31.093469264349167,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      95,
+      134,
+      221
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 23",
+    "location_orig": [
+      -22.811177197920777,
+      37.533893503273347,
+      50.177316405522028
+    ],
+    "mask_dist": 34.862679461265152,
+    "mask_proj_pial_dist": 32.297094393495989,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      95,
+      135,
+      223
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 24",
+    "location_orig": [
+      -21.400718306285917,
+      28.057868726546971,
+      54.186691382607833
+    ],
+    "mask_dist": 40.807231694209591,
+    "mask_proj_pial_dist": 39.898261492625707,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      95,
+      135,
+      224
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 25",
+    "location_orig": [
+      -27.52652928526032,
+      84.420750285874377,
+      13.082448586157888
+    ],
+    "mask_dist": 16.012112889788881,
+    "mask_proj_pial_dist": 16.292316446863627,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      129,
+      210
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 26",
+    "location_orig": [
+      -30.13762932406512,
+      77.328522866990269,
+      19.604117808569718
+    ],
+    "mask_dist": 16.004421574678432,
+    "mask_proj_pial_dist": 16.914141703746832,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      92,
+      128,
+      209
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 27",
+    "location_orig": [
+      -31.866910028799893,
+      69.719339393515625,
+      25.571084793657185
+    ],
+    "mask_dist": 16.149236988122798,
+    "mask_proj_pial_dist": 15.83387742325097,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      126,
+      205
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 28",
+    "location_orig": [
+      -32.666743803668446,
+      61.565278756147023,
+      30.953389737948307
+    ],
+    "mask_dist": 18.106548476374346,
+    "mask_proj_pial_dist": 17.952940953676809,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      126,
+      205
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 29",
+    "location_orig": [
+      -32.98935491052638,
+      53.131452028283142,
+      36.035501126235623
+    ],
+    "mask_dist": 20.240126614457512,
+    "mask_proj_pial_dist": 20.234458939422261,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      126,
+      204
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 30",
+    "location_orig": [
+      -33.311966017384307,
+      44.697625300419261,
+      41.117612514522932
+    ],
+    "mask_dist": 22.067948725027748,
+    "mask_proj_pial_dist": 18.485318517999335,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      126,
+      204
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 31",
+    "location_orig": [
+      -33.628810356926756,
+      36.260417874078968,
+      46.196096358472715
+    ],
+    "mask_dist": 26.943560577274834,
+    "mask_proj_pial_dist": 24.613178128239213,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      46,
+      46
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 32",
+    "location_orig": [
+      -33.002878871781256,
+      27.270519378418911,
+      50.681533714276206
+    ],
+    "mask_dist": 34.066473969188692,
+    "mask_proj_pial_dist": 32.971784226686225,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      81,
+      85
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 33",
+    "location_orig": [
+      -36.167927249784661,
+      81.714244017433813,
+      7.8369174708703486
+    ],
+    "mask_dist": 7.5150498722860615,
+    "mask_proj_pial_dist": 7.4594512121670942,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      129,
+      210
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 34",
+    "location_orig": [
+      -38.937930464048293,
+      74.7413781448976,
+      14.441104558663755
+    ],
+    "mask_dist": 7.17033746293536,
+    "mask_proj_pial_dist": 6.8844838964504955,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      128,
+      209
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 35",
+    "location_orig": [
+      -40.559478900771865,
+      67.095244372991829,
+      20.322864262576811
+    ],
+    "mask_dist": 7.835581385305276,
+    "mask_proj_pial_dist": 7.7456962989749059,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      126,
+      205
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 36",
+    "location_orig": [
+      -41.30041233779513,
+      58.932860573138555,
+      25.650679307213014
+    ],
+    "mask_dist": 10.765257866133348,
+    "mask_proj_pial_dist": 10.677745071838997,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      127,
+      206
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 37",
+    "location_orig": [
+      -41.807424915924408,
+      50.633343463061635,
+      30.83134808415917
+    ],
+    "mask_dist": 11.501916984484311,
+    "mask_proj_pial_dist": 11.758881539658656,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      126,
+      204
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 38",
+    "location_orig": [
+      -42.3144374940537,
+      42.333826352984694,
+      36.01201686110533
+    ],
+    "mask_dist": 13.540300628379867,
+    "mask_proj_pial_dist": 13.580657626443678,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      46,
+      82
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 39",
+    "location_orig": [
+      -42.821450072182984,
+      34.03430924290776,
+      41.192685638051493
+    ],
+    "mask_dist": 20.294982617924298,
+    "mask_proj_pial_dist": 20.329262598096676,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      81,
+      85
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 40",
+    "location_orig": [
+      -42.658745168009183,
+      25.342178256081553,
+      45.952073352703259
+    ],
+    "mask_dist": 28.690193271505105,
+    "mask_proj_pial_dist": 28.529858049372542,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      81,
+      85
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 41",
+    "location_orig": [
+      -43.644950954434719,
+      78.325137243203514,
+      1.8589449335353885
+    ],
+    "mask_dist": 1.8839756549010362,
+    "mask_proj_pial_dist": 1.9330770574435576,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      129,
+      211
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 42",
+    "location_orig": [
+      -45.953767448261758,
+      71.108112620182908,
+      8.1555867078868083
+    ],
+    "mask_dist": 1.4703037604670093,
+    "mask_proj_pial_dist": 0.91543392642626464,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      128,
+      208
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 43",
+    "location_orig": [
+      -47.274408284981213,
+      63.3117818182164,
+      13.830623549471454
+    ],
+    "mask_dist": 0.92867824889636241,
+    "mask_proj_pial_dist": 0.41095278298413634,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      128,
+      208
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 44",
+    "location_orig": [
+      -48.046664971193607,
+      55.19396735639674,
+      19.160703206010602
+    ],
+    "mask_dist": 3.0796604885823853,
+    "mask_proj_pial_dist": 2.6236598929718649,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      70,
+      203
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 45",
+    "location_orig": [
+      -48.747388628488373,
+      47.0342175105665,
+      24.445785514850357
+    ],
+    "mask_dist": 2.4590343892874249,
+    "mask_proj_pial_dist": 2.542606535895759,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      70,
+      203
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 46",
+    "location_orig": [
+      -49.260380225776757,
+      38.764411986309355,
+      29.612776294416861
+    ],
+    "mask_dist": 7.0195228824600981,
+    "mask_proj_pial_dist": 5.6034303581633989,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      70,
+      70,
+      203
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 47",
+    "location_orig": [
+      -49.622131998557492,
+      30.405943920924212,
+      34.684630728265326
+    ],
+    "mask_dist": 15.776799538849414,
+    "mask_proj_pial_dist": 14.799538854033832,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      46,
+      82
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 48",
+    "location_orig": [
+      -49.574829654778775,
+      21.807672764315633,
+      39.499172552970826
+    ],
+    "mask_dist": 23.624629234254208,
+    "mask_proj_pial_dist": 24.723561314710036,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      89,
+      118,
+      185
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 49",
+    "location_orig": [
+      -48.986574237019376,
+      73.684177470846265,
+      -5.4622861897005812
+    ],
+    "mask_dist": 2.4824941895244952,
+    "mask_proj_pial_dist": 2.5160278868287906,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      129,
+      207
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 50",
+    "location_orig": [
+      -51.16416162355052,
+      66.416427807945084,
+      0.73436778232237709
+    ],
+    "mask_dist": 0.52050132847575148,
+    "mask_proj_pial_dist": 0.62637251705809094,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      93,
+      129,
+      211
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 51",
+    "location_orig": [
+      -52.884648000897386,
+      58.880708136758187,
+      6.6434855860154141
+    ],
+    "mask_dist": 0.39324185905298231,
+    "mask_proj_pial_dist": 0.42778010294465624,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      128,
+      208
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 52",
+    "location_orig": [
+      -54.103043486490307,
+      51.050643675863611,
+      12.236766652821974
+    ],
+    "mask_dist": 1.081909673507359,
+    "mask_proj_pial_dist": 0.66796048409882536,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      127,
+      206
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 53",
+    "location_orig": [
+      -55.039264229814854,
+      43.055157641828,
+      17.652547686679281
+    ],
+    "mask_dist": 0.35398750716218685,
+    "mask_proj_pial_dist": 0.31885063961737836,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      61,
+      61,
+      61,
+      153
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 54",
+    "location_orig": [
+      -55.772921583703592,
+      34.940921239591731,
+      22.9409076480121
+    ],
+    "mask_dist": 4.3132711984144843,
+    "mask_proj_pial_dist": 4.5877581418891173,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      46,
+      82
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 55",
+    "location_orig": [
+      -56.353884658480183,
+      26.737169639583541,
+      28.133216349208418
+    ],
+    "mask_dist": 12.391564867218591,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      120,
+      188
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 56",
+    "location_orig": [
+      -56.206912166711255,
+      18.106674506134542,
+      32.867622312519551
+    ],
+    "mask_dist": 19.938854342211165,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      120,
+      188
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 57",
+    "location_orig": [
+      -51.394397135972646,
+      67.323312256772027,
+      -14.629003767800535
+    ],
+    "mask_dist": 0.63064896776942914,
+    "mask_proj_pial_dist": 0.48438071390067738,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      156
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 58",
+    "location_orig": [
+      -54.94320084728578,
+      60.885628247498573,
+      -7.58723488779826
+    ],
+    "mask_dist": 0.43206721626410821,
+    "mask_proj_pial_dist": 0.42358834228762193,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      62,
+      62,
+      62,
+      156
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 59",
+    "location_orig": [
+      -56.61668405721386,
+      53.3485599879227,
+      -1.7251231525506991
+    ],
+    "mask_dist": 0.75983588548191427,
+    "mask_proj_pial_dist": 0.322575104388696,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      63
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 60",
+    "location_orig": [
+      -57.93620536759466,
+      45.603985791477896,
+      3.9143313443935943
+    ],
+    "mask_dist": 0.61335773410329009,
+    "mask_proj_pial_dist": 0.44276776046504757,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      157
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 61",
+    "location_orig": [
+      -59.2526942881391,
+      37.857633892701976,
+      9.551878337882636
+    ],
+    "mask_dist": 0.62345185186140728,
+    "mask_proj_pial_dist": 0.578986650267746,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      61,
+      61,
+      107,
+      154
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 62",
+    "location_orig": [
+      -60.561734780397323,
+      30.106915441786668,
+      15.184739950052299
+    ],
+    "mask_dist": 5.0790552369985411,
+    "mask_proj_pial_dist": 5.0296186044688067,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      120,
+      187
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 63",
+    "location_orig": [
+      -61.373395788171848,
+      22.064614207415929,
+      20.504728502874368
+    ],
+    "mask_dist": 12.078990621982369,
+    "mask_proj_pial_dist": 11.875032504234632,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      120,
+      187
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GA 64",
+    "location_orig": [
+      -61.129961534864655,
+      13.403775975371861,
+      25.161016817677059
+    ],
+    "mask_dist": 20.30912405847759,
+    "mask_proj_pial_dist": 20.133346840662284,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      112,
+      170
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 01",
+    "location_orig": [
+      -17.454283270051665,
+      14.0100625454038,
+      58.565974164152884
+    ],
+    "mask_dist": 51.412467699084779,
+    "mask_proj_pial_dist": 50.511180014032611,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      67,
+      115,
+      178
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 02",
+    "location_orig": [
+      -27.469384280943338,
+      11.292812283899583,
+      56.81461364373083
+    ],
+    "mask_dist": 47.7568433118388,
+    "mask_proj_pial_dist": 48.161543331490243,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      67,
+      115,
+      179
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 03",
+    "location_orig": [
+      -35.166616337386891,
+      7.8432439355286236,
+      52.742837530773912
+    ],
+    "mask_dist": 43.442249410047722,
+    "mask_proj_pial_dist": 43.107775984432841,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      88,
+      117,
+      183
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 04",
+    "location_orig": [
+      -42.515365447493231,
+      4.28357429602228,
+      48.322195593948251
+    ],
+    "mask_dist": 40.455661478488771,
+    "mask_proj_pial_dist": 40.301947862021606,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      86,
+      110,
+      166
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 05",
+    "location_orig": [
+      -49.238469318586596,
+      0.52623544678256273,
+      43.275221022909193
+    ],
+    "mask_dist": 38.752063643289048,
+    "mask_proj_pial_dist": 38.399988718926473,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      111,
+      168
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 06",
+    "location_orig": [
+      -55.325904362914912,
+      -3.43193951021211,
+      37.59187921700844
+    ],
+    "mask_dist": 38.659664233397159,
+    "mask_proj_pial_dist": 38.604459683520957,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      111,
+      168
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 07",
+    "location_orig": [
+      -60.882464106609682,
+      -7.5578416304610752,
+      31.377078838819681
+    ],
+    "mask_dist": 40.507274376757792,
+    "mask_proj_pial_dist": 41.703918190612342,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      100,
+      150,
+      257
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 08",
+    "location_orig": [
+      -64.995225523963668,
+      -12.139903977602174,
+      23.716893835892897
+    ],
+    "mask_dist": 43.3298587735217,
+    "mask_proj_pial_dist": 42.8852249954366,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      100,
+      150,
+      257
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 09",
+    "location_orig": [
+      -18.601045501222739,
+      23.231016235839686,
+      56.312143893277359
+    ],
+    "mask_dist": 45.296167650612375,
+    "mask_proj_pial_dist": 44.540270122452775,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      96,
+      138,
+      229
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 10",
+    "location_orig": [
+      -28.490283345341609,
+      20.513608639467794,
+      54.2023394241838
+    ],
+    "mask_dist": 41.313653595989244,
+    "mask_proj_pial_dist": 40.499454110172238,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      81,
+      85
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 11",
+    "location_orig": [
+      -36.933717132120186,
+      17.33940711640571,
+      50.64514239566001
+    ],
+    "mask_dist": 37.930103891297449,
+    "mask_proj_pial_dist": 38.0814391732727,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      46,
+      46,
+      81,
+      85
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 12",
+    "location_orig": [
+      -44.422384558170805,
+      13.863552355635239,
+      46.132130006475137
+    ],
+    "mask_dist": 33.300192792560466,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      88,
+      117,
+      183
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 13",
+    "location_orig": [
+      -51.170484737286934,
+      10.153719401908468,
+      40.877736710570048
+    ],
+    "mask_dist": 30.419692106379934,
+    "mask_proj_pial_dist": 29.707893778999416,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      89,
+      118,
+      185
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 14",
+    "location_orig": [
+      -56.723089190846544,
+      6.0661760772322273,
+      34.426534200293048
+    ],
+    "mask_dist": 29.36661580504099,
+    "mask_proj_pial_dist": 28.581015886341472,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      89,
+      118,
+      185
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 15",
+    "location_orig": [
+      -61.8626458332866,
+      1.8481325436278162,
+      27.561830064074297
+    ],
+    "mask_dist": 31.092977264491822,
+    "mask_proj_pial_dist": 31.08059475018279,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      111,
+      169
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GB 16",
+    "location_orig": [
+      -65.220373103583881,
+      -2.9328702868887322,
+      18.913338863266674
+    ],
+    "mask_dist": 34.155355446770976,
+    "mask_proj_pial_dist": 35.574678799947421,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      74,
+      149,
+      255
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 01",
+    "location_orig": [
+      -15.31728730229408,
+      -1.4903975726732002,
+      59.432087864815273
+    ],
+    "mask_dist": 58.43003322740087,
+    "mask_proj_pial_dist": 56.862223746349386,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      67,
+      115,
+      178
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 02",
+    "location_orig": [
+      -24.962181538423671,
+      -5.3408233231843951,
+      58.044446134494152
+    ],
+    "mask_dist": 56.119776109243446,
+    "mask_proj_pial_dist": 54.698666305070354,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      86,
+      109,
+      164
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 03",
+    "location_orig": [
+      -33.308101667907934,
+      -9.269142305299729,
+      55.073020083227135
+    ],
+    "mask_dist": 54.2343443538947,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      86,
+      109,
+      164
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 04",
+    "location_orig": [
+      -40.6568826015558,
+      -13.257254930664381,
+      50.8858242825193
+    ],
+    "mask_dist": 53.153012058400307,
+    "mask_proj_pial_dist": 52.888840907740573,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      86,
+      110,
+      166
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 05",
+    "location_orig": [
+      -46.901249188431755,
+      -17.31159397429245,
+      45.352062667068381
+    ],
+    "mask_dist": 52.549090729558493,
+    "mask_proj_pial_dist": 50.637574289610711,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      100,
+      152,
+      260
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 06",
+    "location_orig": [
+      -52.91828361815913,
+      -21.379565034353529,
+      39.541124544174529
+    ],
+    "mask_dist": 53.359799952424012,
+    "mask_proj_pial_dist": 53.467662198753544,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      100,
+      152,
+      260
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 07",
+    "location_orig": [
+      -57.450466034578788,
+      -25.536575530365454,
+      31.919769011440941
+    ],
+    "mask_dist": 54.692899560817821,
+    "mask_proj_pial_dist": 53.022685631958524,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      100,
+      152,
+      260
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 08",
+    "location_orig": [
+      -60.719459184938081,
+      -29.769333413148011,
+      22.758260104025958
+    ],
+    "mask_dist": 57.015444061327969,
+    "mask_proj_pial_dist": 57.03367025882531,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      100,
+      151,
+      259
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 09",
+    "location_orig": [
+      -17.070589271875036,
+      7.3359712329525388,
+      59.124629650540037
+    ],
+    "mask_dist": 54.189120752011604,
+    "mask_proj_pial_dist": 52.72982979857202,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      71,
+      96,
+      138,
+      230
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 10",
+    "location_orig": [
+      -27.314945877633232,
+      3.5864783886690983,
+      58.039446766631279
+    ],
+    "mask_dist": 51.483132235244355,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      88,
+      116,
+      180
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 11",
+    "location_orig": [
+      -34.888783452424882,
+      -0.32315264183235115,
+      53.6982127048007
+    ],
+    "mask_dist": 47.942983559532294,
+    "mask_proj_pial_dist": 46.898865652678907,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      88,
+      116,
+      180
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 12",
+    "location_orig": [
+      -42.374634156753686,
+      -4.2380598219075525,
+      49.249699964222593
+    ],
+    "mask_dist": 45.95181303009921,
+    "mask_proj_pial_dist": 44.844900272839254,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      86,
+      110,
+      166
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 13",
+    "location_orig": [
+      -49.053591186525054,
+      -8.20135253603665,
+      43.817375811317845
+    ],
+    "mask_dist": 45.117878410041605,
+    "mask_proj_pial_dist": 44.187473878075316,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      86,
+      110,
+      166
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 14",
+    "location_orig": [
+      -55.422997492187939,
+      -12.183207518745899,
+      38.007629521303215
+    ],
+    "mask_dist": 45.76496199386365,
+    "mask_proj_pial_dist": 45.860048092167276,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      100,
+      152,
+      260
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 15",
+    "location_orig": [
+      -60.91144425571872,
+      -16.217889409472882,
+      31.123766431670614
+    ],
+    "mask_dist": 47.554221853626139,
+    "mask_proj_pial_dist": 47.554057996747844,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      100,
+      152,
+      260
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GC 16",
+    "location_orig": [
+      -64.0432225389752,
+      -20.393889377911403,
+      21.366516898358153
+    ],
+    "mask_dist": 49.564754958058913,
+    "mask_proj_pial_dist": 48.331689875674527,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      100,
+      150,
+      257
+    ],
+    "contact_type": "grid"
+  },
+  {
+    "name": "GD 01",
+    "location_orig": [
+      -63.586880384374226,
+      28.233624493517262,
+      -16.980871307091007
+    ],
+    "mask_dist": 17.90535772174001,
+    "mask_proj_pial_dist": 17.516282558061132,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      145
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 02",
+    "location_orig": [
+      -62.683701757519117,
+      31.083272935947054,
+      -13.096252498431216
+    ],
+    "mask_dist": 13.820207236909612,
+    "mask_proj_pial_dist": 13.048561300172125,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      148,
+      252
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 03",
+    "location_orig": [
+      -61.780523130664,
+      33.932921378376854,
+      -9.2116336897714231
+    ],
+    "mask_dist": 10.112169323586665,
+    "mask_proj_pial_dist": 5.1474804674040824,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      61,
+      61,
+      107,
+      155
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 04",
+    "location_orig": [
+      -60.877344503808871,
+      36.782569820806657,
+      -5.3270148811116327
+    ],
+    "mask_dist": 5.9362441344497547,
+    "mask_proj_pial_dist": 4.4277062681958528,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      61,
+      61,
+      107,
+      155
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 05",
+    "location_orig": [
+      -64.2758964476433,
+      24.208914430177778,
+      -14.089022254685355
+    ],
+    "mask_dist": 16.909518290371587,
+    "mask_proj_pial_dist": 18.221209697112709,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      58,
+      85,
+      105,
+      145
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 06",
+    "location_orig": [
+      -63.365199907425584,
+      27.0729701605921,
+      -10.142605565127223
+    ],
+    "mask_dist": 12.379619119966378,
+    "mask_proj_pial_dist": 11.638828505449133,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      148,
+      252
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 07",
+    "location_orig": [
+      -62.454503367207856,
+      29.937025891006421,
+      -6.1961888755690868
+    ],
+    "mask_dist": 8.3231170555867244,
+    "mask_proj_pial_dist": 6.1975857509065628,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      121,
+      191
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 08",
+    "location_orig": [
+      -61.543806826990135,
+      32.801081621420742,
+      -2.24977218601095
+    ],
+    "mask_dist": 5.1345380605281186,
+    "mask_proj_pial_dist": 4.5310451975614443,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      61,
+      61,
+      107,
+      155
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 09",
+    "location_orig": [
+      -64.9272821793232,
+      20.174892782251909,
+      -11.199184051068928
+    ],
+    "mask_dist": 17.346546304454446,
+    "mask_proj_pial_dist": 16.99043814437006,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      147,
+      249
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 10",
+    "location_orig": [
+      -64.046698057332037,
+      23.062667385237145,
+      -7.188958631823227
+    ],
+    "mask_dist": 12.819451187888307,
+    "mask_proj_pial_dist": 13.077536609222078,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      147,
+      251
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 11",
+    "location_orig": [
+      -63.128483603751711,
+      25.941130403635981,
+      -3.18074406136675
+    ],
+    "mask_dist": 8.0375778208442412,
+    "mask_proj_pial_dist": 7.975962894574935,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      121,
+      191
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 12",
+    "location_orig": [
+      -62.210269150171385,
+      28.819593422034817,
+      0.82747050908972453
+    ],
+    "mask_dist": 3.8804972540629477,
+    "mask_proj_pial_dist": 2.4607519636822763,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      121,
+      190
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 13",
+    "location_orig": [
+      -65.3704106453457,
+      16.089338100653329,
+      -8.3204744730268558
+    ],
+    "mask_dist": 17.811778680076404,
+    "mask_proj_pial_dist": 17.176626120744562,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      147,
+      250
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 14",
+    "location_orig": [
+      -64.550231369038585,
+      19.008327404406714,
+      -4.2448215902556683
+    ],
+    "mask_dist": 13.166634515919611,
+    "mask_proj_pial_dist": 11.840215931282335,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      121,
+      191
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 15",
+    "location_orig": [
+      -63.730052092731469,
+      21.927316708160095,
+      -0.16916870748447121
+    ],
+    "mask_dist": 8.9305436365826374,
+    "mask_proj_pial_dist": 8.2008259837404971,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      121,
+      190
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 16",
+    "location_orig": [
+      -62.876731473352642,
+      24.8381052226489,
+      3.9047132041904047
+    ],
+    "mask_dist": 5.68854064129641,
+    "mask_proj_pial_dist": 4.354680707891597,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      121,
+      190
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 17",
+    "location_orig": [
+      -65.813539111368172,
+      12.003783419054749,
+      -5.441764894984793
+    ],
+    "mask_dist": 19.3346419142541,
+    "mask_proj_pial_dist": 18.675233131371936,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      147,
+      250
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 18",
+    "location_orig": [
+      -64.9858868146131,
+      14.937191119495505,
+      -1.3043117323764406
+    ],
+    "mask_dist": 15.093470303176233,
+    "mask_proj_pial_dist": 12.297553908015916,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      121,
+      190
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 19",
+    "location_orig": [
+      -64.158234517858,
+      17.870598819936262,
+      2.8331414302319078
+    ],
+    "mask_dist": 11.602332916336612,
+    "mask_proj_pial_dist": 9.71143742874643,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      121,
+      190
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 20",
+    "location_orig": [
+      -63.330582221102929,
+      20.804006520377019,
+      6.9705945928402588
+    ],
+    "mask_dist": 9.70732856548944,
+    "mask_proj_pial_dist": 8.4980234400349328,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      67,
+      90,
+      121,
+      190
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 21",
+    "location_orig": [
+      -66.256667577390672,
+      7.9182287374561717,
+      -2.5630553169427222
+    ],
+    "mask_dist": 21.925954337581839,
+    "mask_proj_pial_dist": 21.11555951300496,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      147,
+      250
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 22",
+    "location_orig": [
+      -65.4215422601876,
+      10.866054834584302,
+      1.6361981255027853
+    ],
+    "mask_dist": 18.25065796604737,
+    "mask_proj_pial_dist": 17.178426522139436,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      113,
+      172
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 23",
+    "location_orig": [
+      -64.585639686463281,
+      13.813688600432386,
+      5.8354100337584818
+    ],
+    "mask_dist": 15.474504445660024,
+    "mask_proj_pial_dist": 15.106541651206962,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      113,
+      172
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 24",
+    "location_orig": [
+      -63.7018847058778,
+      16.749481340296033,
+      10.032064857068749
+    ],
+    "mask_dist": 14.101214261278605,
+    "mask_proj_pial_dist": 14.158245120703919,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      112,
+      171
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 25",
+    "location_orig": [
+      -66.697132633006518,
+      3.8320149978519247,
+      0.31551193666676092
+    ],
+    "mask_dist": 25.258590351087623,
+    "mask_proj_pial_dist": 26.842159689089108,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      99,
+      146,
+      247
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 26",
+    "location_orig": [
+      -65.7941192114111,
+      6.7793098449148044,
+      4.5733372633103162
+    ],
+    "mask_dist": 22.106293972454765,
+    "mask_proj_pial_dist": 20.713007140569555,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      113,
+      172
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 27",
+    "location_orig": [
+      -64.8840335451196,
+      9.7248546727266643,
+      8.8307846710229541
+    ],
+    "mask_dist": 19.864206022361458,
+    "mask_proj_pial_dist": 19.498698573544345,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      113,
+      172
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 28",
+    "location_orig": [
+      -63.973947878828113,
+      12.670399500538528,
+      13.088232078735597
+    ],
+    "mask_dist": 18.771211237774953,
+    "mask_proj_pial_dist": 18.769621279636453,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      112,
+      171
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 29",
+    "location_orig": [
+      -67.003012493282625,
+      -0.28750170182624135,
+      3.1868873727804186
+    ],
+    "mask_dist": 29.063773584275719,
+    "mask_proj_pial_dist": 32.30723448026707,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      73,
+      73,
+      145,
+      246
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 30",
+    "location_orig": [
+      -66.084012012781216,
+      2.6721047523761818,
+      7.5060580153210914
+    ],
+    "mask_dist": 26.356599178671562,
+    "mask_proj_pial_dist": 27.15683948677432,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      74,
+      74,
+      149,
+      255
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 31",
+    "location_orig": [
+      -65.16501153227982,
+      5.6317112065786041,
+      11.825228657861768
+    ],
+    "mask_dist": 24.518479564297323,
+    "mask_proj_pial_dist": 24.721012024942357,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      113,
+      172
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "GD 32",
+    "location_orig": [
+      -64.22192669802638,
+      8.585358013663912,
+      16.143112306864612
+    ],
+    "mask_dist": 23.155625032442934,
+    "mask_proj_pial_dist": 22.784748041331664,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      65,
+      87,
+      112,
+      171
+    ],
+    "contact_type": "microgrid"
+  },
+  {
+    "name": "IPL 01",
+    "location_orig": [
+      -22.54661159669277,
+      51.461643102309552,
+      -5.537507263770749
+    ],
+    "mask_dist": 5.6860617432058209,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "IPL 02",
+    "location_orig": [
+      -27.312896815372767,
+      50.9795485640401,
+      -4.6463028042714427
+    ],
+    "mask_dist": 1.7840521211303564,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "IPL 03",
+    "location_orig": [
+      -31.919655938968674,
+      49.477083915415761,
+      -2.8200077845233125
+    ],
+    "mask_dist": 0.51619901987861716,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      70,
+      92,
+      127,
+      207
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "IPL 04",
+    "location_orig": [
+      -40.355041344583469,
+      46.613130956012412,
+      0.87646835572260784
+    ],
+    "mask_dist": 0.53942754907159129,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      63,
+      63,
+      63,
+      157
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "IPL 05",
+    "location_orig": [
+      -48.311848464945854,
+      42.951547521188445,
+      5.9755803363418636
+    ],
+    "mask_dist": 0.31653345441713748,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": true,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      61,
+      61,
+      61,
+      153
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "IPL 06",
+    "location_orig": [
+      -54.035290254130587,
+      37.779982685629307,
+      11.542237597085546
+    ],
+    "mask_dist": 0.5091163306961477,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      61,
+      61,
+      61,
+      153
+    ],
+    "contact_type": "depth"
+  },
+  {
+    "name": "AOF 01",
+    "location_orig": [
+      3.3416585615433121,
+      53.805395957243434,
+      -31.738176002826748
+    ],
+    "mask_dist": 35.13912675536416,
+    "mask_proj_pial_dist": 26.782967363578493,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      57,
+      57,
+      102,
+      139
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "AOF 02",
+    "location_orig": [
+      -7.0077073759094048,
+      51.956734566521845,
+      -32.543997618583745
+    ],
+    "mask_dist": 25.486179425271541,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      57,
+      57,
+      102,
+      139
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "AOF 03",
+    "location_orig": [
+      -14.947130404252846,
+      49.6666260288894,
+      -28.493900618321476
+    ],
+    "mask_dist": 16.673359086579634,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      83,
+      97,
+      124
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "AOF 04",
+    "location_orig": [
+      -23.790282023512276,
+      47.376517491256948,
+      -24.885250764970039
+    ],
+    "mask_dist": 7.2905714903619732,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      55,
+      55,
+      55
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "AOF 05",
+    "location_orig": [
+      -33.235919370049004,
+      45.527856100535359,
+      -22.159495205440294
+    ],
+    "mask_dist": 0.55137694141525084,
+    "mask_proj_pial_dist": null,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      55,
+      55,
+      125
+    ],
+    "contact_type": "strip"
+  },
+  {
+    "name": "AOF 06",
+    "location_orig": [
+      -42.079070989308406,
+      41.913406122170386,
+      -19.433739645910549
+    ],
+    "mask_dist": 3.2984217509373912,
+    "mask_proj_pial_dist": 0.73272661795607341,
+    "side": "l",
+    "is_spiking": false,
+    "is_spiking_comment": null,
+    "is_scalp": false,
+    "ROIids": [
+      55,
+      55,
+      96,
+      127
+    ],
+    "contact_type": "strip"
+  }
+]
