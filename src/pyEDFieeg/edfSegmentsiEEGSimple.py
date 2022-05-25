@@ -224,7 +224,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 
                         # The final segment of EEG for all channels
                         EEGsignals2 = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
-                        EEGsignals = np.hstack(EEGsignals1, EEGsignals2)
+                        EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
                         EEG_segments_all.append(EEGsignals)
 
                     elif (end_id and not start_id):
@@ -329,7 +329,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 
                         # The final segment of EEG for all channels
                         EEGsignals2 = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
-                        EEGsignals = np.hstack(EEGsignals1, EEGsignals2)
+                        EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
                         EEG_segments_all.append(EEGsignals)
 
                     elif (edf_idd in check_indx_stop):

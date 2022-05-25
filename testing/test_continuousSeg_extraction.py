@@ -72,10 +72,77 @@ fs_target = sampleRateConsistency(root = root,
                                   edf_path_list = f_paths_clean,
                                   channel_list = EEG_channel_list)
 
-t_start = t_start_sz
-t_stop = t_end_sz
+# EDF paths
+edf_fpaths = edfs_info["fpath"]
 
-seizures_data = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = t_start, t_stop = t_stop, fs_target = fs_target)
+# Find the length of the recording based on the edfs_info
+# edf start and stop times for all edf files
+edf_start_time = edfs_info["start_time"]
+edf_stop_time = edfs_info["end_time"]
+# Identify the start and end time of the entire recording based on the edf files
+start_EDFs_global = sorted(edf_start_time)[0]
+end_EDFs_global = sorted(edf_stop_time)[-1]
+
+# Split the range into start points of length 30s
+#n_win = np.floor(((end_EDFs_global - start_EDFs_global)+datetime.timedelta(seconds = 1)).seconds/30)
+
+# window length in seconds
+winsec = 30
+overlap = 0
+winlength = int(winsec)
+
+def datetime_range(start, end, delta):
+    current = start
+    while current < (end-delta):
+        # this controls in the case of the last window going over the last recorded period.
+        yield current
+        current += delta
+
+# These are the start points of all the starting points of the windows
+t_start = [dt for dt in
+       datetime_range(start_EDFs_global, end_EDFs_global,
+                      datetime.timedelta(seconds=30))]
+
+t_stop = [tt + datetime.timedelta(seconds=winsec-1) for tt in t_start]
+
+# Checking all segments
+tt_start = t_start
+tt_stop = t_stop
+
+iEEGraw_data = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = tt_start, t_stop = tt_stop, fs_target = fs_target)
+
+
+
+# Checking one segment only
+tt_start = t_start[0]
+tt_stop = t_stop[0]
+
+iEEGraw_data = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = tt_start, t_stop = tt_stop, fs_target = fs_target)
+
+ii=0
+# find which files correspond to the start time of segments
+start_time_tuple = [(edf_fpaths.index(edf_path), isbetween(t_start[ii], (start, stop))) for start, stop, edf_path in zip(edf_start_time, edf_stop_time, edf_fpaths)]
+# find which files correspond to the end time of segments
+stop_time_tuple = [(edf_fpaths.index(edf_path), isbetween(t_stop[ii], (start, stop))) for start, stop, edf_path in zip(edf_start_time, edf_stop_time, edf_fpaths)]
+
+check_point_start = sum([start_tuple[1] for start_tuple in start_time_tuple])
+# Get the sum of True values
+check_point_stop = sum([stop_tuple[1] for stop_tuple in stop_time_tuple])
+# Get indices corresponding to True values
+check_indx_start = [start_tuple[0] for start_tuple in start_time_tuple if start_tuple[1] == True]
+# Get indices corresponding to True values
+check_indx_stop = [stop_tuple[0] for stop_tuple in stop_time_tuple if stop_tuple[1] == True]
+
+indx_edf = check_indx_start[0]
+edf_path = edf_fpaths[indx_edf]
+
+durSeg_sec = (tt_stop - tt_start) + datetime.timedelta(seconds=1)
+durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_target))
+edf_reader = pyedflib.EdfReader(edf_path, 0, 1)
+ch_signal_temp = edf_reader.readSignal(chn = 0, start = 0, n = durSeg_samplPoints,digital=False) # physical values used for EEG
+edf_reader.close()
+
+
 
 # Plot raw data and save them
 # Plot values for each edf
