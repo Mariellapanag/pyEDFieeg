@@ -1,5 +1,0 @@
-,edf_path,start_time,end_time,duration,n_chan,prop_chan,index,check_ch_with_list_provided,is_list_greater
-0,F:\UCLH_GLAS\icEEG\GLAS044\GLAS044_Mon.edf,2015-02-23 19:03:54,2015-02-24 09:42:42,0 days 14:38:49,79,1.0,0,True,
-2,F:\UCLH_GLAS\icEEG\GLAS044\GLAS044_Tue.edf,2015-02-24 11:16:25,2015-02-25 08:14:28,0 days 20:58:04,79,1.0,2,True,
-3,F:\UCLH_GLAS\icEEG\GLAS044\GLAS044_Wed.edf,2015-02-25 08:15:10,2015-02-26 07:59:31,0 days 23:44:22,79,1.0,3,True,
-1,F:\UCLH_GLAS\icEEG\GLAS044\GLAS044_Thu.edf,2015-02-26 08:00:45,2015-02-27 10:25:34,1 days 02:24:50,79,1.0,1,True,

@@ -19,7 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="FILES" href="../files/index.html" />
+    <link rel="next" title="Information about overlapping across any pair of edf files obtained from the root folder" href="edf_overlap_info.html" />
     <link rel="prev" title="Extracting information for edf files for different root folders" href="edf_info.html" /> 
 </head>
 
@@ -43,9 +43,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples of processing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="edf_info.html">Extracting information for edf files for different <code class="docutils literal notranslate"><span class="pre">root</span></code> folders</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Combining information from edf files obtained from different <code class="docutils literal notranslate"><span class="pre">root</span></code> folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="edf_overlap_info.html">Information about overlapping across any pair of edf files obtained from the <code class="docutils literal notranslate"><span class="pre">root</span></code> folder</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">FILES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Examples of processing</a></li>
 </ul>
 
         </div>
@@ -90,7 +92,7 @@
 
 <span class="c1"># internal modules</span>
 <span class="kn">from</span> <span class="nn">pyEDFieeg.edfCollectionInfo</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">import</span> <span class="nn">processingUCLH.paths</span>
+<span class="kn">import</span> <span class="nn">paths</span>
 
 
 <span class="n">subject_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1106&quot;</span><span class="p">,</span> <span class="s2">&quot;1109&quot;</span><span class="p">,</span> <span class="s2">&quot;1149&quot;</span><span class="p">,</span> <span class="s2">&quot;1163&quot;</span><span class="p">,</span> <span class="s2">&quot;1182&quot;</span><span class="p">,</span> <span class="s2">&quot;851&quot;</span><span class="p">,</span>
@@ -108,16 +110,16 @@
     <span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">subject_list</span><span class="p">:</span>
 
         <span class="c1"># Set the root directory for patient</span>
-        <span class="n">root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">processingUCLH</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">INPUT_DATA_DIR</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">INPUT_DATA</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span>
         <span class="c1"># iEEG channels for each subject. This mat files include the iEEG channels</span>
         <span class="c1"># having excluded the Heart Rate Channels</span>
         <span class="c1"># EEG_channels = sio.loadmat(os.path.join(paths.iEEG_channels, subject, &quot;channels.mat&quot;))</span>
-        <span class="n">corrupted_edf_paths</span> <span class="o">=</span> <span class="n">processingUCLH</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">corrupted_edfs</span><span class="p">[</span><span class="n">subject</span><span class="p">]</span>
+        <span class="n">corrupted_edf_paths</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">corrupted_edfs</span><span class="p">[</span><span class="n">subject</span><span class="p">]</span>
 
-        <span class="n">error_edfs</span> <span class="o">=</span> <span class="n">processingUCLH</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">error_edfs</span> <span class="c1"># channels labels appear in error edfs</span>
-        <span class="n">min_n_Chan</span> <span class="o">=</span> <span class="n">processingUCLH</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">min_n_Chan</span> <span class="c1"># the minimum threshold of the number of channels needed to be included in the edf file</span>
+        <span class="n">error_edfs</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">error_edfs</span> <span class="c1"># channels labels appear in error edfs</span>
+        <span class="n">min_n_Chan</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">min_n_Chan</span> <span class="c1"># the minimum threshold of the number of channels needed to be included in the edf file</span>
 
-        <span class="n">EEG_channel_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">processingUCLH</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">IN_CHANNELS_DIR</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.json&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
+        <span class="n">EEG_channel_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">IN_CHANNELS</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.json&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">EEG_channel_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
             <span class="n">Channels_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">Channels_json</span><span class="p">)</span>
@@ -150,7 +152,7 @@
         <span class="n">Record_Channels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">channelsKeep</span><span class="p">))</span>
 
     <span class="n">EDF_info_allP</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Subjects&quot;</span><span class="p">:</span> <span class="n">subject_list</span><span class="p">,</span> <span class="s2">&quot;Record_Start&quot;</span><span class="p">:</span> <span class="n">Record_Start</span><span class="p">,</span> <span class="s2">&quot;Record_End&quot;</span><span class="p">:</span> <span class="n">Record_End</span><span class="p">,</span> <span class="s2">&quot;Record_Channels&quot;</span><span class="p">:</span> <span class="n">Record_Channels</span><span class="p">})</span>
-    <span class="n">EDF_info_allP</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">processingUCLH</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">EDF_INFO_DIR</span><span class="p">,</span> <span class="s2">&quot;EDF_INFO_allP.csv&quot;</span><span class="p">))</span>
+    <span class="n">EDF_info_allP</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">EDF_INFO_DIR</span><span class="p">,</span> <span class="s2">&quot;EDF_INFO_allP.csv&quot;</span><span class="p">))</span>
 
 
 <span class="c1">#process_func(subject)</span>
@@ -166,7 +168,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="edf_info.html" class="btn btn-neutral float-left" title="Extracting information for edf files for different root folders" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../files/index.html" class="btn btn-neutral float-right" title="FILES" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="edf_overlap_info.html" class="btn btn-neutral float-right" title="Information about overlapping across any pair of edf files obtained from the root folder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

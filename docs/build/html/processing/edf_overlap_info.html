@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Information about overlapping across any pair of edf files obtained from the root folder &mdash; pyEDFieeg</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FILES" href="../files/index.html" />
+    <link rel="prev" title="Combining information from edf files obtained from different root folders" href="edf_info_overall.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> pyEDFieeg
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples of processing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="edf_info.html">Extracting information for edf files for different <code class="docutils literal notranslate"><span class="pre">root</span></code> folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="edf_info_overall.html">Combining information from edf files obtained from different <code class="docutils literal notranslate"><span class="pre">root</span></code> folders</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Information about overlapping across any pair of edf files obtained from the <code class="docutils literal notranslate"><span class="pre">root</span></code> folder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">FILES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Examples of processing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pyEDFieeg</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Examples of processing</a> &raquo;</li>
+      <li>Information about overlapping across any pair of edf files obtained from the <code class="docutils literal notranslate"><span class="pre">root</span></code> folder</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/processing/edf_overlap_info.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="information-about-overlapping-across-any-pair-of-edf-files-obtained-from-the-root-folder">
+<h1>Information about overlapping across any pair of edf files obtained from the <code class="docutils literal notranslate"><span class="pre">root</span></code> folder<a class="headerlink" href="#information-about-overlapping-across-any-pair-of-edf-files-obtained-from-the-root-folder" title="Permalink to this headline"></a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">###############################################################################</span>
+<span class="c1"># M. Panagiotopoulou, April 2022</span>
+<span class="c1"># m.panagiotopoulou2@newcastle.ac.uk</span>
+<span class="c1">#</span>
+<span class="c1"># Long-term Interictal iEEG data</span>
+<span class="c1">###############################################################################</span>
+
+<span class="c1"># Python module</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">ExcelWriter</span>
+
+<span class="c1"># internal modules</span>
+<span class="kn">from</span> <span class="nn">pyEDFieeg.edfCollectionInfo</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pyEDFieeg.edfOverlapping</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">paths</span>
+
+<span class="k">def</span> <span class="nf">save_xls</span><span class="p">(</span><span class="n">list_dfs</span><span class="p">,</span> <span class="n">xls_path</span><span class="p">,</span> <span class="n">sheetNames</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">ExcelWriter</span><span class="p">(</span><span class="n">xls_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_dfs</span><span class="p">):</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span><span class="n">sheetNames</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+
+
+<span class="n">subject_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1106&quot;</span><span class="p">,</span> <span class="s2">&quot;1109&quot;</span><span class="p">,</span> <span class="s2">&quot;1149&quot;</span><span class="p">,</span> <span class="s2">&quot;1163&quot;</span><span class="p">,</span> <span class="s2">&quot;1182&quot;</span><span class="p">,</span> <span class="s2">&quot;851&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;934&quot;</span><span class="p">,</span> <span class="s2">&quot;95&quot;</span><span class="p">,</span> <span class="s2">&quot;999&quot;</span><span class="p">,</span> <span class="s2">&quot;GLAS040&quot;</span><span class="p">,</span> <span class="s2">&quot;GLAS041&quot;</span><span class="p">,</span> <span class="s2">&quot;GLAS044&quot;</span><span class="p">,</span> <span class="s2">&quot;GLAS047&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;1005&quot;</span><span class="p">,</span> <span class="s2">&quot;1200&quot;</span><span class="p">,</span> <span class="s2">&quot;1211&quot;</span><span class="p">,</span> <span class="s2">&quot;1379&quot;</span><span class="p">,</span> <span class="s2">&quot;1395&quot;</span><span class="p">,</span> <span class="s2">&quot;1167&quot;</span><span class="p">]</span>
+
+<span class="c1"># subject_white_list = [&quot;1106&quot;, &quot;1109&quot;, &quot;1149&quot;, &quot;1163&quot;,</span>
+<span class="c1">#                       &quot;1182&quot;, &quot;851&quot;,</span>
+<span class="c1">#                       &quot;934&quot;, &quot;95&quot;, &quot;999&quot;, &quot;GLAS040&quot;, &quot;GLAS041&quot;, &quot;GLAS044&quot;, &quot;GLAS047&quot;]</span>
+<span class="c1">#</span>
+<span class="c1"># subject_black_list = [&quot;1005&quot;, &quot;1167&quot;, &quot;1200&quot;, &quot;1211&quot;, &quot;1379&quot;, &quot;1395&quot;]</span>
+
+<span class="c1"># Single patient processing</span>
+
+<span class="c1">#subject = &quot;test&quot;</span>
+<span class="n">subject</span> <span class="o">=</span> <span class="s2">&quot;1106&quot;</span>
+
+<span class="k">def</span> <span class="nf">process_func</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
+    <span class="c1"># Set the root directory for patient</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">INPUT_DATA</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span>
+
+    <span class="n">EDF_info_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">EDF_INFO_DIR</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">EDF_info_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">corrupted_edf_paths</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">corrupted_edfs</span><span class="p">[</span><span class="n">subject</span><span class="p">]</span>
+
+    <span class="n">error_edfs</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">error_edfs</span> <span class="c1"># channels labels appear in error edfs</span>
+    <span class="n">min_n_Chan</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">min_n_Chan</span> <span class="c1"># the minimum threshold of the number of channels needed to be included in the edf file</span>
+
+    <span class="c1"># iEEG channels for each subject. This mat files include the iEEG channels</span>
+    <span class="c1"># having excluded the Heart Rate Channels</span>
+    <span class="c1"># EEG_channels = sio.loadmat(os.path.join(paths.iEEG_channels, subject, &quot;channels.mat&quot;))</span>
+    <span class="n">EEG_channel_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">IN_CHANNELS</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.json&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">EEG_channel_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+        <span class="n">Channels_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">Channels_json</span><span class="p">)</span>
+    <span class="n">EEG_channel_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">element</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">Channels_json</span><span class="p">]</span>
+
+    <span class="c1"># Get info about edf files and a list with the final paths pointed to the edf files to be used for the analysis</span>
+    <span class="p">[</span><span class="n">f_paths_clean</span><span class="p">,</span> <span class="n">f_path_list_excluded</span><span class="p">,</span> <span class="n">f_path_list_checkChanNotInList</span><span class="p">,</span> <span class="n">f_paths</span><span class="p">,</span> <span class="n">edf_chan</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_edf_paths</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span>
+                                                                                                               <span class="n">error_edfs</span> <span class="o">=</span> <span class="n">error_edfs</span><span class="p">,</span>
+                                                                                                               <span class="n">corrupted_edf_paths</span> <span class="o">=</span> <span class="n">corrupted_edf_paths</span><span class="p">,</span>
+                                                                                                               <span class="n">channel_list</span> <span class="o">=</span> <span class="n">EEG_channel_list</span><span class="p">,</span>
+                                                                                                               <span class="n">min_n_Chan</span> <span class="o">=</span> <span class="n">min_n_Chan</span><span class="p">)</span>
+    <span class="n">edfs_info</span> <span class="o">=</span> <span class="n">get_EDFs_info</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span>
+                              <span class="n">edf_path_list</span> <span class="o">=</span> <span class="n">f_paths_clean</span><span class="p">,</span>
+                              <span class="n">channel_list</span> <span class="o">=</span> <span class="n">EEG_channel_list</span><span class="p">)</span>
+
+    <span class="n">unique_channels_across_allEDFs</span> <span class="o">=</span> <span class="n">nChannelsConsistency</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span>
+                                                          <span class="n">edf_path_list</span> <span class="o">=</span> <span class="n">f_paths_clean</span><span class="p">,</span> <span class="c1"># we are using the list with the final edf files</span>
+                                                          <span class="n">channel_list</span> <span class="o">=</span> <span class="n">EEG_channel_list</span><span class="p">)</span>
+
+    <span class="n">unique_channels_across_allEDFs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="c1"># The channels to keep; these are the ones that are included in the list and in at least one edf file.</span>
+    <span class="c1"># If a channel is not included in en edf file will be filled with NaN values.</span>
+    <span class="n">channelsKeep</span> <span class="o">=</span> <span class="n">unique_channels_across_allEDFs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="c1"># edf start and stop times</span>
+
+    <span class="n">edf_start_time</span> <span class="o">=</span> <span class="n">edfs_info</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">]</span>
+    <span class="n">edf_stop_time</span> <span class="o">=</span> <span class="n">edfs_info</span><span class="p">[</span><span class="s2">&quot;end_time&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Recording duration of EDF files in seconds</span>
+    <span class="n">edf_duration</span> <span class="o">=</span> <span class="n">edfs_info</span><span class="p">[</span><span class="s2">&quot;record_duration&quot;</span><span class="p">]</span>
+
+    <span class="c1"># EDF paths</span>
+    <span class="n">edf_fpaths</span> <span class="o">=</span> <span class="n">edfs_info</span><span class="p">[</span><span class="s2">&quot;fpath&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Channel labels</span>
+    <span class="n">ch_labels</span> <span class="o">=</span> <span class="n">edfs_info</span><span class="p">[</span><span class="s2">&quot;chan_labels&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Get all combinations of two between the edf files</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">edf_fpaths</span><span class="p">))</span>
+    <span class="n">idx_combinations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">edf1_indx_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">edf2_indx_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pair_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Create an excel file for storing the information regarding</span>
+    <span class="c1"># the overlapping check of equality for every pair of edf files</span>
+
+    <span class="c1"># Start checking every pair of edf files for overlapping</span>
+    <span class="n">list_dfs_xls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">list_sheet_names</span>  <span class="o">=</span><span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">idx_combinations</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span>
+        <span class="n">edf1_indx</span> <span class="o">=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">edf2_indx</span> <span class="o">=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">edf1_indx_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edf1_indx</span><span class="p">)</span>
+        <span class="n">edf2_indx_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edf2_indx</span><span class="p">)</span>
+
+        <span class="c1">#  start, edn and paths for edf files</span>
+        <span class="n">startA</span> <span class="o">=</span> <span class="n">edf_start_time</span><span class="p">[</span><span class="n">edf1_indx</span><span class="p">]</span>
+        <span class="n">startB</span> <span class="o">=</span> <span class="n">edf_start_time</span><span class="p">[</span><span class="n">edf2_indx</span><span class="p">]</span>
+        <span class="n">endA</span> <span class="o">=</span> <span class="n">edf_stop_time</span><span class="p">[</span><span class="n">edf1_indx</span><span class="p">]</span>
+        <span class="n">endB</span> <span class="o">=</span> <span class="n">edf_stop_time</span><span class="p">[</span><span class="n">edf2_indx</span><span class="p">]</span>
+        <span class="n">pathA</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">edf1_indx</span><span class="p">]</span>
+        <span class="n">pathB</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">edf2_indx</span><span class="p">]</span>
+        <span class="n">chA</span> <span class="o">=</span> <span class="n">ch_labels</span><span class="p">[</span><span class="n">pathA</span><span class="p">]</span>
+        <span class="n">chB</span> <span class="o">=</span> <span class="n">ch_labels</span><span class="p">[</span><span class="n">pathB</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">startA</span> <span class="o">&lt;=</span> <span class="n">startB</span><span class="p">):</span>
+            <span class="n">t1_start</span> <span class="o">=</span> <span class="n">startA</span>
+            <span class="n">t1_end</span> <span class="o">=</span> <span class="n">endA</span>
+            <span class="n">t2_start</span> <span class="o">=</span> <span class="n">startB</span>
+            <span class="n">t2_end</span> <span class="o">=</span> <span class="n">endB</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">t1_start</span> <span class="o">=</span> <span class="n">startB</span>
+            <span class="n">t1_end</span> <span class="o">=</span> <span class="n">endB</span>
+            <span class="n">t2_start</span> <span class="o">=</span> <span class="n">startA</span>
+            <span class="n">t2_end</span> <span class="o">=</span> <span class="n">endA</span>
+
+        <span class="n">pair_result</span> <span class="o">=</span> <span class="n">intervals_overlap</span><span class="p">(</span><span class="n">t1_start</span> <span class="o">=</span> <span class="n">t1_start</span><span class="p">,</span> <span class="n">t1_end</span> <span class="o">=</span> <span class="n">t1_end</span><span class="p">,</span>
+                                     <span class="n">t2_start</span> <span class="o">=</span> <span class="n">t2_start</span><span class="p">,</span> <span class="n">t2_end</span> <span class="o">=</span> <span class="n">t2_end</span><span class="p">)</span>
+        <span class="n">pair_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pair_result</span><span class="p">)</span>
+
+        <span class="c1"># Check here for each overlapping pair whether the overlapping segments are equal or not</span>
+        <span class="c1"># this checks all the pairs that the duration of overlap is more than 1 second. This is because for 1s overlap</span>
+        <span class="c1"># we are not sure where the two edf files match as the resolution of the edf files is in milliseconds.</span>
+    <span class="c1">#     if (pair_result[0] != False) and (pair_result[1] != None) and (pair_result[1][2].seconds &gt; 1):</span>
+    <span class="c1">#         check_list_ch = [isOverlapIdentical(start_fileA = startA, start_fileB = startB, end_fileA = endA,</span>
+    <span class="c1">#                                                                end_fileB = endB, edf_pathFileA = pathA, edf_pathFileB = pathB,</span>
+    <span class="c1">#                                                                channel_label = ch)</span>
+    <span class="c1">#                          if ((ch in chA) and (ch in chB)) else &quot;channel_missing&quot; for ch in channelsKeep]</span>
+    <span class="c1">#         # check_list_ch = list()</span>
+    <span class="c1">#         #</span>
+    <span class="c1">#         # for ch in channelsKeep:</span>
+    <span class="c1">#         #     if (ch in chA) and (ch in chB):</span>
+    <span class="c1">#         #         print(ch)</span>
+    <span class="c1">#         #         check = edfoverlap.is_overlap_segm_equal_FOR2(start_fileA = startA, start_fileB = startB, end_fileA = endA,</span>
+    <span class="c1">#         #                                                       end_fileB = endB, edf_pathFileA = pathA, edf_pathFileB = pathB,</span>
+    <span class="c1">#         #                                                       channel_label = ch)</span>
+    <span class="c1">#         #         check_list_ch.append(check)</span>
+    <span class="c1">#         #     else:</span>
+    <span class="c1">#         #         check_list_ch.append(&quot;channel_missing&quot;)</span>
+    <span class="c1">#</span>
+    <span class="c1">#         overlap_match_df = pd.DataFrame({&quot;overlap_edfs_paths&quot;: [pathA, pathB], &quot;overlap_edfs_start&quot;: [startA, startB],</span>
+    <span class="c1">#                                          &quot;overlap_edfs_end&quot;: [endA, endB], &quot;overlap_range&quot;: [pair_result[1][0], pair_result[1][1]]})</span>
+    <span class="c1">#         overlap_ch_chek_df = pd.DataFrame({&quot;channels_list&quot;: channelsKeep, &quot;check_status&quot;: check_list_ch})</span>
+    <span class="c1">#</span>
+    <span class="c1">#         list_dfs_xls.append(overlap_match_df)</span>
+    <span class="c1">#         list_dfs_xls.append(overlap_ch_chek_df)</span>
+    <span class="c1">#         list_sheet_names.append(&#39;detail_info_{}&#39;.format(pair))</span>
+    <span class="c1">#         list_sheet_names.append(&#39;check_ch_status_{}&#39;.format(pair))</span>
+    <span class="c1">#</span>
+    <span class="c1"># xls_path = os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject, &quot;EDF_OVERLAP_check_equal_{}.xlsx&quot;.format(subject))</span>
+    <span class="c1">#</span>
+    <span class="c1"># save_xls(list_dfs = list_dfs_xls, xls_path = xls_path, sheetNames = list_sheet_names)</span>
+
+    <span class="c1"># TODO: CONTINUE WORKING ON THAT. check if all overlapping segments over 1s are equal and produce a csv</span>
+    <span class="c1"># refer to the commented code below</span>
+    <span class="c1"># overall_status_gather = [list_dfs_xls[ii][&quot;check_status&quot;].values for ii in range(0, len(list_dfs_xls)) if not ii % 2 == 0]</span>
+    <span class="c1"># flatten_list = list(chain(*overall_status_gather))</span>
+    <span class="c1"># overall_status = [element for element in flatten_list if element != &quot;channel_missing&quot;]</span>
+
+    <span class="c1"># Store the information regarding all the overlapping edf files including the ones that overlap only one second</span>
+    <span class="c1"># Gather all True/False in a list</span>
+    <span class="n">exist_True</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">pair_list</span><span class="p">]</span>
+
+    <span class="c1"># if overlap exists then gather the indices of the pairs that found</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">exist_True</span><span class="p">):</span>
+        <span class="n">indx_True</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">exist_True</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="p">]</span>
+
+        <span class="c1"># Extract start, end times and duration of overlapping between any two pairs</span>
+        <span class="n">start_overlap_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">pair_list</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">indx_True</span><span class="p">]</span>
+        <span class="n">end_overlap_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">pair_list</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">indx_True</span><span class="p">]</span>
+        <span class="n">dur_overlap_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">pair_list</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">indx_True</span><span class="p">]</span>
+        <span class="n">dur_overlap_sec_list</span> <span class="o">=</span>  <span class="p">[</span><span class="n">pair_list</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">indx_True</span><span class="p">]</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># if there is no overlap just save an empty csv file</span>
+        <span class="n">start_overlap_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">end_overlap_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">dur_overlap_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">dur_overlap_sec_list</span> <span class="o">=</span>  <span class="p">[]</span>
+
+    <span class="n">info_overlap_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;start_overlap&quot;</span><span class="p">:</span> <span class="n">start_overlap_list</span><span class="p">,</span>
+                                    <span class="s2">&quot;end_overlap&quot;</span><span class="p">:</span> <span class="n">end_overlap_list</span><span class="p">,</span>
+                                    <span class="s2">&quot;duration_overlap&quot;</span><span class="p">:</span> <span class="n">dur_overlap_list</span><span class="p">,</span>
+                                    <span class="s2">&quot;duration_overlap_sec&quot;</span><span class="p">:</span> <span class="n">dur_overlap_sec_list</span><span class="p">})</span>
+
+    <span class="n">info_overlap_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">EDF_INFO_DIR</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;EDF_OVERLAP_INFO_</span><span class="si">{}</span><span class="s2">.csv&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">)))</span>
+
+<span class="c1"># if __name__ == &#39;__main__&#39;:</span>
+<span class="c1">#     process_func(subject)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">subject_list</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">subject</span><span class="p">)</span>
+        <span class="n">process_func</span><span class="p">(</span><span class="n">subject</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="edf_info_overall.html" class="btn btn-neutral float-left" title="Combining information from edf files obtained from different root folders" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../files/index.html" class="btn btn-neutral float-right" title="FILES" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Mariella Panagiotopoulou.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

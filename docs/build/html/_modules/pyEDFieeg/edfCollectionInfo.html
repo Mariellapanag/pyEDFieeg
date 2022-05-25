@@ -39,6 +39,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../processing/index.html">Examples of processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../files/index.html">FILES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Examples of processing</a></li>
 </ul>
 
         </div>
@@ -83,11 +84,114 @@
 <span class="kn">import</span> <span class="nn">pyedflib</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
 <span class="kn">import</span> <span class="nn">scipy.signal</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># internal modules</span>
+
+
+<div class="viewcode-block" id="create_datetime"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.create_datetime">[docs]</a><span class="k">def</span> <span class="nf">create_datetime</span><span class="p">(</span><span class="n">year</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">month</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">day</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">hours</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">minutes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">seconds</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">microseconds</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function for creating a datetime object</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        year: the calendar year</span>
+<span class="sd">        month: the calendar month</span>
+<span class="sd">        day: the day</span>
+<span class="sd">        hours: the hours</span>
+<span class="sd">        minutes: the minutes</span>
+<span class="sd">        seconds: the seconds</span>
+<span class="sd">        microseconds: the microseconds</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        datetime.datetime: a ``datetime`` object as specified by the user.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># (hours, minutes, seconds, microseconds)</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">seconds</span><span class="p">,</span> <span class="n">microseconds</span><span class="p">)</span>
+    <span class="c1"># (year, month, day)</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+    <span class="c1"># Create a datetime object</span>
+    <span class="n">start_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">start_time</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">start_datetime</span></div>
+
+
+<span class="k">def</span> <span class="nf">removeMultipleKeys</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">kk</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+        <span class="k">del</span> <span class="n">r</span><span class="p">[</span><span class="n">kk</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">r</span>
+
+<span class="k">def</span> <span class="nf">pairwise</span><span class="p">(</span><span class="n">iterable</span><span class="p">):</span>
+    <span class="c1"># https://docs.python.org/3.10/library/itertools.html#itertools.pairwise</span>
+    <span class="c1"># pairwise(&#39;ABCDEFG&#39;) --&gt; AB BC CD DE EF FG</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">tee</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+    <span class="nb">next</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="common_elements"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.common_elements">[docs]</a><span class="k">def</span> <span class="nf">common_elements</span><span class="p">(</span><span class="n">list1</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">list2</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks if two lists are identical. The order doesn&#39;t count.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        list1: 1st list</span>
+<span class="sd">        list2: 2nd list</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        boolean: True/False if the two lists are/aren&#39;t identical.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">set1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
+    <span class="n">set2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">set1</span> <span class="o">&amp;</span> <span class="n">set2</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="intersection"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.intersection">[docs]</a><span class="k">def</span> <span class="nf">intersection</span><span class="p">(</span><span class="n">lst1</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">lst2</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        lst1: 1st list</span>
+<span class="sd">        lst2: 2nd list</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: the elements included in the intersection of ``list1`` and ``list2``.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lst3</span> <span class="o">=</span> <span class="p">[</span><span class="n">element</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">lst1</span> <span class="k">if</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">lst2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">lst3</span></div>
+
+<span class="c1"># def intersect(*d):</span>
+<span class="c1">#     # https://stackoverflow.com/questions/3852780/python-intersection-of-multiple-lists</span>
+<span class="c1">#     sets = iter(map(set, d))</span>
+<span class="c1">#     result = sets.next()</span>
+<span class="c1">#     for s in sets:</span>
+<span class="c1">#         result = result.intersection(s)</span>
+<span class="c1">#     return result</span>
+
+
+<div class="viewcode-block" id="isbetween"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.isbetween">[docs]</a><span class="k">def</span> <span class="nf">isbetween</span><span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">time_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function for finding if a certain datetime object exists in a specified datetime range.</span>
+<span class="sd">    The boundaries of the time range are also included.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        time: a datetime object</span>
+<span class="sd">        time_range: a tuple depicting a time range. Each time in the time range is a datetime object.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        boolean: True if the condition is met. Otherwise, the function returns False</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">time</span> <span class="o">&gt;=</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">time</span> <span class="o">&lt;=</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">time</span> <span class="o">&lt;=</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="unique"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.unique">[docs]</a><span class="k">def</span> <span class="nf">unique</span><span class="p">(</span><span class="n">list1</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
@@ -252,7 +356,6 @@
         <span class="k">raise</span> <span class="ne">NotADirectoryError</span>
 
     <span class="k">return</span> <span class="n">f_path_list_clean</span><span class="p">,</span> <span class="n">f_path_list_excluded</span><span class="p">,</span> <span class="n">f_path_list_checkChanNotInList</span><span class="p">,</span> <span class="n">f_path_list</span><span class="p">,</span> <span class="n">f_ch_df_</span></div>
-
 
 <div class="viewcode-block" id="nChannelsConsistency"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.nChannelsConsistency">[docs]</a><span class="k">def</span> <span class="nf">nChannelsConsistency</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">edf_path_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">channel_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
@@ -498,6 +601,103 @@
         <span class="k">raise</span> <span class="ne">NotADirectoryError</span>
 
     <span class="k">return</span> <span class="n">edf_df_time_info</span><span class="p">,</span> <span class="n">unique_channels_across_all</span></div>
+
+
+
+<div class="viewcode-block" id="get_EDFs_info"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.get_EDFs_info">[docs]</a><span class="k">def</span> <span class="nf">get_EDFs_info</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">edf_path_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">channel_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function searches in root for any *.edf files.</span>
+<span class="sd">    Uses the function ``sortEDF_starttime`` so as all results are given in an order based on sorting</span>
+<span class="sd">    by start time all the edf files provided.</span>
+<span class="sd">    It will then go through all of them.</span>
+<span class="sd">    For every EDF it pulls out the info about the start time/date, duration (in hours),</span>
+<span class="sd">    filename, number of channels, and sampling freq. All of this is returned.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        root: the full path.</span>
+<span class="sd">        edf_path_list: a list of the full paths with the edf files.</span>
+<span class="sd">        channel_list: a list of the channels eligible for analysis (there are times where this is a superset of the channels exist in the edf files).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Info about the edf files included in the analysis. The start and end times displayed will be inclusive in this calculation,</span>
+<span class="sd">        so duration will be end - start + 1sec.</span>
+
+<span class="sd">        {</span>
+<span class="sd">        **start_time** (``list``):</span>
+<span class="sd">            the start time for each edf file (``datetime``).</span>
+<span class="sd">        **end_time** (``list``):</span>
+<span class="sd">            the end time for each edf file (``datetime``).</span>
+<span class="sd">        **record_duration** (``list``):</span>
+<span class="sd">            the duration for each edf file (``timedelta``).</span>
+<span class="sd">        **nChan** (``list``):</span>
+<span class="sd">            the number of channels for each edf file (``int``).</span>
+<span class="sd">        **fs** (``list``):</span>
+<span class="sd">            the frequency sampling for all channels within each edf file (``float``).</span>
+<span class="sd">        **chan_labels** (``list``):</span>
+<span class="sd">            the labels for all channels within each edf file (``str``).</span>
+<span class="sd">        **fpath** (``str``):</span>
+<span class="sd">            the full paths pointing to each edf file.</span>
+<span class="sd">        }</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># sort edf files by start time. The edfs that are inluded are the valid ones</span>
+    <span class="p">[</span><span class="n">sorted_edfs_info</span><span class="p">,</span> <span class="n">unique_channels_across_all</span><span class="p">]</span> <span class="o">=</span> <span class="n">sortEDF_starttime</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">edf_path_list</span><span class="p">,</span> <span class="n">channel_list</span><span class="p">)</span>
+
+    <span class="n">f_path_sorted</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sorted_edfs_info</span><span class="o">.</span><span class="n">edf_path</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+    <span class="c1"># start time; datetime object</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="c1"># end time; datetime object</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="c1"># recording duration in sec</span>
+    <span class="n">record_duration</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="c1"># number of channels</span>
+    <span class="n">nChan</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="c1"># frequency sampling for all channels</span>
+    <span class="n">fs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># channel labels</span>
+    <span class="n">chan_labels</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">edf_path</span> <span class="ow">in</span> <span class="n">f_path_sorted</span><span class="p">:</span>
+            <span class="c1"># read header of edf file</span>
+            <span class="n">f_header</span> <span class="o">=</span> <span class="n">pyedflib</span><span class="o">.</span><span class="n">EdfReader</span><span class="p">(</span><span class="n">edf_path</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="c1"># Get start date</span>
+            <span class="n">f_start_time</span> <span class="o">=</span> <span class="n">f_header</span><span class="o">.</span><span class="n">getStartdatetime</span><span class="p">()</span> <span class="c1"># where this file starts</span>
+
+            <span class="c1"># Get End time</span>
+            <span class="c1"># Calculation of inclusive end time</span>
+            <span class="n">f_end_time</span> <span class="o">=</span> <span class="n">f_start_time</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">f_header</span><span class="o">.</span><span class="n">getFileDuration</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># where this file ends</span>
+
+            <span class="c1"># Duration in seconds</span>
+            <span class="n">f_duration</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_end_time</span> <span class="o">-</span> <span class="n">f_start_time</span><span class="p">)</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Signals in file</span>
+            <span class="n">f_nChan</span> <span class="o">=</span> <span class="n">f_header</span><span class="o">.</span><span class="n">signals_in_file</span>
+
+            <span class="c1"># frequency sampling across channels</span>
+            <span class="n">f_fs</span> <span class="o">=</span> <span class="n">f_header</span><span class="o">.</span><span class="n">getSampleFrequencies</span><span class="p">()</span>
+
+            <span class="c1"># Channel labels</span>
+            <span class="n">f_chan_labels</span> <span class="o">=</span> <span class="n">f_header</span><span class="o">.</span><span class="n">getSignalLabels</span><span class="p">()</span>
+
+            <span class="n">f_header</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+            <span class="n">start_time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_start_time</span><span class="p">)</span>
+            <span class="n">end_time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_end_time</span><span class="p">)</span>
+            <span class="n">record_duration</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_duration</span><span class="p">)</span>
+            <span class="n">nChan</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_nChan</span><span class="p">)</span>
+            <span class="n">fs</span><span class="p">[</span><span class="n">edf_path</span><span class="p">]</span> <span class="o">=</span> <span class="n">f_fs</span>
+            <span class="n">chan_labels</span><span class="p">[</span><span class="n">edf_path</span><span class="p">]</span> <span class="o">=</span> <span class="n">f_chan_labels</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotADirectoryError</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="n">start_time</span><span class="p">,</span> <span class="s2">&quot;end_time&quot;</span><span class="p">:</span> <span class="n">end_time</span><span class="p">,</span> <span class="s2">&quot;record_duration&quot;</span><span class="p">:</span> <span class="n">record_duration</span><span class="p">,</span>
+            <span class="s2">&quot;nChan&quot;</span><span class="p">:</span> <span class="n">nChan</span><span class="p">,</span> <span class="s2">&quot;fs&quot;</span><span class="p">:</span> <span class="n">fs</span><span class="p">,</span> <span class="s2">&quot;chan_labels&quot;</span><span class="p">:</span> <span class="n">chan_labels</span><span class="p">,</span>
+            <span class="s2">&quot;fpath&quot;</span><span class="p">:</span> <span class="n">f_path_sorted</span><span class="p">}</span></div>
+
 
 
 <div class="viewcode-block" id="downsample_decimate"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.downsample_decimate">[docs]</a><span class="k">def</span> <span class="nf">downsample_decimate</span><span class="p">(</span><span class="n">signal</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">fs</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">target_fs</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>

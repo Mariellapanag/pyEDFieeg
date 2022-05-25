@@ -39,6 +39,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../processing/index.html">Examples of processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../files/index.html">FILES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Examples of processing</a></li>
 </ul>
 
         </div>
@@ -259,7 +260,7 @@
 
 
 
-<div class="viewcode-block" id="overlapSort"><a class="viewcode-back" href="../../api/edfOverlapping.html#pyEDFieeg.edfOverlapping.overlapSort">[docs]</a><span class="k">def</span> <span class="nf">overlapSort</span><span class="p">(</span><span class="n">start_fileA</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">start_fileB</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">end_fileA</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">end_fileB</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">pathA</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pathB</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="overlapSort"><a class="viewcode-back" href="../../api/edfOverlapping.html#pyEDFieeg.edfOverlapping.overlapSort">[docs]</a><span class="k">def</span> <span class="nf">overlapSort</span><span class="p">(</span><span class="n">start_fileA</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">start_fileB</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">end_fileA</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">end_fileB</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">pathA</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pathB</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Sort the two ranges and perform the ``intervals_overlap`` function.</span>
 
@@ -314,9 +315,9 @@
 
 <span class="c1"># The following function checks if the overlapping parts are equal between two overlapped edf files</span>
 <span class="c1"># Returns True if this is the case. Otherwise returns False.</span>
-<span class="k">def</span> <span class="nf">is_overlap_segm_equal_FOR2</span><span class="p">(</span><span class="n">start_fileA</span><span class="p">,</span> <span class="n">start_fileB</span><span class="p">,</span> <span class="n">end_fileA</span><span class="p">,</span> <span class="n">end_fileB</span><span class="p">,</span> <span class="n">edf_pathFileA</span><span class="p">,</span> <span class="n">edf_pathFileB</span><span class="p">,</span> <span class="n">channel_label</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">isOverlapIdentical</span><span class="p">(</span><span class="n">start_fileA</span><span class="p">,</span> <span class="n">start_fileB</span><span class="p">,</span> <span class="n">end_fileA</span><span class="p">,</span> <span class="n">end_fileB</span><span class="p">,</span> <span class="n">edf_pathFileA</span><span class="p">,</span> <span class="n">edf_pathFileB</span><span class="p">,</span> <span class="n">channel_label</span><span class="p">):</span>
 
-    <span class="p">[</span><span class="n">result_overlap</span><span class="p">,</span> <span class="n">t1_start</span><span class="p">,</span> <span class="n">t1_end</span><span class="p">,</span> <span class="n">t2_start</span><span class="p">,</span> <span class="n">t2_end</span><span class="p">,</span> <span class="n">t1_path</span><span class="p">,</span> <span class="n">t2_path</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_overlap_sort</span><span class="p">(</span><span class="n">start_fileA</span><span class="p">,</span> <span class="n">start_fileB</span><span class="p">,</span> <span class="n">end_fileA</span><span class="p">,</span> <span class="n">end_fileB</span><span class="p">,</span> <span class="n">edf_pathFileA</span><span class="p">,</span> <span class="n">edf_pathFileB</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">result_overlap</span><span class="p">,</span> <span class="n">t1_start</span><span class="p">,</span> <span class="n">t1_end</span><span class="p">,</span> <span class="n">t2_start</span><span class="p">,</span> <span class="n">t2_end</span><span class="p">,</span> <span class="n">t1_path</span><span class="p">,</span> <span class="n">t2_path</span><span class="p">]</span> <span class="o">=</span> <span class="n">overlapSort</span><span class="p">(</span><span class="n">start_fileA</span><span class="p">,</span> <span class="n">start_fileB</span><span class="p">,</span> <span class="n">end_fileA</span><span class="p">,</span> <span class="n">end_fileB</span><span class="p">,</span> <span class="n">edf_pathFileA</span><span class="p">,</span> <span class="n">edf_pathFileB</span><span class="p">)</span>
 
     <span class="c1"># Overlap starting and ending point as well as duration already computed</span>
     <span class="n">start_overlap</span> <span class="o">=</span> <span class="n">result_overlap</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
@@ -373,18 +374,6 @@
     <span class="n">check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">EEG_segm_A</span> <span class="o">==</span> <span class="n">EEG_segm_B</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">check</span>
-
-
-<span class="c1"># def is_overlap_segm_equal_MOREthan2():</span>
-<span class="c1">#</span>
-<span class="c1">#     # Get all combinations of two between the edf files</span>
-<span class="c1">#     idx_combinations = list(itertools.combinations(check_indx_start,2))</span>
-<span class="c1">#     for file_pair in idx_combinations:</span>
-<span class="c1">#         # Get the path corresponding to the indx_edf as shown in the pairs</span>
-<span class="c1">#         indx_edf1 = file_pair[0]</span>
-<span class="c1">#         indx_edf2 = file_pair[1]</span>
-<span class="c1">#         edf_path1 = edf_fpaths[indx_edf1]</span>
-<span class="c1">#         edf_path2 = edf_fpaths[indx_edf2]</span>
 </pre></div>
 
            </div>

@@ -10,7 +10,6 @@ import json
 
 # internal modules
 from pyEDFieeg.edfSegmentsiEEGSimple import *
-from pyEDFieeg.rawPlotiEEG import *
 import paths
 
 
@@ -112,6 +111,13 @@ tt_stop = t_stop
 
 iEEGraw_data = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = tt_start, t_stop = tt_stop, fs_target = fs_target)
 
+# Save the segments
+raw_path = os.path.join(paths.SEGMENT_DIR, subject)
+os.makedirs(raw_path, exist_ok = True)
+
+for ss in range(0,len(iEEGraw_data)):
+    np.save(os.path.join(raw_path, "raw_{}.npy".format(ss)), iEEGraw_data[ss])
+
 
 """Checking one segment only"""
 tt_start = t_start[0]
@@ -141,33 +147,4 @@ durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_target))
 edf_reader = pyedflib.EdfReader(edf_path, 0, 1)
 ch_signal_temp = edf_reader.readSignal(chn = 0, start = 0, n = durSeg_samplPoints,digital=False) # physical values used for EEG
 edf_reader.close()
-
-
-
-# Plot raw data and save them
-# Plot values for each edf
-fig_path = os.path.join(paths.PLOT_SEIZURES_DIR, subject)
-os.makedirs(fig_path, exist_ok=True)
-
-## Number of edfs
-n_sz = len(t_start)
-
-
-# Constants factors
-marginInches = 1/18
-ppi = 96
-# width & height of figure
-width_inches = 8
-height_inches = 6
-
-for ii in range(0, n_sz):
-
-    # plot of raw seizures
-    fig_name = "Lineplot_raw_sz{}".format(ii)
-
-    fig = plot_raw_eeg_plotly(raw_data = seizures_data[ii], ch_names = channelsKeep)
-
-    fig.write_image(os.path.join(fig_path, "{}.pdf".format(fig_name)),
-                    width=(width_inches - marginInches)*ppi,
-                    height=(height_inches - marginInches)*ppi) # to produce a .png file.
 

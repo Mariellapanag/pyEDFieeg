@@ -46,6 +46,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../processing/index.html">Examples of processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">FILES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Examples of processing</a></li>
 </ul>
 
         </div>
@@ -117,6 +118,51 @@ and its <strong>key</strong> is the full path of the corresponding edf file.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pyEDFieeg.edfCollectionInfo.common_elements">
+<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfCollectionInfo.</span></span><span class="sig-name descname"><span class="pre">common_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfCollectionInfo.html#common_elements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfCollectionInfo.common_elements" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if two lists are identical. The order doesn’t count.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list1</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – 1st list</p></li>
+<li><p><strong>list2</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – 2nd list</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True/False if the two lists are/aren’t identical.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyEDFieeg.edfCollectionInfo.create_datetime">
+<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfCollectionInfo.</span></span><span class="sig-name descname"><span class="pre">create_datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hours</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minutes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seconds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">microseconds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfCollectionInfo.html#create_datetime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfCollectionInfo.create_datetime" title="Permalink to this definition"></a></dt>
+<dd><p>Function for creating a datetime object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – the calendar year</p></li>
+<li><p><strong>month</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – the calendar month</p></li>
+<li><p><strong>day</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – the day</p></li>
+<li><p><strong>hours</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – the hours</p></li>
+<li><p><strong>minutes</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – the minutes</p></li>
+<li><p><strong>seconds</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – the seconds</p></li>
+<li><p><strong>microseconds</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – the microseconds</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object as specified by the user.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>datetime.datetime</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pyEDFieeg.edfCollectionInfo.downsample_decimate">
 <span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfCollectionInfo.</span></span><span class="sig-name descname"><span class="pre">downsample_decimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_fs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfCollectionInfo.html#downsample_decimate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfCollectionInfo.downsample_decimate" title="Permalink to this definition"></a></dt>
 <dd><p>Resamples the recording extractor traces. If the resampling rate is multiple of the sampling rate, the faster
@@ -134,6 +180,54 @@ scipy decimate function is used.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyEDFieeg.edfCollectionInfo.get_EDFs_info">
+<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfCollectionInfo.</span></span><span class="sig-name descname"><span class="pre">get_EDFs_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edf_path_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfCollectionInfo.html#get_EDFs_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfCollectionInfo.get_EDFs_info" title="Permalink to this definition"></a></dt>
+<dd><p>This function searches in root for any <a href="#id1"><span class="problematic" id="id2">*</span></a>.edf files.
+Uses the function <code class="docutils literal notranslate"><span class="pre">sortEDF_starttime</span></code> so as all results are given in an order based on sorting
+by start time all the edf files provided.
+It will then go through all of them.
+For every EDF it pulls out the info about the start time/date, duration (in hours),
+filename, number of channels, and sampling freq. All of this is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the full path.</p></li>
+<li><p><strong>edf_path_list</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – a list of the full paths with the edf files.</p></li>
+<li><p><strong>channel_list</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – a list of the channels eligible for analysis (there are times where this is a superset of the channels exist in the edf files).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>Info about the edf files included in the analysis. The start and end times displayed will be inclusive in this calculation,
+so duration will be end - start + 1sec.</p>
+<p>{
+<strong>start_time</strong> (<code class="docutils literal notranslate"><span class="pre">list</span></code>):</p>
+<blockquote>
+<div><p>the start time for each edf file (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>).</p>
+</div></blockquote>
+<dl class="simple">
+<dt><strong>end_time</strong> (<code class="docutils literal notranslate"><span class="pre">list</span></code>):</dt><dd><p>the end time for each edf file (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>).</p>
+</dd>
+<dt><strong>record_duration</strong> (<code class="docutils literal notranslate"><span class="pre">list</span></code>):</dt><dd><p>the duration for each edf file (<code class="docutils literal notranslate"><span class="pre">timedelta</span></code>).</p>
+</dd>
+<dt><strong>nChan</strong> (<code class="docutils literal notranslate"><span class="pre">list</span></code>):</dt><dd><p>the number of channels for each edf file (<code class="docutils literal notranslate"><span class="pre">int</span></code>).</p>
+</dd>
+<dt><strong>fs</strong> (<code class="docutils literal notranslate"><span class="pre">list</span></code>):</dt><dd><p>the frequency sampling for all channels within each edf file (<code class="docutils literal notranslate"><span class="pre">float</span></code>).</p>
+</dd>
+<dt><strong>chan_labels</strong> (<code class="docutils literal notranslate"><span class="pre">list</span></code>):</dt><dd><p>the labels for all channels within each edf file (<code class="docutils literal notranslate"><span class="pre">str</span></code>).</p>
+</dd>
+<dt><strong>fpath</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>):</dt><dd><p>the full paths pointing to each edf file.</p>
+</dd>
+</dl>
+<p>}</p>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -159,6 +253,46 @@ scipy decimate function is used.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>5
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyEDFieeg.edfCollectionInfo.intersection">
+<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfCollectionInfo.</span></span><span class="sig-name descname"><span class="pre">intersection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lst1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfCollectionInfo.html#intersection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfCollectionInfo.intersection" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lst1</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – 1st list</p></li>
+<li><p><strong>lst2</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>) – 2nd list</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the elements included in the intersection of <code class="docutils literal notranslate"><span class="pre">list1</span></code> and <code class="docutils literal notranslate"><span class="pre">list2</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyEDFieeg.edfCollectionInfo.isbetween">
+<span class="sig-prename descclassname"><span class="pre">pyEDFieeg.edfCollectionInfo.</span></span><span class="sig-name descname"><span class="pre">isbetween</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_range</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyEDFieeg/edfCollectionInfo.html#isbetween"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyEDFieeg.edfCollectionInfo.isbetween" title="Permalink to this definition"></a></dt>
+<dd><p>Function for finding if a certain datetime object exists in a specified datetime range.
+The boundaries of the time range are also included.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>) – a datetime object</p></li>
+<li><p><strong>time_range</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>) – a tuple depicting a time range. Each time in the time range is a datetime object.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the condition is met. Otherwise, the function returns False</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
