@@ -8,4 +8,5 @@
    api/index
    processing/index
    files/index
+   testing/index
 ```

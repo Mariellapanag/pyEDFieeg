@@ -98,6 +98,7 @@ def datetime_range(start, end, delta):
         yield current
         current += delta
 
+"""Check all segments within the recording"""
 # These are the start points of all the starting points of the windows
 t_start = [dt for dt in
        datetime_range(start_EDFs_global, end_EDFs_global,
@@ -112,8 +113,7 @@ tt_stop = t_stop
 iEEGraw_data = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = tt_start, t_stop = tt_stop, fs_target = fs_target)
 
 
-
-# Checking one segment only
+"""Checking one segment only"""
 tt_start = t_start[0]
 tt_stop = t_stop[0]
 
