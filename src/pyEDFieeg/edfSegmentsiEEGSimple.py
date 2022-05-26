@@ -49,7 +49,7 @@ def gather_EEGsegment_1efd_A(EDF_path, EDF_chan_labels, EDF_start_time, fs_targe
                 # compute the starting point considering that we are starting from 0
                 delta = (T_start - EDF_start_time)
                 delta_sec = delta.seconds
-                start_sampl_points = int(float(delta_sec * fs_chan)) - 1
+                start_sampl_points = int(float(delta_sec * fs_chan))
 
             ch_signal_temp = edf_reader.readSignal(chn = ch_indx, start = start_sampl_points, n = durSeg_samplPoints,digital=False) # physical values used for EEG
             edf_reader.close()
