@@ -26,6 +26,7 @@ PLOTS_BAD_CHANNELS_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "PLOTS_BAD_
 # location for EDF fil  es input
 # INPUT_DATA_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "INPUT_DATA"))
 INPUT_DATA = os.path.abspath(os.path.join("F:", "UCLH_GLAS", "icEEG"))
+
 # Include here the paths from the edf files that are corrupted
 corrupted_edfs = {"1167": [],
                   "1106": [],

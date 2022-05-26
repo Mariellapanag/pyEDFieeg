@@ -28,20 +28,20 @@ subject = "1106"
 
 # Load all the information about the EDF files
 # Set the root directory for patient
-root = os.path.join(processingUCLH.paths.INPUT_DATA_DIR, subject)
+root = os.path.join(paths.INPUT_DATA_DIR, subject)
 
-EDF_info_path = os.path.join(processingUCLH.paths.EDF_INFO_DIR, subject)
+EDF_info_path = os.path.join(paths.EDF_INFO_DIR, subject)
 os.makedirs(EDF_info_path, exist_ok=True)
 
-corrupted_edf_paths = processingUCLH.paths.corrupted_edfs[subject]
+corrupted_edf_paths = paths.corrupted_edfs[subject]
 
-error_edfs = processingUCLH.paths.error_edfs # channels labels appear in error edfs
-min_n_Chan = processingUCLH.paths.min_n_Chan # the minimum threshold of the number of channels needed to be included in the edf file
+error_edfs = paths.error_edfs # channels labels appear in error edfs
+min_n_Chan = paths.min_n_Chan # the minimum threshold of the number of channels needed to be included in the edf file
 
 # iEEG channels for each subject provided in json files (or mat file). This mat files include the iEEG channels
 # having excluded the Heart Rate Channels
 # EEG_channels = sio.loadmat(os.path.join(paths.iEEG_channels, subject, "channels.mat"))
-EEG_channel_path = os.path.join(processingUCLH.paths.IN_CHANNELS_DIR, "{}.json".format(subject))
+EEG_channel_path = os.path.join(paths.IN_CHANNELS_DIR, "{}.json".format(subject))
 with open(EEG_channel_path) as json_file:
     Channels_json = json.load(json_file)
     print(Channels_json)
