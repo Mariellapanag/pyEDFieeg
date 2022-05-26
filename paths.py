@@ -51,14 +51,11 @@ corrupted_edfs = {"1167": [],
 # location where EDF information is written to
 EDF_INFO_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "EDF_INFO"))
 
-# location where raw data extracted into segments are written
-RAW_OUT_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "RAW_OUT"))
-
 # location where memmaps for channels (if using) are stored temporarily during runtime
 # otherwise, memory is used
 CHANNELS_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "CHANNELS"))
 
-# location segments of the collated data are written to
+# location where raw data extracted into segments are written
 SEGMENT_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "SEGMENTS"))
 
 # location of scripts results
