@@ -24,11 +24,11 @@ subject_black_to_white = ["1167"]
 # Single patient processing
 
 # subject = "test"
-subject = "1106"
+subject = "909"
 
 # Load all the information about the EDF files
 # Set the root directory for patient
-root = os.path.join(paths.INPUT_DATA_DIR, subject)
+root = os.path.join(paths.INPUT_DATA, subject)
 
 EDF_info_path = os.path.join(paths.EDF_INFO_DIR, subject)
 os.makedirs(EDF_info_path, exist_ok=True)
@@ -41,7 +41,7 @@ min_n_Chan = paths.min_n_Chan # the minimum threshold of the number of channels 
 # iEEG channels for each subject provided in json files (or mat file). This mat files include the iEEG channels
 # having excluded the Heart Rate Channels
 # EEG_channels = sio.loadmat(os.path.join(paths.iEEG_channels, subject, "channels.mat"))
-EEG_channel_path = os.path.join(paths.IN_CHANNELS_DIR, "{}.json".format(subject))
+EEG_channel_path = os.path.join(paths.IN_CHANNELS, "{}.json".format(subject))
 with open(EEG_channel_path) as json_file:
     Channels_json = json.load(json_file)
     print(Channels_json)
@@ -70,6 +70,13 @@ channelsKeep = unique_channels_across_allEDFs.copy()
 fs_target = sampleRateConsistency(root = root,
                                   edf_path_list = f_paths_clean,
                                   channel_list = EEG_channel_list)
+
+
+"""test"""
+start_seg = create_datetime(year = 2010, month = 2, day = 9, hours = 10, minutes = 16, seconds = 52, microseconds = 0)
+end_seg = create_datetime(year = 2010, month = 2, day = 9, hours = 10, minutes = 17, seconds = 21, microseconds = 0)
+t_start = [start_seg]
+t_stop = [end_seg]
 
 
 ''' Test0.1: Start and end point is not included in any of the edf files but it is within the entire recording time'''

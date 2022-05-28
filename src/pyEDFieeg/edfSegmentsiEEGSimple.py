@@ -71,6 +71,10 @@ def gather_EEGsegment_1efd_A(EDF_path, EDF_chan_labels, EDF_start_time, fs_targe
     return EEGsignals, channelsKeep, fs_target
 
 
+
+
+
+
 def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.datetime, t_stop: datetime.datetime, fs_target: float):
     """
     :param edfs_info: a dictionary with the following information;
@@ -303,7 +307,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                     # Choose the edf file that contains more from the segment requested
                     # In order to do that we will compare the overlapping of the segment with the two files
 
-                    # from all edf files from start and end compute the overlapping to see he duration we can get from each edf
+                    # from all edf files from start and end compute the overlapping to see the duration we can get from each edf
                     all_ii = check_indx_start + check_indx_stop
 
                     duration_overlapp = list()
@@ -349,8 +353,100 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                                                                                        channelsKeep = channelsKeep)
                         EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
                         EEG_segments_all.append(EEGsignals)
+            elif ((check_point_start == 1) and (check_point_stop == 0)):
+                """CONDITION 3: We have start point exist in one edf file and end exist in no edf"""
+                edf_idd = check_indx_start[0]
+                edf_path = edf_fpaths[edf_idd]
+
+                [EEGsignals1, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path = edf_path, EDF_chan_labels = edf_chan_labels[edf_path],
+                                                                               EDF_start_time = edf_start_time[edf_idd], fs_target = fs_target,
+                                                                               T_start = t_start[ii], T_stop = edf_stop_time[edf_idd],
+                                                                               channelsKeep = channelsKeep)
+                # Duration of segment in seconds and sampling points
+                durSeg_sec = (t_stop[ii] - edf_stop_time[edf_idd]) # here we don't have to add 1 second as edf_stop_time is not included in this segment of data
+                durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_target))
+
+                # The final segment of EEG for all channels
+                EEGsignals2 = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
+                EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
+                EEG_segments_all.append(EEGsignals)
+            elif ((check_point_start == 0) and (check_point_stop == 1)):
+                """CONDITION 4: We have end point exist in one edf file and start point exist in no edf"""
+                edf_idd = check_indx_stop[0]
+                edf_path = edf_fpaths[edf_idd]
+                # Duration of segment in seconds and sampling points
+                durSeg_sec = (edf_start_time[edf_idd] - t_start[ii]) # here we don't need to add one as edf_start_time is not included in this segment of data
+                durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_target))
+
+                # The final segment of EEG for all channels
+                EEGsignals1 = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
+
+                [EEGsignals2, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path = edf_path, EDF_chan_labels = edf_chan_labels[edf_path],
+                                                                               EDF_start_time = edf_start_time[edf_idd], fs_target = fs_target,
+                                                                               T_start = edf_start_time[edf_idd], T_stop = t_stop[ii],
+                                                                               channelsKeep = channelsKeep)
+                EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
+                EEG_segments_all.append(EEGsignals)
+            elif ((check_point_start > 1) and (check_point_stop == 0)):
+                """CONDITION 5: We have start point exist in more than one edf file and end point exist in no edf"""
+                # choose the edf file that captures the maximum duration
+                all_ii = check_indx_start
+
+                duration_overlapp = list()
+                final_ch = list()
+                for ee in all_ii:
+                    duration_overlapp.append(intervals_overlap(t1_start = t_start[ii], t1_end = t_stop[ii], t2_start = edf_start_time[ee], t2_end = edf_stop_time[ee])[1][2].seconds)
+                    final_ch.append(len(intersection(edf_chan_labels[edf_fpaths[ee]], channelsKeep)))
+
+                id_duration = np.argmax(duration_overlapp)
+                # TODO: MAYBE THIS COUL BE IMPROVED IF I ADD SOME THRESHODS REGARDING CHANNELS, NUMBER OF CHANNELS
+                edf_idd = all_ii[id_duration]
+                edf_path = edf_fpaths[edf_idd]
+                # Duration of segment in seconds and sampling points
+                edf_path = edf_fpaths[edf_idd]
+
+                [EEGsignals1, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path = edf_path, EDF_chan_labels = edf_chan_labels[edf_path],
+                                                                               EDF_start_time = edf_start_time[edf_idd], fs_target = fs_target,
+                                                                               T_start = t_start[ii], T_stop = edf_stop_time[edf_idd],
+                                                                               channelsKeep = channelsKeep)
+                # Duration of segment in seconds and sampling points
+                durSeg_sec = (t_stop[ii] - edf_stop_time[edf_idd]) # here we don't have to add 1 second as edf_stop_time is not included in this segment of data
+                durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_target))
+
+                # The final segment of EEG for all channels
+                EEGsignals2 = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
+                EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
+                EEG_segments_all.append(EEGsignals)
+            elif ((check_point_start == 0) and (check_point_stop > 1)):
+                """CONDITION 6: We have end point exist in more than one edf file and start point exist in no edf"""
+                # choose the edf file that captures the maximum duration
+                all_ii = check_indx_stop
+
+                duration_overlapp = list()
+                final_ch = list()
+                for ee in all_ii:
+                    duration_overlapp.append(intervals_overlap(t1_start = t_start[ii], t1_end = t_stop[ii], t2_start = edf_start_time[ee], t2_end = edf_stop_time[ee])[1][2].seconds)
+                    final_ch.append(len(intersection(edf_chan_labels[edf_fpaths[ee]], channelsKeep)))
+
+                id_duration = np.argmax(duration_overlapp)
+                # TODO: MAYBE THIS COUL BE IMPROVED IF I ADD SOME THRESHODS REGARDING CHANNELS, NUMBER OF CHANNELS
+                edf_idd = all_ii[id_duration]
+                edf_path = edf_fpaths[edf_idd]
+                # Duration of segment in seconds and sampling points
+                durSeg_sec = (edf_start_time[edf_idd] - t_start[ii]) # here we don't need to add one as edf_start_time is not included in this segment of data
+                durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_target))
+
+                # The final segment of EEG for all channels
+                EEGsignals1 = np.empty(shape = (len(channelsKeep), durSeg_samplPoints)) * np.nan
+
+                [EEGsignals2, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path = edf_path, EDF_chan_labels = edf_chan_labels[edf_path],
+                                                                               EDF_start_time = edf_start_time[edf_idd], fs_target = fs_target,
+                                                                               T_start = edf_start_time[edf_idd], T_stop = t_stop[ii],
+                                                                               channelsKeep = channelsKeep)
+                EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
+                EEG_segments_all.append(EEGsignals)
 
         return EEG_segments_all
     else:
         warnings.warn('Warning Message: Some start or stop times requested \n '
-                      'are not within the full recording range as this specified by the edf files provided in the function')
+                          'are not within the full recording range as this specified by the edf files provided in the function')
