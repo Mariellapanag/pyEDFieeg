@@ -31,7 +31,7 @@ subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
 # Single patient processing
 
 # subject = "test"
-subject = "1106"
+subject = "909"
 
 def process_func(subject):
 
@@ -107,14 +107,15 @@ def process_func(subject):
 
 
 # Run for one subject
-# if __name__ == '__main__':
-#     process_func(subject)
-
-
-# Run for all subjects within the ``subject_list``
+# subject = "909"
 if __name__ == '__main__':
-    for subject in subject_list:
-        process_func(subject)
+    process_func(subject)
+
+
+# # Run for all subjects within the ``subject_list``
+# if __name__ == '__main__':
+#     for subject in subject_list:
+#         process_func(subject)
 
 # if __name__ == '__main__':
 #     for subject in subject_white_list:

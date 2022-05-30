@@ -18,7 +18,7 @@ import paths
 
 subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
                       "934", "95", "999", "GLAS040", "GLAS041", "GLAS044", "GLAS047",
-            "1005", "1200", "1211", "1379", "1395", "1167"]
+            "1005", "1200", "1211", "1379", "1395", "1167", "909"]
 
 
 def process_func(subject_list):
@@ -72,11 +72,13 @@ def process_func(subject_list):
         Record_Duration.append((EDF_info_df["end_time"].iloc[-1] - EDF_info_df["start_time"].iloc[0] ) + datetime.timedelta(seconds=1))
         Record_Channels.append(len(channelsKeep))
 
-    EDF_info_allP = pd.DataFrame({"Subjects": subject_list, "Record_Start": Record_Start, "Record_End": Record_End, "Record_Channels": Record_Channels})
+    EDF_info_allP = pd.DataFrame({"Subjects": subject_list, "Record_Start": Record_Start, "Record_End": Record_End, "Record_Duration": Record_Duration, "Record_Channels": Record_Channels})
     EDF_info_allP.to_csv(os.path.join(paths.EDF_INFO_DIR, "EDF_INFO_allP.csv"))
 
 
 #process_func(subject)
 if __name__ == '__main__':
     process_func(subject_list)
+    # subject = ["909"]
+    # process_func(subject)
 

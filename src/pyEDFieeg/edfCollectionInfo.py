@@ -179,7 +179,7 @@ def get_search_files(root: str):
     return f_path_list
 
 
-def clean_edf_paths(root: str, error_edfs: list, corrupted_edf_paths: list, channel_list: list, min_n_Chan: int):
+def clean_edf_paths(root: str, error_edfs: list, channel_list: list, min_n_Chan: int):
 
     r"""
 
@@ -193,7 +193,6 @@ def clean_edf_paths(root: str, error_edfs: list, corrupted_edf_paths: list, chan
     Args:
         root: the full path.
         error_edfs: a list of the known error str names we might find at the label information within the edf file.
-        corrupted_edf_paths: a list of the full paths pointing the edf files that we already know that are corrupted.
         channel_list: a list of the channels eligible for analysis (there are times where this is a superset of the channels exist in the edf files).
         min_n_Chan: an integer value specifying the minimum threshold for the number of channels found in an edf file. If the number of channels exist in an edf and also exist within the ``channel_list`` should be *>=* ``min_n_Chan``.
 
@@ -217,8 +216,15 @@ def clean_edf_paths(root: str, error_edfs: list, corrupted_edf_paths: list, chan
 
     # Get the list of paths where edf files exist
     f_paths = get_search_files(root = root)
-    # Exclude paths where corrupted edf files are located
-    f_path_list = [f_path for f_path in f_paths if f_path not in corrupted_edf_paths]
+
+    f_path_list = list()
+    for f_p in f_paths:
+        try:
+            f_header = pyedflib.EdfReader(f_p, 0, 1)
+            f_path_list.append(f_p)
+        except Exception as e:
+            print(f"File {f_p} couldn't be read ({e}) so skipping.")
+        continue
 
     # New list object to store the final paths linked to "correct" edf files
     f_path_list_clean = list()
