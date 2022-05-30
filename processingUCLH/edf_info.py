@@ -19,7 +19,7 @@ import paths
 
 subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
                 "934", "95", "999", "GLAS040", "GLAS041", "GLAS044", "GLAS047",
-                "1005", "1200", "1211", "1379", "1395", "1167"]
+                "1005", "1200", "1211", "1379", "1395", "1167", "909"]
 
 # subject_white_list = ["1106", "1109", "1149", "1163", "1182", "851",
 #                       "934", "95", "999", "GLAS040", "GLAS041", "GLAS044", "GLAS047"]
@@ -31,7 +31,7 @@ subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
 # Single patient processing
 
 # subject = "test"
-subject = "909"
+subject = "1005"
 
 def process_func(subject):
 
@@ -40,11 +40,6 @@ def process_func(subject):
 
     EDF_info_path = os.path.join(paths.EDF_INFO_DIR, subject)
     os.makedirs(EDF_info_path, exist_ok=True)
-
-    # iEEG channels for each subject. This mat files include the iEEG channels
-    # having excluded the Heart Rate Channels
-    # EEG_channels = sio.loadmat(os.path.join(paths.iEEG_channels, subject, "channels.mat"))
-    corrupted_edf_paths = paths.corrupted_edfs[subject]
 
     error_edfs = paths.error_edfs # channels labels appear in error edfs
     min_n_Chan = paths.min_n_Chan # the minimum threshold of the number of channels needed to be included in the edf file
@@ -63,7 +58,6 @@ def process_func(subject):
     # Get info about edf files and a list with the final paths pointed to the edf files to be used for the analysis
     [f_paths_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_paths, edf_chan] = clean_edf_paths(root = root,
                     error_edfs = error_edfs,
-                    corrupted_edf_paths = corrupted_edf_paths,
                     channel_list = EEG_channel_list,
                     min_n_Chan = min_n_Chan)
 
