@@ -249,10 +249,10 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
                         EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
                         EEG_segments_all.append(EEGsignals)
 
-            elif (check_point_start > 1) and (check_point_stop > 1):
+            elif ((check_point_start >= 1) and (check_point_stop > 1)) or ((check_point_start > 1) and (check_point_stop >= 1)):
                 '''
                 CONDITION 2: THE CASE WHERE START AND END TIMES EXIST WITHIN AN EDF FILE BUT THIS HAPPENS FOR MULTIPLE EDF FILES
-                BECAUSE EDF FILES OVERLAP.
+                BECAUSE EDF FILES OVERLAP (EITHER IN THE START TIMES OR END TIMES REQUESTED).
                 # check1: start time requested belongs to more than one file (`check_point_start > 1`)  
                 # check2: end time requested belongs to more than one file (`check_point_stop > 1`)
                 We have already check in other function - previous step that overlapping segments over 1s are the same.
