@@ -221,7 +221,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 						else:
 							start_id = id1
 							end_id = None
-					if (start_id and not end_id):
+					if (start_id != None and end_id == None):
 						# if start edf was chosen then we will get data from the first edf file and the rest of the data would be missing data
 						# Get the path corresponding to the indx_edf
 						edf_path = edf_fpaths[start_id]
@@ -245,7 +245,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 						EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
 						EEG_segments_all.append(EEGsignals)
 					
-					elif (end_id and not start_id):
+					elif (end_id != None and start_id == None):
 						# if start edf was chosen then we will get data from the first edf file and the rest of the data would be missing data
 						# Get the path corresponding to the indx_edf
 						edf_path = edf_fpaths[end_id]
