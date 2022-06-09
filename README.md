@@ -1,6 +1,8 @@
-# pyEDFieeg
-## Useful functions for navigating unstructured folders of EDF files. 
-## Useful functions for extracting specified segments of data through EDF files.
+
+![Image](./)
+
+# Useful functions for navigating unstructured folders of EDF files, gathering useful information and extracting specified segments of data.
+
 
 
 
