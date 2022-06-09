@@ -5,7 +5,7 @@
 ```{eval-rst}
 .. toctree::
    :hidden:
-   :maxdepth: 4
+   :maxdepth: 1
 
    api/index
    processing/index
