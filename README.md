@@ -1,6 +1,7 @@
 # pyEDFieeg
 
 ![Image](https://github.com/Mariellapanag/pyEDFieeg/blob/main/GitpageImages/frontimage.png)
+
 ![Python Versions](https://img.shields.io/badge/python-^3.8<3.11-blue)
 ![Development](https://img.shields.io/badge/development-active-green.svg)
 [![License](https://img.shields.io/github/license/mariellaPanag/pyEDFieeg.svg)](https://github.com/Mariellapanag/pyEDFieeg/blob/main/LICENSE)
@@ -34,20 +35,25 @@ then the whole repository is being downloaded. The library root is located in th
 
 ### For the ```root``` package
 
-[pandas = "^1.4.2"] (https://pandas.pydata.org/)
-[pyEDFlib = "^0.1.28"] (https://pypi.org/project/pyEDFlib/)
-[scipy = "^1.8.1"] (http://scipy.org)
-[matplotlib = "^3.5.2"] (https://matplotlib.org)
-[plotly = "^5.8.0"] (https://plotly.com/python/)
-[kaleido = "0.2.1"] (https://pypi.org/project/kaleido/)
+* [[pandas = "^1.4.2"]](https://pandas.pydata.org/)
+
+* [[pyEDFlib = "^0.1.28"]](https://pypi.org/project/pyEDFlib/)
+
+* [[scipy = "^1.8.1"]](http://scipy.org)
+
+* [[matplotlib = "^3.5.2"]](https://matplotlib.org)
+
+* [[plotly = "^5.8.0"]](https://plotly.com/python/)
+
+* [[kaleido = "0.2.1"]](https://pypi.org/project/kaleido/)
 
 ### for running the ```processingUCLH``` scripts
 
-[openpyxl = "^3.0.10"] (https://openpyxl.readthedocs.io/en/stable/)
+[[openpyxl = "^3.0.10"]](https://openpyxl.readthedocs.io/en/stable/)
 
 ## Documentation
 
-The documentation can be found here [Sphinx documentation] (https://mariellapanag.github.io/pyEDFieeg/)
+The documentation can be found here [[Sphinx documentation]](https://mariellapanag.github.io/pyEDFieeg/)
 
 
 ## Acknowledgements
