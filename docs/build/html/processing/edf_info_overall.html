@@ -120,7 +120,7 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">EEG_channel_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
             <span class="n">Channels_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">Channels_json</span><span class="p">)</span>
-        <span class="n">EEG_channel_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">element</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">Channels_json</span><span class="p">]</span>
+        <span class="n">EEG_channel_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">element</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">Channels_json</span> <span class="k">if</span> <span class="n">element</span><span class="p">[</span><span class="s2">&quot;is_scalp&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">]</span>
 
 
         <span class="c1"># Get info about edf files and a list with the final paths pointed to the edf files to be used for the analysis</span>

@@ -48,7 +48,7 @@ def process_func(subject):
     with open(EEG_channel_path) as json_file:
         Channels_json = json.load(json_file)
         print(Channels_json)
-    EEG_channel_list = [element['name'] for element in Channels_json]
+    EEG_channel_list = [element['name'] for element in Channels_json if element["is_scalp"] == False]
 
     # Store as a csv file the EEG_channel_list provided by the user
     EEG_channel_list_df = pd.DataFrame({"channel_list": EEG_channel_list})
