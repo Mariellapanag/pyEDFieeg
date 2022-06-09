@@ -64,9 +64,6 @@ html_theme_options = {
     "navigation_depth": 2,
 }
 
-rst_prolog = """
-:github_url: https://github.com/Mariellapanag/pyEDFieeg
-"""
 
 html_context = {
     "display_github": True,
