@@ -68,7 +68,7 @@ html_context = {
     #"github_user": "Mariellapanag",
     #"github_repo": "pyEDFieeg",
     #"github_version": "main",
-    #"conf_py_path": "/docs/source",
+    "conf_py_path": "/docs",
     "source_suffix": ".md",
 }
 
