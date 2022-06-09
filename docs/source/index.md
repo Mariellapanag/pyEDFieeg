@@ -1,7 +1,6 @@
-# pyEDFieeg
 
-.. mdinclude:: ../../README.md
-
+```{include} ../../README.md
+```
 
 ```{eval-rst}
 .. toctree::
