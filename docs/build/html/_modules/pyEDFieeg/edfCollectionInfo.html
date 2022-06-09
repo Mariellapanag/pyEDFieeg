@@ -39,7 +39,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../processing/index.html">Examples of processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../files/index.html">FILES</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Examples of processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing pyEDFieeg</a></li>
 </ul>
 
         </div>
@@ -248,7 +248,7 @@
     <span class="k">return</span> <span class="n">f_path_list</span></div>
 
 
-<div class="viewcode-block" id="clean_edf_paths"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.clean_edf_paths">[docs]</a><span class="k">def</span> <span class="nf">clean_edf_paths</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error_edfs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">corrupted_edf_paths</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">channel_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">min_n_Chan</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<div class="viewcode-block" id="clean_edf_paths"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.clean_edf_paths">[docs]</a><span class="k">def</span> <span class="nf">clean_edf_paths</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error_edfs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">channel_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">min_n_Chan</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -262,7 +262,6 @@
 <span class="sd">    Args:</span>
 <span class="sd">        root: the full path.</span>
 <span class="sd">        error_edfs: a list of the known error str names we might find at the label information within the edf file.</span>
-<span class="sd">        corrupted_edf_paths: a list of the full paths pointing the edf files that we already know that are corrupted.</span>
 <span class="sd">        channel_list: a list of the channels eligible for analysis (there are times where this is a superset of the channels exist in the edf files).</span>
 <span class="sd">        min_n_Chan: an integer value specifying the minimum threshold for the number of channels found in an edf file. If the number of channels exist in an edf and also exist within the ``channel_list`` should be *&gt;=* ``min_n_Chan``.</span>
 
@@ -286,8 +285,15 @@
 
     <span class="c1"># Get the list of paths where edf files exist</span>
     <span class="n">f_paths</span> <span class="o">=</span> <span class="n">get_search_files</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">)</span>
-    <span class="c1"># Exclude paths where corrupted edf files are located</span>
-    <span class="n">f_path_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_path</span> <span class="k">for</span> <span class="n">f_path</span> <span class="ow">in</span> <span class="n">f_paths</span> <span class="k">if</span> <span class="n">f_path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">corrupted_edf_paths</span><span class="p">]</span>
+
+    <span class="n">f_path_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">f_p</span> <span class="ow">in</span> <span class="n">f_paths</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">f_header</span> <span class="o">=</span> <span class="n">pyedflib</span><span class="o">.</span><span class="n">EdfReader</span><span class="p">(</span><span class="n">f_p</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">f_path_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_p</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File </span><span class="si">{</span><span class="n">f_p</span><span class="si">}</span><span class="s2"> couldn&#39;t be read (</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">) so skipping.&quot;</span><span class="p">)</span>
+        <span class="k">continue</span>
 
     <span class="c1"># New list object to store the final paths linked to &quot;correct&quot; edf files</span>
     <span class="n">f_path_list_clean</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>

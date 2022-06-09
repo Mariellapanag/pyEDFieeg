@@ -47,7 +47,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">FILES</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Examples of processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing pyEDFieeg</a></li>
 </ul>
 
         </div>
@@ -97,7 +97,7 @@
 
 <span class="n">subject_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1106&quot;</span><span class="p">,</span> <span class="s2">&quot;1109&quot;</span><span class="p">,</span> <span class="s2">&quot;1149&quot;</span><span class="p">,</span> <span class="s2">&quot;1163&quot;</span><span class="p">,</span> <span class="s2">&quot;1182&quot;</span><span class="p">,</span> <span class="s2">&quot;851&quot;</span><span class="p">,</span>
                       <span class="s2">&quot;934&quot;</span><span class="p">,</span> <span class="s2">&quot;95&quot;</span><span class="p">,</span> <span class="s2">&quot;999&quot;</span><span class="p">,</span> <span class="s2">&quot;GLAS040&quot;</span><span class="p">,</span> <span class="s2">&quot;GLAS041&quot;</span><span class="p">,</span> <span class="s2">&quot;GLAS044&quot;</span><span class="p">,</span> <span class="s2">&quot;GLAS047&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;1005&quot;</span><span class="p">,</span> <span class="s2">&quot;1200&quot;</span><span class="p">,</span> <span class="s2">&quot;1211&quot;</span><span class="p">,</span> <span class="s2">&quot;1379&quot;</span><span class="p">,</span> <span class="s2">&quot;1395&quot;</span><span class="p">,</span> <span class="s2">&quot;1167&quot;</span><span class="p">]</span>
+            <span class="s2">&quot;1005&quot;</span><span class="p">,</span> <span class="s2">&quot;1200&quot;</span><span class="p">,</span> <span class="s2">&quot;1211&quot;</span><span class="p">,</span> <span class="s2">&quot;1379&quot;</span><span class="p">,</span> <span class="s2">&quot;1395&quot;</span><span class="p">,</span> <span class="s2">&quot;1167&quot;</span><span class="p">,</span> <span class="s2">&quot;909&quot;</span><span class="p">]</span>
 
 
 <span class="k">def</span> <span class="nf">process_func</span><span class="p">(</span><span class="n">subject_list</span><span class="p">):</span>
@@ -111,10 +111,6 @@
 
         <span class="c1"># Set the root directory for patient</span>
         <span class="n">root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">INPUT_DATA</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span>
-        <span class="c1"># iEEG channels for each subject. This mat files include the iEEG channels</span>
-        <span class="c1"># having excluded the Heart Rate Channels</span>
-        <span class="c1"># EEG_channels = sio.loadmat(os.path.join(paths.iEEG_channels, subject, &quot;channels.mat&quot;))</span>
-        <span class="n">corrupted_edf_paths</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">corrupted_edfs</span><span class="p">[</span><span class="n">subject</span><span class="p">]</span>
 
         <span class="n">error_edfs</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">error_edfs</span> <span class="c1"># channels labels appear in error edfs</span>
         <span class="n">min_n_Chan</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">min_n_Chan</span> <span class="c1"># the minimum threshold of the number of channels needed to be included in the edf file</span>
@@ -129,7 +125,6 @@
         <span class="c1"># Get info about edf files and a list with the final paths pointed to the edf files to be used for the analysis</span>
         <span class="p">[</span><span class="n">f_paths_clean</span><span class="p">,</span> <span class="n">f_path_list_excluded</span><span class="p">,</span> <span class="n">f_path_list_checkChanNotInList</span><span class="p">,</span> <span class="n">f_paths</span><span class="p">,</span> <span class="n">edf_chan</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_edf_paths</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span>
                                                                                                                <span class="n">error_edfs</span> <span class="o">=</span> <span class="n">error_edfs</span><span class="p">,</span>
-                                                                                                               <span class="n">corrupted_edf_paths</span> <span class="o">=</span> <span class="n">corrupted_edf_paths</span><span class="p">,</span>
                                                                                                                <span class="n">channel_list</span> <span class="o">=</span> <span class="n">EEG_channel_list</span><span class="p">,</span>
                                                                                                                <span class="n">min_n_Chan</span> <span class="o">=</span> <span class="n">min_n_Chan</span><span class="p">)</span>
         <span class="p">[</span><span class="n">EDF_info_df</span><span class="p">,</span> <span class="n">unique_channels_across_all</span><span class="p">]</span> <span class="o">=</span> <span class="n">sortEDF_starttime</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span>
@@ -151,13 +146,15 @@
         <span class="n">Record_Duration</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">EDF_info_df</span><span class="p">[</span><span class="s2">&quot;end_time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">EDF_info_df</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
         <span class="n">Record_Channels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">channelsKeep</span><span class="p">))</span>
 
-    <span class="n">EDF_info_allP</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Subjects&quot;</span><span class="p">:</span> <span class="n">subject_list</span><span class="p">,</span> <span class="s2">&quot;Record_Start&quot;</span><span class="p">:</span> <span class="n">Record_Start</span><span class="p">,</span> <span class="s2">&quot;Record_End&quot;</span><span class="p">:</span> <span class="n">Record_End</span><span class="p">,</span> <span class="s2">&quot;Record_Channels&quot;</span><span class="p">:</span> <span class="n">Record_Channels</span><span class="p">})</span>
+    <span class="n">EDF_info_allP</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Subjects&quot;</span><span class="p">:</span> <span class="n">subject_list</span><span class="p">,</span> <span class="s2">&quot;Record_Start&quot;</span><span class="p">:</span> <span class="n">Record_Start</span><span class="p">,</span> <span class="s2">&quot;Record_End&quot;</span><span class="p">:</span> <span class="n">Record_End</span><span class="p">,</span> <span class="s2">&quot;Record_Duration&quot;</span><span class="p">:</span> <span class="n">Record_Duration</span><span class="p">,</span> <span class="s2">&quot;Record_Channels&quot;</span><span class="p">:</span> <span class="n">Record_Channels</span><span class="p">})</span>
     <span class="n">EDF_info_allP</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">EDF_INFO_DIR</span><span class="p">,</span> <span class="s2">&quot;EDF_INFO_allP.csv&quot;</span><span class="p">))</span>
 
 
 <span class="c1">#process_func(subject)</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">process_func</span><span class="p">(</span><span class="n">subject_list</span><span class="p">)</span>
+    <span class="c1"># subject = [&quot;909&quot;]</span>
+    <span class="c1"># process_func(subject)</span>
 
 </pre></div>
 </div>

@@ -47,7 +47,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">FILES</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Examples of processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing pyEDFieeg</a></li>
 </ul>
 
         </div>
@@ -125,8 +125,6 @@
     <span class="n">EDF_info_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">EDF_INFO_DIR</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">EDF_info_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="n">corrupted_edf_paths</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">corrupted_edfs</span><span class="p">[</span><span class="n">subject</span><span class="p">]</span>
-
     <span class="n">error_edfs</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">error_edfs</span> <span class="c1"># channels labels appear in error edfs</span>
     <span class="n">min_n_Chan</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">min_n_Chan</span> <span class="c1"># the minimum threshold of the number of channels needed to be included in the edf file</span>
 
@@ -142,7 +140,6 @@
     <span class="c1"># Get info about edf files and a list with the final paths pointed to the edf files to be used for the analysis</span>
     <span class="p">[</span><span class="n">f_paths_clean</span><span class="p">,</span> <span class="n">f_path_list_excluded</span><span class="p">,</span> <span class="n">f_path_list_checkChanNotInList</span><span class="p">,</span> <span class="n">f_paths</span><span class="p">,</span> <span class="n">edf_chan</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_edf_paths</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span>
                                                                                                                <span class="n">error_edfs</span> <span class="o">=</span> <span class="n">error_edfs</span><span class="p">,</span>
-                                                                                                               <span class="n">corrupted_edf_paths</span> <span class="o">=</span> <span class="n">corrupted_edf_paths</span><span class="p">,</span>
                                                                                                                <span class="n">channel_list</span> <span class="o">=</span> <span class="n">EEG_channel_list</span><span class="p">,</span>
                                                                                                                <span class="n">min_n_Chan</span> <span class="o">=</span> <span class="n">min_n_Chan</span><span class="p">)</span>
     <span class="n">edfs_info</span> <span class="o">=</span> <span class="n">get_EDFs_info</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span>
