@@ -115,7 +115,6 @@ def isbetween(time: datetime.datetime, time_range: tuple):
     Returns:
         boolean: True if the condition is met. Otherwise, the function returns False
     """
-
     if time_range[1] < time_range[0]:
         return time >= time_range[0] or time <= time_range[1]
     return time_range[0] <= time <= time_range[1]
@@ -161,7 +160,6 @@ def get_search_files(root: str):
 
         5
     """
-
     f_path_list = []
     for path, dirs, files in os.walk(root):
         for f in files:
@@ -174,7 +172,6 @@ def get_search_files(root: str):
 
 
 def clean_edf_paths(root: str, error_edfs: list, channel_list: list, min_n_Chan: int):
-
     r"""
 
     Create a new path list linked to the edf files after excluding edf files that
@@ -206,7 +203,6 @@ def clean_edf_paths(root: str, error_edfs: list, channel_list: list, min_n_Chan:
             a dictionary of all the channels found in every edf file pointed to all paths in the list, ``f_path_list``. Every element within this dictionary is a ``pandas.DataFrame``
             and its **key** is the full path of the corresponding edf file.
     """
-
     # Get the list of paths where edf files exist
     f_paths = get_search_files(root = root)
 
@@ -287,6 +283,7 @@ def clean_edf_paths(root: str, error_edfs: list, channel_list: list, min_n_Chan:
 
     return f_path_list_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_path_list, f_ch_df_
 
+
 def nChannelsConsistency(root: str, edf_path_list: list, channel_list: list):
     r"""
 
@@ -302,7 +299,6 @@ def nChannelsConsistency(root: str, edf_path_list: list, channel_list: list):
     Returns:
         list: a list with common channels found across all edf files in the ``root`` path folder for all paths included in the ``edf_path_list``. The list includes channels only if those are included in the ``channel_list``.
     """
-
     merged_channel_list = list()
     if os.path.exists(root):
         for edf_path in edf_path_list:
@@ -348,7 +344,6 @@ def sampleRateConsistency(root: str, edf_path_list: list, channel_list: list):
         if all the sampling rates are the same the function returns the common sampling rate.
         Otherwise it returns the minimum sampling rate found.
     """
-
     lowest_sample_rate = np.Inf
 
     print("Function for minimum sample rate starts...........")
@@ -437,7 +432,6 @@ def sortEDF_starttime(root: str, edf_path_list: list, channel_list: list):
     **unique_channels_across_all** (``list``):
         The intersection between the unique channels across all edf files and the ``channel_list``.
     """
-
     # list of start times of all edf files
     StartTime_list = list()
     # list of end times of all edf files
@@ -549,25 +543,23 @@ def get_EDFs_info(root: str, edf_path_list: list, channel_list: list):
     Returns:
         dict: Info about the edf files included in the analysis. The start and end times displayed will be inclusive in this calculation,
         so duration will be end - start + 1sec.
-
-        {
-        **start_time** (``list``):
-            the start time for each edf file (``datetime``).
-        **end_time** (``list``):
-            the end time for each edf file (``datetime``).
-        **record_duration** (``list``):
-            the duration for each edf file (``timedelta``).
-        **nChan** (``list``):
-            the number of channels for each edf file (``int``).
-        **fs** (``list``):
-            the frequency sampling for all channels within each edf file (``float``).
-        **chan_labels** (``list``):
-            the labels for all channels within each edf file (``str``).
-        **fpath** (``str``):
-            the full paths pointing to each edf file.
-        }
+            {
+            **start_time** (``list``):
+                the start time for each edf file (``datetime``).
+            **end_time** (``list``):
+                the end time for each edf file (``datetime``).
+            **record_duration** (``list``):
+                the duration for each edf file (``timedelta``).
+            **nChan** (``list``):
+                the number of channels for each edf file (``int``).
+            **fs** (``list``):
+                the frequency sampling for all channels within each edf file (``float``).
+            **chan_labels** (``list``):
+                the labels for all channels within each edf file (``str``).
+            **fpath** (``str``):
+                the full paths pointing to each edf file.
+            }
     """
-
     # sort edf files by start time. The edfs that are inluded are the valid ones
     [sorted_edfs_info, unique_channels_across_all] = sortEDF_starttime(root, edf_path_list, channel_list)
 
@@ -641,7 +633,6 @@ def downsample_decimate(signal: np.array, fs: float, target_fs: float):
     Returns:
         numpy.array: the signal downsampled based on the ``target_fs``.
     """
-
     if np.mod(fs, target_fs) == 0:
         trace_resampled = scipy.signal.decimate(signal, q=int(fs / target_fs))
 
@@ -665,7 +656,6 @@ def visualise_resampling(initial_signal: np.array, resampled_signal: np.array, f
     Returns:
         matplotlib.figure: a line plot comparing the initial signal and the resampled signal.
     """
-
     if (start is None) and (stop is None):
         data1 = initial_signal
         data2 = resampled_signal

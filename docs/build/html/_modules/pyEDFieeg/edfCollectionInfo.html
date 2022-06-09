@@ -185,7 +185,6 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        boolean: True if the condition is met. Otherwise, the function returns False</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="k">if</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
         <span class="k">return</span> <span class="n">time</span> <span class="o">&gt;=</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">time</span> <span class="o">&lt;=</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">time</span> <span class="o">&lt;=</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></div>
@@ -231,7 +230,6 @@
 
 <span class="sd">        5</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">f_path_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
@@ -244,7 +242,6 @@
 
 
 <div class="viewcode-block" id="clean_edf_paths"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.clean_edf_paths">[docs]</a><span class="k">def</span> <span class="nf">clean_edf_paths</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error_edfs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">channel_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">min_n_Chan</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    Create a new path list linked to the edf files after excluding edf files that</span>
@@ -276,7 +273,6 @@
 <span class="sd">            a dictionary of all the channels found in every edf file pointed to all paths in the list, ``f_path_list``. Every element within this dictionary is a ``pandas.DataFrame``</span>
 <span class="sd">            and its **key** is the full path of the corresponding edf file.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="c1"># Get the list of paths where edf files exist</span>
     <span class="n">f_paths</span> <span class="o">=</span> <span class="n">get_search_files</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">)</span>
 
@@ -357,6 +353,7 @@
 
     <span class="k">return</span> <span class="n">f_path_list_clean</span><span class="p">,</span> <span class="n">f_path_list_excluded</span><span class="p">,</span> <span class="n">f_path_list_checkChanNotInList</span><span class="p">,</span> <span class="n">f_path_list</span><span class="p">,</span> <span class="n">f_ch_df_</span></div>
 
+
 <div class="viewcode-block" id="nChannelsConsistency"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.nChannelsConsistency">[docs]</a><span class="k">def</span> <span class="nf">nChannelsConsistency</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">edf_path_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">channel_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -372,7 +369,6 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        list: a list with common channels found across all edf files in the ``root`` path folder for all paths included in the ``edf_path_list``. The list includes channels only if those are included in the ``channel_list``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">merged_channel_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">edf_path</span> <span class="ow">in</span> <span class="n">edf_path_list</span><span class="p">:</span>
@@ -418,7 +414,6 @@
 <span class="sd">        if all the sampling rates are the same the function returns the common sampling rate.</span>
 <span class="sd">        Otherwise it returns the minimum sampling rate found.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">lowest_sample_rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">Inf</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Function for minimum sample rate starts...........&quot;</span><span class="p">)</span>
@@ -507,7 +502,6 @@
 <span class="sd">    **unique_channels_across_all** (``list``):</span>
 <span class="sd">        The intersection between the unique channels across all edf files and the ``channel_list``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="c1"># list of start times of all edf files</span>
     <span class="n">StartTime_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="c1"># list of end times of all edf files</span>
@@ -619,25 +613,23 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        dict: Info about the edf files included in the analysis. The start and end times displayed will be inclusive in this calculation,</span>
 <span class="sd">        so duration will be end - start + 1sec.</span>
-
-<span class="sd">        {</span>
-<span class="sd">        **start_time** (``list``):</span>
-<span class="sd">            the start time for each edf file (``datetime``).</span>
-<span class="sd">        **end_time** (``list``):</span>
-<span class="sd">            the end time for each edf file (``datetime``).</span>
-<span class="sd">        **record_duration** (``list``):</span>
-<span class="sd">            the duration for each edf file (``timedelta``).</span>
-<span class="sd">        **nChan** (``list``):</span>
-<span class="sd">            the number of channels for each edf file (``int``).</span>
-<span class="sd">        **fs** (``list``):</span>
-<span class="sd">            the frequency sampling for all channels within each edf file (``float``).</span>
-<span class="sd">        **chan_labels** (``list``):</span>
-<span class="sd">            the labels for all channels within each edf file (``str``).</span>
-<span class="sd">        **fpath** (``str``):</span>
-<span class="sd">            the full paths pointing to each edf file.</span>
-<span class="sd">        }</span>
+<span class="sd">            {</span>
+<span class="sd">            **start_time** (``list``):</span>
+<span class="sd">                the start time for each edf file (``datetime``).</span>
+<span class="sd">            **end_time** (``list``):</span>
+<span class="sd">                the end time for each edf file (``datetime``).</span>
+<span class="sd">            **record_duration** (``list``):</span>
+<span class="sd">                the duration for each edf file (``timedelta``).</span>
+<span class="sd">            **nChan** (``list``):</span>
+<span class="sd">                the number of channels for each edf file (``int``).</span>
+<span class="sd">            **fs** (``list``):</span>
+<span class="sd">                the frequency sampling for all channels within each edf file (``float``).</span>
+<span class="sd">            **chan_labels** (``list``):</span>
+<span class="sd">                the labels for all channels within each edf file (``str``).</span>
+<span class="sd">            **fpath** (``str``):</span>
+<span class="sd">                the full paths pointing to each edf file.</span>
+<span class="sd">            }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="c1"># sort edf files by start time. The edfs that are inluded are the valid ones</span>
     <span class="p">[</span><span class="n">sorted_edfs_info</span><span class="p">,</span> <span class="n">unique_channels_across_all</span><span class="p">]</span> <span class="o">=</span> <span class="n">sortEDF_starttime</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">edf_path_list</span><span class="p">,</span> <span class="n">channel_list</span><span class="p">)</span>
 
@@ -711,7 +703,6 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        numpy.array: the signal downsampled based on the ``target_fs``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">target_fs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">trace_resampled</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">decimate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">fs</span> <span class="o">/</span> <span class="n">target_fs</span><span class="p">))</span>
 
@@ -735,7 +726,6 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        matplotlib.figure: a line plot comparing the initial signal and the resampled signal.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="k">if</span> <span class="p">(</span><span class="n">start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">stop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">data1</span> <span class="o">=</span> <span class="n">initial_signal</span>
         <span class="n">data2</span> <span class="o">=</span> <span class="n">resampled_signal</span>
