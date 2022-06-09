@@ -34,6 +34,7 @@ extensions = [
     "sphinx_autodoc_typehints",
     "sphinx.ext.doctest",
     "sphinx.ext.intersphinx",
+    "sphinx.ext.githubpages",
 ]
 
 #exclude_patterns = ["_build"]
