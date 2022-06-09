@@ -7,7 +7,6 @@
    :hidden:
    :maxdepth: 2
 
-   api/index
    processing/index
    files/index
    testing/index
