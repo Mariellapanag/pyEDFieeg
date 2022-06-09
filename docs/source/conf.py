@@ -10,9 +10,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
-sys.path.insert(0, os.path.abspath('..'))
+#import os
+#import sys
+#sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
@@ -56,8 +56,6 @@ intersphinx_mapping = {
 
 # myst_url_schemes = ["http", "https", ]
 
-m2r_parse_relative_links = True
-
 # HTML output
 html_theme = "sphinx_rtd_theme"
 html_theme_options = {
@@ -69,7 +67,7 @@ html_context = {
     "github_user": "Mariellapanag",
     "github_repo": "pyEDFieeg",
     "github_version": "main",
-    "conf_py_path": "/docs/source/",
+    "conf_py_path": "/docs",
     "source_suffix": ".md",
 }
 
