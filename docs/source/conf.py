@@ -64,10 +64,14 @@ html_theme_options = {
     "navigation_depth": 2,
 }
 
+rst_prolog = """
+:github_url: https://github.com/Mariellapanag/pyEDFieeg
+"""
+
 html_context = {
-    #"display_github": True,
-    #"github_user": "Mariellapanag",
-    #"github_repo": "pyEDFieeg",
+    "display_github": True,
+    "github_user": "Mariellapanag",
+    "github_repo": "pyEDFieeg",
     "github_version": "main",
     "conf_py_path": "/docs",
     "source_suffix": ".md",
