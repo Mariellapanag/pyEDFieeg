@@ -1,5 +1,8 @@
 # pyEDFieeg
 
+```{include} ../../README.md
+```
+
 ```{eval-rst}
 .. toctree::
    :hidden:

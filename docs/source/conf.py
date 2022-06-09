@@ -63,13 +63,19 @@ html_theme = "sphinx_rtd_theme"
 html_theme_options = {
     "navigation_depth": 2,
 }
+
 html_context = {
+    "display_github": True,
+    "github_user": "philipdarke",
+    "github_repo": "torchtime",
+    "github_version": "main",
     "conf_py_path": "/docs",
     "source_suffix": ".md",
 }
+
 html_title = "pyEDFieeg"
 html_static_path = ["_static"]
-html_extra_path = ["README.md"]
+#html_extra_path = ["README.md"]
 html_css_files = ["custom.css"]
 pygments_style = "friendly"
 html_show_sphinx = False
