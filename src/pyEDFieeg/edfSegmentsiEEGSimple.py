@@ -1,3 +1,5 @@
+"""Useful functions for extracting segments of EEG data from edf files"""
+
 ###############################################################################
 # M. Panagiotopoulou, April 2022
 # m.panagiotopoulou2@newcastle.ac.uk
@@ -113,7 +115,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 		list: the raw data from the corresponding ``t_start`` and ``t_stop`` lists.
 
 	"""
-	
+
 	# edf start and stop times for all edf files
 	edf_start_time = edfs_info["start_time"]
 	edf_stop_time = edfs_info["end_time"]
@@ -190,14 +192,15 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 				EEG_segments_all.append(EEGsignals)
 			
 			elif (check_point_start == 1) and (check_point_stop == 1):
-				'''
-				CONDITION 1: START AND END TIME EXIST IN THE SAME EDF FILE NOT IN OTHER EDF FILES
-				NOT OVERLAPPING IN THIS CONDITION
-				# check1: start time requested belongs to one file (`check_point_start == 1`)
-				# check2: end time requested belongs to one file (`check_point_stop == 1`)
+				'''Only one edf file includes start time and one includes stop time
+					# check1: start time requested belongs to one file (`check_point_start == 1`)
+					# check2: end time requested belongs to one file (`check_point_stop == 1`)
 				'''
 				if (set(check_indx_start) == set(check_indx_stop)):
-					
+					'''
+					CONDITION 1: START AND END TIME EXIST IN THE SAME EDF FILE NOT IN OTHER EDF FILES
+					NOT OVERLAPPING IN THIS CONDITION
+					'''
 					''' TODO: Check that the overlapping periods are the same. If not fill with NaNs'''
 					#  check if this two lists contain the same elements even if those are not in order
 					# check3: start and end time belongs to the same edf file (`check_indx_start == check_indx_stop`)
@@ -218,6 +221,10 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 														  channelsKeep=channelsKeep)
 					EEG_segments_all.append(EEGsignals)
 				else:
+					'''
+					CONDITION 2: START AND END TIME EXIST IN DIFFERENT EDF FILES NOT IN OTHER EDF FILES
+					NOT OVERLAPPING IN THIS CONDITION
+					'''
 					# checks what edf file contains most of the segment requested
 					# Compute the overlap between the segment requested and the edf file start and end point
 					# in order to figure out the duration of overlap and which is bigger in duration
@@ -290,7 +297,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 			elif ((check_point_start >= 1) and (check_point_stop > 1)) or (
 					(check_point_start > 1) and (check_point_stop >= 1)):
 				'''
-				CONDITION 2: THE CASE WHERE START AND END TIMES EXIST WITHIN AN EDF FILE BUT THIS HAPPENS FOR MULTIPLE EDF FILES
+				CONDITION 3: THE CASE WHERE START AND END TIMES EXIST WITHIN AN EDF FILE BUT THIS HAPPENS FOR MULTIPLE EDF FILES
 				BECAUSE EDF FILES OVERLAP (EITHER IN THE START TIMES OR END TIMES REQUESTED).
 				# check1: start time requested belongs to more than one file (`check_point_start > 1`)
 				# check2: end time requested belongs to more than one file (`check_point_stop > 1`)
@@ -409,17 +416,13 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 						EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
 						EEG_segments_all.append(EEGsignals)
 			elif ((check_point_start == 1) and (check_point_stop == 0)):
-				"""CONDITION 3: We have start point exist in one edf file and end exist in no edf"""
+				"""CONDITION 4: START POINT EXISTS IN ONE EDF FILE AND END TIME EXISTS IN OTHER EDF FILE"""
 				edf_idd = check_indx_start[0]
 				edf_path = edf_fpaths[edf_idd]
 				#
-				EEGsignals1 = gather_EEGsegment_1efd_A(EDF_path=edf_path,
-													   EDF_chan_labels=edf_chan_labels[edf_path],
-													   EDF_start_time=edf_start_time[edf_idd],
-													   fs_target=fs_target,
-													   T_start=t_start[ii],
-													   T_stop=edf_stop_time[edf_idd],
-													   channelsKeep=channelsKeep)
+				EEGsignals1 = gather_EEGsegment_1efd_A(EDF_path=edf_path, EDF_chan_labels=edf_chan_labels[edf_path],
+													   EDF_start_time=edf_start_time[edf_idd], fs_target=fs_target, T_start=t_start[ii],
+													   T_stop=edf_stop_time[edf_idd], channelsKeep=channelsKeep)
 				# Duration of segment in seconds and sampling points
 				durSeg_sec = (t_stop[ii] - edf_stop_time[
 					edf_idd])  # here we don't have to add 1 second as edf_stop_time is not included in this segment of data
@@ -430,7 +433,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 				EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
 				EEG_segments_all.append(EEGsignals)
 			elif ((check_point_start == 0) and (check_point_stop == 1)):
-				"""CONDITION 4: We have end point exist in one edf file and start point exist in no edf"""
+				"""CONDITION 5: WE HAVE END POINT EXIST IN ONE EDF FILE AND START POINT EXIST IN NO EDF FILE"""
 				edf_idd = check_indx_stop[0]
 				edf_path = edf_fpaths[edf_idd]
 				# Duration of segment in seconds and sampling points
@@ -451,7 +454,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 				EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
 				EEG_segments_all.append(EEGsignals)
 			elif ((check_point_start > 1) and (check_point_stop == 0)):
-				"""CONDITION 5: We have start point exist in more than one edf file and end point exist in no edf"""
+				"""CONDITION 6: We have start point exist in more than one edf file and end point exist in no edf"""
 				# choose the edf file that captures the maximum duration
 				all_ii = check_indx_start
 				#
@@ -464,7 +467,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 					final_ch.append(len(intersection(edf_chan_labels[edf_fpaths[ee]], channelsKeep)))
 				#
 				id_duration = np.argmax(duration_overlapp)
-				# TODO: MAYBE THIS COUL BE IMPROVED IF I ADD SOME THRESHODS REGARDING CHANNELS, NUMBER OF CHANNELS
+				# TODO: MAYBE THIS COULD BE IMPROVED IF I ADD SOME THRESHOLDS REGARDING CHANNELS, NUMBER OF CHANNELS
 				edf_idd = all_ii[id_duration]
 				edf_path = edf_fpaths[edf_idd]
 				# Duration of segment in seconds and sampling points
@@ -487,7 +490,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 				EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
 				EEG_segments_all.append(EEGsignals)
 			elif ((check_point_start == 0) and (check_point_stop > 1)):
-				"""CONDITION 6: We have end point exist in more than one edf file and start point exist in no edf"""
+				"""CONDITION 7: We have end point exist in more than one edf file and start point exist in no edf"""
 				# choose the edf file that captures the maximum duration
 				all_ii = check_indx_stop
 				#
