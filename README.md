@@ -1,11 +1,11 @@
 # pyEDFieeg
 
-##  Useful functions for navigating unstructured folders of EDF files, gathering useful information and extracting specified segments of data.
-
 ![Image](https://github.com/Mariellapanag/pyEDFieeg/blob/main/GitpageImages/frontimage.png)
 ![Python Versions](https://img.shields.io/badge/python-^3.8<3.11-blue)
 ![Development](https://img.shields.io/badge/development-active-green.svg)
 [![License](https://img.shields.io/github/license/mariellaPanag/pyEDFieeg.svg)](https://github.com/Mariellapanag/pyEDFieeg/blob/main/LICENSE)
+
+##  Useful functions for navigating unstructured folders of EDF files, gathering useful information and extracting specified segments of data.
 
 ## About
 
