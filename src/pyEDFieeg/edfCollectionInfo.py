@@ -38,7 +38,6 @@ def create_datetime(year: int, month: int, day: int, hours: int, minutes: int, s
 
     Returns:
         datetime.datetime: a ``datetime`` object as specified by the user.
-
     """
     # (hours, minutes, seconds, microseconds)
     start_time = datetime.time(hours, minutes, seconds, microseconds)
@@ -74,7 +73,6 @@ def common_elements(list1: list, list2: list):
 
     Returns:
         boolean: True/False if the two lists are/aren't identical.
-
     """
     set1 = set(list1)
     set2 = set(list2)
@@ -92,7 +90,6 @@ def intersection(lst1: list, lst2: list):
 
     Returns:
         list: the elements included in the intersection of ``list1`` and ``list2``.
-
     """
     lst3 = [element for element in lst1 if element in lst2]
     return lst3
@@ -117,7 +114,6 @@ def isbetween(time: datetime.datetime, time_range: tuple):
 
     Returns:
         boolean: True if the condition is met. Otherwise, the function returns False
-
     """
 
     if time_range[1] < time_range[0]:
@@ -137,7 +133,6 @@ def unique(list1: list):
 
     Returns:
         list: a list of the unique elements found in the ``list1``.
-
     """
     # insert the list to the set
     list_set = set(list1)
@@ -165,7 +160,6 @@ def get_search_files(root: str):
     .. testoutput::
 
         5
-
     """
 
     f_path_list = []
@@ -211,7 +205,6 @@ def clean_edf_paths(root: str, error_edfs: list, channel_list: list, min_n_Chan:
         **f_ch_df_** (``dict``):
             a dictionary of all the channels found in every edf file pointed to all paths in the list, ``f_path_list``. Every element within this dictionary is a ``pandas.DataFrame``
             and its **key** is the full path of the corresponding edf file.
-
     """
 
     # Get the list of paths where edf files exist
@@ -308,7 +301,6 @@ def nChannelsConsistency(root: str, edf_path_list: list, channel_list: list):
 
     Returns:
         list: a list with common channels found across all edf files in the ``root`` path folder for all paths included in the ``edf_path_list``. The list includes channels only if those are included in the ``channel_list``.
-
     """
 
     merged_channel_list = list()
@@ -355,7 +347,6 @@ def sampleRateConsistency(root: str, edf_path_list: list, channel_list: list):
         np.float: the sampling rate across all edf files (and channels) found in the ``edf_path_list``.
         if all the sampling rates are the same the function returns the common sampling rate.
         Otherwise it returns the minimum sampling rate found.
-
     """
 
     lowest_sample_rate = np.Inf
@@ -445,7 +436,6 @@ def sortEDF_starttime(root: str, edf_path_list: list, channel_list: list):
                 If setA *>* setB (setA *<* setB), then this value is True (False).
     **unique_channels_across_all** (``list``):
         The intersection between the unique channels across all edf files and the ``channel_list``.
-
     """
 
     # list of start times of all edf files
@@ -543,6 +533,7 @@ def sortEDF_starttime(root: str, edf_path_list: list, channel_list: list):
 
 def get_EDFs_info(root: str, edf_path_list: list, channel_list: list):
     r"""
+
     This function searches in root for any *.edf files.
     Uses the function ``sortEDF_starttime`` so as all results are given in an order based on sorting
     by start time all the edf files provided.
@@ -575,7 +566,6 @@ def get_EDFs_info(root: str, edf_path_list: list, channel_list: list):
         **fpath** (``str``):
             the full paths pointing to each edf file.
         }
-
     """
 
     # sort edf files by start time. The edfs that are inluded are the valid ones
@@ -650,7 +640,6 @@ def downsample_decimate(signal: np.array, fs: float, target_fs: float):
 
     Returns:
         numpy.array: the signal downsampled based on the ``target_fs``.
-
     """
 
     if np.mod(fs, target_fs) == 0:
@@ -662,6 +651,7 @@ def downsample_decimate(signal: np.array, fs: float, target_fs: float):
 
 def visualise_resampling(initial_signal: np.array, resampled_signal: np.array, fs: float, resampled_fs: float, start: int = None, stop: int = None):
     r"""
+
     Check filtering and downsampling by plotting both the initial and the downsampled signals.
 
     Args:
@@ -674,7 +664,6 @@ def visualise_resampling(initial_signal: np.array, resampled_signal: np.array, f
 
     Returns:
         matplotlib.figure: a line plot comparing the initial signal and the resampled signal.
-
     """
 
     if (start is None) and (stop is None):

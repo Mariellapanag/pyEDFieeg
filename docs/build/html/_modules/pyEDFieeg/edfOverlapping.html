@@ -84,8 +84,8 @@
 
 
 <div class="viewcode-block" id="is_overlap"><a class="viewcode-back" href="../../api/edfOverlapping.html#pyEDFieeg.edfOverlapping.is_overlap">[docs]</a><span class="k">def</span> <span class="nf">is_overlap</span><span class="p">(</span><span class="n">TimeRange1</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">TimeRange2</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
 <span class="sd">    Determines if there is an overlap between two time ranges.</span>
 
 <span class="sd">    Args:</span>
@@ -117,8 +117,8 @@
 
 
 <div class="viewcode-block" id="overlappedRange"><a class="viewcode-back" href="../../api/edfOverlapping.html#pyEDFieeg.edfOverlapping.overlappedRange">[docs]</a><span class="k">def</span> <span class="nf">overlappedRange</span><span class="p">(</span><span class="n">TimeRange1</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">TimeRange2</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
 <span class="sd">    Determines the overlap range between to time ranges that overlap.</span>
 
 <span class="sd">    Args:</span>
@@ -171,8 +171,8 @@
 
 
 <div class="viewcode-block" id="intervals_overlap"><a class="viewcode-back" href="../../api/edfOverlapping.html#pyEDFieeg.edfOverlapping.intervals_overlap">[docs]</a><span class="k">def</span> <span class="nf">intervals_overlap</span><span class="p">(</span><span class="n">t1_start</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">t1_end</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">t2_start</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">t2_end</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
-
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
 <span class="sd">    This method relies on the ease datetime comparison in Python, e.g datetime(3pm) &gt; datetime(2pm) is TRUE</span>
 <span class="sd">    thanks to: https://chandoo.org/wp/date-overlap-formulas/</span>
 <span class="sd">    # t1_start, t1_end should be the start of the file we&#39;re interested in (f1)</span>
@@ -265,8 +265,8 @@
 
 
 <div class="viewcode-block" id="overlapSort"><a class="viewcode-back" href="../../api/edfOverlapping.html#pyEDFieeg.edfOverlapping.overlapSort">[docs]</a><span class="k">def</span> <span class="nf">overlapSort</span><span class="p">(</span><span class="n">start_fileA</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">start_fileB</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">end_fileA</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">end_fileB</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">pathA</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pathB</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
 <span class="sd">    Sort the two ranges and perform the ``intervals_overlap`` function.</span>
 
 <span class="sd">    Args:</span>

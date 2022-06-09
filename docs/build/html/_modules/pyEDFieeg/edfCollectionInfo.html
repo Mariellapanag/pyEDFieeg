@@ -39,6 +39,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../processing/index.html">Examples of processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../files/index.html">FILES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../files/index.html#description-of-output-files-from-running-the-scripts-in-processing">Description of output files from running the scripts in <em>processing</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing pyEDFieeg</a></li>
 </ul>
 
@@ -107,7 +108,6 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        datetime.datetime: a ``datetime`` object as specified by the user.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># (hours, minutes, seconds, microseconds)</span>
     <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">seconds</span><span class="p">,</span> <span class="n">microseconds</span><span class="p">)</span>
@@ -143,7 +143,6 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        boolean: True/False if the two lists are/aren&#39;t identical.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">set1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
     <span class="n">set2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
@@ -161,7 +160,6 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        list: the elements included in the intersection of ``list1`` and ``list2``.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">lst3</span> <span class="o">=</span> <span class="p">[</span><span class="n">element</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">lst1</span> <span class="k">if</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">lst2</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">lst3</span></div>
@@ -186,7 +184,6 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        boolean: True if the condition is met. Otherwise, the function returns False</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">time_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
@@ -206,7 +203,6 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        list: a list of the unique elements found in the ``list1``.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># insert the list to the set</span>
     <span class="n">list_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
@@ -234,7 +230,6 @@
 <span class="sd">    .. testoutput::</span>
 
 <span class="sd">        5</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">f_path_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -280,7 +275,6 @@
 <span class="sd">        **f_ch_df_** (``dict``):</span>
 <span class="sd">            a dictionary of all the channels found in every edf file pointed to all paths in the list, ``f_path_list``. Every element within this dictionary is a ``pandas.DataFrame``</span>
 <span class="sd">            and its **key** is the full path of the corresponding edf file.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Get the list of paths where edf files exist</span>
@@ -377,7 +371,6 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        list: a list with common channels found across all edf files in the ``root`` path folder for all paths included in the ``edf_path_list``. The list includes channels only if those are included in the ``channel_list``.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">merged_channel_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -424,7 +417,6 @@
 <span class="sd">        np.float: the sampling rate across all edf files (and channels) found in the ``edf_path_list``.</span>
 <span class="sd">        if all the sampling rates are the same the function returns the common sampling rate.</span>
 <span class="sd">        Otherwise it returns the minimum sampling rate found.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">lowest_sample_rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">Inf</span>
@@ -514,7 +506,6 @@
 <span class="sd">                If setA *&gt;* setB (setA *&lt;* setB), then this value is True (False).</span>
 <span class="sd">    **unique_channels_across_all** (``list``):</span>
 <span class="sd">        The intersection between the unique channels across all edf files and the ``channel_list``.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># list of start times of all edf files</span>
@@ -612,6 +603,7 @@
 
 <div class="viewcode-block" id="get_EDFs_info"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.get_EDFs_info">[docs]</a><span class="k">def</span> <span class="nf">get_EDFs_info</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">edf_path_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">channel_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
 <span class="sd">    This function searches in root for any *.edf files.</span>
 <span class="sd">    Uses the function ``sortEDF_starttime`` so as all results are given in an order based on sorting</span>
 <span class="sd">    by start time all the edf files provided.</span>
@@ -644,7 +636,6 @@
 <span class="sd">        **fpath** (``str``):</span>
 <span class="sd">            the full paths pointing to each edf file.</span>
 <span class="sd">        }</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># sort edf files by start time. The edfs that are inluded are the valid ones</span>
@@ -719,7 +710,6 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        numpy.array: the signal downsampled based on the ``target_fs``.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">target_fs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -731,6 +721,7 @@
 
 <div class="viewcode-block" id="visualise_resampling"><a class="viewcode-back" href="../../api/edfCollectionInfo.html#pyEDFieeg.edfCollectionInfo.visualise_resampling">[docs]</a><span class="k">def</span> <span class="nf">visualise_resampling</span><span class="p">(</span><span class="n">initial_signal</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">resampled_signal</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">fs</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">resampled_fs</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">stop</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
 <span class="sd">    Check filtering and downsampling by plotting both the initial and the downsampled signals.</span>
 
 <span class="sd">    Args:</span>
@@ -743,7 +734,6 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        matplotlib.figure: a line plot comparing the initial signal and the resampled signal.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">stop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
