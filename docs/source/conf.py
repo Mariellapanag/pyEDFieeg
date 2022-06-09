@@ -57,6 +57,7 @@ intersphinx_mapping = {
 
 # myst_url_schemes = ["http", "https", ]
 
+m2r_parse_relative_links = True
 
 # HTML output
 html_theme = "sphinx_rtd_theme"

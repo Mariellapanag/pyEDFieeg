@@ -1,6 +1,6 @@
 # pyEDFieeg
 
-..mdinclude ../../README.md
+.. mdinclude:: ../../README.md
 
 
 ```{eval-rst}
