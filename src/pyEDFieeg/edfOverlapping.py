@@ -15,6 +15,7 @@ import numpy as np
 
 def is_overlap(TimeRange1: dict, TimeRange2: dict):
     r"""
+
     Determines if there is an overlap between two time ranges.
 
     Args:
@@ -47,6 +48,7 @@ def is_overlap(TimeRange1: dict, TimeRange2: dict):
 
 def overlappedRange(TimeRange1: dict, TimeRange2: dict):
     r"""
+
     Determines the overlap range between to time ranges that overlap.
 
     Args:
@@ -100,6 +102,7 @@ def overlappedRange(TimeRange1: dict, TimeRange2: dict):
 
 def intervals_overlap(t1_start: datetime.datetime, t1_end: datetime.datetime, t2_start: datetime.datetime, t2_end: datetime.datetime):
     r"""
+
     This method relies on the ease datetime comparison in Python, e.g datetime(3pm) > datetime(2pm) is TRUE
     thanks to: https://chandoo.org/wp/date-overlap-formulas/
     # t1_start, t1_end should be the start of the file we're interested in (f1)
@@ -193,6 +196,7 @@ def intervals_overlap(t1_start: datetime.datetime, t1_end: datetime.datetime, t2
 
 def overlapSort(start_fileA: datetime.datetime, start_fileB: datetime.datetime, end_fileA: datetime.datetime, end_fileB: datetime.datetime, pathA: str, pathB: str):
     r"""
+
     Sort the two ranges and perform the ``intervals_overlap`` function.
 
     Args:

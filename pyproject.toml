@@ -17,7 +17,7 @@ kaleido = "0.2.1"
 
 [tool.poetry.dev-dependencies]
 Sphinx = "^4.5.0"
-myst-parser = "^0.17.2"
+myst-parser = "^0.18.0"
 sphinx-autodoc-typehints = "^1.18.1"
 sphinx-rtd-theme = "^1.0.0"
 m2r2 = "^0.3.2"
