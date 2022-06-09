@@ -1,8 +1,8 @@
 # API
 
-```{eval-rst}
-.. toctree::
-   :maxdepth: 2
+```{toctree}
+:caption: 'Contents:'
+:maxdepth: 2
     
 edfCollectionInfo
 edfSegmentsiEEGSimple
