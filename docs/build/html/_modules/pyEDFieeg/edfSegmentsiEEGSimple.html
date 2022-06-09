@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyEDFieeg.edfSegmentsiEEGSimple &mdash; pyEDFieeg</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> pyEDFieeg
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../processing/index.html">Examples of processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../files/index.html">FILES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../files/index.html#description-of-output-files-from-running-the-scripts-in-processing">Description of output files from running the scripts in <em>processing</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing pyEDFieeg</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyEDFieeg</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>pyEDFieeg.edfSegmentsiEEGSimple</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pyEDFieeg.edfSegmentsiEEGSimple</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Useful functions for extracting segments of EEG data from edf files&quot;&quot;&quot;</span>
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># M. Panagiotopoulou, April 2022</span>
+<span class="c1"># m.panagiotopoulou2@newcastle.ac.uk</span>
+<span class="c1">#</span>
+<span class="c1"># Long-term Interictal iEEG data</span>
+<span class="c1">###############################################################################</span>
+
+<span class="c1"># Python module</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="c1"># internal modules</span>
+<span class="kn">from</span> <span class="nn">pyEDFieeg.edfCollectionInfo</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pyEDFieeg.edfOverlapping</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<div class="viewcode-block" id="gather_EEGsegment_1efd_A"><a class="viewcode-back" href="../../api/edfSegmentsiEEGSimple.html#pyEDFieeg.edfSegmentsiEEGSimple.gather_EEGsegment_1efd_A">[docs]</a><span class="k">def</span> <span class="nf">gather_EEGsegment_1efd_A</span><span class="p">(</span><span class="n">EDF_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">EDF_chan_labels</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">EDF_start_time</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">fs_target</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">T_start</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">T_stop</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">channelsKeep</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+	<span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	</span>
+<span class="sd">	This function will gather the eeg signals of the requested channelsKeep list from one specific EDF file.</span>
+<span class="sd">	This function works if the start and end times exist in a single EDF file.</span>
+<span class="sd">	</span>
+<span class="sd">	Args:</span>
+<span class="sd">		EDF_path: the specified edf file that contains both the start and end of the specified segment requested</span>
+<span class="sd">		EDF_chan_labels: the channel labels included in the specified edf file</span>
+<span class="sd">		EDF_start_time: the start time of the edf file</span>
+<span class="sd">		fs_target: the target frequency sampling for all channels</span>
+<span class="sd">		T_start: the start time requested for the segment</span>
+<span class="sd">		T_stop: the stop time requested for the segment</span>
+<span class="sd">		channelsKeep: the final list of channels to be extracted specified by the user</span>
+
+<span class="sd">	Returns:</span>
+<span class="sd">		 **EEGsignals** (``np.ndarray``):</span>
+<span class="sd">            The array of the raw data requested. This is channels x time points.</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="c1"># Duration of segment in seconds and sampling points</span>
+	<span class="c1"># The start and end time are inclusive, so we add 1 second</span>
+	<span class="n">durSeg_sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">T_stop</span> <span class="o">-</span> <span class="n">T_start</span><span class="p">)</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+	
+	<span class="c1"># Go through the list of channels get id and load the arrays</span>
+	<span class="n">ch_list</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="c1"># the for loop keeps the order of the channelsKeep consistent for all segments extracted</span>
+	<span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">channelsKeep</span><span class="p">:</span>
+		<span class="c1"># Check whether this channel exists in the edf channel list</span>
+		<span class="c1"># find the channel id based on the name within the edf file</span>
+		<span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">EDF_chan_labels</span><span class="p">:</span>
+			<span class="c1"># Load edf file</span>
+			<span class="n">edf_reader</span> <span class="o">=</span> <span class="n">pyedflib</span><span class="o">.</span><span class="n">EdfReader</span><span class="p">(</span><span class="n">EDF_path</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+			<span class="n">ch_indx</span> <span class="o">=</span> <span class="n">EDF_chan_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+			<span class="n">fs_chan</span> <span class="o">=</span> <span class="n">edf_reader</span><span class="o">.</span><span class="n">getSampleFrequency</span><span class="p">(</span><span class="n">ch_indx</span><span class="p">)</span>
+			<span class="c1"># the duration of sampling points requested</span>
+			<span class="n">durSeg_samplPoints</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">durSeg_sec</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">fs_chan</span><span class="p">))</span>
+			<span class="c1"># define the index (python indexing) relative to the start of the edf file</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">T_start</span> <span class="o">==</span> <span class="n">EDF_start_time</span><span class="p">):</span>
+				<span class="c1"># if start segment and start of edf file are the same</span>
+				<span class="n">start_sampl_points</span> <span class="o">=</span> <span class="mi">0</span>
+			<span class="k">elif</span> <span class="p">(</span><span class="n">T_start</span> <span class="o">&gt;</span> <span class="n">EDF_start_time</span><span class="p">):</span>
+				<span class="c1"># Find the start and end points in sampling points relative to the edf start and end time</span>
+				<span class="c1"># compute the starting point considering that we are starting from 0</span>
+				<span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">T_start</span> <span class="o">-</span> <span class="n">EDF_start_time</span><span class="p">)</span>
+				<span class="n">delta_sec</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">seconds</span>
+				<span class="n">start_sampl_points</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">delta_sec</span> <span class="o">*</span> <span class="n">fs_chan</span><span class="p">))</span>
+			<span class="c1"># physical values used for EEG</span>
+			<span class="n">ch_signal_temp</span> <span class="o">=</span> <span class="n">edf_reader</span><span class="o">.</span><span class="n">readSignal</span><span class="p">(</span><span class="n">chn</span><span class="o">=</span><span class="n">ch_indx</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start_sampl_points</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">durSeg_samplPoints</span><span class="p">,</span>
+			                                       <span class="n">digital</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+			<span class="n">edf_reader</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+			<span class="c1"># if fs is higher than the lowest fs specified, a dwonsampling is performed</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">fs_chan</span> <span class="o">&gt;</span> <span class="n">fs_target</span><span class="p">):</span>
+				<span class="n">ch_signal</span> <span class="o">=</span> <span class="n">downsample_decimate</span><span class="p">(</span><span class="n">signal</span><span class="o">=</span><span class="n">ch_signal_temp</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">fs_chan</span><span class="p">)),</span>
+				                                <span class="n">target_fs</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">fs_target</span><span class="p">)))</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="n">ch_signal</span> <span class="o">=</span> <span class="n">ch_signal_temp</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">durSeg_samplPoints_target</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">durSeg_sec</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">fs_target</span><span class="p">))</span>
+			<span class="n">ch_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">durSeg_samplPoints_target</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+		<span class="c1"># Gather all values for all channels in list</span>
+		<span class="n">ch_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ch_signal</span><span class="p">)</span>
+	<span class="c1"># the raw EEG signals for this segment that requested</span>
+	<span class="c1"># combine all arrays in the list</span>
+	<span class="n">EEGsignals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">ch_list</span><span class="p">)</span>
+	
+	<span class="k">return</span> <span class="n">EEGsignals</span></div>
+
+
+<div class="viewcode-block" id="edfExportSegieeg_A"><a class="viewcode-back" href="../../api/edfSegmentsiEEGSimple.html#pyEDFieeg.edfSegmentsiEEGSimple.edfExportSegieeg_A">[docs]</a><span class="k">def</span> <span class="nf">edfExportSegieeg_A</span><span class="p">(</span><span class="n">edfs_info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">channelsKeep</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">t_start</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">t_stop</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">fs_target</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+	<span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">	Args:</span>
+<span class="sd">		edfs_info: a dictionary with the following information:</span>
+<span class="sd">			{</span>
+<span class="sd">			**start_time** (``list``):</span>
+<span class="sd">				the start time for each edf file (``datetime``).</span>
+<span class="sd">			**end_time** (``list``):</span>
+<span class="sd">				the end time for each edf file (``datetime``).</span>
+<span class="sd">			**record_duration** (``list``):</span>
+<span class="sd">				the duration for each edf file (``timedelta``).</span>
+<span class="sd">			**nChan** (``list``):</span>
+<span class="sd">				the number of channels for each edf file (``int``).</span>
+<span class="sd">			**fs** (``list``):</span>
+<span class="sd">				the frequency sampling for all channels within each edf file (``float``).</span>
+<span class="sd">			**chan_labels** (``list``):</span>
+<span class="sd">				the labels for all channels within each edf file (``str``).</span>
+<span class="sd">			**fpath** (``str``):</span>
+<span class="sd">				the full paths pointing to each edf file.</span>
+<span class="sd">			}</span>
+<span class="sd">		channelsKeep: Unique channels across all edf files; this is the final channel list needed.</span>
+<span class="sd">		t_start: a list of start times to extract</span>
+<span class="sd">		t_stop: a list of the corresponding end times associated with the start times</span>
+<span class="sd">		fs_target: the minimum frequency sampling found for this collection of edf files.</span>
+
+<span class="sd">	Returns:</span>
+<span class="sd">		list: the raw data from the corresponding ``t_start`` and ``t_stop`` lists.</span>
+
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="c1"># edf start and stop times for all edf files</span>
+	<span class="n">edf_start_time</span> <span class="o">=</span> <span class="n">edfs_info</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">]</span>
+	<span class="n">edf_stop_time</span> <span class="o">=</span> <span class="n">edfs_info</span><span class="p">[</span><span class="s2">&quot;end_time&quot;</span><span class="p">]</span>
+	
+	<span class="c1"># Recording duration of EDF files in seconds for all edf files</span>
+	<span class="n">edf_duration</span> <span class="o">=</span> <span class="n">edfs_info</span><span class="p">[</span><span class="s2">&quot;record_duration&quot;</span><span class="p">]</span>
+	
+	<span class="c1"># EDF paths</span>
+	<span class="n">edf_fpaths</span> <span class="o">=</span> <span class="n">edfs_info</span><span class="p">[</span><span class="s2">&quot;fpath&quot;</span><span class="p">]</span>
+	
+	<span class="c1"># EDF nChan &amp; channel labels found in each edf file</span>
+	<span class="n">edf_nChan</span> <span class="o">=</span> <span class="n">edfs_info</span><span class="p">[</span><span class="s2">&quot;nChan&quot;</span><span class="p">]</span>
+	<span class="n">edf_chan_labels</span> <span class="o">=</span> <span class="n">edfs_info</span><span class="p">[</span><span class="s2">&quot;chan_labels&quot;</span><span class="p">]</span>
+	
+	<span class="c1"># sampling frequencies found across all channels in every edf file</span>
+	<span class="n">edfs_fs</span> <span class="o">=</span> <span class="n">edfs_info</span><span class="p">[</span><span class="s2">&quot;fs&quot;</span><span class="p">]</span>
+	
+	<span class="sd">&#39;&#39;&#39;If there are any exact overlapping matches between any two edf files, we have excluded them by now</span>
+<span class="sd">	There might still be overlapping between files but not exact match.&#39;&#39;&#39;</span>
+	<span class="c1"># number of segments to extract</span>
+	<span class="n">n_segments</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_start</span><span class="p">)</span>
+	
+	<span class="c1"># Identify the start and end time of the entire recording based on the edf files</span>
+	<span class="n">start_EDFs_global</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">edf_start_time</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">end_EDFs_global</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">edf_stop_time</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+	
+	<span class="c1"># Generic check at the beginning</span>
+	<span class="c1"># Check that all start and end times given exist within the recording start and end as this can be determined by</span>
+	<span class="c1"># the edf files that have been provided</span>
+	<span class="c1"># find which files correspond to the start time of segments</span>
+	<span class="n">start_time_global</span> <span class="o">=</span> <span class="p">[</span><span class="n">isbetween</span><span class="p">(</span><span class="n">t_start</span><span class="p">[</span><span class="n">jj</span><span class="p">],</span> <span class="p">(</span><span class="n">start_EDFs_global</span><span class="p">,</span> <span class="n">end_EDFs_global</span><span class="p">))</span> <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_segments</span><span class="p">)]</span>
+	<span class="c1"># find which files correspond to the end time of segments</span>
+	<span class="n">stop_time_global</span> <span class="o">=</span> <span class="p">[</span><span class="n">isbetween</span><span class="p">(</span><span class="n">t_stop</span><span class="p">[</span><span class="n">jj</span><span class="p">],</span> <span class="p">(</span><span class="n">start_EDFs_global</span><span class="p">,</span> <span class="n">end_EDFs_global</span><span class="p">))</span> <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_segments</span><span class="p">)]</span>
+	
+	<span class="c1"># General condition to check that we have requested time periods that exist within the entire recording period corresponding to the subject</span>
+	<span class="c1"># if all start and end times are within the entire range of the recording</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">start_time_global</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">stop_time_global</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">):</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The requested (start, end) segments are included within the entire time recording. </span><span class="se">\n</span><span class="s2">&quot;</span>
+		      <span class="s2">&quot;The segments requested are being extracted ...&quot;</span><span class="p">)</span>
+		<span class="n">EEG_segments_all</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+		<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_segments</span><span class="p">):</span>
+			<span class="c1"># for each segment......</span>
+			
+			<span class="c1"># find which files correspond to the start time of segments</span>
+			<span class="n">start_time_tuple</span> <span class="o">=</span> <span class="p">[(</span><span class="n">edf_fpaths</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">edf_path</span><span class="p">),</span> <span class="n">isbetween</span><span class="p">(</span><span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)))</span> <span class="k">for</span>
+			                    <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">edf_path</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">edf_start_time</span><span class="p">,</span> <span class="n">edf_stop_time</span><span class="p">,</span> <span class="n">edf_fpaths</span><span class="p">)]</span>
+			<span class="c1"># find which files correspond to the end time of segments</span>
+			<span class="n">stop_time_tuple</span> <span class="o">=</span> <span class="p">[(</span><span class="n">edf_fpaths</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">edf_path</span><span class="p">),</span> <span class="n">isbetween</span><span class="p">(</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)))</span> <span class="k">for</span>
+			                   <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">edf_path</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">edf_start_time</span><span class="p">,</span> <span class="n">edf_stop_time</span><span class="p">,</span> <span class="n">edf_fpaths</span><span class="p">)]</span>
+			
+			<span class="c1"># Check if start_time_tuple returned only False values, which means doesn&#39;t exist in any edf file</span>
+			<span class="c1"># Get the sum of True values</span>
+			<span class="n">check_point_start</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">start_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">start_tuple</span> <span class="ow">in</span> <span class="n">start_time_tuple</span><span class="p">])</span>
+			<span class="c1"># Get the sum of True values</span>
+			<span class="n">check_point_stop</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">stop_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">stop_tuple</span> <span class="ow">in</span> <span class="n">stop_time_tuple</span><span class="p">])</span>
+			<span class="c1"># Get indices corresponding to True values</span>
+			<span class="n">check_indx_start</span> <span class="o">=</span> <span class="p">[</span><span class="n">start_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">start_tuple</span> <span class="ow">in</span> <span class="n">start_time_tuple</span> <span class="k">if</span> <span class="n">start_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
+			<span class="c1"># Get indices corresponding to True values</span>
+			<span class="n">check_indx_stop</span> <span class="o">=</span> <span class="p">[</span><span class="n">stop_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">stop_tuple</span> <span class="ow">in</span> <span class="n">stop_time_tuple</span> <span class="k">if</span> <span class="n">stop_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
+			
+			<span class="sd">&#39;&#39;&#39;Conditions starting here&#39;&#39;&#39;</span>
+			
+			<span class="k">if</span> <span class="p">(</span><span class="n">check_point_start</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">check_point_stop</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+				<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">				CONDITION 0: START AND END TIME IS MISSING ENTIRELY</span>
+<span class="sd">				BUT IT IS WITHIN THE ENTIRE RECORDING AS SPECIFIED FROM THE EDF FILES PROVIDED</span>
+<span class="sd">				&#39;&#39;&#39;</span>
+				<span class="c1"># Duration of segment in seconds and sampling points</span>
+				<span class="n">durSeg_sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+				<span class="n">durSeg_samplPoints</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">durSeg_sec</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">fs_target</span><span class="p">))</span>
+				
+				<span class="c1"># The final segment of EEG for all channels</span>
+				<span class="n">EEGsignals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">channelsKeep</span><span class="p">),</span> <span class="n">durSeg_samplPoints</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+				<span class="n">EEG_segments_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EEGsignals</span><span class="p">)</span>
+			
+			<span class="k">elif</span> <span class="p">(</span><span class="n">check_point_start</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">check_point_stop</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+				<span class="sd">&#39;&#39;&#39;Only one edf file includes start time and one includes stop time</span>
+<span class="sd">					# check1: start time requested belongs to one file (`check_point_start == 1`)</span>
+<span class="sd">					# check2: end time requested belongs to one file (`check_point_stop == 1`)</span>
+<span class="sd">				&#39;&#39;&#39;</span>
+				<span class="k">if</span> <span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">check_indx_start</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">check_indx_stop</span><span class="p">)):</span>
+					<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">					CONDITION 1: START AND END TIME EXIST IN THE SAME EDF FILE NOT IN OTHER EDF FILES</span>
+<span class="sd">					NOT OVERLAPPING IN THIS CONDITION</span>
+<span class="sd">					&#39;&#39;&#39;</span>
+					<span class="sd">&#39;&#39;&#39; TODO: Check that the overlapping periods are the same. If not fill with NaNs&#39;&#39;&#39;</span>
+					<span class="c1">#  check if this two lists contain the same elements even if those are not in order</span>
+					<span class="c1"># check3: start and end time belongs to the same edf file (`check_indx_start == check_indx_stop`)</span>
+					<span class="c1"># This means that start and end time exist both in all the files</span>
+					<span class="c1"># if start time and end time exist in one edf file and not in other edf files</span>
+					<span class="c1"># This checks if the start and end time exists in the same edf file</span>
+					<span class="c1"># this means that we can pull the data from one edf file pointed in the index check_indx_start or check_indx_stop</span>
+					<span class="n">indx_edf</span> <span class="o">=</span> <span class="n">check_indx_start</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+					
+					<span class="c1"># Get the path corresponding to the indx_edf</span>
+					<span class="n">edf_path</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">indx_edf</span><span class="p">]</span>
+					
+					<span class="n">EEGsignals</span> <span class="o">=</span> <span class="n">gather_EEGsegment_1efd_A</span><span class="p">(</span><span class="n">EDF_path</span><span class="o">=</span><span class="n">edf_path</span><span class="p">,</span>
+														  <span class="n">EDF_chan_labels</span><span class="o">=</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_path</span><span class="p">],</span>
+														  <span class="n">EDF_start_time</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">indx_edf</span><span class="p">],</span> <span class="n">fs_target</span><span class="o">=</span><span class="n">fs_target</span><span class="p">,</span>
+														  <span class="n">T_start</span><span class="o">=</span><span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+														  <span class="n">T_stop</span><span class="o">=</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+														  <span class="n">channelsKeep</span><span class="o">=</span><span class="n">channelsKeep</span><span class="p">)</span>
+					<span class="n">EEG_segments_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EEGsignals</span><span class="p">)</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">					CONDITION 2: START AND END TIME EXIST IN DIFFERENT EDF FILES NOT IN OTHER EDF FILES</span>
+<span class="sd">					NOT OVERLAPPING IN THIS CONDITION</span>
+<span class="sd">					&#39;&#39;&#39;</span>
+					<span class="c1"># checks what edf file contains most of the segment requested</span>
+					<span class="c1"># Compute the overlap between the segment requested and the edf file start and end point</span>
+					<span class="c1"># in order to figure out the duration of overlap and which is bigger in duration</span>
+					<span class="n">id1</span> <span class="o">=</span> <span class="n">check_indx_start</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+					<span class="n">id2</span> <span class="o">=</span> <span class="n">check_indx_stop</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+					<span class="n">result_overlap_start</span> <span class="o">=</span> <span class="n">intervals_overlap</span><span class="p">(</span><span class="n">t1_start</span><span class="o">=</span><span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">t1_end</span><span class="o">=</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+					                                         <span class="n">t2_start</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">id1</span><span class="p">],</span> <span class="n">t2_end</span><span class="o">=</span><span class="n">edf_stop_time</span><span class="p">[</span><span class="n">id1</span><span class="p">])</span>
+					<span class="n">result_overlap_end</span> <span class="o">=</span> <span class="n">intervals_overlap</span><span class="p">(</span><span class="n">t1_start</span><span class="o">=</span><span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">t1_end</span><span class="o">=</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+					                                       <span class="n">t2_start</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">id2</span><span class="p">],</span> <span class="n">t2_end</span><span class="o">=</span><span class="n">edf_stop_time</span><span class="p">[</span><span class="n">id2</span><span class="p">])</span>
+					
+					<span class="n">final_ch1</span> <span class="o">=</span> <span class="n">intersection</span><span class="p">(</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_fpaths</span><span class="p">[</span><span class="n">id1</span><span class="p">]],</span> <span class="n">channelsKeep</span><span class="p">)</span>
+					<span class="n">final_ch2</span> <span class="o">=</span> <span class="n">intersection</span><span class="p">(</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_fpaths</span><span class="p">[</span><span class="n">id2</span><span class="p">]],</span> <span class="n">channelsKeep</span><span class="p">)</span>
+					
+					<span class="k">if</span> <span class="p">(</span><span class="n">result_overlap_start</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">seconds</span> <span class="o">&gt;=</span> <span class="n">result_overlap_end</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">seconds</span><span class="p">):</span>
+						<span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">final_ch1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">final_ch2</span><span class="p">)):</span>
+							<span class="n">start_id</span> <span class="o">=</span> <span class="n">id1</span>
+							<span class="n">end_id</span> <span class="o">=</span> <span class="kc">None</span>
+						<span class="k">else</span><span class="p">:</span>
+							<span class="n">start_id</span> <span class="o">=</span> <span class="kc">None</span>
+							<span class="n">end_id</span> <span class="o">=</span> <span class="n">id2</span>
+					<span class="k">else</span><span class="p">:</span>
+						<span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">final_ch2</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">final_ch1</span><span class="p">)):</span>
+							<span class="n">start_id</span> <span class="o">=</span> <span class="kc">None</span>
+							<span class="n">end_id</span> <span class="o">=</span> <span class="n">id2</span>
+						<span class="k">else</span><span class="p">:</span>
+							<span class="n">start_id</span> <span class="o">=</span> <span class="n">id1</span>
+							<span class="n">end_id</span> <span class="o">=</span> <span class="kc">None</span>
+					<span class="k">if</span> <span class="p">(</span><span class="n">start_id</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">end_id</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>
+						<span class="c1"># if start edf was chosen then we will get data from the first edf file and the rest of the data would be missing data</span>
+						<span class="c1"># Get the path corresponding to the indx_edf</span>
+						<span class="n">edf_path</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">start_id</span><span class="p">]</span>
+						
+						<span class="n">EEGsignals1</span> <span class="o">=</span> <span class="n">gather_EEGsegment_1efd_A</span><span class="p">(</span><span class="n">EDF_path</span><span class="o">=</span><span class="n">edf_path</span><span class="p">,</span>
+															   <span class="n">EDF_chan_labels</span><span class="o">=</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_path</span><span class="p">],</span>
+															   <span class="n">EDF_start_time</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">start_id</span><span class="p">],</span>
+															   <span class="n">fs_target</span><span class="o">=</span><span class="n">fs_target</span><span class="p">,</span>
+															   <span class="n">T_start</span><span class="o">=</span><span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+															   <span class="n">T_stop</span><span class="o">=</span><span class="n">edf_stop_time</span><span class="p">[</span><span class="n">start_id</span><span class="p">],</span>
+															   <span class="n">channelsKeep</span><span class="o">=</span><span class="n">channelsKeep</span><span class="p">)</span>
+						<span class="c1"># Duration of segment in seconds and sampling points</span>
+						<span class="n">durSeg_sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">-</span> <span class="n">edf_stop_time</span><span class="p">[</span><span class="n">start_id</span><span class="p">])</span>
+						<span class="c1"># here we don&#39;t have to add 1 second as edf_stop_time is not included in this segment of data</span>
+						<span class="n">durSeg_samplPoints</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">durSeg_sec</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">fs_target</span><span class="p">))</span>
+						
+						<span class="c1"># The final segment of EEG for all channels</span>
+						<span class="n">EEGsignals2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">channelsKeep</span><span class="p">),</span> <span class="n">durSeg_samplPoints</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+						<span class="n">EEGsignals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">EEGsignals1</span><span class="p">,</span> <span class="n">EEGsignals2</span><span class="p">])</span>
+						<span class="n">EEG_segments_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EEGsignals</span><span class="p">)</span>
+					
+					<span class="k">elif</span> <span class="p">(</span><span class="n">end_id</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">start_id</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>
+						<span class="c1"># if start edf was chosen then we will get data from the first edf file and the rest of the data would be missing data</span>
+						<span class="c1"># Get the path corresponding to the indx_edf</span>
+						<span class="n">edf_path</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">end_id</span><span class="p">]</span>
+						<span class="c1"># Duration of segment in seconds and sampling points</span>
+						<span class="c1"># here we don&#39;t need to add one as edf_start_time is not included in this segment of data</span>
+						<span class="n">durSeg_sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">end_id</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
+						<span class="n">durSeg_samplPoints</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">durSeg_sec</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">fs_target</span><span class="p">))</span>
+						
+						<span class="c1"># The final segment of EEG for all channels</span>
+						<span class="n">EEGsignals1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">channelsKeep</span><span class="p">),</span> <span class="n">durSeg_samplPoints</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+						<span class="c1">#</span>
+						<span class="n">EEGsignals2</span> <span class="o">=</span> <span class="n">gather_EEGsegment_1efd_A</span><span class="p">(</span><span class="n">EDF_path</span><span class="o">=</span><span class="n">edf_path</span><span class="p">,</span>
+															   <span class="n">EDF_chan_labels</span><span class="o">=</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_path</span><span class="p">],</span>
+															   <span class="n">EDF_start_time</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">end_id</span><span class="p">],</span> <span class="n">fs_target</span><span class="o">=</span><span class="n">fs_target</span><span class="p">,</span>
+															   <span class="n">T_start</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">end_id</span><span class="p">],</span>
+															   <span class="n">T_stop</span><span class="o">=</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+															   <span class="n">channelsKeep</span><span class="o">=</span><span class="n">channelsKeep</span><span class="p">)</span>
+						<span class="n">EEGsignals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">EEGsignals1</span><span class="p">,</span> <span class="n">EEGsignals2</span><span class="p">])</span>
+						<span class="n">EEG_segments_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EEGsignals</span><span class="p">)</span>
+			<span class="k">elif</span> <span class="p">((</span><span class="n">check_point_start</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">check_point_stop</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span>
+					<span class="p">(</span><span class="n">check_point_start</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">check_point_stop</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)):</span>
+				<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">				CONDITION 3: THE CASE WHERE START AND END TIMES EXIST WITHIN AN EDF FILE BUT THIS HAPPENS FOR MULTIPLE EDF FILES</span>
+<span class="sd">				BECAUSE EDF FILES OVERLAP (EITHER IN THE START TIMES OR END TIMES REQUESTED).</span>
+<span class="sd">				# check1: start time requested belongs to more than one file (`check_point_start &gt; 1`)</span>
+<span class="sd">				# check2: end time requested belongs to more than one file (`check_point_stop &gt; 1`)</span>
+<span class="sd">				We have already check in other function - previous step that overlapping segments over 1s are the same.</span>
+<span class="sd">				In the case where both start and end time requested exist in more than one edf file we are going to choose the first one</span>
+<span class="sd">				&#39;&#39;&#39;</span>
+				<span class="k">if</span> <span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">check_indx_start</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">check_indx_stop</span><span class="p">)):</span>
+					<span class="sd">&#39;&#39;&#39; TODO: Check that the overlapping periods are the same. If not fill with NaNs&#39;&#39;&#39;</span>
+					<span class="c1">#  check if this two lists contain the same elements even if those are not in order</span>
+					<span class="c1"># check3: start and end time belongs to the same edf file (`check_indx_start == check_indx_stop`)</span>
+					<span class="c1"># This means that start and end time exist both in all the files</span>
+					<span class="c1"># if start time and end time exist in one edf file and not in other edf files</span>
+					<span class="c1"># This checks if the start and end time exists in the same edf file</span>
+					<span class="c1"># this means that we can pull the data from one edf file pointed in the index check_indx_start or check_indx_stop</span>
+					<span class="c1">#</span>
+					<span class="c1"># pick the edf file with the maximum channels</span>
+					<span class="n">chhn</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">intersection</span><span class="p">(</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_fpaths</span><span class="p">[</span><span class="n">idd</span><span class="p">]],</span> <span class="n">channelsKeep</span><span class="p">))</span> <span class="k">for</span> <span class="n">idd</span> <span class="ow">in</span>
+					        <span class="n">check_indx_start</span><span class="p">]</span>
+					<span class="n">id_max_ch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">chhn</span><span class="p">)</span>
+					<span class="c1"># choose the edf with maximum number of channels as long as all the edf files cover the same time range</span>
+					<span class="n">indx_edf</span> <span class="o">=</span> <span class="n">check_indx_start</span><span class="p">[</span><span class="n">id_max_ch</span><span class="p">]</span>
+					
+					<span class="c1"># Get the path corresponding to the indx_edf</span>
+					<span class="n">edf_path</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">indx_edf</span><span class="p">]</span>
+					<span class="c1">#</span>
+					<span class="n">EEGsignals</span> <span class="o">=</span> <span class="n">gather_EEGsegment_1efd_A</span><span class="p">(</span><span class="n">EDF_path</span><span class="o">=</span><span class="n">edf_path</span><span class="p">,</span>
+														  <span class="n">EDF_chan_labels</span><span class="o">=</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_path</span><span class="p">],</span>
+														  <span class="n">EDF_start_time</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">indx_edf</span><span class="p">],</span> <span class="n">fs_target</span><span class="o">=</span><span class="n">fs_target</span><span class="p">,</span>
+														  <span class="n">T_start</span><span class="o">=</span><span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+														  <span class="n">T_stop</span><span class="o">=</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+														  <span class="n">channelsKeep</span><span class="o">=</span><span class="n">channelsKeep</span><span class="p">)</span>
+					<span class="n">EEG_segments_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EEGsignals</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="p">(</span><span class="n">common_elements</span><span class="p">(</span><span class="n">check_indx_start</span><span class="p">,</span> <span class="n">check_indx_stop</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">):</span>
+					<span class="sd">&#39;&#39;&#39; TODO: Check that the overlapping periods are the same. If not fill with NaNs&#39;&#39;&#39;</span>
+					<span class="c1"># check if the edfs containing the start are subset of the edf files containing the stop times</span>
+					<span class="c1"># or the opposite. If this is the case, then there are common elements.</span>
+					
+					<span class="c1"># if there edf files that both have start and end time then choose the one with more channels</span>
+					<span class="n">common_indx_edf</span> <span class="o">=</span> <span class="n">intersection</span><span class="p">(</span><span class="n">check_indx_start</span><span class="p">,</span> <span class="n">check_indx_stop</span><span class="p">)</span>
+					<span class="n">chhn</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">intersection</span><span class="p">(</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_fpaths</span><span class="p">[</span><span class="n">idd</span><span class="p">]],</span> <span class="n">channelsKeep</span><span class="p">))</span> <span class="k">for</span> <span class="n">idd</span> <span class="ow">in</span>
+					        <span class="n">common_indx_edf</span><span class="p">]</span>
+					<span class="n">id_max_ch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">chhn</span><span class="p">)</span>
+					
+					<span class="n">indx_edf</span> <span class="o">=</span> <span class="n">common_indx_edf</span><span class="p">[</span><span class="n">id_max_ch</span><span class="p">]</span>
+					
+					<span class="c1"># Get the path corresponding to the indx_edf</span>
+					<span class="n">edf_path</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">indx_edf</span><span class="p">]</span>
+					
+					<span class="n">EEGsignals</span> <span class="o">=</span> <span class="n">gather_EEGsegment_1efd_A</span><span class="p">(</span><span class="n">EDF_path</span><span class="o">=</span><span class="n">edf_path</span><span class="p">,</span>
+					                                                              <span class="n">EDF_chan_labels</span><span class="o">=</span><span class="n">edf_chan_labels</span><span class="p">[</span>
+						                                                              <span class="n">edf_path</span><span class="p">],</span>
+					                                                              <span class="n">EDF_start_time</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span>
+						                                                              <span class="n">indx_edf</span><span class="p">],</span> <span class="n">fs_target</span><span class="o">=</span><span class="n">fs_target</span><span class="p">,</span>
+					                                                              <span class="n">T_start</span><span class="o">=</span><span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+					                                                              <span class="n">T_stop</span><span class="o">=</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+					                                                              <span class="n">channelsKeep</span><span class="o">=</span><span class="n">channelsKeep</span><span class="p">)</span>
+					<span class="n">EEG_segments_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EEGsignals</span><span class="p">)</span>
+				<span class="k">elif</span> <span class="p">(</span><span class="n">common_elements</span><span class="p">(</span><span class="n">check_indx_start</span><span class="p">,</span> <span class="n">check_indx_stop</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">):</span>
+					<span class="c1"># Choose the edf file that contains more from the segment requested</span>
+					<span class="c1"># In order to do that we will compare the overlapping of the segment with the two files</span>
+					<span class="c1">#</span>
+					<span class="c1"># from all edf files from start and end compute the overlapping to see the duration we can get from each edf</span>
+					<span class="n">all_ii</span> <span class="o">=</span> <span class="n">check_indx_start</span> <span class="o">+</span> <span class="n">check_indx_stop</span>
+					<span class="c1">#</span>
+					<span class="n">duration_overlapp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+					<span class="n">final_ch</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+					<span class="k">for</span> <span class="n">ee</span> <span class="ow">in</span> <span class="n">all_ii</span><span class="p">:</span>
+						<span class="n">duration_overlapp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+							<span class="n">intervals_overlap</span><span class="p">(</span><span class="n">t1_start</span><span class="o">=</span><span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">t1_end</span><span class="o">=</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">t2_start</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">ee</span><span class="p">],</span>
+							                  <span class="n">t2_end</span><span class="o">=</span><span class="n">edf_stop_time</span><span class="p">[</span><span class="n">ee</span><span class="p">])[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span>
+						<span class="n">final_ch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">intersection</span><span class="p">(</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_fpaths</span><span class="p">[</span><span class="n">ee</span><span class="p">]],</span> <span class="n">channelsKeep</span><span class="p">)))</span>
+					<span class="c1">#</span>
+					<span class="n">id_duration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">duration_overlapp</span><span class="p">)</span>
+					<span class="c1"># TODO: MAYBE THIS COUL BE IMPROVED IF I ADD SOME THRESHODS REGARDING CHANNELS, NUMBER OF CHANNELS</span>
+					<span class="n">edf_idd</span> <span class="o">=</span> <span class="n">all_ii</span><span class="p">[</span><span class="n">id_duration</span><span class="p">]</span>
+					<span class="c1">#</span>
+					<span class="k">if</span> <span class="p">(</span><span class="n">edf_idd</span> <span class="ow">in</span> <span class="n">check_indx_start</span><span class="p">):</span>
+						<span class="n">edf_path</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">]</span>
+						<span class="c1">#</span>
+						<span class="n">EEGsignals1</span> <span class="o">=</span> <span class="n">gather_EEGsegment_1efd_A</span><span class="p">(</span><span class="n">EDF_path</span><span class="o">=</span><span class="n">edf_path</span><span class="p">,</span> <span class="n">EDF_chan_labels</span><span class="o">=</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_path</span><span class="p">],</span>
+						                                                               <span class="n">EDF_start_time</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">],</span>
+						                                                               <span class="n">fs_target</span><span class="o">=</span><span class="n">fs_target</span><span class="p">,</span>
+						                                                               <span class="n">T_start</span><span class="o">=</span><span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+						                                                               <span class="n">T_stop</span><span class="o">=</span><span class="n">edf_stop_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">],</span>
+						                                                               <span class="n">channelsKeep</span><span class="o">=</span><span class="n">channelsKeep</span><span class="p">)</span>
+						<span class="c1"># Duration of segment in seconds and sampling points</span>
+						<span class="c1"># here we don&#39;t have to add 1 second as edf_stop_time is not included in this segment of data</span>
+						<span class="n">durSeg_sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">-</span> <span class="n">edf_stop_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">])</span>
+						<span class="n">durSeg_samplPoints</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">durSeg_sec</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">fs_target</span><span class="p">))</span>
+						<span class="c1">#</span>
+						<span class="c1"># The final segment of EEG for all channels</span>
+						<span class="n">EEGsignals2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">channelsKeep</span><span class="p">),</span> <span class="n">durSeg_samplPoints</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+						<span class="n">EEGsignals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">EEGsignals1</span><span class="p">,</span> <span class="n">EEGsignals2</span><span class="p">])</span>
+						<span class="n">EEG_segments_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EEGsignals</span><span class="p">)</span>
+					<span class="k">elif</span> <span class="p">(</span><span class="n">edf_idd</span> <span class="ow">in</span> <span class="n">check_indx_stop</span><span class="p">):</span>
+						<span class="c1"># if start edf was chosen then we will get data from the first edf file and the rest of the data would be missing data</span>
+						<span class="c1"># Get the path corresponding to the indx_edf</span>
+						<span class="n">edf_path</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">]</span>
+						<span class="c1"># Duration of segment in seconds and sampling points</span>
+						<span class="c1"># here we don&#39;t need to add one as edf_start_time is not included in this segment of data</span>
+						<span class="n">durSeg_sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
+						<span class="n">durSeg_samplPoints</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">durSeg_sec</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">fs_target</span><span class="p">))</span>
+						<span class="c1">#</span>
+						<span class="c1"># The final segment of EEG for all channels</span>
+						<span class="n">EEGsignals1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">channelsKeep</span><span class="p">),</span> <span class="n">durSeg_samplPoints</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+						<span class="c1">#</span>
+						<span class="p">[</span><span class="n">EEGsignals2</span><span class="p">,</span> <span class="n">channels_seg</span><span class="p">,</span> <span class="n">fs_seg</span><span class="p">]</span> <span class="o">=</span> <span class="n">gather_EEGsegment_1efd_A</span><span class="p">(</span><span class="n">EDF_path</span><span class="o">=</span><span class="n">edf_path</span><span class="p">,</span>
+						                                                               <span class="n">EDF_chan_labels</span><span class="o">=</span><span class="n">edf_chan_labels</span><span class="p">[</span>
+							                                                               <span class="n">edf_path</span><span class="p">],</span>
+						                                                               <span class="n">EDF_start_time</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span>
+							                                                               <span class="n">edf_idd</span><span class="p">],</span>
+						                                                               <span class="n">fs_target</span><span class="o">=</span><span class="n">fs_target</span><span class="p">,</span>
+						                                                               <span class="n">T_start</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">],</span>
+						                                                               <span class="n">T_stop</span><span class="o">=</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+						                                                               <span class="n">channelsKeep</span><span class="o">=</span><span class="n">channelsKeep</span><span class="p">)</span>
+						<span class="n">EEGsignals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">EEGsignals1</span><span class="p">,</span> <span class="n">EEGsignals2</span><span class="p">])</span>
+						<span class="n">EEG_segments_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EEGsignals</span><span class="p">)</span>
+			<span class="k">elif</span> <span class="p">((</span><span class="n">check_point_start</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">check_point_stop</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)):</span>
+				<span class="sd">&quot;&quot;&quot;CONDITION 4: START POINT EXISTS IN ONE EDF FILE AND END TIME EXISTS IN OTHER EDF FILE&quot;&quot;&quot;</span>
+				<span class="n">edf_idd</span> <span class="o">=</span> <span class="n">check_indx_start</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+				<span class="n">edf_path</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">]</span>
+				<span class="c1">#</span>
+				<span class="n">EEGsignals1</span> <span class="o">=</span> <span class="n">gather_EEGsegment_1efd_A</span><span class="p">(</span><span class="n">EDF_path</span><span class="o">=</span><span class="n">edf_path</span><span class="p">,</span> <span class="n">EDF_chan_labels</span><span class="o">=</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_path</span><span class="p">],</span>
+													   <span class="n">EDF_start_time</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">],</span> <span class="n">fs_target</span><span class="o">=</span><span class="n">fs_target</span><span class="p">,</span> <span class="n">T_start</span><span class="o">=</span><span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+													   <span class="n">T_stop</span><span class="o">=</span><span class="n">edf_stop_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">],</span> <span class="n">channelsKeep</span><span class="o">=</span><span class="n">channelsKeep</span><span class="p">)</span>
+				<span class="c1"># Duration of segment in seconds and sampling points</span>
+				<span class="n">durSeg_sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">-</span> <span class="n">edf_stop_time</span><span class="p">[</span>
+					<span class="n">edf_idd</span><span class="p">])</span>  <span class="c1"># here we don&#39;t have to add 1 second as edf_stop_time is not included in this segment of data</span>
+				<span class="n">durSeg_samplPoints</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">durSeg_sec</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">fs_target</span><span class="p">))</span>
+				<span class="c1">#</span>
+				<span class="c1"># The final segment of EEG for all channels</span>
+				<span class="n">EEGsignals2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">channelsKeep</span><span class="p">),</span> <span class="n">durSeg_samplPoints</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+				<span class="n">EEGsignals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">EEGsignals1</span><span class="p">,</span> <span class="n">EEGsignals2</span><span class="p">])</span>
+				<span class="n">EEG_segments_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EEGsignals</span><span class="p">)</span>
+			<span class="k">elif</span> <span class="p">((</span><span class="n">check_point_start</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">check_point_stop</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)):</span>
+				<span class="sd">&quot;&quot;&quot;CONDITION 5: WE HAVE END POINT EXIST IN ONE EDF FILE AND START POINT EXIST IN NO EDF FILE&quot;&quot;&quot;</span>
+				<span class="n">edf_idd</span> <span class="o">=</span> <span class="n">check_indx_stop</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+				<span class="n">edf_path</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">]</span>
+				<span class="c1"># Duration of segment in seconds and sampling points</span>
+				<span class="c1"># here we don&#39;t need to add one as edf_start_time is not included in this segment of data</span>
+				<span class="n">durSeg_sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
+				<span class="n">durSeg_samplPoints</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">durSeg_sec</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">fs_target</span><span class="p">))</span>
+				<span class="c1">#</span>
+				<span class="c1"># The final segment of EEG for all channels</span>
+				<span class="n">EEGsignals1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">channelsKeep</span><span class="p">),</span> <span class="n">durSeg_samplPoints</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+				<span class="c1">#</span>
+				<span class="n">EEGsignals2</span> <span class="o">=</span> <span class="n">gather_EEGsegment_1efd_A</span><span class="p">(</span><span class="n">EDF_path</span><span class="o">=</span><span class="n">edf_path</span><span class="p">,</span>
+													   <span class="n">EDF_chan_labels</span><span class="o">=</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_path</span><span class="p">],</span>
+													   <span class="n">EDF_start_time</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">],</span>
+													   <span class="n">fs_target</span><span class="o">=</span><span class="n">fs_target</span><span class="p">,</span>
+													   <span class="n">T_start</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">],</span>
+													   <span class="n">T_stop</span><span class="o">=</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+													   <span class="n">channelsKeep</span><span class="o">=</span><span class="n">channelsKeep</span><span class="p">)</span>
+				<span class="n">EEGsignals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">EEGsignals1</span><span class="p">,</span> <span class="n">EEGsignals2</span><span class="p">])</span>
+				<span class="n">EEG_segments_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EEGsignals</span><span class="p">)</span>
+			<span class="k">elif</span> <span class="p">((</span><span class="n">check_point_start</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">check_point_stop</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)):</span>
+				<span class="sd">&quot;&quot;&quot;CONDITION 6: We have start point exist in more than one edf file and end point exist in no edf&quot;&quot;&quot;</span>
+				<span class="c1"># choose the edf file that captures the maximum duration</span>
+				<span class="n">all_ii</span> <span class="o">=</span> <span class="n">check_indx_start</span>
+				<span class="c1">#</span>
+				<span class="n">duration_overlapp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+				<span class="n">final_ch</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+				<span class="k">for</span> <span class="n">ee</span> <span class="ow">in</span> <span class="n">all_ii</span><span class="p">:</span>
+					<span class="n">duration_overlapp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+						<span class="n">intervals_overlap</span><span class="p">(</span><span class="n">t1_start</span><span class="o">=</span><span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">t1_end</span><span class="o">=</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">t2_start</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">ee</span><span class="p">],</span>
+						                  <span class="n">t2_end</span><span class="o">=</span><span class="n">edf_stop_time</span><span class="p">[</span><span class="n">ee</span><span class="p">])[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span>
+					<span class="n">final_ch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">intersection</span><span class="p">(</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_fpaths</span><span class="p">[</span><span class="n">ee</span><span class="p">]],</span> <span class="n">channelsKeep</span><span class="p">)))</span>
+				<span class="c1">#</span>
+				<span class="n">id_duration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">duration_overlapp</span><span class="p">)</span>
+				<span class="c1"># TODO: MAYBE THIS COULD BE IMPROVED IF I ADD SOME THRESHOLDS REGARDING CHANNELS, NUMBER OF CHANNELS</span>
+				<span class="n">edf_idd</span> <span class="o">=</span> <span class="n">all_ii</span><span class="p">[</span><span class="n">id_duration</span><span class="p">]</span>
+				<span class="n">edf_path</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">]</span>
+				<span class="c1"># Duration of segment in seconds and sampling points</span>
+				<span class="n">edf_path</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">]</span>
+				<span class="c1">#</span>
+				<span class="n">EEGsignals1</span> <span class="o">=</span> <span class="n">gather_EEGsegment_1efd_A</span><span class="p">(</span><span class="n">EDF_path</span><span class="o">=</span><span class="n">edf_path</span><span class="p">,</span>
+													   <span class="n">EDF_chan_labels</span><span class="o">=</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_path</span><span class="p">],</span>
+													   <span class="n">EDF_start_time</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">],</span>
+													   <span class="n">fs_target</span><span class="o">=</span><span class="n">fs_target</span><span class="p">,</span>
+													   <span class="n">T_start</span><span class="o">=</span><span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+													   <span class="n">T_stop</span><span class="o">=</span><span class="n">edf_stop_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">],</span>
+													   <span class="n">channelsKeep</span><span class="o">=</span><span class="n">channelsKeep</span><span class="p">)</span>
+				<span class="c1"># Duration of segment in seconds and sampling points</span>
+				<span class="c1"># here we don&#39;t have to add 1 second as edf_stop_time is not included in this segment of data</span>
+				<span class="n">durSeg_sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">-</span> <span class="n">edf_stop_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">])</span>
+				<span class="n">durSeg_samplPoints</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">durSeg_sec</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">fs_target</span><span class="p">))</span>
+				<span class="c1">#</span>
+				<span class="c1"># The final segment of EEG for all channels</span>
+				<span class="n">EEGsignals2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">channelsKeep</span><span class="p">),</span> <span class="n">durSeg_samplPoints</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+				<span class="n">EEGsignals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">EEGsignals1</span><span class="p">,</span> <span class="n">EEGsignals2</span><span class="p">])</span>
+				<span class="n">EEG_segments_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EEGsignals</span><span class="p">)</span>
+			<span class="k">elif</span> <span class="p">((</span><span class="n">check_point_start</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">check_point_stop</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)):</span>
+				<span class="sd">&quot;&quot;&quot;CONDITION 7: We have end point exist in more than one edf file and start point exist in no edf&quot;&quot;&quot;</span>
+				<span class="c1"># choose the edf file that captures the maximum duration</span>
+				<span class="n">all_ii</span> <span class="o">=</span> <span class="n">check_indx_stop</span>
+				<span class="c1">#</span>
+				<span class="n">duration_overlapp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+				<span class="n">final_ch</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+				<span class="k">for</span> <span class="n">ee</span> <span class="ow">in</span> <span class="n">all_ii</span><span class="p">:</span>
+					<span class="n">duration_overlapp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+						<span class="n">intervals_overlap</span><span class="p">(</span><span class="n">t1_start</span><span class="o">=</span><span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">t1_end</span><span class="o">=</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">t2_start</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">ee</span><span class="p">],</span>
+						                  <span class="n">t2_end</span><span class="o">=</span><span class="n">edf_stop_time</span><span class="p">[</span><span class="n">ee</span><span class="p">])[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span>
+					<span class="n">final_ch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">intersection</span><span class="p">(</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_fpaths</span><span class="p">[</span><span class="n">ee</span><span class="p">]],</span> <span class="n">channelsKeep</span><span class="p">)))</span>
+				<span class="c1">#</span>
+				<span class="n">id_duration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">duration_overlapp</span><span class="p">)</span>
+				<span class="c1"># TODO: MAYBE THIS COULD BE IMPROVED IF I ADD SOME THRESHODS REGARDING CHANNELS, NUMBER OF CHANNELS</span>
+				<span class="n">edf_idd</span> <span class="o">=</span> <span class="n">all_ii</span><span class="p">[</span><span class="n">id_duration</span><span class="p">]</span>
+				<span class="n">edf_path</span> <span class="o">=</span> <span class="n">edf_fpaths</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">]</span>
+				<span class="c1"># Duration of segment in seconds and sampling points</span>
+				<span class="c1"># here we don&#39;t need to add one as edf_start_time is not included in this segment of data</span>
+				<span class="n">durSeg_sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">]</span> <span class="o">-</span> <span class="n">t_start</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
+				<span class="n">durSeg_samplPoints</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">durSeg_sec</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">fs_target</span><span class="p">))</span>
+				<span class="c1">#</span>
+				<span class="c1"># The final segment of EEG for all channels</span>
+				<span class="n">EEGsignals1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">channelsKeep</span><span class="p">),</span> <span class="n">durSeg_samplPoints</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+				<span class="c1">#</span>
+				<span class="n">EEGsignals2</span> <span class="o">=</span> <span class="n">gather_EEGsegment_1efd_A</span><span class="p">(</span><span class="n">EDF_path</span><span class="o">=</span><span class="n">edf_path</span><span class="p">,</span>
+													   <span class="n">EDF_chan_labels</span><span class="o">=</span><span class="n">edf_chan_labels</span><span class="p">[</span><span class="n">edf_path</span><span class="p">],</span>
+													   <span class="n">EDF_start_time</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">],</span>
+													   <span class="n">fs_target</span><span class="o">=</span><span class="n">fs_target</span><span class="p">,</span>
+													   <span class="n">T_start</span><span class="o">=</span><span class="n">edf_start_time</span><span class="p">[</span><span class="n">edf_idd</span><span class="p">],</span>
+													   <span class="n">T_stop</span><span class="o">=</span><span class="n">t_stop</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+													   <span class="n">channelsKeep</span><span class="o">=</span><span class="n">channelsKeep</span><span class="p">)</span>
+				<span class="n">EEGsignals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">EEGsignals1</span><span class="p">,</span> <span class="n">EEGsignals2</span><span class="p">])</span>
+				<span class="n">EEG_segments_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EEGsignals</span><span class="p">)</span>
+		
+		<span class="k">return</span> <span class="n">EEG_segments_all</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Warning Message: Some start or stop times requested </span><span class="se">\n</span><span class="s1"> &#39;</span>
+		              <span class="s1">&#39;are not within the full recording range as this specified by the edf files provided in the function&#39;</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Mariella Panagiotopoulou.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
