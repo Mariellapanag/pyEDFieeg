@@ -69,7 +69,7 @@ html_context = {
 }
 html_title = "pyEDFieeg"
 html_static_path = ["_static"]
-#html_extra_path = ["README.md"]
+html_extra_path = ["README.md"]
 html_css_files = ["custom.css"]
 pygments_style = "friendly"
 html_show_sphinx = False
