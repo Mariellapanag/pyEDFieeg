@@ -12,7 +12,7 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
+#sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath(os.path.join('..','..')))
 
 # -- Project information -----------------------------------------------------
@@ -35,7 +35,7 @@ extensions = [
     "sphinx.ext.intersphinx",
 ]
 
-exclude_patterns = ["build"]
+exclude_patterns = ["_build"]
 
 # Napoleon style - custom additions
 # Digging through the PR, I found where to look: the napoleon_type_aliases configuration item allows you to set up a mapping for things like array-like, dict-like, etc. In this particular case, adding the following to conf.py did the trick:
