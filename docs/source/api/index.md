@@ -4,6 +4,7 @@
 .. toctree::
    :maxdepth: 1
 
-   edfCollectionInfo
-   edfOverlapping
+    edfCollectionInfo
+    edfOverlapping
+    edfSegmentsiEEGSimple
 ```
