@@ -9,7 +9,6 @@
 import json
 
 # internal modules
-from pyEDFieeg.edfCollectionInfo import *
 from pyEDFieeg.edfSegmentsiEEGSimple import *
 import paths
 
@@ -84,7 +83,7 @@ end_seg = create_datetime(year = 2012, month = 6, day = 12, hours = 16, minutes 
 t_start = [start_seg]
 t_stop = [end_seg]
 
-iEEG_segment = edfExportSegieeg(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = t_start, t_stop = t_stop, fs_target = fs_target)
+iEEG_segment = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = t_start, t_stop = t_stop, fs_target = fs_target)
 
 sample_points = ((t_stop[0] - t_start[0]) + datetime.timedelta(seconds=1)).total_seconds() * fs_target
 
@@ -98,7 +97,7 @@ end_seg = create_datetime(year = 2012, month = 6, day = 12, hours = 11, minutes 
 t_start = [start_seg]
 t_stop = [end_seg]
 
-iEEG_segment = edfExportSegieeg(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = t_start, t_stop = t_stop, fs_target = fs_target)
+iEEG_segment = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = t_start, t_stop = t_stop, fs_target = fs_target)
 
 
 ''' Test2: Start point exists in one edf file, and end time exists in the same edf file'''
@@ -109,7 +108,7 @@ end_seg = create_datetime(year = 2012, month = 6, day = 12, hours = 17, minutes 
 t_start = [start_seg]
 t_stop = [end_seg]
 
-iEEG_segment = edfExportSegieeg(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = t_start, t_stop = t_stop, fs_target = fs_target)
+iEEG_segment = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = t_start, t_stop = t_stop, fs_target = fs_target)
 
 
 ''' Test3 - SUBCONDITION 3: Start point exists in two edf file, but end time exist in another edf file'''
