@@ -10,8 +10,8 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
+#import os
+#import sys
 # sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('../../src/'))
 
@@ -68,7 +68,7 @@ html_context = {
     "github_user": "Mariellapanag",
     "github_repo": "pyEDFieeg",
     "github_version": "main",
-    "conf_py_path": "/docs/source/",
+    "conf_py_path": "/docs",
     "source_suffix": ".md",
 }
 
