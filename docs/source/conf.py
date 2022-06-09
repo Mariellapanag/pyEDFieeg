@@ -66,11 +66,12 @@ html_theme_options = {
 
 
 html_context = {
-    "display_github": True,
+    "display_github": False,
     "github_user": "Mariellapanag",
     "github_repo": "pyEDFieeg",
     "github_version": "main",
-    "conf_py_path": "/docs",
+    "last_updated": True,
+    "conf_py_path": "/docs/",
     "source_suffix": ".md",
 }
 
