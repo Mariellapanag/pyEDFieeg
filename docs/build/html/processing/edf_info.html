@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extracting information for edf files for different root folders &mdash; pyEDFieeg</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Combining information from edf files obtained from different root folders" href="edf_info_overall.html" />
+    <link rel="prev" title="Examples of processing" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> pyEDFieeg
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples of processing</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Extracting information for edf files for different <code class="docutils literal notranslate"><span class="pre">root</span></code> folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="edf_info_overall.html">Combining information from edf files obtained from different <code class="docutils literal notranslate"><span class="pre">root</span></code> folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="edf_overlap_info.html">Information about overlapping across any pair of edf files obtained from the <code class="docutils literal notranslate"><span class="pre">root</span></code> folder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">FILES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing pyEDFieeg</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pyEDFieeg</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Examples of processing</a> &raquo;</li>
+      <li>Extracting information for edf files for different <code class="docutils literal notranslate"><span class="pre">root</span></code> folders</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/processing/edf_info.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="extracting-information-for-edf-files-for-different-root-folders">
+<h1>Extracting information for edf files for different <code class="docutils literal notranslate"><span class="pre">root</span></code> folders<a class="headerlink" href="#extracting-information-for-edf-files-for-different-root-folders" title="Permalink to this headline"></a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;This is an example of how to use the current package functionality for producing</span>
+<span class="sd">information regarding the edf files that exist in the folder structure specified in the ``root`` path&quot;&quot;&quot;</span>
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># M. Panagiotopoulou, April 2022</span>
+<span class="c1"># m.panagiotopoulou2@newcastle.ac.uk</span>
+<span class="c1">#</span>
+<span class="c1"># Long-term Interictal iEEG data</span>
+<span class="c1">###############################################################################</span>
+
+
+<span class="c1"># Python module</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># internal modules</span>
+<span class="kn">from</span> <span class="nn">pyEDFieeg.edfCollectionInfo</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">paths</span>
+
+
+<span class="n">subject_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1106&quot;</span><span class="p">,</span> <span class="s2">&quot;1109&quot;</span><span class="p">,</span> <span class="s2">&quot;1149&quot;</span><span class="p">,</span> <span class="s2">&quot;1163&quot;</span><span class="p">,</span> <span class="s2">&quot;1182&quot;</span><span class="p">,</span> <span class="s2">&quot;851&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;934&quot;</span><span class="p">,</span> <span class="s2">&quot;95&quot;</span><span class="p">,</span> <span class="s2">&quot;999&quot;</span><span class="p">,</span> <span class="s2">&quot;GLAS040&quot;</span><span class="p">,</span> <span class="s2">&quot;GLAS041&quot;</span><span class="p">,</span> <span class="s2">&quot;GLAS044&quot;</span><span class="p">,</span> <span class="s2">&quot;GLAS047&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;1005&quot;</span><span class="p">,</span> <span class="s2">&quot;1200&quot;</span><span class="p">,</span> <span class="s2">&quot;1211&quot;</span><span class="p">,</span> <span class="s2">&quot;1379&quot;</span><span class="p">,</span> <span class="s2">&quot;1395&quot;</span><span class="p">,</span> <span class="s2">&quot;1167&quot;</span><span class="p">,</span> <span class="s2">&quot;909&quot;</span><span class="p">]</span>
+
+<span class="c1"># subject_white_list = [&quot;1106&quot;, &quot;1109&quot;, &quot;1149&quot;, &quot;1163&quot;, &quot;1182&quot;, &quot;851&quot;,</span>
+<span class="c1">#                       &quot;934&quot;, &quot;95&quot;, &quot;999&quot;, &quot;GLAS040&quot;, &quot;GLAS041&quot;, &quot;GLAS044&quot;, &quot;GLAS047&quot;]</span>
+<span class="c1">#</span>
+<span class="c1"># subject_black_list = [&quot;1005&quot;, &quot;1200&quot;, &quot;1211&quot;, &quot;1379&quot;, &quot;1395&quot;]</span>
+<span class="c1">#</span>
+<span class="c1"># subject_black_to_white = [&quot;1167&quot;]</span>
+
+<span class="c1"># Single patient processing</span>
+
+<span class="c1"># subject = &quot;test&quot;</span>
+<span class="n">subject</span> <span class="o">=</span> <span class="s2">&quot;1005&quot;</span>
+
+<span class="k">def</span> <span class="nf">process_func</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
+
+    <span class="c1"># Set the root directory for patient</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">INPUT_DATA</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span>
+
+    <span class="n">EDF_info_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">EDF_INFO_DIR</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">EDF_info_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">error_edfs</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">error_edfs</span> <span class="c1"># channels labels appear in error edfs</span>
+    <span class="n">min_n_Chan</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">min_n_Chan</span> <span class="c1"># the minimum threshold of the number of channels needed to be included in the edf file</span>
+
+    <span class="n">EEG_channel_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">IN_CHANNELS</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.json&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">EEG_channel_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+        <span class="n">Channels_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">Channels_json</span><span class="p">)</span>
+    <span class="n">EEG_channel_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">element</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">Channels_json</span><span class="p">]</span>
+
+    <span class="c1"># Store as a csv file the EEG_channel_list provided by the user</span>
+    <span class="n">EEG_channel_list_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;channel_list&quot;</span><span class="p">:</span> <span class="n">EEG_channel_list</span><span class="p">})</span>
+    <span class="n">EEG_channel_list_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">EDF_INFO_DIR</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;CHANNEL_LIST_</span><span class="si">{}</span><span class="s2">.csv&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">)))</span>
+
+
+    <span class="c1"># Get info about edf files and a list with the final paths pointed to the edf files to be used for the analysis</span>
+    <span class="p">[</span><span class="n">f_paths_clean</span><span class="p">,</span> <span class="n">f_path_list_excluded</span><span class="p">,</span> <span class="n">f_path_list_checkChanNotInList</span><span class="p">,</span> <span class="n">f_paths</span><span class="p">,</span> <span class="n">edf_chan</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_edf_paths</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span>
+                    <span class="n">error_edfs</span> <span class="o">=</span> <span class="n">error_edfs</span><span class="p">,</span>
+                    <span class="n">channel_list</span> <span class="o">=</span> <span class="n">EEG_channel_list</span><span class="p">,</span>
+                    <span class="n">min_n_Chan</span> <span class="o">=</span> <span class="n">min_n_Chan</span><span class="p">)</span>
+
+    <span class="c1"># Store asa csv file the edf files (paths) that have been excluded as none of the channels labels existed on those didn;t match the channel list</span>
+    <span class="c1"># provided by the user</span>
+    <span class="n">f_path_chNotInList_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;edf_path&quot;</span><span class="p">:</span> <span class="n">f_path_list_excluded</span><span class="p">,</span> <span class="s2">&quot;why_edf_excluded&quot;</span><span class="p">:</span> <span class="n">f_path_list_checkChanNotInList</span><span class="p">})</span>
+    <span class="n">f_path_chNotInList_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">EDF_INFO_DIR</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;EDF_PATH_EXCLUDED_</span><span class="si">{}</span><span class="s2">.csv&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">)))</span>
+
+    <span class="n">df_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">edf_chan</span><span class="p">))):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+        <span class="n">df_name</span> <span class="o">=</span> <span class="n">f_paths</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+        <span class="n">df_ss</span> <span class="o">=</span> <span class="n">edf_chan</span><span class="p">[</span><span class="n">df_name</span><span class="p">]</span>
+        <span class="c1">#df_ss[&quot;channel&quot;] = df_ss[&quot;cha_labels&quot;]</span>
+        <span class="n">df_ss</span><span class="p">[</span><span class="n">df_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_ss</span><span class="p">[</span><span class="s2">&quot;cha_labels&quot;</span><span class="p">]</span>
+        <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_ss</span><span class="p">)</span>
+        <span class="c1">#df_ss.to_csv(os.path.join(paths.EDF_INFO_DIR, subject, &quot;EDF_CH_{}.csv&quot;.format(ii)))</span>
+
+    <span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;cha_labels&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">df_list</span><span class="p">]</span>
+    <span class="n">dfs_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">dfs_combined</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">EDF_INFO_DIR</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;EDF_CHAN_</span><span class="si">{}</span><span class="s2">.csv&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">)))</span>
+
+    <span class="p">[</span><span class="n">EDF_info_df</span><span class="p">,</span> <span class="n">unique_channels_across_all</span><span class="p">]</span> <span class="o">=</span> <span class="n">sortEDF_starttime</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span>
+                                                                  <span class="n">edf_path_list</span> <span class="o">=</span> <span class="n">f_paths_clean</span><span class="p">,</span><span class="c1"># we are using the list with the final edf files</span>
+                                                                  <span class="n">channel_list</span> <span class="o">=</span> <span class="n">EEG_channel_list</span><span class="p">)</span>
+
+    <span class="n">EDF_info_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">EDF_INFO_DIR</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;EDF_INFO_</span><span class="si">{}</span><span class="s2">.csv&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">)))</span>
+
+    <span class="n">unique_channels_across_allEDFs</span> <span class="o">=</span> <span class="n">nChannelsConsistency</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span>
+                                                          <span class="n">edf_path_list</span> <span class="o">=</span> <span class="n">f_paths_clean</span><span class="p">,</span> <span class="c1"># we are using the list with the final edf files</span>
+                                                          <span class="n">channel_list</span> <span class="o">=</span> <span class="n">EEG_channel_list</span><span class="p">)</span>
+
+    <span class="n">unique_channels_across_allEDFs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="c1"># The channels to keep; these are the ones that are included in the list and in at least one edf file.</span>
+    <span class="c1"># If a channel is not included in en edf file will be filled with NaN values.</span>
+    <span class="n">channelsKeep</span> <span class="o">=</span> <span class="n">unique_channels_across_allEDFs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># Save the final list of channels that will be extracted</span>
+    <span class="n">channelsKeep_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;channelsKeep&quot;</span><span class="p">:</span> <span class="n">channelsKeep</span><span class="p">})</span>
+    <span class="n">channelsKeep_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">EDF_INFO_DIR</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;ChannelsKeep_</span><span class="si">{}</span><span class="s2">.csv&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">)))</span>
+
+
+<span class="c1"># Run for one subject</span>
+<span class="c1"># subject = &quot;909&quot;</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">process_func</span><span class="p">(</span><span class="n">subject</span><span class="p">)</span>
+
+
+<span class="c1"># # Run for all subjects within the ``subject_list``</span>
+<span class="c1"># if __name__ == &#39;__main__&#39;:</span>
+<span class="c1">#     for subject in subject_list:</span>
+<span class="c1">#         process_func(subject)</span>
+
+<span class="c1"># if __name__ == &#39;__main__&#39;:</span>
+<span class="c1">#     for subject in subject_white_list:</span>
+<span class="c1">#         print(subject)</span>
+<span class="c1">#         process_func(subject)</span>
+
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Examples of processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="edf_info_overall.html" class="btn btn-neutral float-right" title="Combining information from edf files obtained from different root folders" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Mariella Panagiotopoulou.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

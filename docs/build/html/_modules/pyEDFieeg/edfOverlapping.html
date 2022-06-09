@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyEDFieeg.edfOverlapping &mdash; pyEDFieeg</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> pyEDFieeg
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../processing/index.html">Examples of processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../files/index.html">FILES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Examples of processing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyEDFieeg</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>pyEDFieeg.edfOverlapping</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pyEDFieeg.edfOverlapping</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Useful functions for detecting overlap between any pair of edf files&quot;&quot;&quot;</span>
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># M. Panagiotopoulou, April 2022</span>
+<span class="c1"># m.panagiotopoulou2@newcastle.ac.uk</span>
+<span class="c1">#</span>
+<span class="c1"># Long-term Interictal iEEG data</span>
+<span class="c1">###############################################################################</span>
+
+<span class="c1"># Python modules</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">pyedflib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="is_overlap"><a class="viewcode-back" href="../../api/edfOverlapping.html#pyEDFieeg.edfOverlapping.is_overlap">[docs]</a><span class="k">def</span> <span class="nf">is_overlap</span><span class="p">(</span><span class="n">TimeRange1</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">TimeRange2</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determines if there is an overlap between two time ranges.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        TimeRange1:</span>
+<span class="sd">            **start** (``datetime``): the start time.</span>
+<span class="sd">            **end** (``datetime``): the end time.</span>
+<span class="sd">        TimeRange2:</span>
+<span class="sd">            **start** (``datetime``): the start time.</span>
+<span class="sd">            **end** (``datetime``): the end time.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        boolean: True/False, in case there is an overlap/ isn&#39;t overlap.</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; TimeRange1 = {&quot;start&quot;: datetime.datetime(2012, 1, 15), &quot;end&quot;: datetime.datetime(2012, 5, 10)}</span>
+<span class="sd">        &gt;&gt;&gt; TimeRange2 = {&quot;start&quot;: datetime.datetime(2012, 3, 20), &quot;end&quot;: datetime.datetime(2012, 9, 15)}</span>
+<span class="sd">        &gt;&gt;&gt; is_overlap_Range(TimeRange1, TimeRange2)</span>
+<span class="sd">        True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">latest_start</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">TimeRange1</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">],</span> <span class="n">TimeRange2</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">])</span>
+    <span class="n">earliest_end</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">TimeRange1</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">],</span> <span class="n">TimeRange2</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">latest_start</span> <span class="o">&lt;</span> <span class="n">earliest_end</span><span class="p">:</span>
+        <span class="k">return</span>  <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="overlappedRange"><a class="viewcode-back" href="../../api/edfOverlapping.html#pyEDFieeg.edfOverlapping.overlappedRange">[docs]</a><span class="k">def</span> <span class="nf">overlappedRange</span><span class="p">(</span><span class="n">TimeRange1</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">TimeRange2</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determines the overlap range between to time ranges that overlap.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">       TimeRange1:</span>
+<span class="sd">           **start** (``datetime``): the start time.</span>
+<span class="sd">           **end** (``datetime``): the end time.</span>
+<span class="sd">       TimeRange2:</span>
+<span class="sd">           **start** (``datetime``): the start time.</span>
+<span class="sd">           **end** (``datetime``): the end time.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">       dict: start and end time of the overlapping period, as well it&#39;s duration.</span>
+<span class="sd">            {</span>
+<span class="sd">            **start** (``datetime)``: start of the overlapping period (inclusive).</span>
+<span class="sd">            **end** (``datetime)``: end of the overlapping period (inclusive).</span>
+<span class="sd">            **duration** (``timedelta)``: duration of the overlapping period.</span>
+<span class="sd">            }</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; TimeRange1 = {&quot;start&quot;: datetime.datetime(2012, 1, 15), &quot;end&quot;: datetime.datetime(2012, 5, 10)}</span>
+<span class="sd">        &gt;&gt;&gt; TimeRange2 = {&quot;start&quot;: datetime.datetime(2012, 3, 20), &quot;end&quot;: datetime.datetime(2012, 9, 15)}</span>
+<span class="sd">        &gt;&gt;&gt; overlappedRange(TimeRange1, TimeRange2)</span>
+<span class="sd">        {&#39;start&#39;: datetime.datetime(2012, 3, 20, 0, 0), &#39;end&#39;: datetime.datetime(2012, 5, 10, 0, 0), &#39;duration&#39;: datetime.timedelta(days=51, seconds=1)}</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">overlap_message</span> <span class="o">=</span> <span class="n">is_overlap</span><span class="p">(</span><span class="n">TimeRange1</span><span class="p">,</span> <span class="n">TimeRange2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">overlap_message</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+
+       <span class="k">if</span> <span class="n">TimeRange2</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">TimeRange1</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]:</span>
+           <span class="k">if</span> <span class="n">TimeRange1</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">TimeRange2</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]:</span>
+               <span class="n">start</span> <span class="o">=</span> <span class="n">TimeRange2</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
+               <span class="n">end</span> <span class="o">=</span> <span class="n">TimeRange2</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]</span>
+           <span class="k">else</span><span class="p">:</span>
+               <span class="n">start</span> <span class="o">=</span> <span class="n">TimeRange2</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
+               <span class="n">end</span> <span class="o">=</span> <span class="n">TimeRange1</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]</span>
+       <span class="k">elif</span> <span class="n">TimeRange2</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">TimeRange1</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]:</span>
+           <span class="k">if</span> <span class="n">TimeRange2</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">TimeRange1</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]:</span>
+               <span class="n">start</span> <span class="o">=</span> <span class="n">TimeRange1</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
+               <span class="n">end</span> <span class="o">=</span> <span class="n">TimeRange1</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]</span>
+           <span class="k">else</span><span class="p">:</span>
+               <span class="n">start</span> <span class="o">=</span> <span class="n">TimeRange1</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
+               <span class="n">end</span> <span class="o">=</span> <span class="n">TimeRange2</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]</span>
+
+       <span class="n">duration</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">end</span> <span class="p">,</span> <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="n">duration</span><span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="intervals_overlap"><a class="viewcode-back" href="../../api/edfOverlapping.html#pyEDFieeg.edfOverlapping.intervals_overlap">[docs]</a><span class="k">def</span> <span class="nf">intervals_overlap</span><span class="p">(</span><span class="n">t1_start</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">t1_end</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">t2_start</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">t2_end</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method relies on the ease datetime comparison in Python, e.g datetime(3pm) &gt; datetime(2pm) is TRUE</span>
+<span class="sd">    thanks to: https://chandoo.org/wp/date-overlap-formulas/</span>
+<span class="sd">    # t1_start, t1_end should be the start of the file we&#39;re interested in (f1)</span>
+<span class="sd">    # i.e we want to know how f2 overlaps relative to f1</span>
+<span class="sd">    # This functions assumes that start and end times are included in the specified time range!</span>
+<span class="sd">    # That&#39;s why the duration is specified by adding 1 second as: (t3_end - t3_start)+datetime.timedelta(seconds=1)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        t1_start: start time of the first range.</span>
+<span class="sd">        t1_end: end time of the first range.</span>
+<span class="sd">        t2_start: start time of the second range.</span>
+<span class="sd">        t2_end: end time of the second range.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Return True and the overlap interval (t3_end - t3_start)+datetime.timedelta(seconds=1) if overlap, otherwise False &amp; None.</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; start1 = datetime.datetime(2012, 1, 15)</span>
+<span class="sd">        &gt;&gt;&gt; end1 = datetime.datetime(2012, 5, 10)</span>
+<span class="sd">        &gt;&gt;&gt; start2 = datetime.datetime(2012, 3, 20)</span>
+<span class="sd">        &gt;&gt;&gt; end2 =  datetime.datetime(2012, 9, 15)</span>
+<span class="sd">        &gt;&gt;&gt; intervals_overlap(start1, end1, start2, end2)</span>
+<span class="sd">        (True, (datetime.datetime(2012, 3, 20, 0, 0), datetime.datetime(2012, 5, 10, 0, 0), datetime.timedelta(days=51, seconds=1)))</span>
+
+<span class="sd">        &gt;&gt;&gt; start1 = datetime.datetime(2012, 1, 15)</span>
+<span class="sd">        &gt;&gt;&gt; end1 = datetime.datetime(2012, 5, 10)</span>
+<span class="sd">        &gt;&gt;&gt; start2 = datetime.datetime(2012, 6, 20)</span>
+<span class="sd">        &gt;&gt;&gt; end2 = datetime.datetime(2012, 9, 15)</span>
+<span class="sd">        &gt;&gt;&gt; intervals_overlap(start1, end1, start2, end2)</span>
+<span class="sd">        (False, None)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># check first if they do overlap</span>
+    <span class="n">overlap</span> <span class="o">=</span> <span class="ow">not</span> <span class="p">((</span><span class="n">t1_end</span> <span class="o">&lt;</span> <span class="n">t2_start</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">t2_end</span> <span class="o">&lt;</span> <span class="n">t1_start</span><span class="p">))</span> <span class="c1"># overlap =  &quot;not (true if intervals are not overlapping)&quot;</span>
+    <span class="c1">############ Check that with Yujiang</span>
+    <span class="c1"># change that to equal in case the the start of edf 2 is equal to the end of edf1 or edf2 end is equal to edf1 start.</span>
+    <span class="k">if</span> <span class="n">overlap</span><span class="p">:</span>  <span class="c1"># then determine how they overlap</span>
+
+        <span class="c1"># f2 starts before f1 finishes. e.g:</span>
+        <span class="c1"># f1:   t1_start----------------&gt;t1_end</span>
+        <span class="c1"># f2:              t2_start------------ ...</span>
+        <span class="k">if</span> <span class="p">((</span><span class="n">t2_start</span> <span class="o">&gt;=</span> <span class="n">t1_start</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">t2_start</span> <span class="o">&lt;</span> <span class="n">t1_end</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="n">t2_start</span> <span class="o">==</span> <span class="n">t1_end</span><span class="p">):</span>    <span class="c1"># CASE 1</span>
+
+            <span class="n">t3_start</span> <span class="o">=</span> <span class="n">t2_start</span>
+
+            <span class="c1"># does f2 start and end during f1? e.g</span>
+            <span class="c1"># f1:  t1_start---------------------------&gt;t1_end</span>
+            <span class="c1"># f2:           t2_start--------&gt;t2_end</span>
+            <span class="k">if</span> <span class="p">((</span><span class="n">t2_end</span> <span class="o">&gt;</span> <span class="n">t1_start</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">t2_end</span> <span class="o">&lt;</span> <span class="n">t1_end</span><span class="p">)):</span>     <span class="c1"># CASE 3</span>
+                <span class="n">t3_end</span> <span class="o">=</span> <span class="n">t2_end</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">t3_end</span> <span class="o">=</span> <span class="n">t1_end</span>
+
+        <span class="c1"># f1 starts before f2 finishes, e.g</span>
+        <span class="c1"># f1:           t1_start--------------- ...</span>
+        <span class="c1"># f2:  t2_start---------------&gt;t2_end</span>
+        <span class="k">elif</span> <span class="p">((</span><span class="n">t1_start</span> <span class="o">&gt;=</span> <span class="n">t2_start</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">t1_start</span> <span class="o">&lt;</span> <span class="n">t2_end</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="n">t1_start</span> <span class="o">==</span> <span class="n">t2_end</span><span class="p">):</span>  <span class="c1"># CASE 2</span>
+
+            <span class="n">t3_start</span> <span class="o">=</span> <span class="n">t1_start</span>
+
+            <span class="c1"># does f1 start and end during f2? e.g</span>
+            <span class="c1"># f1:           t1_start--------&gt;t1_end</span>
+            <span class="c1"># f2:  t2_start---------------------------&gt;t2_end</span>
+            <span class="k">if</span> <span class="p">((</span><span class="n">t1_end</span> <span class="o">&gt;</span> <span class="n">t2_start</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">t1_end</span> <span class="o">&lt;</span> <span class="n">t2_end</span><span class="p">)):</span>     <span class="c1"># CASE 4</span>
+                <span class="n">t3_end</span> <span class="o">=</span> <span class="n">t1_end</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">t3_end</span> <span class="o">=</span> <span class="n">t2_end</span>
+
+        <span class="c1"># f1 and f2 line up perfectly (likely a duplicate) i.e</span>
+        <span class="c1"># f1:  t1_start-----------------&gt;t1_end</span>
+        <span class="c1"># f2:  t2_start-----------------&gt;t2_end</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">t1_start</span> <span class="o">==</span> <span class="n">t2_start</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">t1_end</span> <span class="o">==</span> <span class="n">t2_end</span><span class="p">):</span>     <span class="c1"># CASE 5</span>
+
+            <span class="n">t3_start</span> <span class="o">=</span> <span class="n">t2_start</span>
+            <span class="n">t3_end</span> <span class="o">=</span> <span class="n">t2_end</span>
+
+        <span class="c1"># else: # TODO remove this when confident</span>
+        <span class="c1">#     # raise Exception(&quot;&quot;&quot;overlap type not dealt with - fix me !</span>
+        <span class="c1">#     #                     \nt1 = {} -&gt; {}, \nt2 = {} -&gt; {}&quot;&quot;&quot;</span>
+        <span class="c1">#     #                 .format(t1_start, t1_end, t2_start, t2_end))</span>
+        <span class="c1">#</span>
+
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="p">(</span><span class="n">t3_start</span><span class="p">,</span> <span class="n">t3_end</span><span class="p">,</span> <span class="p">(</span><span class="n">t3_end</span> <span class="o">-</span> <span class="n">t3_start</span><span class="p">)</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">None</span></div>
+
+
+
+<div class="viewcode-block" id="overlapSort"><a class="viewcode-back" href="../../api/edfOverlapping.html#pyEDFieeg.edfOverlapping.overlapSort">[docs]</a><span class="k">def</span> <span class="nf">overlapSort</span><span class="p">(</span><span class="n">start_fileA</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">start_fileB</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">end_fileA</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">end_fileB</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">pathA</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pathB</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sort the two ranges and perform the ``intervals_overlap`` function.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        start_fileA: start time of time range A.</span>
+<span class="sd">        start_fileB: start time of time range B.</span>
+<span class="sd">        end_fileA: end time of time range A.</span>
+<span class="sd">        end_fileB: end time of time range B.</span>
+<span class="sd">        pathA: path to the edf file A.</span>
+<span class="sd">        pathB: path to the edf file B.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        information about overlap after sorting.</span>
+
+<span class="sd">        **result_overlap**:</span>
+<span class="sd">            Return True and the overlap interval (t3_end - t3_start)+datetime.timedelta(seconds=1) if overlap, otherwise False &amp; None.</span>
+<span class="sd">        **t1_start** (``datetime``):</span>
+<span class="sd">            the start time of the first of the two time ranges after sorting, *t1_start &lt; t2_start*.</span>
+<span class="sd">        **t1_end** (``datetime``):</span>
+<span class="sd">            the end time of the first of the two time ranges after sorting, *t1_start &lt; t2_start*.</span>
+<span class="sd">        **t2_start** (``datetime``):</span>
+<span class="sd">            the start time of the second of the two time ranges after sorting, *t1_start &lt; t2_start*.</span>
+<span class="sd">        **t2_end** (``datetime``):</span>
+<span class="sd">            the end time of the second of the two time ranges after sorting, *t1_start &lt; t2_start*.</span>
+<span class="sd">        **t1_path** (``str``):</span>
+<span class="sd">            the path of the first of the two time ranges after sorting, *t1_start &lt; t2_start*.</span>
+<span class="sd">        **t2_path** (``str``):</span>
+<span class="sd">            the path of the second of the two time ranges after sorting, *t1_start &lt; t2_start*.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">start_fileA</span> <span class="o">&lt;=</span> <span class="n">start_fileB</span><span class="p">):</span>
+        <span class="n">t1_start</span> <span class="o">=</span> <span class="n">start_fileA</span>
+        <span class="n">t1_end</span> <span class="o">=</span> <span class="n">end_fileA</span>
+        <span class="n">t1_path</span> <span class="o">=</span> <span class="n">pathA</span>
+        <span class="n">t2_start</span> <span class="o">=</span> <span class="n">start_fileB</span>
+        <span class="n">t2_end</span> <span class="o">=</span> <span class="n">end_fileB</span>
+        <span class="n">t2_path</span> <span class="o">=</span> <span class="n">pathB</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">t1_start</span> <span class="o">=</span> <span class="n">start_fileB</span>
+        <span class="n">t1_end</span> <span class="o">=</span> <span class="n">end_fileB</span>
+        <span class="n">t1_path</span> <span class="o">=</span> <span class="n">pathB</span>
+        <span class="n">t2_start</span> <span class="o">=</span> <span class="n">start_fileA</span>
+        <span class="n">t2_end</span> <span class="o">=</span> <span class="n">end_fileA</span>
+        <span class="n">t2_path</span> <span class="o">=</span> <span class="n">pathA</span>
+
+    <span class="n">result_overlap</span> <span class="o">=</span> <span class="n">intervals_overlap</span><span class="p">(</span><span class="n">t1_start</span> <span class="o">=</span> <span class="n">t1_start</span><span class="p">,</span> <span class="n">t1_end</span> <span class="o">=</span> <span class="n">t1_end</span><span class="p">,</span>
+                                               <span class="n">t2_start</span> <span class="o">=</span> <span class="n">t2_start</span><span class="p">,</span> <span class="n">t2_end</span> <span class="o">=</span> <span class="n">t2_end</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result_overlap</span><span class="p">,</span> <span class="n">t1_start</span><span class="p">,</span> <span class="n">t1_end</span><span class="p">,</span> <span class="n">t2_start</span><span class="p">,</span> <span class="n">t2_end</span><span class="p">,</span> <span class="n">t1_path</span><span class="p">,</span> <span class="n">t2_path</span></div>
+
+
+
+<span class="c1"># The following function checks if the overlapping parts are equal between two overlapped edf files</span>
+<span class="c1"># Returns True if this is the case. Otherwise returns False.</span>
+<span class="k">def</span> <span class="nf">isOverlapIdentical</span><span class="p">(</span><span class="n">start_fileA</span><span class="p">,</span> <span class="n">start_fileB</span><span class="p">,</span> <span class="n">end_fileA</span><span class="p">,</span> <span class="n">end_fileB</span><span class="p">,</span> <span class="n">edf_pathFileA</span><span class="p">,</span> <span class="n">edf_pathFileB</span><span class="p">,</span> <span class="n">channel_label</span><span class="p">):</span>
+
+    <span class="p">[</span><span class="n">result_overlap</span><span class="p">,</span> <span class="n">t1_start</span><span class="p">,</span> <span class="n">t1_end</span><span class="p">,</span> <span class="n">t2_start</span><span class="p">,</span> <span class="n">t2_end</span><span class="p">,</span> <span class="n">t1_path</span><span class="p">,</span> <span class="n">t2_path</span><span class="p">]</span> <span class="o">=</span> <span class="n">overlapSort</span><span class="p">(</span><span class="n">start_fileA</span><span class="p">,</span> <span class="n">start_fileB</span><span class="p">,</span> <span class="n">end_fileA</span><span class="p">,</span> <span class="n">end_fileB</span><span class="p">,</span> <span class="n">edf_pathFileA</span><span class="p">,</span> <span class="n">edf_pathFileB</span><span class="p">)</span>
+
+    <span class="c1"># Overlap starting and ending point as well as duration already computed</span>
+    <span class="n">start_overlap</span> <span class="o">=</span> <span class="n">result_overlap</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1">#end_overlap = result_overlap[1][1]</span>
+    <span class="n">duration_overlap</span> <span class="o">=</span> <span class="n">result_overlap</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="c1"># read header of edf file A</span>
+    <span class="n">edf_header_A</span> <span class="o">=</span> <span class="n">pyedflib</span><span class="o">.</span><span class="n">EdfReader</span><span class="p">(</span><span class="n">t1_path</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">channel_labels_A</span> <span class="o">=</span> <span class="n">edf_header_A</span><span class="o">.</span><span class="n">getSignalLabels</span><span class="p">()</span>
+
+    <span class="n">channel_indx_A</span> <span class="o">=</span> <span class="n">channel_labels_A</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">channel_label</span><span class="p">)</span>
+
+    <span class="c1"># Need to find the starting location/index relative to the start of the recording within the edf file</span>
+    <span class="n">fs_chan_A</span> <span class="o">=</span> <span class="n">edf_header_A</span><span class="o">.</span><span class="n">getSampleFrequency</span><span class="p">(</span><span class="n">channel_indx_A</span><span class="p">)</span>
+    <span class="n">durSeg_samplPoints_A</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">duration_overlap</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">fs_chan_A</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">start_overlap</span> <span class="o">==</span> <span class="n">t1_start</span><span class="p">):</span> <span class="c1"># if start segment and start of edf file are the same</span>
+        <span class="n">start_sampl_points_A</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">start_overlap</span> <span class="o">&gt;</span> <span class="n">t1_start</span><span class="p">):</span> <span class="c1"># Find the start and end points in sampling points relative to the edf start and end time</span>
+        <span class="c1"># compute the starting point considering that we are starting from 0</span>
+        <span class="n">delta_A</span> <span class="o">=</span> <span class="p">(</span><span class="n">start_overlap</span> <span class="o">-</span> <span class="n">t1_start</span><span class="p">)</span>
+        <span class="c1"># To get the array index interval we are really subtracting from the end time + 1s</span>
+        <span class="n">delta_sec_A</span> <span class="o">=</span> <span class="n">delta_A</span><span class="o">.</span><span class="n">seconds</span>
+        <span class="n">start_sampl_points_A</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">delta_sec_A</span> <span class="o">*</span> <span class="n">fs_chan_A</span><span class="p">))</span>
+
+    <span class="n">EEG_segm_A</span> <span class="o">=</span> <span class="n">edf_header_A</span><span class="o">.</span><span class="n">readSignal</span><span class="p">(</span><span class="n">chn</span> <span class="o">=</span> <span class="n">channel_indx_A</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="n">start_sampl_points_A</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">durSeg_samplPoints_A</span><span class="p">,</span> <span class="n">digital</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># physical values used for EEG, digital = False is the default value in `readSignal`</span>
+
+    <span class="n">edf_header_A</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1"># read header of edf file B</span>
+    <span class="n">edf_header_B</span> <span class="o">=</span> <span class="n">pyedflib</span><span class="o">.</span><span class="n">EdfReader</span><span class="p">(</span><span class="n">t2_path</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">channel_labels_B</span> <span class="o">=</span> <span class="n">edf_header_B</span><span class="o">.</span><span class="n">getSignalLabels</span><span class="p">()</span>
+
+    <span class="n">channel_indx_B</span> <span class="o">=</span> <span class="n">channel_labels_B</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">channel_label</span><span class="p">)</span>
+
+    <span class="c1"># Need to find the starting location/index relative to the start of the recording within the edf file</span>
+    <span class="n">fs_chan_B</span> <span class="o">=</span> <span class="n">edf_header_B</span><span class="o">.</span><span class="n">getSampleFrequency</span><span class="p">(</span><span class="n">channel_indx_B</span><span class="p">)</span>
+    <span class="n">durSeg_samplPoints_B</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">duration_overlap</span><span class="o">.</span><span class="n">seconds</span> <span class="o">*</span> <span class="n">fs_chan_B</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">start_overlap</span> <span class="o">==</span> <span class="n">t2_start</span><span class="p">):</span> <span class="c1"># if start segment and start of edf file are the same</span>
+        <span class="n">start_sampl_points_B</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">start_overlap</span> <span class="o">&gt;</span> <span class="n">t2_start</span><span class="p">):</span> <span class="c1"># Find the start and end points in sampling points relative to the edf start and end time</span>
+        <span class="c1"># compute the starting point considering that we are starting from 0</span>
+        <span class="n">delta_B</span> <span class="o">=</span> <span class="p">(</span><span class="n">start_overlap</span> <span class="o">-</span> <span class="n">t2_start</span><span class="p">)</span>
+        <span class="c1"># To get the array index interval we are really subtracting from the end time + 1s</span>
+        <span class="n">delta_sec_B</span> <span class="o">=</span> <span class="n">delta_B</span><span class="o">.</span><span class="n">seconds</span>
+        <span class="n">start_sampl_points_B</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">delta_sec_B</span> <span class="o">*</span> <span class="n">fs_chan_B</span><span class="p">))</span>
+
+    <span class="n">EEG_segm_B</span> <span class="o">=</span> <span class="n">edf_header_B</span><span class="o">.</span><span class="n">readSignal</span><span class="p">(</span><span class="n">chn</span> <span class="o">=</span> <span class="n">channel_indx_B</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="n">start_sampl_points_B</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">durSeg_samplPoints_B</span><span class="p">,</span> <span class="n">digital</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># physical values used for EEG</span>
+    <span class="n">edf_header_B</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="n">check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">EEG_segm_A</span> <span class="o">==</span> <span class="n">EEG_segm_B</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">check</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Mariella Panagiotopoulou.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
