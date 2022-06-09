@@ -37,6 +37,7 @@ extensions = [
     #"sphinx.ext.githubpages",
 ]
 
+#templates_path = ["_templates"]
 #exclude_patterns = ["_build"]
 
 # Napoleon style - custom additions
@@ -66,12 +67,12 @@ html_theme_options = {
 
 
 html_context = {
-    "display_github": False,
+    "display_github": True,
     "github_user": "Mariellapanag",
     "github_repo": "pyEDFieeg",
     "github_version": "main",
     "last_updated": True,
-    "conf_py_path": "/docs/",
+    "conf_py_path": "../docs/source/", # path in the docs root
     "source_suffix": ".md",
 }
 
