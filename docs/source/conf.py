@@ -55,7 +55,7 @@ intersphinx_mapping = {
     }
 #    'matplotlib': ('https://matplotlib.org/stable/', None),
 
-# myst_url_schemes = ["http", "https", ]
+myst_url_schemes = ["http", "https", ]
 
 # HTML output
 html_theme = "sphinx_rtd_theme"
@@ -67,7 +67,7 @@ html_context = {
     #"display_github": True,
     #"github_user": "Mariellapanag",
     #"github_repo": "pyEDFieeg",
-    #"github_version": "main",
+    "github_version": "main",
     "conf_py_path": "/docs",
     "source_suffix": ".md",
 }
