@@ -13,6 +13,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('../../src'))
 
 # -- Project information -----------------------------------------------------
 
@@ -67,7 +68,7 @@ html_context = {
     "github_user": "Mariellapanag",
     "github_repo": "pyEDFieeg",
     "github_version": "main",
-    #"conf_py_path": "/docs/source/",
+    "conf_py_path": "/docs/source/",
     "source_suffix": ".md",
 }
 
