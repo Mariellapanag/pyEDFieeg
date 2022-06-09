@@ -13,26 +13,34 @@ from pyEDFieeg.edfCollectionInfo import *
 from pyEDFieeg.edfOverlapping import *
 
 
-def gather_EEGsegment_1efd_A(EDF_path, EDF_chan_labels, EDF_start_time, fs_target, T_start, T_stop, channelsKeep):
-	"""
+def gather_EEGsegment_1efd_A(EDF_path: str, EDF_chan_labels: list, EDF_start_time: datetime.datetime, fs_target: float, T_start: datetime.datetime, T_stop: datetime.datetime, channelsKeep: list):
+	r"""
+	
 	This function will gather the eeg signals of the requested channelsKeep list from one specific EDF file.
 	This function works if the start and end times exist in a single EDF file.
-	:param EDF_path: the specified edf file that contains both the start and end of the specified segment requested
-	:param EDF_chan_labels: the channel labels included in the specified edf file
-	:param EDF_start_time: the start time of the edf file
-	:param fs_target: the target frequency sampling for all channels
-	:param T_start: the start time requested for the segment
-	:param T_stop: the stop time requested for the segment
-	:param channelsKeep: the final list of channels to be extracted consistent specified by the user
-	:return:
-	"""
 	
+	Args:
+		EDF_path: the specified edf file that contains both the start and end of the specified segment requested
+		EDF_chan_labels: the channel labels included in the specified edf file
+		EDF_start_time: the start time of the edf file
+		fs_target: the target frequency sampling for all channels
+		T_start: the start time requested for the segment
+		T_stop: the stop time requested for the segment
+		channelsKeep: the final list of channels to be extracted specified by the user
+
+	Returns:
+		 **EEGsignals** (``np.ndarray``):
+            The array of the raw data requested. This is channels x time points.
+
+	"""
+
 	# Duration of segment in seconds and sampling points
 	# The start and end time are inclusive, so we add 1 second
 	durSeg_sec = (T_stop - T_start) + datetime.timedelta(seconds=1)
 	
 	# Go through the list of channels get id and load the arrays
 	ch_list = []
+	# the for loop keeps the order of the channelsKeep consistent for all segments extracted
 	for ch in channelsKeep:
 		# Check whether this channel exists in the edf channel list
 		# find the channel id based on the name within the edf file
@@ -41,8 +49,9 @@ def gather_EEGsegment_1efd_A(EDF_path, EDF_chan_labels, EDF_start_time, fs_targe
 			edf_reader = pyedflib.EdfReader(EDF_path, 0, 1)
 			ch_indx = EDF_chan_labels.index(ch)
 			fs_chan = edf_reader.getSampleFrequency(ch_indx)
-			#
+			# the duration of sampling points requested
 			durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_chan))
+			# define the index (python indexing) relative to the start of the edf file
 			if (T_start == EDF_start_time):
 				# if start segment and start of edf file are the same
 				start_sampl_points = 0
@@ -56,7 +65,7 @@ def gather_EEGsegment_1efd_A(EDF_path, EDF_chan_labels, EDF_start_time, fs_targe
 			ch_signal_temp = edf_reader.readSignal(chn=ch_indx, start=start_sampl_points, n=durSeg_samplPoints,
 			                                       digital=False)
 			edf_reader.close()
-			#
+			# if fs is higher than the lowest fs specified, a dwonsampling is performed
 			if (fs_chan > fs_target):
 				ch_signal = downsample_decimate(signal=ch_signal_temp, fs=int(float(fs_chan)),
 				                                target_fs=int(float(fs_target)))
@@ -71,21 +80,38 @@ def gather_EEGsegment_1efd_A(EDF_path, EDF_chan_labels, EDF_start_time, fs_targe
 	# combine all arrays in the list
 	EEGsignals = np.vstack(ch_list)
 	
-	return EEGsignals, channelsKeep, fs_target
+	return EEGsignals
 
 
-def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.datetime, t_stop: datetime.datetime,
-                       fs_target: float):
-	"""
-	:param edfs_info: a dictionary with the following information;
-			{"start_time": start_time, "end_time": end_time, "record_duration": record_duration,
-			"nChan": nChan, "fs": fs, "chan_labels": chan_labels,
-			"fpath": f_path_sorted}
-	:param channelsKeep: Unique channels across all edf files; this is the final channel list needed.
-	:param t_start: a list of start times to extract
-	:param t_stop: a list of the corresponding end times associated with the start times
-	:param fs_target:
-	:return:
+def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.datetime, t_stop: datetime.datetime, fs_target: float):
+	r"""
+
+	Args:
+		edfs_info: a dictionary with the following information:
+			{
+			**start_time** (``list``):
+				the start time for each edf file (``datetime``).
+			**end_time** (``list``):
+				the end time for each edf file (``datetime``).
+			**record_duration** (``list``):
+				the duration for each edf file (``timedelta``).
+			**nChan** (``list``):
+				the number of channels for each edf file (``int``).
+			**fs** (``list``):
+				the frequency sampling for all channels within each edf file (``float``).
+			**chan_labels** (``list``):
+				the labels for all channels within each edf file (``str``).
+			**fpath** (``str``):
+				the full paths pointing to each edf file.
+			}
+		channelsKeep: Unique channels across all edf files; this is the final channel list needed.
+		t_start: a list of start times to extract
+		t_stop: a list of the corresponding end times associated with the start times
+		fs_target: the minimum frequency sampling found for this collection of edf files.
+
+	Returns:
+		list: the raw data from the corresponding ``t_start`` and ``t_stop`` lists.
+
 	"""
 	
 	# edf start and stop times for all edf files
@@ -184,14 +210,12 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 					# Get the path corresponding to the indx_edf
 					edf_path = edf_fpaths[indx_edf]
 					
-					[EEGsignals, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path=edf_path,
-					                                                              EDF_chan_labels=edf_chan_labels[
-						                                                              edf_path],
-					                                                              EDF_start_time=edf_start_time[
-						                                                              indx_edf], fs_target=fs_target,
-					                                                              T_start=t_start[ii],
-					                                                              T_stop=t_stop[ii],
-					                                                              channelsKeep=channelsKeep)
+					EEGsignals = gather_EEGsegment_1efd_A(EDF_path=edf_path,
+														  EDF_chan_labels=edf_chan_labels[edf_path],
+														  EDF_start_time=edf_start_time[indx_edf], fs_target=fs_target,
+														  T_start=t_start[ii],
+														  T_stop=t_stop[ii],
+														  channelsKeep=channelsKeep)
 					EEG_segments_all.append(EEGsignals)
 				else:
 					# checks what edf file contains most of the segment requested
@@ -226,15 +250,13 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 						# Get the path corresponding to the indx_edf
 						edf_path = edf_fpaths[start_id]
 						
-						[EEGsignals1, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path=edf_path,
-						                                                               EDF_chan_labels=edf_chan_labels[
-							                                                               edf_path],
-						                                                               EDF_start_time=edf_start_time[
-							                                                               start_id],
-						                                                               fs_target=fs_target,
-						                                                               T_start=t_start[ii],
-						                                                               T_stop=edf_stop_time[start_id],
-						                                                               channelsKeep=channelsKeep)
+						EEGsignals1 = gather_EEGsegment_1efd_A(EDF_path=edf_path,
+															   EDF_chan_labels=edf_chan_labels[edf_path],
+															   EDF_start_time=edf_start_time[start_id],
+															   fs_target=fs_target,
+															   T_start=t_start[ii],
+															   T_stop=edf_stop_time[start_id],
+															   channelsKeep=channelsKeep)
 						# Duration of segment in seconds and sampling points
 						durSeg_sec = (t_stop[ii] - edf_stop_time[start_id])
 						# here we don't have to add 1 second as edf_stop_time is not included in this segment of data
@@ -257,14 +279,12 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 						# The final segment of EEG for all channels
 						EEGsignals1 = np.empty(shape=(len(channelsKeep), durSeg_samplPoints)) * np.nan
 						#
-						[EEGsignals2, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path=edf_path,
-						                                                               EDF_chan_labels=edf_chan_labels[
-							                                                               edf_path],
-						                                                               EDF_start_time=edf_start_time[
-							                                                               end_id], fs_target=fs_target,
-						                                                               T_start=edf_start_time[end_id],
-						                                                               T_stop=t_stop[ii],
-						                                                               channelsKeep=channelsKeep)
+						EEGsignals2 = gather_EEGsegment_1efd_A(EDF_path=edf_path,
+															   EDF_chan_labels=edf_chan_labels[edf_path],
+															   EDF_start_time=edf_start_time[end_id], fs_target=fs_target,
+															   T_start=edf_start_time[end_id],
+															   T_stop=t_stop[ii],
+															   channelsKeep=channelsKeep)
 						EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
 						EEG_segments_all.append(EEGsignals)
 			elif ((check_point_start >= 1) and (check_point_stop > 1)) or (
@@ -296,14 +316,12 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 					# Get the path corresponding to the indx_edf
 					edf_path = edf_fpaths[indx_edf]
 					#
-					[EEGsignals, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path=edf_path,
-					                                                              EDF_chan_labels=edf_chan_labels[
-						                                                              edf_path],
-					                                                              EDF_start_time=edf_start_time[
-						                                                              indx_edf], fs_target=fs_target,
-					                                                              T_start=t_start[ii],
-					                                                              T_stop=t_stop[ii],
-					                                                              channelsKeep=channelsKeep)
+					EEGsignals = gather_EEGsegment_1efd_A(EDF_path=edf_path,
+														  EDF_chan_labels=edf_chan_labels[edf_path],
+														  EDF_start_time=edf_start_time[indx_edf], fs_target=fs_target,
+														  T_start=t_start[ii],
+														  T_stop=t_stop[ii],
+														  channelsKeep=channelsKeep)
 					EEG_segments_all.append(EEGsignals)
 				elif (common_elements(check_indx_start, check_indx_stop) == True):
 					''' TODO: Check that the overlapping periods are the same. If not fill with NaNs'''
@@ -321,7 +339,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 					# Get the path corresponding to the indx_edf
 					edf_path = edf_fpaths[indx_edf]
 					
-					[EEGsignals, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path=edf_path,
+					EEGsignals = gather_EEGsegment_1efd_A(EDF_path=edf_path,
 					                                                              EDF_chan_labels=edf_chan_labels[
 						                                                              edf_path],
 					                                                              EDF_start_time=edf_start_time[
@@ -352,18 +370,15 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 					if (edf_idd in check_indx_start):
 						edf_path = edf_fpaths[edf_idd]
 						#
-						[EEGsignals1, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path=edf_path,
-						                                                               EDF_chan_labels=edf_chan_labels[
-							                                                               edf_path],
-						                                                               EDF_start_time=edf_start_time[
-							                                                               edf_idd],
+						EEGsignals1 = gather_EEGsegment_1efd_A(EDF_path=edf_path, EDF_chan_labels=edf_chan_labels[edf_path],
+						                                                               EDF_start_time=edf_start_time[edf_idd],
 						                                                               fs_target=fs_target,
 						                                                               T_start=t_start[ii],
 						                                                               T_stop=edf_stop_time[edf_idd],
 						                                                               channelsKeep=channelsKeep)
 						# Duration of segment in seconds and sampling points
-						durSeg_sec = (t_stop[ii] - edf_stop_time[
-							edf_idd])  # here we don't have to add 1 second as edf_stop_time is not included in this segment of data
+						# here we don't have to add 1 second as edf_stop_time is not included in this segment of data
+						durSeg_sec = (t_stop[ii] - edf_stop_time[edf_idd])
 						durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_target))
 						#
 						# The final segment of EEG for all channels
@@ -375,8 +390,8 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 						# Get the path corresponding to the indx_edf
 						edf_path = edf_fpaths[edf_idd]
 						# Duration of segment in seconds and sampling points
-						durSeg_sec = (edf_start_time[edf_idd] - t_start[
-							ii])  # here we don't need to add one as edf_start_time is not included in this segment of data
+						# here we don't need to add one as edf_start_time is not included in this segment of data
+						durSeg_sec = (edf_start_time[edf_idd] - t_start[ii])
 						durSeg_samplPoints = int(float(durSeg_sec.seconds * fs_target))
 						#
 						# The final segment of EEG for all channels
@@ -398,14 +413,13 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 				edf_idd = check_indx_start[0]
 				edf_path = edf_fpaths[edf_idd]
 				#
-				[EEGsignals1, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path=edf_path,
-				                                                               EDF_chan_labels=edf_chan_labels[
-					                                                               edf_path],
-				                                                               EDF_start_time=edf_start_time[edf_idd],
-				                                                               fs_target=fs_target,
-				                                                               T_start=t_start[ii],
-				                                                               T_stop=edf_stop_time[edf_idd],
-				                                                               channelsKeep=channelsKeep)
+				EEGsignals1 = gather_EEGsegment_1efd_A(EDF_path=edf_path,
+													   EDF_chan_labels=edf_chan_labels[edf_path],
+													   EDF_start_time=edf_start_time[edf_idd],
+													   fs_target=fs_target,
+													   T_start=t_start[ii],
+													   T_stop=edf_stop_time[edf_idd],
+													   channelsKeep=channelsKeep)
 				# Duration of segment in seconds and sampling points
 				durSeg_sec = (t_stop[ii] - edf_stop_time[
 					edf_idd])  # here we don't have to add 1 second as edf_stop_time is not included in this segment of data
@@ -427,14 +441,13 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 				# The final segment of EEG for all channels
 				EEGsignals1 = np.empty(shape=(len(channelsKeep), durSeg_samplPoints)) * np.nan
 				#
-				[EEGsignals2, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path=edf_path,
-				                                                               EDF_chan_labels=edf_chan_labels[
-					                                                               edf_path],
-				                                                               EDF_start_time=edf_start_time[edf_idd],
-				                                                               fs_target=fs_target,
-				                                                               T_start=edf_start_time[edf_idd],
-				                                                               T_stop=t_stop[ii],
-				                                                               channelsKeep=channelsKeep)
+				EEGsignals2 = gather_EEGsegment_1efd_A(EDF_path=edf_path,
+													   EDF_chan_labels=edf_chan_labels[edf_path],
+													   EDF_start_time=edf_start_time[edf_idd],
+													   fs_target=fs_target,
+													   T_start=edf_start_time[edf_idd],
+													   T_stop=t_stop[ii],
+													   channelsKeep=channelsKeep)
 				EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
 				EEG_segments_all.append(EEGsignals)
 			elif ((check_point_start > 1) and (check_point_stop == 0)):
@@ -457,14 +470,13 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 				# Duration of segment in seconds and sampling points
 				edf_path = edf_fpaths[edf_idd]
 				#
-				[EEGsignals1, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path=edf_path,
-				                                                               EDF_chan_labels=edf_chan_labels[
-					                                                               edf_path],
-				                                                               EDF_start_time=edf_start_time[edf_idd],
-				                                                               fs_target=fs_target,
-				                                                               T_start=t_start[ii],
-				                                                               T_stop=edf_stop_time[edf_idd],
-				                                                               channelsKeep=channelsKeep)
+				EEGsignals1 = gather_EEGsegment_1efd_A(EDF_path=edf_path,
+													   EDF_chan_labels=edf_chan_labels[edf_path],
+													   EDF_start_time=edf_start_time[edf_idd],
+													   fs_target=fs_target,
+													   T_start=t_start[ii],
+													   T_stop=edf_stop_time[edf_idd],
+													   channelsKeep=channelsKeep)
 				# Duration of segment in seconds and sampling points
 				# here we don't have to add 1 second as edf_stop_time is not included in this segment of data
 				durSeg_sec = (t_stop[ii] - edf_stop_time[edf_idd])
@@ -488,7 +500,7 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 					final_ch.append(len(intersection(edf_chan_labels[edf_fpaths[ee]], channelsKeep)))
 				#
 				id_duration = np.argmax(duration_overlapp)
-				# TODO: MAYBE THIS COUL BE IMPROVED IF I ADD SOME THRESHODS REGARDING CHANNELS, NUMBER OF CHANNELS
+				# TODO: MAYBE THIS COULD BE IMPROVED IF I ADD SOME THRESHODS REGARDING CHANNELS, NUMBER OF CHANNELS
 				edf_idd = all_ii[id_duration]
 				edf_path = edf_fpaths[edf_idd]
 				# Duration of segment in seconds and sampling points
@@ -499,14 +511,13 @@ def edfExportSegieeg_A(edfs_info: dict, channelsKeep: list, t_start: datetime.da
 				# The final segment of EEG for all channels
 				EEGsignals1 = np.empty(shape=(len(channelsKeep), durSeg_samplPoints)) * np.nan
 				#
-				[EEGsignals2, channels_seg, fs_seg] = gather_EEGsegment_1efd_A(EDF_path=edf_path,
-				                                                               EDF_chan_labels=edf_chan_labels[
-					                                                               edf_path],
-				                                                               EDF_start_time=edf_start_time[edf_idd],
-				                                                               fs_target=fs_target,
-				                                                               T_start=edf_start_time[edf_idd],
-				                                                               T_stop=t_stop[ii],
-				                                                               channelsKeep=channelsKeep)
+				EEGsignals2 = gather_EEGsegment_1efd_A(EDF_path=edf_path,
+													   EDF_chan_labels=edf_chan_labels[edf_path],
+													   EDF_start_time=edf_start_time[edf_idd],
+													   fs_target=fs_target,
+													   T_start=edf_start_time[edf_idd],
+													   T_stop=t_stop[ii],
+													   channelsKeep=channelsKeep)
 				EEGsignals = np.hstack([EEGsignals1, EEGsignals2])
 				EEG_segments_all.append(EEGsignals)
 		
