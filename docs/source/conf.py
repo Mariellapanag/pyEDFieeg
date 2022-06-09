@@ -55,7 +55,7 @@ intersphinx_mapping = {
     }
 #    'matplotlib': ('https://matplotlib.org/stable/', None),
 
-myst_url_schemes = ["http", "https", ]
+#myst_url_schemes = ["http", "https", ]
 
 # HTML output
 html_theme = "sphinx_rtd_theme"
