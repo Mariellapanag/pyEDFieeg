@@ -1,4 +1,4 @@
-![Image](GitpageImages/frontimage.png)
+![Image](https://github.com/Mariellapanag/pyEDFieeg/blob/main/GitpageImages/frontimage.png)
 
 # Useful functions for navigating unstructured folders of EDF files, gathering useful information and extracting specified segments of data.
 
