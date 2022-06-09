@@ -1,8 +1,4 @@
 # FILES
 
-```{eval-rst}
-.. toctree::
-   :maxdepth: 1
-
-   edf_info_files
+```{include} ./edf_info_files.md
 ```
