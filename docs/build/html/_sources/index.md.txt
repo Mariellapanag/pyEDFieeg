@@ -9,6 +9,6 @@
 
    api/index
    processing/index
-   files/index
+   files_out/index
    testing/index
 ```
