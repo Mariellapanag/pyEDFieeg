@@ -1,3 +1,5 @@
+""" Functions for plotting raw data"""
+
 ###############################################################################
 # M. Panagiotopoulou, April 2022
 # m.panagiotopoulou2@newcastle.ac.uk
@@ -9,12 +11,20 @@
 from plotly.graph_objs.layout import YAxis, Annotation, Font
 from plotly.graph_objs import Layout, Scatter, Annotations, Figure, Marker
 import numpy as np
-import kaleido
 
 # Internal module
 
-def plot_raw_eeg_plotly(raw_data, ch_names):
+def plot_raw_eeg_plotly(raw_data: np.array, ch_names: list):
+    r"""
+    Plot of the raw data (channels x time points) for
 
+    Args:
+        raw_data: raw data, channels x time points
+        ch_names: a list of the channels names
+
+    Returns:
+        A plotly figure instance where channels are displayed using an offset in one single graph.
+    """
 
     [n_channels, time_points] = raw_data.shape
 
