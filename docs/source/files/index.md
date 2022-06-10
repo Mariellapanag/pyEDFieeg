@@ -1,4 +1,8 @@
 # FILES
 
-```{include} ./edf_info_files.md
+```{toctree}
+:caption: 'Contents:'
+:maxdepth: 2
+    
+edf_info_files
 ```
