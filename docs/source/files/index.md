@@ -2,7 +2,7 @@
 
 ```{toctree}
 :caption: 'Contents:'
-:maxdepth: 2
+:maxdepth: 3
     
 edf_info_files
 ```
