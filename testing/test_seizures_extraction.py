@@ -7,6 +7,7 @@
 
 # Python module
 import json
+import scipy.io as sio
 
 # internal modules
 from pyEDFieeg.edfSegmentsiEEGSimple import *
@@ -24,8 +25,18 @@ subject_black_to_white = ["1167"]
 # Single patient processing
 
 # subject = "test"
-subject = "1106"
+subject = "1163"
 
+# Load all the information about the EDF files
+# Set the root directory for patient
+if "GLAS" in subject:
+    cohort = "GLAS"
+else:
+    cohort = "UCLH"
+
+    # Set the root directory for patient
+root = os.path.join(paths.IN_EDF_DATA, cohort, "icEEG", subject)
+# root = os.path.join("D:", cohort, "icEEG", subject)
 
 # Load the file with the seizures
 seizuresExcel = pd.read_excel(os.path.join(paths.IN_FILES, "SeverityTable.xlsx"))
@@ -38,11 +49,6 @@ t_start_sz = list(sz_subj_df["start"])
 dur_sz = sz_subj_df["duration"]
 
 t_end_sz = [t_start_sz[i] + datetime.timedelta(seconds=int(dur_sz[i])) - datetime.timedelta(seconds=1) for i in range(0, len(t_start_sz))]
-
-
-# Load all the information about the EDF files
-# Set the root directory for patient
-root = os.path.join(paths.INPUT_DATA, subject)
 
 EDF_info_path = os.path.join(paths.EDF_INFO_DIR, subject)
 os.makedirs(EDF_info_path, exist_ok=True)
@@ -93,25 +99,33 @@ seizures_data = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channel
 fig_path = os.path.join(paths.PLOT_SEIZURES_DIR, subject)
 os.makedirs(fig_path, exist_ok=True)
 
+out_data_path =  os.path.join(paths.PLOT_SEIZURES_DIR, subject)
+# out_data_path =  os.path.join("RAW_SEIZURES", subject)
+os.makedirs(out_data_path, exist_ok=True)
+
 ## Number of edfs
 n_sz = len(t_start)
 
+for ss in range((n_sz):
+    sio.savemat(os.path.join(out_data_path, "sz_{}.mat".format(ss)), {"EEG": seizures_data[]})
 
-# Constants factors
-marginInches = 1/18
-ppi = 96
-# width & height of figure
-width_inches = 8
-height_inches = 6
 
-for ii in range(0, n_sz):
 
-    # plot of raw seizures
-    fig_name = "Lineplot_raw_sz{}".format(ii)
-
-    fig = plot_raw_eeg_plotly(raw_data = seizures_data[ii], ch_names = channelsKeep)
-
-    fig.write_image(os.path.join(fig_path, "{}.pdf".format(fig_name)),
-                    width=(width_inches - marginInches)*ppi,
-                    height=(height_inches - marginInches)*ppi) # to produce a .png file.
+# # Constants factors
+# marginInches = 1/18
+# ppi = 96
+# # width & height of figure
+# width_inches = 8
+# height_inches = 6
+#
+# for ii in range(0, n_sz):
+#
+#     # plot of raw seizures
+#     fig_name = "Lineplot_raw_sz{}".format(ii)
+#
+#     fig = plot_raw_eeg_plotly(raw_data = seizures_data[ii], ch_names = channelsKeep)
+#
+#     fig.write_image(os.path.join(fig_path, "{}.pdf".format(fig_name)),
+#                     width=(width_inches - marginInches)*ppi,
+#                     height=(height_inches - marginInches)*ppi) # to produce a .png file.
 

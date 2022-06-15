@@ -27,7 +27,14 @@ subject = "1163"
 
 # Load all the information about the EDF files
 # Set the root directory for patient
-root = os.path.join(paths.INPUT_DATA, subject)
+if "GLAS" in subject:
+    cohort = "GLAS"
+else:
+    cohort = "UCLH"
+
+    # Set the root directory for patient
+root = os.path.join(paths.IN_EDF_DATA, cohort, "icEEG", subject)
+# root = os.path.join("D:", cohort, "icEEG", subject)
 
 EDF_info_path = os.path.join(paths.EDF_INFO_DIR, subject)
 os.makedirs(EDF_info_path, exist_ok=True)
@@ -66,6 +73,15 @@ channelsKeep = unique_channels_across_allEDFs.copy()
 fs_target = sampleRateConsistency(root = root,
                                   edf_path_list = f_paths_clean,
                                   channel_list = EEG_channel_list)
+
+"""test"""
+start_seg = create_datetime(year = 2013, month = 1, day = 27, hours = 3, minutes = 19, seconds = 50, microseconds = 0)
+end_seg = create_datetime(year = 2013, month = 1, day = 27, hours = 3, minutes = 20, seconds = 20, microseconds = 0)
+t_start = [start_seg]
+t_stop = [end_seg]
+
+iEEG_segment = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channelsKeep, t_start = t_start, t_stop = t_stop, fs_target = fs_target)
+
 
 
 """test"""

@@ -20,12 +20,15 @@ IN_CHANNELS = os.path.abspath(os.path.join(IN_FILES, "CHANNEL_LIST"))
 # location where Plots for raw data seizures will be located
 PLOT_SEIZURES_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "PLOTS_SEIZURES"))
 
+# location where Plots for raw data seizures will be located
+RAW_SEIZURES_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "RAW_SEIZURES"))
+
 # location where Plots for Detecting Bad channels are located for each subject
 PLOTS_BAD_CHANNELS_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "PLOTS_BAD_CHANNELS"))
 
-# location for EDF fil  es input
-# INPUT_DATA_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "INPUT_DATA"))
-INPUT_DATA = os.path.abspath(os.path.join("D:", "UCLH_GLAS", "icEEG"))
+# The location where edf files are
+#IN_EDF_DATA = os.path.abspath(os.path.join("/data1"))
+IN_EDF_DATA = os.path.abspath(os.path.join("D:"))
 
 # location where EDF information is written to
 EDF_INFO_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "EDF_INFO"))
