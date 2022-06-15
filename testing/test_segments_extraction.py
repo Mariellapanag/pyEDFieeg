@@ -23,7 +23,7 @@ subject_black_to_white = ["1167"]
 # Single patient processing
 
 # subject = "test"
-subject = "909"
+subject = "1163"
 
 # Load all the information about the EDF files
 # Set the root directory for patient
