@@ -99,33 +99,12 @@ seizures_data = edfExportSegieeg_A(edfs_info = edfs_info, channelsKeep = channel
 fig_path = os.path.join(paths.PLOT_SEIZURES_DIR, subject)
 os.makedirs(fig_path, exist_ok=True)
 
-out_data_path =  os.path.join(paths.PLOT_SEIZURES_DIR, subject)
+out_data_path =  os.path.join(paths.RAW_SEIZURES_DIR, subject)
 # out_data_path =  os.path.join("RAW_SEIZURES", subject)
 os.makedirs(out_data_path, exist_ok=True)
 
 ## Number of edfs
 n_sz = len(t_start)
 
-for ss in range((n_sz):
-    sio.savemat(os.path.join(out_data_path, "sz_{}.mat".format(ss)), {"EEG": seizures_data[]})
-
-
-
-# # Constants factors
-# marginInches = 1/18
-# ppi = 96
-# # width & height of figure
-# width_inches = 8
-# height_inches = 6
-#
-# for ii in range(0, n_sz):
-#
-#     # plot of raw seizures
-#     fig_name = "Lineplot_raw_sz{}".format(ii)
-#
-#     fig = plot_raw_eeg_plotly(raw_data = seizures_data[ii], ch_names = channelsKeep)
-#
-#     fig.write_image(os.path.join(fig_path, "{}.pdf".format(fig_name)),
-#                     width=(width_inches - marginInches)*ppi,
-#                     height=(height_inches - marginInches)*ppi) # to produce a .png file.
-
+for ss in range(n_sz):
+    sio.savemat(os.path.join(out_data_path, "sz_{}.mat".format(ss+1)), {"EEG": seizures_data[ss]}, do_compression = True)
