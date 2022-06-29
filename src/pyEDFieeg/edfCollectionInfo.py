@@ -619,7 +619,7 @@ def get_EDFs_info(root: str, edf_path_list: list, channel_list: list):
 
 
 
-def downsample_decimate(signal: np.array, fs: float, target_fs: float):
+def downsample_decimate(signal: np.array, fs: float, target_fs: float, method: str):
     r"""
 
     Resamples the recording extractor traces. If the resampling rate is multiple of the sampling rate, the faster
@@ -629,15 +629,29 @@ def downsample_decimate(signal: np.array, fs: float, target_fs: float):
         signal: The `array_like` of data to be downsampled.
         fs: the frequency sampling (Hz).
         target_fs: the frequency sampling of the targeted downsampled signal (Hz).
+        method: method to be applied for downsampling in case the mod(fs/target_fs) !=0
 
     Returns:
         numpy.array: the signal downsampled based on the ``target_fs``.
     """
     if np.mod(fs, target_fs) == 0:
         trace_resampled = scipy.signal.decimate(signal, q=int(fs / target_fs))
-
-    return trace_resampled
-
+        return trace_resampled
+    elif method=="linear":
+        #tx = numpy.arange(1, 1+numpy.shape(array)[0])
+        #tx = tx / fsi
+        #txq = numpy.arange(1, 1+numpy.floor(tx[-1]*fsd))
+        #txq = txq / fsd
+        #return numpy.interp(txq, tx, array)
+        tx = np.arange(0, 1+np.shape(signal)[0])
+        tx = tx / fs
+        txq = np.arange(0, 1+np.floor(tx[-1]*target_fs))
+        txq = txq / target_fs
+        return np.interp(txq, tx, signal)
+    elif method =="fourier":
+        n_sec = np.shape(signal)[0]/fs
+        target_num_samples = int(n_sec*target_fs)
+        return scipy.signal.resample(signal, num = target_num_samples)
 
 
 def visualise_resampling(initial_signal: np.array, resampled_signal: np.array, fs: float, resampled_fs: float, start: int = None, stop: int = None):
