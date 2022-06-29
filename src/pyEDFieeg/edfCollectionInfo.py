@@ -634,7 +634,8 @@ def downsample_decimate(signal: np.array, fs: float, target_fs: float, method: s
     Returns:
         numpy.array: the signal downsampled based on the ``target_fs``.
     """
-    if np.mod(fs, target_fs) == 0:
+    if method == "decimate":
+        #np.mod(fs, target_fs) == 0:
         trace_resampled = scipy.signal.decimate(signal, q=int(fs / target_fs))
         return trace_resampled
     elif method=="linear":

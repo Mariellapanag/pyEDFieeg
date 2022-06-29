@@ -70,7 +70,7 @@ def gather_EEGsegment_1efd_A(EDF_path: str, EDF_chan_labels: list, EDF_start_tim
 			# if fs is higher than the lowest fs specified, a dwonsampling is performed
 			if (fs_chan > fs_target):
 				ch_signal = downsample_decimate(signal=ch_signal_temp, fs=int(float(fs_chan)),
-				                                target_fs=int(float(fs_target)),method = "fourier")
+				                                target_fs=int(float(fs_target)),method = "decimate")
 			else:
 				ch_signal = ch_signal_temp.copy()
 		else:
