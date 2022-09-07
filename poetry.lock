@@ -366,7 +366,7 @@ six = ">=1.5.2"
 
 [[package]]
 name = "pyedflib"
-version = "0.1.29"
+version = "0.1.30"
 description = "library to read/write EDF+/BDF+ files"
 category = "main"
 optional = false
@@ -1023,49 +1023,7 @@ pockets = [
     {file = "pockets-0.9.1-py2.py3-none-any.whl", hash = "sha256:68597934193c08a08eb2bf6a1d85593f627c22f9b065cc727a4f03f669d96d86"},
     {file = "pockets-0.9.1.tar.gz", hash = "sha256:9320f1a3c6f7a9133fe3b571f283bcf3353cd70249025ae8d618e40e9f7e92b3"},
 ]
-pyedflib = [
-    {file = "pyEDFlib-0.1.29-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:14201b174078b803335a2ca3ebc7891d74d7d9b9dd2b9ca2933b4778c3c18385"},
-    {file = "pyEDFlib-0.1.29-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:193583b578fc68d9e884f30d43c095493dc26d5bee0763bdfdfd1137d193fd72"},
-    {file = "pyEDFlib-0.1.29-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:37fce0a6a099721036ffc16be1c8c0439f53b237f9da6718af03b388f8fc2ad9"},
-    {file = "pyEDFlib-0.1.29-cp310-cp310-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:961291b3bf911eb7acdf5b322b9f97ef859def78e58d145cfebd9c74b42944a4"},
-    {file = "pyEDFlib-0.1.29-cp310-cp310-musllinux_1_1_i686.whl", hash = "sha256:bc0caf63c029ea8d0d39f7e5b2fee83494800bf9c591abed70c045deec93c737"},
-    {file = "pyEDFlib-0.1.29-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:958f5e36bb9400ca8a4b4ea5a656fdc58199461c9cfdec2d594f15464d726a8e"},
-    {file = "pyEDFlib-0.1.29-cp310-cp310-win32.whl", hash = "sha256:766c81b7bee37dde0c7994b6ec09c1e168d25d8ca132de454766dd1619edd190"},
-    {file = "pyEDFlib-0.1.29-cp310-cp310-win_amd64.whl", hash = "sha256:62439f9edc09626d8efc946fe1f2939a4d2311433e6caf204528d3e7d3a3b23a"},
-    {file = "pyEDFlib-0.1.29-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:86e9cbebf086201e7dcab09cc438efe14da238dc6e892866a46f5fa000385e98"},
-    {file = "pyEDFlib-0.1.29-cp36-cp36m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:aa15a1286371641cd80bd212670c23fd4c7d03b88363575c5c7392cc2077a65e"},
-    {file = "pyEDFlib-0.1.29-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e272aa8e5b99737545aacf6b922389dd1696d0aae998b63027bec7c746026565"},
-    {file = "pyEDFlib-0.1.29-cp36-cp36m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:40dbef7ed49b78a76520915a046a524529f0b12523def8cab9d3af3deba270f3"},
-    {file = "pyEDFlib-0.1.29-cp36-cp36m-musllinux_1_1_i686.whl", hash = "sha256:dbcb841d604b74a95efdf987e0734da5b66e29faa27ade28d21133ab0caeecea"},
-    {file = "pyEDFlib-0.1.29-cp36-cp36m-musllinux_1_1_x86_64.whl", hash = "sha256:0d21bd46cc5e44413e8376d0654014d028fdb7abec3eae6c0651950c519f7126"},
-    {file = "pyEDFlib-0.1.29-cp36-cp36m-win32.whl", hash = "sha256:60a4b83189218554d2c075124f0d5c9c2ef781c7db5160cfa25b020b60e6d742"},
-    {file = "pyEDFlib-0.1.29-cp36-cp36m-win_amd64.whl", hash = "sha256:1dcaf974e7b595dff401d27bbeca1398052dd0c626346b968f83994535968a6f"},
-    {file = "pyEDFlib-0.1.29-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:346305702a2f53baa7946a859b59973741fa80e5fec8e83f0a76709fc0508121"},
-    {file = "pyEDFlib-0.1.29-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:5823a478068a1888bf500d8768a2e6e9fcfa841fe20ad34aa7b8a2ca175aeb03"},
-    {file = "pyEDFlib-0.1.29-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:8348291888e14eda40bdde91f5192bfcbdeedc003a21005dff827f96ddc2eef4"},
-    {file = "pyEDFlib-0.1.29-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:77846f146f75012c7dd54a5d1e40e298d89fcdb52d8aea3043da8ebfaf610f65"},
-    {file = "pyEDFlib-0.1.29-cp37-cp37m-musllinux_1_1_i686.whl", hash = "sha256:a49bb13da4dd0f4847a2624a8462dc28938ff3ccc6600d3772a3c80003edc90a"},
-    {file = "pyEDFlib-0.1.29-cp37-cp37m-musllinux_1_1_x86_64.whl", hash = "sha256:e83c0f00046f90f32d2c4a55855991c5fa86fa7950bb977a1c0bcbe8763ace1d"},
-    {file = "pyEDFlib-0.1.29-cp37-cp37m-win32.whl", hash = "sha256:cbf3ece991fe3a25edace077358b396e3be6577ed99d3c49e1e05ae51cbf9942"},
-    {file = "pyEDFlib-0.1.29-cp37-cp37m-win_amd64.whl", hash = "sha256:01049bcf76275952e5d6e2a8e9afd01cdb4ee0b869bb7c178919d77d37bea9f1"},
-    {file = "pyEDFlib-0.1.29-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:65e908d9e478ca3937a32c5988897b1f6c3117ab3c18b6af64eaae9a8f4ade53"},
-    {file = "pyEDFlib-0.1.29-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b4fb9e27064a7e615f6c25f654b70e3e6851ab539f230ac54bbab9756edbafd6"},
-    {file = "pyEDFlib-0.1.29-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:30dc9e1d01b627e59b6e2df51b4a3b8025206cfdba786b3478ddebcabf8d9593"},
-    {file = "pyEDFlib-0.1.29-cp38-cp38-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:5677fafd011dab207909526c700539494a5b284d27c1646db67f5d40525af58f"},
-    {file = "pyEDFlib-0.1.29-cp38-cp38-musllinux_1_1_i686.whl", hash = "sha256:e053b7418d761b9a3bf1d7dc6b1da96c5e0549ebc63adb877a10dac4a9d9b36c"},
-    {file = "pyEDFlib-0.1.29-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:8ef6c264852c7cd05384f56577800e6f8f89526628a1c42d78adad575c252381"},
-    {file = "pyEDFlib-0.1.29-cp38-cp38-win32.whl", hash = "sha256:8234a69bbe002e8e585f79702f10fff83b157022d47899965475b7ef54f11a1c"},
-    {file = "pyEDFlib-0.1.29-cp38-cp38-win_amd64.whl", hash = "sha256:3eef5ad429b2434d9d73e6b0c9767ae8f72715eab32a44dc49fc0ebca0a03335"},
-    {file = "pyEDFlib-0.1.29-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:ee3765029f077abc3f268d22064d2314c057500ef7985e8efec26e6eada7c2f8"},
-    {file = "pyEDFlib-0.1.29-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:990807c59da881083d0a1306efec3b838c20ac06cf170344a51e7b478673b412"},
-    {file = "pyEDFlib-0.1.29-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a7d5b1571bb481b13ebcfc7ed997be9fc0eefefbba513771cd22858584f20854"},
-    {file = "pyEDFlib-0.1.29-cp39-cp39-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:35cf15cada8c58f3c9385f4955655cefa1f29c570caa10da471a28fa3f257637"},
-    {file = "pyEDFlib-0.1.29-cp39-cp39-musllinux_1_1_i686.whl", hash = "sha256:006a2db2173402d1370ddef4a4b4154eb73d3d16c28ac552995d5324247da761"},
-    {file = "pyEDFlib-0.1.29-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:40845f1b4f9264edb9df30018f0110d5cb76d9c3fd2bf6467fea71ff9b1687e4"},
-    {file = "pyEDFlib-0.1.29-cp39-cp39-win32.whl", hash = "sha256:109f3d997cfff60f0cdb95247ab29256ada76c30bacedaf277d1a7bebad5a9bb"},
-    {file = "pyEDFlib-0.1.29-cp39-cp39-win_amd64.whl", hash = "sha256:6f798aec1af2af8ca869192ae0708c2cad1ffd676ba9b268d3e93fa87f164481"},
-    {file = "pyEDFlib-0.1.29.tar.gz", hash = "sha256:a987b84a7ae12394dcf7e30382456dfde5520457405932ebdeebb25cec39d0df"},
-]
+pyedflib = []
 pygments = [
     {file = "Pygments-2.12.0-py3-none-any.whl", hash = "sha256:dc9c10fb40944260f6ed4c688ece0cd2048414940f1cea51b8b226318411c519"},
     {file = "Pygments-2.12.0.tar.gz", hash = "sha256:5eb116118f9612ff1ee89ac96437bb6b49e8f04d8a13b514ba26f620208e26eb"},
