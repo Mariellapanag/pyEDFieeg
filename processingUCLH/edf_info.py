@@ -31,12 +31,12 @@ subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
 # Single patient processing
 
 # subject = "test"
-subject = "1005"
+subject = "1379"
 
 def process_func(subject):
 
     # Set the root directory for patient
-    root = os.path.join(paths.INPUT_DATA, subject)
+    root = os.path.join(paths.ROOT_DIR, subject)
 
     EDF_info_path = os.path.join(paths.EDF_INFO_DIR, subject)
     os.makedirs(EDF_info_path, exist_ok=True)
