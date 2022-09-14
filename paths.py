@@ -28,7 +28,10 @@ PLOTS_BAD_CHANNELS_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "PLOTS_BAD_
 
 # The location where edf files are
 #IN_EDF_DATA = os.path.abspath(os.path.join("/data1"))
-IN_EDF_DATA = os.path.abspath(os.path.join("D:", "UCLH", "icEEG"))
+#IN_EDF_DATA = os.path.abspath(os.path.join("D:", "UCLH", "icEEG"))
+IN_EDF_DATA = os.path.abspath(os.path.join(ROOT_DIR, "..", "..", "yujiang", "Data", "UCLH", "icEEG"))
+#IN_EDF_DATA = os.path.abspath(os.path.join(ROOT_DIR, "..", "..", "yujiang", "Data", "GLAS", "icEEG"))
+
 
 # location where EDF information is written to
 EDF_INFO_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "EDF_INFO"))
