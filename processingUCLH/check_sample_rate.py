@@ -21,15 +21,6 @@ subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
                 "934", "95", "999", "GLAS040", "GLAS041", "GLAS044", "GLAS047",
                 "1005", "1200", "1211", "1379", "1395", "1167", "909"]
 
-# subject_white_list = ["1106", "1109", "1149", "1163", "1182", "851",
-#                       "934", "95", "999", "GLAS040", "GLAS041", "GLAS044", "GLAS047"]
-#
-# subject_black_list = ["1005", "1200", "1211", "1379", "1395"]
-#
-# subject_black_to_white = ["1167"]
-
-# Single patient processing
-
 # subject = "test"
 def check_sampling_rate(subject):
 
@@ -92,5 +83,14 @@ def check_sampling_rate(subject):
 
     return f_sample_rate, f_sample_rate1, compare_list
 
-[f_sample_rate, f_sample_rate1, compare_list] = check_sampling_rate(subject = "1395")
-all(compare_list) == True
+def across_subjects(subject_list):
+
+    outcome_comp = list()
+    for patient in subject_list:
+        [f_sample_rate, f_sample_rate1, compare_list] = check_sampling_rate(subject = patient)
+        if (all(compare_list) == True):
+            outcome_comp.append(True)
+        else:
+            outcome_comp.append(False)
+
+
