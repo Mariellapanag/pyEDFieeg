@@ -11,17 +11,12 @@ information regarding the edf files that exist in the folder structure specified
 
 # Python module
 import json
+import pandas as pd
 
 # internal modules
 from pyEDFieeg.edfCollectionInfo import *
 import paths
 
-
-subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
-                "934", "95", "999", "GLAS040", "GLAS041", "GLAS044", "GLAS047",
-                "1005", "1200", "1211", "1379", "1395", "1167", "909"]
-
-# subject = "test"
 def check_sampling_rate(subject):
 
     # Set the root directory for patient
@@ -93,4 +88,11 @@ def across_subjects(subject_list):
         else:
             outcome_comp.append(False)
 
+    final_df = pd.DataFrame({"subject": subject_list, "is_fs_same": outcome_comp})
+    return final_df
 
+if __name__ == '__main__':
+
+    subject_list = ["1106", "1149", "1163"]
+    final_df = across_subjects(subject_list)
+    final_df.to_csv(os.path.join(paths.ROOT_DIR, "is_fs_equal.csv"))
