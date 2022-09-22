@@ -29,7 +29,7 @@ Pillow @ file:///C:/Users/b6071244/AppData/Local/pypoetry/Cache/artifacts/9b/66/
 plotly @ file:///C:/Users/b6071244/AppData/Local/pypoetry/Cache/artifacts/4f/13/fa/bec96f1843313fd3cd66a927ec98942a129a8b9e651dcc4bcfa82a6281/plotly-5.8.1-py2.py3-none-any.whl
 pockets @ file:///C:/Users/b6071244/AppData/Local/pypoetry/Cache/artifacts/03/86/5c/bd8f85f29e795b7cc24bab03c9499e084abc7fcab63014e00c39c0f8bd/pockets-0.9.1-py2.py3-none-any.whl
 pyedfieeg==0.0.1
-pyEDFlib @ file:///C:/Users/b6071244/AppData/Local/pypoetry/Cache/artifacts/a0/b8/ac/60c1b70e72f8ca76e03d50daf5bf1e0ac61185de44919958a766ff58df/pyEDFlib-0.1.29-cp310-cp310-win_amd64.whl
+pyEDFlib @ file:///C:/Users/b6071244/AppData/Local/pypoetry/Cache/artifacts/a6/d2/46/c4ee858cea5e6b191be0349f9110c53119f06add3ead7ec9c66209534b/pyEDFlib-0.1.30-cp310-cp310-win_amd64.whl
 Pygments @ file:///C:/Users/b6071244/AppData/Local/pypoetry/Cache/artifacts/a4/25/5e/e91fc50f64ea2fdfe34dda0c549820b87ebed679822b94b690f8ab80d3/Pygments-2.12.0-py3-none-any.whl
 pyparsing @ file:///C:/Users/b6071244/AppData/Local/pypoetry/Cache/artifacts/e1/09/c0/6a6df3ef412eb19fcda1b353ea54e3b48f9c518348fadd0967a962cbb6/pyparsing-3.0.9-py3-none-any.whl
 python-dateutil @ file:///C:/Users/b6071244/AppData/Local/pypoetry/Cache/artifacts/39/9b/3b/576da7c854551d780528d75132c98882925e44de0aecf8a31a4bea379c/python_dateutil-2.8.2-py2.py3-none-any.whl
