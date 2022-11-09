@@ -15,7 +15,7 @@ ALL_FILES_DIR = os.path.abspath(os.path.join(ROOT_DIR, loc_output))
 loc_input = "IN_FILES"
 IN_FILES = os.path.abspath(os.path.join(ROOT_DIR, loc_input))
 # location where iEEG channels are located for each subject
-IN_CHANNELS = os.path.abspath(os.path.join(IN_FILES, "CHANNEL_LIST"))
+IN_CHANNELS = os.path.abspath(os.path.join(IN_FILES, "channels"))
 
 # location where Plots for raw data seizures will be located
 PLOT_SEIZURES_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "PLOTS_SEIZURES"))
@@ -28,7 +28,8 @@ PLOTS_BAD_CHANNELS_DIR = os.path.abspath(os.path.join(ALL_FILES_DIR, "PLOTS_BAD_
 
 # The location where edf files are
 #IN_EDF_DATA = os.path.abspath(os.path.join("/data1"))
-IN_EDF_DATA = os.path.abspath(os.path.join("D:", "UCLH", "icEEG"))
+#D:\UCLH_edf
+IN_EDF_DATA = os.path.abspath(os.path.join("D:", "UCLH_edf"))
 #IN_EDF_DATA = os.path.abspath(os.path.join(ROOT_DIR, "..", "..", "yujiang", "Data", "UCLH", "icEEG"))
 #IN_EDF_DATA = os.path.abspath(os.path.join(ROOT_DIR, "..", "..", "yujiang", "Data", "GLAS", "icEEG"))
 
