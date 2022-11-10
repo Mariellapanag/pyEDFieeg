@@ -31,7 +31,7 @@ subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
 # Single patient processing
 
 # subject = "test"
-subject = "95"
+subject = "965"
 
 def process_func(subject):
 
