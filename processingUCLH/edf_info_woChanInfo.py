@@ -71,15 +71,15 @@ def process_func(subject):
     dfs_combined = pd.concat(dfs, axis=1)
     dfs_combined.to_csv(os.path.join(paths.EDF_INFO_DIR, subject, "EDF_CHAN_{}.csv".format(subject)))
 
-    [EDF_info_df, unique_channels_across_all] = sortEDF_starttime(root = root,
-                                                                  edf_path_list = f_paths_clean,# we are using the list with the final edf files
-                                                                  channel_list = EEG_channel_list)
+    EDF_info_df = sortEDF_starttime(root = root,
+                                                                  edf_path_list = f_paths_clean)# we are using the list with the final edf files
+
 
     EDF_info_df.to_csv(os.path.join(paths.EDF_INFO_DIR, subject, "EDF_INFO_{}.csv".format(subject)))
 
     unique_channels_across_allEDFs = nChannelsConsistency(root = root,
-                                                          edf_path_list = f_paths_clean, # we are using the list with the final edf files
-                                                          channel_list = EEG_channel_list)
+                                                          edf_path_list = f_paths_clean) # we are using the list with the final edf files
+
 
     unique_channels_across_allEDFs.sort()
     # The channels to keep; these are the ones that are included in the list and in at least one edf file.

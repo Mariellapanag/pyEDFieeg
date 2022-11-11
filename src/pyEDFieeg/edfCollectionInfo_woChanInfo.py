@@ -280,3 +280,393 @@ def clean_edf_paths(root: str, error_edfs: list, min_n_Chan: int):
 
     return f_path_list_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_path_list, f_ch_df_
 
+def nChannelsConsistency(root: str, edf_path_list: list):
+    r"""
+
+    Check whether all edf files have the same number of channels
+    Return the common channels across edf files
+    This function needed for checking each subject
+
+    Args:
+        root: the full path.
+        edf_path_list: a list of the full paths with the edf files.
+
+    Returns:
+        list: a list with common channels found across all edf files in the ``root`` path folder for all paths included in the ``edf_path_list``. The list includes channels only if those are included in the ``channel_list``.
+    """
+    merged_channel_list = list()
+    if os.path.exists(root):
+        for edf_path in edf_path_list:
+            # read header of edf file
+            #f_header = pyedflib.highlevel.read_edf_header(edf_path) #working for edf files with no issues in annotations and file size
+
+            f_header = pyedflib.EdfReader(edf_path, 0, 1) #working for edf files with no issues in annotations and file size
+
+            # Get all iEEG channels except the Heart rate channels
+            f_channels = [ch for ch in f_header.getSignalLabels()]
+            # f_channels = [ch for ch in f_header["channels"] if ch not in HeartRateChannels]
+            f_header.close() # pyedflib latest version 0.1.23
+
+            # nested list: each element is a list of the channels included in the edf file that match the channel list provided
+            merged_channel_list.append(f_channels)
+
+        flatten_list = list(chain(*merged_channel_list))
+        # check if all unique channels found across all edf files are equal to the
+        # channels provided by the list 'EEG_channel_list'
+        unique_channels_across_all = unique(flatten_list)
+
+    else:
+        raise NotADirectoryError
+
+    return unique_channels_across_all
+
+def sampleRateConsistency(root: str, edf_path_list: list):
+    r"""
+
+    Read through all edf files and checking whether the sampling rates are the same.
+    If the sampling rates are not the same returns the smallest sampling rate found.
+    Otherwise it returns the common sampling rate found (if all sampling rates are the same).
+    The check is done for all channels found in the edf file that are included in the ``channel_list``.
+
+    Args:
+        root: the full path.
+        edf_path_list: a list of the full paths with the edf files.
+
+    Returns:
+        np.float: the sampling rate across all edf files (and channels) found in the ``edf_path_list``.
+        if all the sampling rates are the same the function returns the common sampling rate.
+        Otherwise it returns the minimum sampling rate found.
+    """
+    lowest_sample_rate = np.Inf
+
+    print("Function for minimum sample rate starts...........")
+    sample_rates_all_edfs = list()
+    if os.path.exists(root):
+        for edf_path in edf_path_list:
+            print(edf_path)
+            # f_header = pyedflib.highlevel.read_edf_header(edf_path)
+            f_header = pyedflib.EdfReader(edf_path, 0, 1) #working for edf files with no issues in annotations and file size
+
+            # Get all sampling rates in a list except from the sampling rates corresponding to heart rate channels
+            # we re looking at sampling rates only for the channels found in the edf and included in the
+            # EEG_channel_list
+            # sample_rates = [s_header["sample_rate"] for s_header in f_header["SignalHeaders"] if s_header["label"] in EEG_channel_list]
+            sample_rates = f_header.getSampleFrequencies()
+
+            f_channels = np.array(f_header.getSignalLabels())
+            # Get all iEEG channels that exist in EEG_channel_list except the Heart rate channels
+            f_channels_in_list = [ch for ch in f_channels]
+            # get the indices of channels
+            f_channels_indx = np.argwhere(np.isin(f_channels, f_channels_in_list)).ravel()
+
+            sample_rates_interested = sample_rates[f_channels_indx]
+            print(sample_rates_interested)
+
+            f_header.close() # pyedflib latest version 0.1.23
+
+            # Gather all sample rates from all channels across all edfs
+            sample_rates_all_edfs.append(sample_rates_interested)
+
+        flatten_list = list(chain(*sample_rates_all_edfs))
+        result = all(sample_rate == flatten_list[0] for sample_rate in flatten_list)
+        if (result):
+            print("All sample rates in all EDF files are the same (for the EEG channels we are interested in")
+            lowest_sample_rate = flatten_list[0]
+        else:
+            print("Sample rates are not the same (differences appear in edf files and certain channels!")
+            # find the lowest sample rate, so data with higher sampling rate can be downsampled later.
+            for sample_rate in flatten_list:
+                if sample_rate <= lowest_sample_rate:
+                    lowest_sample_rate = sample_rate
+    else:
+        raise NotADirectoryError
+
+    return lowest_sample_rate
+
+def sortEDF_starttime(root: str, edf_path_list: list):
+    r"""
+
+    This function sorts all the edf files found in ``edf_path_list`` by the Start time
+    and extracts information regarding the start, end times as well as the channels found in edf files
+    compared to the channels included in the ``channel_list``.
+
+    Args:
+        root: the full path.
+        edf_path_list: a list of the full paths with the edf files.
+
+    Returns:
+        A DataFrame with information regarding the edf files displayed sorted by start time. Additionally, returns the common channels across edf files (only those that were included in the ``channel_list``).
+    **edf_df_time_info** (``pd.DataFrame``):
+        A pd.DataFrame that contains the following variables:
+
+            **edf_path** (``str``):
+                the full path where the edf files are located.
+            **start_time** (``datetime``):
+                the start time of each edf file. (inclusive)
+            **end_time** (``datetime``):
+                the end time of each edf file. (inclusive)
+            **duration** (``timedelta``):
+                the duration of the recording within each edf file.
+            **n_chan** (``int``):
+                the number of channels found in the edf file that were also included in the ``channel_list``.
+            **prop_chan** (``float``):
+                the proportion of channels found in the edf file that were also included in the ``channel_list`` out of the full ``channel_list``.
+            **index** (``int``):
+                an integer number associated with each edf file.
+            **check_ch_with_list_provided** (``boolean``):
+                This is True, if ``channel_list``, say SetA is equal to the intersection between the unique channels across all edf files and the ``channel_list``, say setB
+                Otherwise, if setA *!=* setB, this value is False.
+            **is_list_greater** (``boolean``):
+                check if ``channel_list``, say SetA with the intersection between the unique channels across all edf files and the ``channel_list``, say setB.
+                If setA *>* setB (setA *<* setB), then this value is True (False).
+    **unique_channels_across_all** (``list``):
+        The intersection between the unique channels across all edf files and the ``channel_list``.
+    """
+    # list of start times of all edf files
+    StartTime_list = list()
+    # list of end times of all edf files
+    EndTime_list = list()
+    # list with duration for each edf file
+    Duration_list = list()
+    # list of number of channels included in edf files
+    nChan_list = list()
+    prop_chan_list = list()
+
+    # Gather channels list for each edf file
+    channels_in_edfs = list()
+    # check_channel = list()
+    if os.path.exists(root):
+        for edf_path in edf_path_list:
+            print(edf_path)
+            # read header of edf file
+            f_header = pyedflib.EdfReader(edf_path, 0, 1)
+            # Get start date
+            f_start_time = f_header.getStartdatetime() # where this file starts
+
+            # Remember - take off 1 second from the duration as the end
+            # time is inclusive in the interval sorting
+            #f_end_time = f_start_time + datetime.timedelta(seconds=f_header.file_duration-1)
+
+            # Get End time
+            # Compute times as inclusive (the end time is included in the range shown)
+            f_end_time = f_start_time + datetime.timedelta(seconds=f_header.file_duration-1) # where this file ends
+
+            # Duration
+            f_duration = datetime.timedelta(seconds=f_header.file_duration)
+
+            # channel labels
+            f_label = f_header.getSignalLabels()
+
+            # if ("GA  04" in f_label):
+            #     a = True
+            #     check_channel.append(a)
+
+            f_header.close() # pyedflib latest version 0.1.23
+            # f_header._close() # pyedflib version 0.1.14
+
+            # Get all iEEG channels except the Heart rate channels
+            EEGchan_in_file = list()
+            for chan in f_label:
+                EEGchan_in_file.append(chan)
+            n_EEG_chan = len(EEGchan_in_file)
+            # proportion of channels found in this edf file with regards to the channel_list
+            prop_chan = n_EEG_chan/len(n_EEG_chan)
+
+            channels_in_edfs.append(EEGchan_in_file)
+
+            StartTime_list.append(f_start_time)
+            EndTime_list.append(f_end_time)
+            Duration_list.append(f_duration)
+            nChan_list.append(n_EEG_chan)
+            prop_chan_list.append(prop_chan)
+
+        flatten_list = list(chain(*channels_in_edfs))
+
+        # Make a dataframe with "clean" edf paths, start time and end time and duration
+        # Dataframe with info from edf files
+        edf_df_time_info = pd.DataFrame({"edf_path": edf_path_list, "start_time": StartTime_list, "end_time": EndTime_list,
+                                         "duration": Duration_list, "n_chan": nChan_list, "prop_chan": prop_chan_list,"index": np.arange(0, len(StartTime_list))})
+
+        # Sort start times
+        #StartTime_list.sort()
+        edf_df_time_info.sort_values(by='start_time', inplace=True)
+
+    else:
+        raise NotADirectoryError
+
+    return edf_df_time_info
+
+def get_EDFs_info(root: str, edf_path_list: list):
+    r"""
+
+    This function searches in root for any *.edf files.
+    Uses the function ``sortEDF_starttime`` so as all results are given in an order based on sorting
+    by start time all the edf files provided.
+    It will then go through all of them.
+    For every EDF it pulls out the info about the start time/date, duration (in hours),
+    filename, number of channels, and sampling freq. All of this is returned.
+
+    Args:
+        root: the full path.
+        edf_path_list: a list of the full paths with the edf files.
+
+    Returns:
+        dict: Info about the edf files included in the analysis. The start and end times displayed will be inclusive in this calculation,
+        so duration will be end - start + 1sec.
+            {
+            **start_time** (``list``):
+                the start time for each edf file (``datetime``).
+            **end_time** (``list``):
+                the end time for each edf file (``datetime``).
+            **record_duration** (``list``):
+                the duration for each edf file (``timedelta``).
+            **nChan** (``list``):
+                the number of channels for each edf file (``int``).
+            **fs** (``list``):
+                the frequency sampling for all channels within each edf file (``float``).
+            **chan_labels** (``list``):
+                the labels for all channels within each edf file (``str``).
+            **fpath** (``str``):
+                the full paths pointing to each edf file.
+            }
+    """
+    # sort edf files by start time. The edfs that are inluded are the valid ones
+    [sorted_edfs_info] = sortEDF_starttime(root, edf_path_list)
+
+    f_path_sorted = list(sorted_edfs_info.edf_path.values)
+
+    # start time; datetime object
+    start_time = list()
+    # end time; datetime object
+    end_time = list()
+    # recording duration in sec
+    record_duration = list()
+    # number of channels
+    nChan = list()
+    # frequency sampling for all channels
+    fs = {}
+    # channel labels
+    chan_labels = {}
+
+    if os.path.exists(root):
+        for edf_path in f_path_sorted:
+            # read header of edf file
+            f_header = pyedflib.EdfReader(edf_path, 0, 1)
+            # Get start date
+            f_start_time = f_header.getStartdatetime() # where this file starts
+
+            # Get End time
+            # Calculation of inclusive end time
+            f_end_time = f_start_time + datetime.timedelta(seconds=f_header.getFileDuration()-1) # where this file ends
+
+            # Duration in seconds
+            f_duration = (f_end_time - f_start_time) + datetime.timedelta(seconds=1)
+
+            # Signals in file
+            f_nChan = f_header.signals_in_file
+
+            # frequency sampling across channels
+            f_fs = f_header.getSampleFrequencies()
+
+            # Channel labels
+            f_chan_labels = f_header.getSignalLabels()
+
+            f_header.close()
+
+            start_time.append(f_start_time)
+            end_time.append(f_end_time)
+            record_duration.append(f_duration)
+            nChan.append(f_nChan)
+            fs[edf_path] = f_fs
+            chan_labels[edf_path] = f_chan_labels
+
+    else:
+        raise NotADirectoryError
+
+    return {"start_time": start_time, "end_time": end_time, "record_duration": record_duration,
+            "nChan": nChan, "fs": fs, "chan_labels": chan_labels,
+            "fpath": f_path_sorted}
+
+def downsample_decimate(signal: np.array, fs: float, target_fs: float, method: str):
+    r"""
+
+    Resamples the recording extractor traces. If the resampling rate is multiple of the sampling rate, the faster
+    scipy decimate function is used.
+
+    Args:
+        signal: The `array_like` of data to be downsampled.
+        fs: the frequency sampling (Hz).
+        target_fs: the frequency sampling of the targeted downsampled signal (Hz).
+        method: method to be applied for downsampling in case the mod(fs/target_fs) !=0
+
+    Returns:
+        numpy.array: the signal downsampled based on the ``target_fs``.
+    """
+    if method == "decimate":
+        #np.mod(fs, target_fs) == 0:
+        trace_resampled = scipy.signal.decimate(signal, q=int(fs / target_fs))
+        return trace_resampled
+    elif method=="linear":
+        #tx = numpy.arange(1, 1+numpy.shape(array)[0])
+        #tx = tx / fsi
+        #txq = numpy.arange(1, 1+numpy.floor(tx[-1]*fsd))
+        #txq = txq / fsd
+        #return numpy.interp(txq, tx, array)
+        tx = np.arange(0, 1+np.shape(signal)[0])
+        tx = tx / fs
+        txq = np.arange(0, 1+np.floor(tx[-1]*target_fs))
+        txq = txq / target_fs
+        return np.interp(txq, tx, signal)
+    elif method =="fourier":
+        n_sec = np.shape(signal)[0]/fs
+        target_num_samples = int(n_sec*target_fs)
+        return scipy.signal.resample(signal, num = target_num_samples)
+
+
+def visualise_resampling(initial_signal: np.array, resampled_signal: np.array, fs: float, resampled_fs: float, start: int = None, stop: int = None):
+    r"""
+
+    Check filtering and downsampling by plotting both the initial and the downsampled signals.
+
+    Args:
+        initial_signal: `array-like` the initial signal.
+        resampled_signal: `array-like` the resampled signal.
+        fs: the frequency sampling (Hz) of the ``initial_signal``.
+        resampled_fs: the frequency sampling (Hz) of the ``resampled_signal``.
+        start: the start time in seconds to be plotted. If not specified, the start time provided will be plotted.
+        stop: the end time in seconds to be plotted. If not specified, the start time provided will be plotted.
+
+    Returns:
+        matplotlib.figure: a line plot comparing the initial signal and the resampled signal.
+    """
+    if (start is None) and (stop is None):
+        data1 = initial_signal
+        data2 = resampled_signal
+    elif (start is None) and (stop is not None):
+        end1 = int(np.round(fs*stop))
+        end2 = int(np.round(resampled_fs*stop))
+        data1 = initial_signal[:end1]
+        data2 = resampled_signal[:end2]
+    elif (start is not None) and (stop is None):
+        start1 = int(np.round(fs*start))
+        start2 = int(np.round(resampled_fs*start))
+        data1 = initial_signal[start1:]
+        data2 = resampled_signal[start2:]
+    else:
+        start1 = int(np.round(fs*start))
+        start2 = int(np.round(resampled_fs*start))
+        end1 = int(np.round(fs*stop))
+        end2 = int(np.round(resampled_fs*stop))
+        data1 = initial_signal[start1:end1]
+        data2 = resampled_signal[start2:end2]
+
+    # x-axis in seconds
+    x1 = np.arange(data1.shape[0])/fs
+    x2 = np.arange(data2.shape[0])/resampled_fs
+
+    fig = plt.figure()
+    plt.plot(x1, data1)
+    plt.plot(x2, data2, alpha=0.7)
+    # plt.show()
+
+    return fig
