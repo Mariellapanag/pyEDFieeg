@@ -470,7 +470,7 @@ def sortEDF_starttime(root: str, edf_path_list: list):
                 EEGchan_in_file.append(chan)
             n_EEG_chan = len(EEGchan_in_file)
             # proportion of channels found in this edf file with regards to the channel_list
-            prop_chan = n_EEG_chan/len(n_EEG_chan)
+            prop_chan = n_EEG_chan/n_EEG_chan
 
             channels_in_edfs.append(EEGchan_in_file)
 
