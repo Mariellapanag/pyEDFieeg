@@ -2,7 +2,7 @@
 information regarding the edf files that exist in the folder structure specified in the ``root`` path"""
 
 ###############################################################################
-# M. Panagiotopoulou, April 2022
+# M. Panagiotopoulou, November 2022
 # m.panagiotopoulou2@newcastle.ac.uk
 #
 # Long-term Interictal iEEG data
@@ -44,17 +44,9 @@ def process_func(subject):
     error_edfs = paths.error_edfs # channels labels appear in error edfs
     min_n_Chan = paths.min_n_Chan # the minimum threshold of the number of channels needed to be included in the edf file
 
-    EEG_channel_path = os.path.join(paths.IN_CHANNELS, "{}.json".format(subject))
-    with open(EEG_channel_path) as json_file:
-        Channels_json = json.load(json_file)
-        print(Channels_json)
-    EEG_channel_list = [element['name'] for element in Channels_json if element["is_scalp"] == False]
-
-    # Store as a csv file the EEG_channel_list provided by the user
-    EEG_channel_list_df = pd.DataFrame({"channel_list": EEG_channel_list})
-    EEG_channel_list_df.to_csv(os.path.join(paths.EDF_INFO_DIR, subject, "CHANNEL_LIST_{}.csv".format(subject)))
-
-
+    root = root
+    error_edfs = error_edfs
+    min_n_Chan = min_n_Chan
     # Get info about edf files and a list with the final paths pointed to the edf files to be used for the analysis
     [f_paths_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_paths, edf_chan] = clean_edf_paths(root = root,
                     error_edfs = error_edfs,
