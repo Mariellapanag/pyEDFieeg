@@ -13,7 +13,7 @@ information regarding the edf files that exist in the folder structure specified
 import json
 
 # internal modules
-from pyEDFieeg.edfCollectionInfo import *
+from pyEDFieeg.edfCollectionInfo_woChanInfo import *
 import paths
 
 
@@ -50,7 +50,6 @@ def process_func(subject):
     # Get info about edf files and a list with the final paths pointed to the edf files to be used for the analysis
     [f_paths_clean, f_path_list_excluded, f_path_list_checkChanNotInList, f_paths, edf_chan] = clean_edf_paths(root = root,
                     error_edfs = error_edfs,
-                    channel_list = EEG_channel_list,
                     min_n_Chan = min_n_Chan)
 
     # Store asa csv file the edf files (paths) that have been excluded as none of the channels labels existed on those didn;t match the channel list
