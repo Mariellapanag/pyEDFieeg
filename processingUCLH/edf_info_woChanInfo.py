@@ -17,13 +17,19 @@ from pyEDFieeg.edfCollectionInfo_woChanInfo import *
 import paths
 
 
-subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
-                "934", "95", "999", "GLAS040", "GLAS041", "GLAS044", "GLAS047",
-                "1005", "1200", "1211", "1379", "1395", "1167", "909"]
-
+# subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
+#                 "934", "95", "999", "GLAS040", "GLAS041", "GLAS044", "GLAS047",
+#                 "1005", "1200", "1211", "1379", "1395", "1167", "909"]
+# subject_list = [32, 39, 607,704, 718, 804, 822, 863, 872, 884, 904, 936, 941, 944, 947, 948, 950,
+#                 959, 964, 965, 984, 985, 1007, 1025, 1045, 1047, 1064, 1075, 1084, 1091, 1113, 1116,
+#                 1129, 1130, 1135, 1196, 1222, 1231, 1273, 1321, 1412]
 # subject_white_list = ["1106", "1109", "1149", "1163", "1182", "851",
 #                       "934", "95", "999", "GLAS040", "GLAS041", "GLAS044", "GLAS047"]
-#
+
+subject_list = ["936", "947", "965", "984", "985", "1007", "1045", "1075", "1084",
+                "1091", "1129", "1130", "1135", "1196", "1321"]
+
+
 # subject_black_list = ["1005", "1200", "1211", "1379", "1395"]
 #
 # subject_black_to_white = ["1167"]
@@ -31,7 +37,7 @@ subject_list = ["1106", "1109", "1149", "1163", "1182", "851",
 # Single patient processing
 
 # subject = "test"
-subject = "1196"
+subject = "936"
 
 def process_func(subject):
 
@@ -93,14 +99,15 @@ def process_func(subject):
 
 # Run for one subject
 # subject = "909"
-if __name__ == '__main__':
-    process_func(subject)
+# if __name__ == '__main__':
+#     process_func(subject)
 
 
 # # Run for all subjects within the ``subject_list``
-# if __name__ == '__main__':
-#     for subject in subject_list:
-#         process_func(subject)
+if __name__ == '__main__':
+    for subject in subject_list:
+        print(subject)
+        process_func(subject)
 
 # if __name__ == '__main__':
 #     for subject in subject_white_list:
